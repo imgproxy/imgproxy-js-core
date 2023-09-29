@@ -1,0 +1,45 @@
+{
+    "name": "@types/jsdom",
+    "version": "21.1.1",
+    "description": "TypeScript definitions for jsdom",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jsdom",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Leonard Thieu",
+            "url": "https://github.com/leonard-thieu",
+            "githubUsername": "leonard-thieu"
+        },
+        {
+            "name": "Johan Palmfjord",
+            "url": "https://github.com/palmfjord",
+            "githubUsername": "palmfjord"
+        },
+        {
+            "name": "ExE Boss",
+            "url": "https://github.com/ExE-Boss",
+            "githubUsername": "ExE-Boss"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/jsdom"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/node": "*",
+        "@types/tough-cookie": "*",
+        "parse5": "^7.0.0"
+    },
+    "typesPublisherContentHash": "daeb30f9d7788be6aaff31989bba37fdb1ddc844ef5e7a5205e0078edeeb3cdb",
+    "typeScriptVersion": "4.5",
+    "exports": {
+        ".": {
+            "types": "./index.d.ts"
+        },
+        "./package.json": "./package.json"
+    }
+}
