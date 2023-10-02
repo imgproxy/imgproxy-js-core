@@ -61,14 +61,23 @@ type GravityType =
 /**
  * When imgproxy needs to cut some parts of the image, it is guided by the gravity option.
  *
- * `sm`: smart gravity. libvips detects the most “interesting” section of the image and considers it as the center of the resulting image
- *
  * More information https://docs.imgproxy.net/generating_the_url?id=gravity
  */
 interface BaseGravity {
-  type: GravityType | "sm";
-  offsetX?: number;
-  offsetY?: number;
+  type: GravityType;
+  x_offset?: number;
+  y_offset?: number;
+}
+
+/**
+ * Smart gravity. libvips detects the most “interesting” section of the image and considers it as the center of the resulting image.
+ *
+ * Offsets are not applicable here.
+ *
+ * More information https://docs.imgproxy.net/generating_the_url?id=gravity
+ */
+interface SmartGravity {
+  type: "sm";
 }
 
 /**
@@ -78,28 +87,30 @@ interface BaseGravity {
  *
  * Treat `0` and `1` as right/left for `x` and top/bottom for `y`.
  */
-interface GravityFP {
+interface FPGravity {
   type: "fp";
   x: number;
   y: number;
 }
 
-//TODO: `gravity:obj:%class_name1:%class_name2:...:%class_nameN` - object-oriented gravity.
+/**
+ * **PRO feature.**
+ *
+ * Object-oriented gravity. imgproxy detects objects of provided classes on the image and calculates the resulting image center using their positions.
+ *
+ * If class names are omited, imgproxy will use all the detected objects.
+ */
+interface ObjGravity {
+  type: "obj";
+  class_names: string[];
+}
 
 /**
  * When imgproxy needs to cut some parts of the image, it is guided by the gravity option.
  *
- * `x_offset`, `y_offset` - (optional) specifies the gravity offset along the X and Y axes.
- *
- * Default: `ce:0:0`.
+ * More information https://docs.imgproxy.net/generating_the_url?id=gravity
  */
-interface GravityInExtend {
-  type: GravityType;
-  offsetX?: number;
-  offsetY?: number;
-}
-
-export type Gravity = BaseGravity | GravityFP;
+export type Gravity = BaseGravity | SmartGravity | ObjGravity | FPGravity;
 
 /**
  * When `extend` is set to 1, t or true, imgproxy will extend the image if it is smaller than the given size.
@@ -112,7 +123,7 @@ export type Gravity = BaseGravity | GravityFP;
  */
 interface ExtendType {
   extend: "1" | "t" | "true" | "false" | string;
-  gravity?: GravityInExtend | GravityFP;
+  gravity?: BaseGravity | FPGravity;
 }
 
 /**
@@ -123,7 +134,7 @@ interface ExtendType {
  * More information https://docs.imgproxy.net/generating_the_url?id=resize
  */
 export interface Resize {
-  resizingType?: ResizingType;
+  resizing_type?: ResizingType;
   width?: number;
   height?: number;
   enlarge?: Enlarge;
@@ -131,7 +142,7 @@ export interface Resize {
 }
 
 export interface Padding {
-  top: number;
+  top?: number;
   right?: number;
   bottom?: number;
   left?: number;
