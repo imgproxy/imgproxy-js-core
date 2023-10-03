@@ -10,12 +10,12 @@ const build = (options: WidthOptionsPartial): string => {
   const widthOpts = getOpt(options);
 
   if (!widthOpts) {
-    throw new Error("width options are undefined");
+    throw new Error("width option is undefined");
+  } else if (typeof widthOpts === "string") {
+    throw new Error("width cannot be a string");
   }
 
-  const width = widthOpts || "";
-
-  return `width:${width}`;
+  return `width:${widthOpts}`;
 };
 
 export { test, build };

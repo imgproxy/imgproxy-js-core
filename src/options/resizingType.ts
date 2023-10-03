@@ -11,7 +11,7 @@ const build = (options: ResizingTypeOptionsPartial): string => {
   const resizingTypeOpts = getOpt(options);
 
   if (!resizingTypeOpts) {
-    throw new Error("resizing type options are undefined");
+    throw new Error("resizing type option is undefined");
   }
 
   return `resizing_type:${resizingTypeOpts}`;

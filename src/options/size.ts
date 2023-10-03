@@ -16,7 +16,9 @@ const build = (options: SizeOptionsPartial): string => {
   const width = sizeOpts.width || "";
   const height = sizeOpts.height || "";
   const enlarge = sizeOpts.enlarge || "";
-  const extend = extendOpt.test(sizeOpts) ? extendOpt.build(sizeOpts) : "";
+  const extend = extendOpt.test(sizeOpts)
+    ? extendOpt.build(sizeOpts, { headless: true })
+    : "";
 
   return `size:${width}:${height}:${enlarge}:${extend}`;
 };

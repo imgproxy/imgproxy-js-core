@@ -11,7 +11,7 @@ const build = (options: ResizingAlgorithmOptionsPartial): string => {
   const resizingAlgorithmOpts = getOpt(options);
 
   if (!resizingAlgorithmOpts) {
-    throw new Error("resizing algorithm options are undefined");
+    throw new Error("resizing algorithm option is undefined");
   }
 
   return `resizing_algorithm:${resizingAlgorithmOpts}`;
