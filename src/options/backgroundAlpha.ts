@@ -1,4 +1,7 @@
-import { BackgroundAlpha, BackgroundAlphaOptionsPartial } from "../types";
+import type {
+  BackgroundAlpha,
+  BackgroundAlphaOptionsPartial,
+} from "../types/backgroundAlpha";
 
 const getOpt = (
   options: BackgroundAlphaOptionsPartial

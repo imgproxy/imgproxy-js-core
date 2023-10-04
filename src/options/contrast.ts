@@ -1,4 +1,4 @@
-import { Contrast, ContrastOptionsPartial } from "../types";
+import type { Contrast, ContrastOptionsPartial } from "../types/contrast";
 
 const getOpt = (options: ContrastOptionsPartial): Contrast | undefined =>
   options.contrast || options.co;
@@ -11,10 +11,10 @@ const build = (options: ContrastOptionsPartial): string => {
 
   if (!contrastOpts) {
     throw new Error("contrast options are undefined");
-  } else if (typeof contrastOpts !== "number") {
-    throw new Error("contrast is not correct. Set the value between 0 and 2");
-  } else if (contrastOpts < 0 || contrastOpts > 2) {
-    throw new Error("contrast is not correct. Set the value between 0 and 2");
+  } else if (typeof contrastOpts !== "number" || contrastOpts < 0) {
+    throw new Error(
+      "contrast is not correct. Set the value between 0 and any positive number"
+    );
   }
 
   return `contrast:${contrastOpts}`;

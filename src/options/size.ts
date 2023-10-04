@@ -1,4 +1,4 @@
-import { SizeOptionsPartial, Size } from "../types";
+import type { SizeOptionsPartial, Size } from "../types/size";
 import * as extendOpt from "./extend";
 
 const getOpt = (options: SizeOptionsPartial): Size | undefined =>

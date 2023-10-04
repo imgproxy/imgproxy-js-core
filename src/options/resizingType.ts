@@ -1,4 +1,7 @@
-import { ResizingTypeOptionsPartial, ResizingType } from "../types";
+import type {
+  ResizingTypeOptionsPartial,
+  ResizingType,
+} from "../types/resizingType";
 
 const getOpt = (
   options: ResizingTypeOptionsPartial

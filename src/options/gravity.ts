@@ -1,10 +1,10 @@
-import {
+import type {
   GravityOptionsPartial,
   Gravity,
   FPGravity,
   ObjGravity,
   BaseGravity,
-} from "../types";
+} from "../types/gravity";
 
 interface BuildProps {
   headless?: boolean;

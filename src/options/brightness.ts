@@ -1,4 +1,4 @@
-import { Brightness, BrightnessOptionsPartial } from "../types";
+import type { Brightness, BrightnessOptionsPartial } from "../types/brightness";
 
 const getOpt = (options: BrightnessOptionsPartial): Brightness | undefined =>
   options.brightness || options.br;

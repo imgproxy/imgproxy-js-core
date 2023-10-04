@@ -1,11 +1,11 @@
-import { ExtendOptionsPartial, ExtendType } from "../types";
+import type { ExtendOptionsPartial, Extend } from "../types/extend";
 import * as gravityOpt from "./gravity";
 
 interface BuildProps {
   headless?: boolean;
 }
 
-const getOpt = (options: ExtendOptionsPartial): ExtendType | undefined =>
+const getOpt = (options: ExtendOptionsPartial): Extend | undefined =>
   options.extend || options.ex;
 
 const test = (options: ExtendOptionsPartial): boolean =>

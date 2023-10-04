@@ -1,4 +1,4 @@
-import { Width, WidthOptionsPartial } from "../types";
+import type { Width, WidthOptionsPartial } from "../types/width";
 
 const getOpt = (options: WidthOptionsPartial): Width | undefined =>
   options.width || options.w;

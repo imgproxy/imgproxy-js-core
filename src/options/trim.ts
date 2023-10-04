@@ -1,4 +1,4 @@
-import { Trim, TrimOptionsPartial } from "../types";
+import type { Trim, TrimOptionsPartial } from "../types/trim";
 
 const getOpt = (options: TrimOptionsPartial): Trim | undefined =>
   options.trim || options.t;

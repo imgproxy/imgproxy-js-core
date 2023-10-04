@@ -1,4 +1,4 @@
-import { Crop, CropOptionsPartial } from "../types";
+import type { Crop, CropOptionsPartial } from "../types/crop";
 import * as gravityOpt from "./gravity";
 
 const getOpt = (options: CropOptionsPartial): Crop | undefined =>

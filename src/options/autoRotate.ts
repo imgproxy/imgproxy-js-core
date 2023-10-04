@@ -1,4 +1,4 @@
-import { AutoRotate, AutoRotateOptionsPartial } from "../types";
+import type { AutoRotate, AutoRotateOptionsPartial } from "../types/autoRotate";
 
 const getOpt = (options: AutoRotateOptionsPartial): AutoRotate | undefined =>
   options.auto_rotate || options.ar;

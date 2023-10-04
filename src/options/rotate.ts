@@ -1,4 +1,4 @@
-import { Rotate, RotateOptionsPartial } from "../types";
+import type { Rotate, RotateOptionsPartial } from "../types/rotate";
 
 const correctAngles = {
   0: true,

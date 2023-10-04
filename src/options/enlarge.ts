@@ -1,4 +1,4 @@
-import { EnlargeOptionsPartial, Enlarge } from "../types";
+import type { EnlargeOptionsPartial, Enlarge } from "../types/enlarge";
 
 const getOpt = (options: EnlargeOptionsPartial): Enlarge | undefined =>
   options.enlarge || options.el;

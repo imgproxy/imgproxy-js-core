@@ -1,4 +1,4 @@
-import { Saturation, SaturationOptionsPartial } from "../types";
+import type { Saturation, SaturationOptionsPartial } from "../types/saturation";
 
 const getOpt = (options: SaturationOptionsPartial): Saturation | undefined =>
   options.saturation || options.sa;
@@ -11,10 +11,10 @@ const build = (options: SaturationOptionsPartial): string => {
 
   if (!saturationOpts) {
     throw new Error("saturation option is undefined");
-  } else if (typeof saturationOpts !== "number") {
-    throw new Error("saturation is not correct. Set the value between 0 and 2");
-  } else if (saturationOpts < 0 || saturationOpts > 2) {
-    throw new Error("saturation is not correct. Set the value between 0 and 2");
+  } else if (typeof saturationOpts !== "number" || saturationOpts < 0) {
+    throw new Error(
+      "saturation is not correct. Set the value between 0 and any positive number"
+    );
   }
 
   return `saturation:${saturationOpts}`;

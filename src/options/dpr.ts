@@ -1,4 +1,4 @@
-import { DPR, DPROptionsPartial } from "../types";
+import type { DPR, DPROptionsPartial } from "../types/dpr";
 
 const getOpt = (options: DPROptionsPartial): DPR | undefined => options.dpr;
 

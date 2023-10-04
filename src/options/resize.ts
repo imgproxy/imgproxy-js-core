@@ -1,5 +1,5 @@
+import type { ResizeOptionsPartial, Resize } from "../types/resize";
 import * as extendOpt from "./extend";
-import { ResizeOptionsPartial, Resize } from "../types";
 
 const getOpt = (options: ResizeOptionsPartial): Resize | undefined =>
   options.resize || options.rs;

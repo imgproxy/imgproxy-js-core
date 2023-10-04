@@ -1,4 +1,4 @@
-import { MinHeight, MinHeightOptionsPartial } from "../types";
+import type { MinHeight, MinHeightOptionsPartial } from "../types/minHeight";
 
 const getOpt = (options: MinHeightOptionsPartial): MinHeight | undefined =>
   options.min_height || options.mh;

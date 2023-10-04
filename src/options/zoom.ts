@@ -1,4 +1,4 @@
-import { Zoom, ZoomOptionsPartial } from "../types";
+import type { Zoom, ZoomOptionsPartial } from "../types/zoom";
 
 const validateValue = (value: number, optName: string): void => {
   if (!value) {

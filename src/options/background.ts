@@ -1,4 +1,4 @@
-import { Background, BackgroundOptionsPartial } from "../types";
+import type { Background, BackgroundOptionsPartial } from "../types/background";
 
 const getOpt = (options: BackgroundOptionsPartial): Background | undefined =>
   options.background || options.bg;

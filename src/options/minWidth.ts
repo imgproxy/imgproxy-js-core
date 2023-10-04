@@ -1,4 +1,4 @@
-import { MinWidth, MinWidthOptionsPartial } from "../types";
+import type { MinWidth, MinWidthOptionsPartial } from "../types/minWidth";
 
 const getOpt = (options: MinWidthOptionsPartial): MinWidth | undefined =>
   options.min_width || options.mw;

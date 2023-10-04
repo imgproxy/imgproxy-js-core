@@ -1,4 +1,7 @@
-import { ExtendAspectRatioOptionsPartial, ExtendAspectRatio } from "../types";
+import type {
+  ExtendAspectRatioOptionsPartial,
+  ExtendAspectRatio,
+} from "../types/extendAspectRatio";
 import * as gravityOpt from "./gravity";
 
 const getOpt = (

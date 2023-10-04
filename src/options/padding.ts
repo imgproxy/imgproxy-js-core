@@ -1,4 +1,4 @@
-import { Padding, PaddingOptionsPartial } from "../types";
+import type { Padding, PaddingOptionsPartial } from "../types/padding";
 
 const getOpt = (options: PaddingOptionsPartial): Padding | undefined =>
   options.padding || options.pd;

@@ -1,4 +1,4 @@
-import { Height, HeightOptionsPartial } from "../types";
+import type { Height, HeightOptionsPartial } from "../types/height";
 
 const getOpt = (options: HeightOptionsPartial): Height | undefined =>
   options.height || options.h;
