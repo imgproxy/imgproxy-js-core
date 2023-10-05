@@ -10,7 +10,7 @@ import { BaseGravity, FPGravity } from "./gravity";
  * or when the proportions of the original image do not match the size specified in `width` or `height` options and you have
  * set the `resize` option with the `fit` parameter, etc.
  *
- * @note If any value other than `1`, `t`, or `true` is passed, it will be recognized as `false`.
+ * @note If any value other than `1`, `"t"`, or `true` is passed, it will be recognized as `false`.
  *
  * @warning The `extend` option will only work in conjunction with `width` or `height` options.
  * If `width` or `height` options are not specified, the `extend` option will not have any effects.

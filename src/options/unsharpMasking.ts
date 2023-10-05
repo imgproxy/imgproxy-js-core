@@ -21,7 +21,7 @@ const build = (options: UnsharpMaskingOptionsPartial): string => {
   const weightStr = unsharpMaskingOpts.weight || "";
   const dividerStr = unsharpMaskingOpts.divider || "";
 
-  return `unsharp_masking${modeStr}${weightStr}${dividerStr}`;
+  return `unsharp_masking:${modeStr}:${weightStr}:${dividerStr}`;
 };
 
 export { test, build };

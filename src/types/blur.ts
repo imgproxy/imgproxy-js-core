@@ -2,7 +2,7 @@
  * *Blur option*
  *
  * When set, imgproxy will apply a gaussian blur filter to the resulting image.
- * The value of sigma defines the size of the mask imgproxy will use.
+ * The value defines the size of the mask imgproxy will use.
  * The value can be an any positive number.
  *
  * @default disabled

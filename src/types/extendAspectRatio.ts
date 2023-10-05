@@ -6,7 +6,7 @@ import { BaseGravity, FPGravity } from "./gravity";
  * imgproxy will extend the image to the aspect ratio calculated based on the dimensions specified
  * in the `width` or `height` options, adding a transparent background.
  *
- * @note If any value other than `1`, `t`, or `true` is passed, it will be recognized as `false`.
+ * @note If any value other than `1`, `"t"`, or `true` is passed, it will be recognized as `false`.
  *
  * @warning The `extendAspectRatio` option will only work in conjunction with `width` or `height` options.
  * If `width` or `height` options are not specified, the `extendAspectRatio` option will not have any effects.
@@ -47,10 +47,10 @@ import { BaseGravity, FPGravity } from "./gravity";
  *
  * @example
  * // extend the image (if `width` or `height` options are set and the original aspect ratio is smaller than calculated by the size)
- * {extendAspectRatio: true}
+ * {extend_aspect_ratio: {exend: true}}
  *
  * // extend the image from the focal point in the middle of the top edge (if `width` or `height` options are set and the original aspect ratio is smaller than calculated by the size)
- * {extendAspectRatio: 1, gravity: {type: "no"}}
+ * {extend_aspect_ratio: {extend: 1, gravity: {type: "no"}}}
  *
  * @see
  * - `extendAspectRatio` https://docs.imgproxy.net/generating_the_url?id=extend-aspect-ratio

@@ -21,7 +21,7 @@ import { ResizingType } from "./resizingType";
  * `height` (optional). The height of the resulting image. If not specified,
  * imgproxy will calculate it based on the `width` and the aspect ratio of the source image.
  *
- * `enlarge` (optional). If set to `1`, `t`, or `true`, imgproxy will enlarge the resulting
+ * `enlarge` (optional). If set to `1`, `"t"`, or `true`, imgproxy will enlarge the resulting
  * image if the requested size is bigger than the size of the source image.
  *
  * `extend` (optional). imgproxy will extend the image to the size specified in `width` or `height` options by adding a transparent background.
