@@ -15,6 +15,7 @@ import type { DPROptionsPartial } from "./dpr";
 import type { DrawDetectionsOptionsPartial } from "./drawDetections";
 import type { EnforceThumbnailOptionsPartial } from "./enforceThumbnail";
 import type { EnlargeOptionsPartial } from "./enlarge";
+import type { ExpiresOptionsPartial } from "./expires";
 import type { ExtendAspectRatioOptionsPartial } from "./extendAspectRatio";
 import type { ExtendOptionsPartial } from "./extend";
 import type { FallbackImageUrlOptionsPartial } from "./fallbackImageUrl";
@@ -26,12 +27,13 @@ import type { GravityOptionsPartial } from "./gravity";
 import type { HeightOptionsPartial } from "./height";
 import type { JPEGOptionsPartial } from "./jpegOptions";
 import type { KeepCopyrightOptionsPartial } from "./keepCopyright";
+import type { MaxBytesOptionsPartial } from "./maxBytes";
 import type { MaxSrcResolutionOptionsPartial } from "./maxSrcResolution";
 import type { MinHeightOptionsPartial } from "./minHeight";
 import type { MinWidthOptionsPartial } from "./minWidth";
+import type { PaddingOptionsPartial } from "./padding";
 import type { PageOptionsPartial } from "./page";
 import type { PagesOptionsPartial } from "./pages";
-import type { PaddingOptionsPartial } from "./padding";
 import type { PixelateOptionsPartial } from "./pixelate";
 import type { PNGOptionsPartial } from "./pngOptions";
 import type { QualityOptionsPartial } from "./quality";
@@ -45,6 +47,7 @@ import type { SaturationOptionsPartial } from "./saturation";
 import type { SharpenOptionsPartial } from "./sharpen";
 import type { SizeOptionsPartial } from "./size";
 import type { SkipProcessingOptionsPartial } from "./skipProcessing";
+import type { StripColorProfileOptionsPartial } from "./stripColorProfile";
 import type { StripMetadataOptionsPartial } from "./stripMetadata";
 import type { StyleOptionsPartial } from "./style";
 import type { TrimOptionsPartial } from "./trim";
@@ -75,6 +78,7 @@ export type Options = AjustOptionsPartial &
   DrawDetectionsOptionsPartial &
   EnforceThumbnailOptionsPartial &
   EnlargeOptionsPartial &
+  ExpiresOptionsPartial &
   ExtendAspectRatioOptionsPartial &
   ExtendOptionsPartial &
   FallbackImageUrlOptionsPartial &
@@ -86,12 +90,13 @@ export type Options = AjustOptionsPartial &
   HeightOptionsPartial &
   JPEGOptionsPartial &
   KeepCopyrightOptionsPartial &
+  MaxBytesOptionsPartial &
   MaxSrcResolutionOptionsPartial &
   MinHeightOptionsPartial &
   MinWidthOptionsPartial &
+  PaddingOptionsPartial &
   PageOptionsPartial &
   PagesOptionsPartial &
-  PaddingOptionsPartial &
   PixelateOptionsPartial &
   PNGOptionsPartial &
   RawOptionsPartial &
@@ -105,6 +110,7 @@ export type Options = AjustOptionsPartial &
   SizeOptionsPartial &
   SkipProcessingOptionsPartial &
   SharpenOptionsPartial &
+  StripColorProfileOptionsPartial &
   StripMetadataOptionsPartial &
   StyleOptionsPartial &
   TrimOptionsPartial &
