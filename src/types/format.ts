@@ -12,11 +12,11 @@
  * - `svg` — Scalable Vector Graphics
  * - `bmp` — Bitmap
  * - `tiff` — Tagged Image File Format
- * - `mp4` — MPEG-4
+ * - `mp4` — **PRO feature** MPEG-4
  *
  * @see
- * - `format` https://docs.imgproxy.net/generating_the_url?id=format
- * - Image formats support https://docs.imgproxy.net/image_formats_support
+ * - {@link https://docs.imgproxy.net/generating_the_url?id=format | format option imgproxy docs}
+ * - {@link https://docs.imgproxy.net/image_formats_support | image formats support imgproxy docs}
  */
 type Format =
   | "png"

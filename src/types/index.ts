@@ -1,12 +1,15 @@
 import type { AjustOptionsPartial } from "./ajust";
+import type { AutoqualityOptionsPartial } from "./autoquality";
 import type { AutoRotateOptionsPartial } from "./autoRotate";
 import type { BackgroundOptionsPartial } from "./background";
 import type { BackgroundAlphaOptionsPartial } from "./backgroundAlpha";
 import type { BlurDetectionsOptionsPartial } from "./blurDetections";
 import type { BlurOptionsPartial } from "./blur";
 import type { BrightnessOptionsPartial } from "./brightness";
+import type { CacheBusterOptionsPartial } from "./cachebuster";
 import type { ContrastOptionsPartial } from "./contrast";
 import type { CropOptionsPartial } from "./crop";
+import type { DisableAnimationOptionsPartial } from "./disableAnimation";
 import type { DPIOptionsPartial } from "./dpi";
 import type { DPROptionsPartial } from "./dpr";
 import type { DrawDetectionsOptionsPartial } from "./drawDetections";
@@ -14,44 +17,59 @@ import type { EnforceThumbnailOptionsPartial } from "./enforceThumbnail";
 import type { EnlargeOptionsPartial } from "./enlarge";
 import type { ExtendAspectRatioOptionsPartial } from "./extendAspectRatio";
 import type { ExtendOptionsPartial } from "./extend";
+import type { FallbackImageUrlOptionsPartial } from "./fallbackImageUrl";
+import type { FilenameOptionsPartial } from "./filename";
 import type { FormatOptionsPartial } from "./format";
 import type { FormatQualityOptionsPartial } from "./formatQuality";
 import type { GradientOptionsPartial } from "./gradient";
 import type { GravityOptionsPartial } from "./gravity";
 import type { HeightOptionsPartial } from "./height";
+import type { JPEGOptionsPartial } from "./jpegOptions";
 import type { KeepCopyrightOptionsPartial } from "./keepCopyright";
+import type { MaxSrcResolutionOptionsPartial } from "./maxSrcResolution";
 import type { MinHeightOptionsPartial } from "./minHeight";
 import type { MinWidthOptionsPartial } from "./minWidth";
+import type { PageOptionsPartial } from "./page";
+import type { PagesOptionsPartial } from "./pages";
 import type { PaddingOptionsPartial } from "./padding";
 import type { PixelateOptionsPartial } from "./pixelate";
+import type { PNGOptionsPartial } from "./pngOptions";
 import type { QualityOptionsPartial } from "./quality";
+import type { RawOptionsPartial } from "./raw";
 import type { ResizeOptionsPartial } from "./resize";
 import type { ResizingAlgorithmOptionsPartial } from "./resizingAlgorithm";
 import type { ResizingTypeOptionsPartial } from "./resizingType";
+import type { ReturnAttachmentOptionsPartial } from "./returnAttachment";
 import type { RotateOptionsPartial } from "./rotate";
 import type { SaturationOptionsPartial } from "./saturation";
 import type { SharpenOptionsPartial } from "./sharpen";
 import type { SizeOptionsPartial } from "./size";
+import type { SkipProcessingOptionsPartial } from "./skipProcessing";
 import type { StripMetadataOptionsPartial } from "./stripMetadata";
 import type { StyleOptionsPartial } from "./style";
 import type { TrimOptionsPartial } from "./trim";
 import type { UnsharpMaskingOptionsPartial } from "./unsharpMasking";
+import type { VideoThumbnailSecondOptionsPartial } from "./videoThumbnailSecond";
 import type { WatermarkOptionsPartial } from "./watermark";
 import type { WatermarkShadowOptionsPartial } from "./watermarkShadow";
 import type { WatermarkTextOptionsPartial } from "./watermarkText";
 import type { WatermarkUrlOptionsPartial } from "./watermarkUrl";
+import type { WebpOptionsPartial } from "./webpOptions";
 import type { WidthOptionsPartial } from "./width";
 import type { ZoomOptionsPartial } from "./zoom";
 
 export type Options = AjustOptionsPartial &
+  AutoqualityOptionsPartial &
   AutoRotateOptionsPartial &
   BackgroundOptionsPartial &
   BackgroundAlphaOptionsPartial &
   BlurDetectionsOptionsPartial &
   BlurOptionsPartial &
   BrightnessOptionsPartial &
+  CacheBusterOptionsPartial &
   ContrastOptionsPartial &
   CropOptionsPartial &
+  DisableAnimationOptionsPartial &
   DPIOptionsPartial &
   DPROptionsPartial &
   DrawDetectionsOptionsPartial &
@@ -59,31 +77,43 @@ export type Options = AjustOptionsPartial &
   EnlargeOptionsPartial &
   ExtendAspectRatioOptionsPartial &
   ExtendOptionsPartial &
+  FallbackImageUrlOptionsPartial &
+  FilenameOptionsPartial &
   FormatOptionsPartial &
   FormatQualityOptionsPartial &
   GradientOptionsPartial &
   GravityOptionsPartial &
   HeightOptionsPartial &
+  JPEGOptionsPartial &
   KeepCopyrightOptionsPartial &
+  MaxSrcResolutionOptionsPartial &
   MinHeightOptionsPartial &
   MinWidthOptionsPartial &
+  PageOptionsPartial &
+  PagesOptionsPartial &
   PaddingOptionsPartial &
   PixelateOptionsPartial &
+  PNGOptionsPartial &
+  RawOptionsPartial &
   QualityOptionsPartial &
   ResizeOptionsPartial &
   ResizingAlgorithmOptionsPartial &
   ResizingTypeOptionsPartial &
+  ReturnAttachmentOptionsPartial &
   RotateOptionsPartial &
   SaturationOptionsPartial &
   SizeOptionsPartial &
+  SkipProcessingOptionsPartial &
   SharpenOptionsPartial &
   StripMetadataOptionsPartial &
   StyleOptionsPartial &
   TrimOptionsPartial &
   UnsharpMaskingOptionsPartial &
+  VideoThumbnailSecondOptionsPartial &
   WatermarkOptionsPartial &
   WatermarkShadowOptionsPartial &
   WatermarkTextOptionsPartial &
   WatermarkUrlOptionsPartial &
+  WebpOptionsPartial &
   WidthOptionsPartial &
   ZoomOptionsPartial;

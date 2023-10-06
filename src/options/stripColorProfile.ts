@@ -14,7 +14,7 @@ const build = (options: StripColorProfileOptionsPartial): string => {
   const stripColorProfileOpts = getOpt(options);
 
   if (!stripColorProfileOpts) {
-    throw new Error("strip_color_profile option is undefined");
+    throw new Error("strip color profile option is undefined");
   }
 
   return `strip_color_profile:${stripColorProfileOpts}`;
