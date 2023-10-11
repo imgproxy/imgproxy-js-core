@@ -1,7 +1,7 @@
 /**
  * *Max src resolution*
  *
- *  The maximum resolution of the source image, in megapixels.
+ * The maximum resolution of the source image, in megapixels.
  * Images with larger actual size will be rejected.
  * Redefining `IMGPROXY_MAX_SRC_RESOLUTION` config.
  *

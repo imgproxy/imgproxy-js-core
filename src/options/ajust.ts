@@ -11,9 +11,18 @@ const build = (options: AjustOptionsPartial): string => {
 
   if (!ajustOpts) {
     throw new Error("ajust options are undefined");
+  } else if (
+    ajustOpts.brightness &&
+    (ajustOpts.brightness > 255 || ajustOpts.brightness < -255)
+  ) {
+    throw new Error("brightness must be in range [-255, 255]");
   }
 
-  return `ajust:${ajustOpts}`;
+  const brightness = ajustOpts.brightness || "";
+  const contrast = ajustOpts.contrast || "";
+  const saturation = ajustOpts.saturation || "";
+
+  return `ajust:${brightness}:${contrast}:${saturation}`;
 };
 
 export { test, build };

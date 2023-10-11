@@ -27,7 +27,10 @@ import type { GravityOptionsPartial } from "./gravity";
 import type { HeightOptionsPartial } from "./height";
 import type { JPEGOptionsPartial } from "./jpegOptions";
 import type { KeepCopyrightOptionsPartial } from "./keepCopyright";
+import type { MAFROptionsPartial } from "./maxAnimationFrameResolution";
+import type { MaxAnimationFramesOptionsPartial } from "./maxAnimationFrames";
 import type { MaxBytesOptionsPartial } from "./maxBytes";
+import type { MaxSrcFileSizeOptionsPartial } from "./maxSrcFileSize";
 import type { MaxSrcResolutionOptionsPartial } from "./maxSrcResolution";
 import type { MinHeightOptionsPartial } from "./minHeight";
 import type { MinWidthOptionsPartial } from "./minWidth";
@@ -36,6 +39,7 @@ import type { PageOptionsPartial } from "./page";
 import type { PagesOptionsPartial } from "./pages";
 import type { PixelateOptionsPartial } from "./pixelate";
 import type { PNGOptionsPartial } from "./pngOptions";
+import type { PresetOptionsPartial } from "./preset";
 import type { QualityOptionsPartial } from "./quality";
 import type { RawOptionsPartial } from "./raw";
 import type { ResizeOptionsPartial } from "./resize";
@@ -90,7 +94,10 @@ export type Options = AjustOptionsPartial &
   HeightOptionsPartial &
   JPEGOptionsPartial &
   KeepCopyrightOptionsPartial &
+  MAFROptionsPartial &
+  MaxAnimationFramesOptionsPartial &
   MaxBytesOptionsPartial &
+  MaxSrcFileSizeOptionsPartial &
   MaxSrcResolutionOptionsPartial &
   MinHeightOptionsPartial &
   MinWidthOptionsPartial &
@@ -99,6 +106,7 @@ export type Options = AjustOptionsPartial &
   PagesOptionsPartial &
   PixelateOptionsPartial &
   PNGOptionsPartial &
+  PresetOptionsPartial &
   RawOptionsPartial &
   QualityOptionsPartial &
   ResizeOptionsPartial &
