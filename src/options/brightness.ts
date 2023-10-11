@@ -12,9 +12,7 @@ const build = (options: BrightnessOptionsPartial): string => {
   if (!brightnessOpts) {
     throw new Error("brightness option is undefined");
   } else if (typeof brightnessOpts !== "number") {
-    throw new Error(
-      "brightness is not correct. Set the value between -255 and 255"
-    );
+    throw new Error("brightness option is not a number");
   } else if (brightnessOpts < -255 || brightnessOpts > 255) {
     throw new Error(
       "brightness is not correct. Set the value between -255 and 255"
