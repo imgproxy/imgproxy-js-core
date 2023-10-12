@@ -13,7 +13,7 @@
  *
  * @see {@link https://docs.imgproxy.net/generating_the_url_advanced#enforce-thumbnail-option | enforce thumbnail option imgproxy docs}
  */
-type EnforceThumbnail = 1 | "t" | "true" | "false" | string;
+type EnforceThumbnail = 1 | "t" | true | false | string;
 
 /**
  * *Enforce Thumbnail option*

@@ -1,5 +1,6 @@
 import type { ExtendOptionsPartial, Extend } from "../types/extend";
 import * as gravityOpt from "./gravity";
+import { normalizeBoolean } from "../utils";
 
 interface BuildProps {
   headless?: boolean;
@@ -12,7 +13,7 @@ const test = (options: ExtendOptionsPartial): boolean =>
   Boolean(getOpt(options));
 
 const withHead = (optString: string, headless: boolean): string =>
-  `${headless ? "" : "extend:"}${optString}`;
+  `${headless ? "" : "ex:"}${optString}`;
 
 const build = (
   options: ExtendOptionsPartial,
@@ -23,17 +24,15 @@ const build = (
 
   if (!extendOpts) {
     throw new Error("extend options are undefined");
-  } else if (!extendOpts.extend) {
-    throw new Error("extend option is undefined");
+  } else if (!("extend" in extendOpts)) {
+    throw new Error("extend in extend option is required");
   }
 
-  const extend = extendOpts.extend;
-
   const gravity = gravityOpt.test(extendOpts)
-    ? gravityOpt.build(extendOpts, { headless: true })
+    ? `:${gravityOpt.build(extendOpts, { headless: true })}`
     : "";
 
-  return withHead(`${extend}:${gravity}`, headless);
+  return withHead(`${normalizeBoolean(extendOpts.extend)}${gravity}`, headless);
 };
 
 export { test, build };

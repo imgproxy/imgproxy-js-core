@@ -2,6 +2,7 @@ import type {
   DrawDetections,
   DrawDetectionsOptionsPartial,
 } from "../types/drawDetections";
+import { normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: DrawDetectionsOptionsPartial
@@ -15,14 +16,16 @@ const build = (options: DrawDetectionsOptionsPartial): string => {
 
   if (!drawDetectionsOpts) {
     throw new Error("draw_detections option is undefined");
+  } else if (!("draw" in drawDetectionsOpts)) {
+    throw new Error("draw in draw_detections option is required");
   }
 
-  const draw = drawDetectionsOpts.draw || "";
+  const draw = normalizeBoolean(drawDetectionsOpts.draw);
   const classNamesStr = drawDetectionsOpts.class_names
-    ? drawDetectionsOpts.class_names.join(",")
+    ? `:${drawDetectionsOpts.class_names.join(":")}`
     : "";
 
-  return `draw_detections:${draw}:${classNamesStr}`;
+  return `dd:${draw}${classNamesStr}`;
 };
 
 export { test, build };

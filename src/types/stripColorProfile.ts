@@ -12,7 +12,7 @@
  *
  * @see {@link https://docs.imgproxy.net/generating_the_url?id=strip-color-profile | strip color profile option imgproxy docs}
  */
-type StripColorProfile = 1 | "t" | "true" | "false" | string;
+type StripColorProfile = 1 | "t" | true | false | string;
 
 /**
  * *Strip Color option*

@@ -10,7 +10,7 @@
  *
  * @see {@link https://docs.imgproxy.net/generating_the_url?id=keep-copyright | keep copyright option imgproxy docs}
  */
-type KeepCopyright = 1 | "t" | "true" | "false" | string;
+type KeepCopyright = 1 | "t" | true | false | string;
 
 /**
  * *Keep metadata option*

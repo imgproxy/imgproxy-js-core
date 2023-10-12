@@ -2,22 +2,33 @@ import type {
   StripMetadata,
   StripMetadataOptionsPartial,
 } from "../types/stripMetadata";
+import { normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: StripMetadataOptionsPartial
-): StripMetadata | undefined => options.strip_metadata || options.sm;
+): StripMetadata | undefined => {
+  {
+    if ("strip_metadata" in options) {
+      return options.strip_metadata;
+    } else if ("sm" in options) {
+      return options.sm;
+    }
+
+    return undefined;
+  }
+};
 
 const test = (options: StripMetadataOptionsPartial): boolean =>
-  Boolean(getOpt(options));
+  getOpt(options) !== undefined;
 
 const build = (options: StripMetadataOptionsPartial): string => {
   const stripMetadataOpts = getOpt(options);
 
-  if (!stripMetadataOpts) {
+  if (stripMetadataOpts === undefined) {
     throw new Error("strip metadata option is undefined");
   }
 
-  return `strip_metadata:${stripMetadataOpts}`;
+  return `sm:${normalizeBoolean(stripMetadataOpts)}`;
 };
 
 export { test, build };

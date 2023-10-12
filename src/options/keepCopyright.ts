@@ -2,22 +2,31 @@ import type {
   KeepCopyright,
   KeepCopyrightOptionsPartial,
 } from "../types/keepCopyright";
+import { normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: KeepCopyrightOptionsPartial
-): KeepCopyright | undefined => options.keep_copyright || options.kcr;
+): KeepCopyright | undefined => {
+  if ("keep_copyright" in options) {
+    return options.keep_copyright;
+  } else if ("kcr" in options) {
+    return options.kcr;
+  }
+
+  return undefined;
+};
 
 const test = (options: KeepCopyrightOptionsPartial): boolean =>
-  Boolean(getOpt(options));
+  getOpt(options) !== undefined;
 
 const build = (options: KeepCopyrightOptionsPartial): string => {
-  const keepMetadataOpts = getOpt(options);
+  const keepCopyrightOpts = getOpt(options);
 
-  if (!keepMetadataOpts) {
+  if (keepCopyrightOpts === undefined) {
     throw new Error("keep copyright option is undefined");
   }
 
-  return `keep_metadata:${keepMetadataOpts}`;
+  return `kcr:${normalizeBoolean(keepCopyrightOpts)}`;
 };
 
 export { test, build };

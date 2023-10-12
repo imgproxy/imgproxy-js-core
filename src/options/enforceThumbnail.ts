@@ -2,22 +2,31 @@ import type {
   EnforceThumbnail,
   EnforceThumbnailOptionsPartial,
 } from "../types/enforceThumbnail";
+import { normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: EnforceThumbnailOptionsPartial
-): EnforceThumbnail | undefined => options.enforce_thumbnail || options.eth;
+): EnforceThumbnail | undefined => {
+  if ("enforce_thumbnail" in options) {
+    return options.enforce_thumbnail;
+  } else if ("eth" in options) {
+    return options.eth;
+  }
+
+  return undefined;
+};
 
 const test = (options: EnforceThumbnailOptionsPartial): boolean =>
-  Boolean(getOpt(options));
+  getOpt(options) !== undefined;
 
 const build = (options: EnforceThumbnailOptionsPartial): string => {
   const enforceThumbnailOpts = getOpt(options);
 
-  if (!enforceThumbnailOpts) {
-    throw new Error("enforce thumbnail option is undefined");
+  if (enforceThumbnailOpts === undefined) {
+    throw new Error("enforce_thumbnail option is undefined");
   }
 
-  return `enforce_thumbnail:${enforceThumbnailOpts}`;
+  return `eth:${normalizeBoolean(enforceThumbnailOpts)}`;
 };
 
 export { test, build };

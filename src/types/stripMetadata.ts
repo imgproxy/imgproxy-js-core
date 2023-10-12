@@ -10,7 +10,7 @@
  *
  * @see {@link https://docs.imgproxy.net/generating_the_url?id=strip-metadata | strip metadata option imgproxy docs}
  */
-type StripMetadata = 1 | "t" | "true" | "false" | string;
+type StripMetadata = 1 | "t" | true | false | string;
 
 /**
  * *Strip metadata option*.

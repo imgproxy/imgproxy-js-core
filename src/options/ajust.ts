@@ -22,7 +22,7 @@ const build = (options: AjustOptionsPartial): string => {
   const contrast = ajustOpts.contrast || "";
   const saturation = ajustOpts.saturation || "";
 
-  return `ajust:${brightness}:${contrast}:${saturation}`;
+  return `aj:${brightness}:${contrast}:${saturation}`;
 };
 
 export { test, build };
