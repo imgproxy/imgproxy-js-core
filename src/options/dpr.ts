@@ -9,9 +9,11 @@ const build = (options: DPROptionsPartial): string => {
 
   if (!dprOpts) {
     throw new Error("dpr option is undefined");
-  } else if (typeof dprOpts === "number" && dprOpts < 0) {
-    throw new Error("dpr option must be greater than 0");
-  } else if (typeof dprOpts === "string") {
+  }
+  if (typeof dprOpts === "number" && dprOpts < 0) {
+    throw new Error("dpr option cannot be negative");
+  }
+  if (typeof dprOpts === "string") {
     throw new Error("dpr option cannot be a string");
   }
 

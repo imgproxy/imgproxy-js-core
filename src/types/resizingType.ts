@@ -7,7 +7,7 @@
  *
  * `fill`: resizes the image while keeping aspect ratio to fill a given size and crops projecting parts.
  *
- * `fill-down`: the same as fill, but if the resized image is smaller than the requested size,
+ * `fill_down`: the same as fill, but if the resized image is smaller than the requested size,
  * imgproxy will crop the result to keep the requested aspect ratio.
  *
  * `force`: resizes the image without keeping the aspect ratio.

@@ -3,10 +3,14 @@ import type { Zoom, ZoomOptionsPartial } from "../types/zoom";
 const validateValue = (value: number, optName: string): void => {
   if (!value) {
     throw new Error(`${optName} is undefined`);
-  } else if (value < 0) {
+  }
+
+  if (value < 0) {
     throw new Error(`${optName} cannot be negative`);
-  } else if (typeof value === "string") {
-    throw new Error(`${optName} cannot be a string`);
+  }
+
+  if (typeof value !== "number") {
+    throw new Error(`${optName} is not a number`);
   }
 };
 
@@ -22,14 +26,22 @@ const build = (options: ZoomOptionsPartial): string => {
     throw new Error("zoom options are undefined");
   }
 
+  if (typeof zoomOpts === "string") {
+    throw new Error("zoom option is not a number");
+  }
+
   if (typeof zoomOpts === "number") {
     validateValue(zoomOpts, "zoom");
-    return `zoom:${zoomOpts}`;
+    return `z:${zoomOpts}`;
+  }
+
+  if (!zoomOpts.zoom_x || !zoomOpts.zoom_y) {
+    throw new Error("zoom.zoom_x or zoom.zoom_y is undefined");
   }
 
   validateValue(zoomOpts.zoom_x, "zoom.zoom_x");
   validateValue(zoomOpts.zoom_y, "zoom.zoom_y");
-  return `zoom:${zoomOpts.zoom_x}:${zoomOpts.zoom_y}`;
+  return `z:${zoomOpts.zoom_x}:${zoomOpts.zoom_y}`;
 };
 
 export { test, build };

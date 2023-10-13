@@ -3,6 +3,14 @@ import type {
   ResizingAlgorithmOptionsPartial,
 } from "../types/resizingAlgorithm";
 
+const correctValues = {
+  nearest: true,
+  linear: true,
+  cubic: true,
+  lanczos2: true,
+  lanczos3: true,
+};
+
 const getOpt = (
   options: ResizingAlgorithmOptionsPartial
 ): ResizingAlgorithm | undefined => options.resizing_algorithm || options.ra;
@@ -14,10 +22,16 @@ const build = (options: ResizingAlgorithmOptionsPartial): string => {
   const resizingAlgorithmOpts = getOpt(options);
 
   if (!resizingAlgorithmOpts) {
-    throw new Error("resizing algorithm option is undefined");
+    throw new Error("resizing_algorithm option is undefined");
   }
 
-  return `resizing_algorithm:${resizingAlgorithmOpts}`;
+  if (!correctValues[resizingAlgorithmOpts]) {
+    throw new Error(
+      "resizing_algorithm option is not correct. You can use: 'nearest', 'linear', 'cubic', 'lanczos2', 'lanczos3'"
+    );
+  }
+
+  return `ra:${resizingAlgorithmOpts}`;
 };
 
 export { test, build };

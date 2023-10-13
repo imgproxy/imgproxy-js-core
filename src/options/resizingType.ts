@@ -3,6 +3,14 @@ import type {
   ResizingType,
 } from "../types/resizingType";
 
+const correctValues = {
+  fit: true,
+  fill: true,
+  fill_down: true,
+  force: true,
+  auto: true,
+};
+
 const getOpt = (
   options: ResizingTypeOptionsPartial
 ): ResizingType | undefined => options.resizing_type || options.rt;
@@ -14,10 +22,16 @@ const build = (options: ResizingTypeOptionsPartial): string => {
   const resizingTypeOpts = getOpt(options);
 
   if (!resizingTypeOpts) {
-    throw new Error("resizing type option is undefined");
+    throw new Error("resizing_type option is undefined");
   }
 
-  return `resizing_type:${resizingTypeOpts}`;
+  if (!correctValues[resizingTypeOpts]) {
+    throw new Error(
+      "resizing_type option is not correct. You can use: fit, fill, fill_down, force, auto"
+    );
+  }
+
+  return `rt:${resizingTypeOpts}`;
 };
 
 export { test, build };

@@ -10,12 +10,18 @@ const build = (options: MinHeightOptionsPartial): string => {
   const minHeightOpts = getOpt(options);
 
   if (!minHeightOpts) {
-    throw new Error("min height option is undefined");
-  } else if (typeof minHeightOpts === "string") {
-    throw new Error("min height option cannot be a string");
+    throw new Error("min_height option is undefined");
   }
 
-  return `min-height:${minHeightOpts}`;
+  if (typeof minHeightOpts !== "number") {
+    throw new Error("min_height option is not a number");
+  }
+
+  if (minHeightOpts < 0) {
+    throw new Error("min_height option is can't be less than 0");
+  }
+
+  return `mh:${minHeightOpts}`;
 };
 
 export { test, build };

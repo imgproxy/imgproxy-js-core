@@ -10,12 +10,18 @@ const build = (options: MinWidthOptionsPartial): string => {
   const minWidthOpts = getOpt(options);
 
   if (!minWidthOpts) {
-    throw new Error("min width option is undefined");
-  } else if (typeof minWidthOpts === "string") {
-    throw new Error("min width option cannot be a string");
+    throw new Error("min_width option is undefined");
   }
 
-  return `min-width:${minWidthOpts}`;
+  if (typeof minWidthOpts !== "number") {
+    throw new Error("min_width option is not a number");
+  }
+
+  if (minWidthOpts < 0) {
+    throw new Error("min_width option is can't be less than 0");
+  }
+
+  return `mw:${minWidthOpts}`;
 };
 
 export { test, build };

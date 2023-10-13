@@ -11,11 +11,17 @@ const build = (options: HeightOptionsPartial): string => {
 
   if (!heightOpts) {
     throw new Error("height option is undefined");
-  } else if (typeof heightOpts === "string") {
-    throw new Error("height cannot be a string");
   }
 
-  return `height:${heightOpts}`;
+  if (typeof heightOpts !== "number") {
+    throw new Error("height option is not a number");
+  }
+
+  if (heightOpts < 0) {
+    throw new Error("height option is can't be less than 0");
+  }
+
+  return `h:${heightOpts}`;
 };
 
 export { test, build };
