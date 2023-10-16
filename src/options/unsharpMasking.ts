@@ -3,6 +3,12 @@ import type {
   UnsharpMaskingOptionsPartial,
 } from "../types/unsharpMasking";
 
+const correctMode = {
+  auto: true,
+  none: true,
+  always: true,
+};
+
 const getOpt = (
   options: UnsharpMaskingOptionsPartial
 ): UnsharpMasking | undefined => options.unsharp_masking || options.ush;
@@ -16,12 +22,43 @@ const build = (options: UnsharpMaskingOptionsPartial): string => {
   if (!unsharpMaskingOpts) {
     throw new Error("unsharp_masking option is undefined");
   }
+  if (unsharpMaskingOpts.mode && !correctMode[unsharpMaskingOpts.mode]) {
+    throw new Error(
+      "unsharp_masking.mode option is not correct. Set the value auto, none or always"
+    );
+  }
+  if (unsharpMaskingOpts.weight && unsharpMaskingOpts.weight <= 0) {
+    throw new Error(
+      "unsharp_masking.weight option is not correct. Set the value greater than zero"
+    );
+  }
+  if (
+    unsharpMaskingOpts.weight &&
+    typeof unsharpMaskingOpts.weight !== "number"
+  ) {
+    throw new Error(
+      "unsharp_masking.weight option is not a number. Set the value greater than zero"
+    );
+  }
+  if (unsharpMaskingOpts.divider && unsharpMaskingOpts.divider <= 0) {
+    throw new Error(
+      "unsharp_masking.divider option is not correct. Set the value greater than zero"
+    );
+  }
+  if (
+    unsharpMaskingOpts.divider &&
+    typeof unsharpMaskingOpts.divider !== "number"
+  ) {
+    throw new Error(
+      "unsharp_masking.divider option is not a number. Set the value greater than zero"
+    );
+  }
 
   const modeStr = unsharpMaskingOpts.mode || "";
   const weightStr = unsharpMaskingOpts.weight || "";
   const dividerStr = unsharpMaskingOpts.divider || "";
 
-  return `unsharp_masking:${modeStr}:${weightStr}:${dividerStr}`;
+  return `ush:${modeStr}:${weightStr}:${dividerStr}`.replace(/:+$/, "");
 };
 
 export { test, build };

@@ -11,13 +11,14 @@ const build = (options: SaturationOptionsPartial): string => {
 
   if (!saturationOpts) {
     throw new Error("saturation option is undefined");
-  } else if (typeof saturationOpts !== "number" || saturationOpts < 0) {
+  }
+  if (typeof saturationOpts !== "number" || saturationOpts < 0) {
     throw new Error(
       "saturation is not correct. Set the value between 0 and any positive number"
     );
   }
 
-  return `saturation:${saturationOpts}`;
+  return `sa:${saturationOpts}`;
 };
 
 export { test, build };

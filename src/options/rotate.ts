@@ -18,11 +18,19 @@ const build = (options: RotateOptionsPartial): string => {
 
   if (!rotateOpts) {
     throw new Error("rotate option is undefined");
-  } else if (!correctAngles[rotateOpts]) {
-    throw new Error("rotate is not correct");
+  }
+  if (typeof rotateOpts !== "number") {
+    throw new Error(
+      "rotate option is not a number. You can use numbers 0, 90, 180 or 270"
+    );
+  }
+  if (!correctAngles[rotateOpts]) {
+    throw new Error(
+      "rotate is not correct. You can use numbers 0, 90, 180 or 270"
+    );
   }
 
-  return `rotate:${rotateOpts}`;
+  return `rot:${rotateOpts}`;
 };
 
 export { test, build };

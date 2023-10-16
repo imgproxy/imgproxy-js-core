@@ -9,7 +9,8 @@ const getOpt = (
 ): EnforceThumbnail | undefined => {
   if ("enforce_thumbnail" in options) {
     return options.enforce_thumbnail;
-  } else if ("eth" in options) {
+  }
+  if ("eth" in options) {
     return options.eth;
   }
 

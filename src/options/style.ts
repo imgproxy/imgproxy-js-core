@@ -12,8 +12,11 @@ const build = (options: StyleOptionsPartial): string => {
   if (!styleOpts) {
     throw new Error("style option is undefined");
   }
+  if (typeof styleOpts !== "string") {
+    throw new Error("style option is not a string");
+  }
 
-  return `style:${styleOpts}`;
+  return `stl:${styleOpts}`;
 };
 
 export { test, build };

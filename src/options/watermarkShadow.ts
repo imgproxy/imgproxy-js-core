@@ -16,8 +16,14 @@ const build = (options: WatermarkShadowOptionsPartial): string => {
   if (!watermarkShadowOpts) {
     throw new Error("watermark shadow option is undefined");
   }
+  if (typeof watermarkShadowOpts !== "number") {
+    throw new Error("watermark shadow option is not a number");
+  }
+  if (watermarkShadowOpts < 0) {
+    throw new Error("watermark shadow option is can't be a negative");
+  }
 
-  return `watermark_shadow:${watermarkShadowOpts}`;
+  return `wmsh:${watermarkShadowOpts}`;
 };
 
 export { test, build };

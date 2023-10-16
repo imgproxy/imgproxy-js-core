@@ -11,13 +11,15 @@ const build = (options: PixelateOptionsPartial): string => {
 
   if (!pixelateOpts) {
     throw new Error("pixelate option is undefined");
-  } else if (typeof pixelateOpts !== "number") {
+  }
+  if (typeof pixelateOpts !== "number") {
     throw new Error("pixelate option is not a number");
-  } else if (pixelateOpts < 0) {
-    throw new Error("pixelate option is can't be less than 0");
+  }
+  if (pixelateOpts < 0) {
+    throw new Error("pixelate option is can't be a negative number");
   }
 
-  return `pixelate:${pixelateOpts}`;
+  return `pix:${pixelateOpts}`;
 };
 
 export { test, build };

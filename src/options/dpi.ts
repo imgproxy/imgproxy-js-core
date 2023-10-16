@@ -9,7 +9,8 @@ const build = (options: DPIOptionsPartial): string => {
 
   if (!dpiOpts) {
     throw new Error("dpi option is undefined");
-  } else if (typeof dpiOpts !== "number") {
+  }
+  if (typeof dpiOpts !== "number") {
     throw new Error("dpi option must be a number");
   }
 

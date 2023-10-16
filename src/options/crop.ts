@@ -11,10 +11,24 @@ const build = (options: CropOptionsPartial): string => {
 
   if (!cropOpts) {
     throw new Error("crop options are undefined");
-  } else if (!cropOpts.width) {
+  }
+  if (!cropOpts.width) {
     throw new Error("crop.width is undefined");
-  } else if (!cropOpts.height) {
+  }
+  if (!cropOpts.height) {
     throw new Error("crop.height is undefined");
+  }
+  if (typeof cropOpts.width !== "number") {
+    throw new Error("crop.width is not a number");
+  }
+  if (typeof cropOpts.height !== "number") {
+    throw new Error("crop.height is not a number");
+  }
+  if (cropOpts.width < 0) {
+    throw new Error("crop.width is can't be negative");
+  }
+  if (cropOpts.height < 0) {
+    throw new Error("crop.height is can't be negative");
   }
 
   const width = cropOpts.width;
@@ -23,7 +37,7 @@ const build = (options: CropOptionsPartial): string => {
     ? gravityOpt.build(cropOpts, { headless: true })
     : "";
 
-  return `crop:${width}:${height}:${gravity}`;
+  return `c:${width}:${height}:${gravity}`.replace(/:+$/, "");
 };
 
 export { test, build };

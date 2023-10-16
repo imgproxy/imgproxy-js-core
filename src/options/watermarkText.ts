@@ -16,8 +16,11 @@ const build = (options: WatermarkTextOptionsPartial): string => {
   if (!watermarkTextOpts) {
     throw new Error("watermark_text option is undefined");
   }
+  if (typeof watermarkTextOpts !== "string") {
+    throw new Error("watermark_text option is not a string");
+  }
 
-  return `watermark_text:${watermarkTextOpts}`;
+  return `wmt:${watermarkTextOpts}`;
 };
 
 export { test, build };

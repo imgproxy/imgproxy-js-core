@@ -11,13 +11,15 @@ const build = (options: QualityOptionsPartial): string => {
 
   if (!qualityOpts) {
     throw new Error("quality option is undefined");
-  } else if (typeof qualityOpts !== "number") {
+  }
+  if (typeof qualityOpts !== "number") {
     throw new Error("quality option must be a number");
-  } else if (qualityOpts < 0 || qualityOpts > 100) {
+  }
+  if (qualityOpts < 0 || qualityOpts > 100) {
     throw new Error("quality option must be in range from 1 to 100");
   }
 
-  return `quality:${qualityOpts}`;
+  return `q:${qualityOpts}`;
 };
 
 export { test, build };

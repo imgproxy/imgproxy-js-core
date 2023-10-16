@@ -16,13 +16,19 @@ const build = (options: FormatQualityOptionsPartial): string => {
   if (!formatQualityOpts) {
     throw new Error("format quality option is undefined");
   }
+  if (!Array.isArray(formatQualityOpts)) {
+    throw new Error("format quality option must be an array");
+  }
+  if (formatQualityOpts.length === 0) {
+    throw new Error("format quality option is empty");
+  }
 
   const formatQualityValue: string[] = [];
   formatQualityOpts.forEach(formatQuality => {
     formatQualityValue.push(`${formatQuality.format}:${formatQuality.quality}`);
   });
 
-  return `format_quality:${formatQualityValue.join(":")}`;
+  return `fq:${formatQualityValue.join(":")}`;
 };
 
 export { test, build };

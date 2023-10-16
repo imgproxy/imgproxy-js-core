@@ -10,14 +10,15 @@ const build = (options: ContrastOptionsPartial): string => {
   const contrastOpts = getOpt(options);
 
   if (!contrastOpts) {
-    throw new Error("contrast options are undefined");
-  } else if (typeof contrastOpts !== "number" || contrastOpts < 0) {
+    throw new Error("contrast option is undefined");
+  }
+  if (typeof contrastOpts !== "number" || contrastOpts < 0) {
     throw new Error(
       "contrast is not correct. Set the value between 0 and any positive number"
     );
   }
 
-  return `contrast:${contrastOpts}`;
+  return `co:${contrastOpts}`;
 };
 
 export { test, build };

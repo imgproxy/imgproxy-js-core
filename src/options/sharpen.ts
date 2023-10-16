@@ -11,11 +11,17 @@ const build = (options: SharpenOptionsPartial): string => {
 
   if (!sharpenOpts) {
     throw new Error("sharpen option is undefined");
-  } else if (typeof sharpenOpts !== "number") {
+  }
+  if (typeof sharpenOpts !== "number") {
     throw new Error("sharpen option is not a number");
   }
+  if (sharpenOpts < 0) {
+    throw new Error(
+      "sharpen is not correct. Set the value between 0 and any positive number"
+    );
+  }
 
-  return `sharpen:${sharpenOpts}`;
+  return `sh:${sharpenOpts}`;
 };
 
 export { test, build };

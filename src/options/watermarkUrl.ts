@@ -16,8 +16,11 @@ const build = (options: WatermarkUrlOptionsPartial): string => {
   if (!watermarkUrlOpts) {
     throw new Error("watermark_url option is undefined");
   }
+  if (typeof watermarkUrlOpts !== "string") {
+    throw new Error("watermark_url option is not a string");
+  }
 
-  return `watermark_url:${watermarkUrlOpts}`;
+  return `wmu:${watermarkUrlOpts}`;
 };
 
 export { test, build };

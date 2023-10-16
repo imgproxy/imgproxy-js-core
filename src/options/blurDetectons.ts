@@ -16,13 +16,19 @@ const build = (options: BlurDetectionsOptionsPartial): string => {
   if (!blurDetectionsOpts) {
     throw new Error("blur_detections option is undefined");
   }
+  if (!blurDetectionsOpts.sigma) {
+    throw new Error("blur_detections.sigma option is required");
+  }
+  if (typeof blurDetectionsOpts.sigma !== "number") {
+    throw new Error("blur_detections.sigma option is not a number");
+  }
 
   const sigma = blurDetectionsOpts.sigma || "";
   const classNamesStr = blurDetectionsOpts.class_names
-    ? blurDetectionsOpts.class_names.join(",")
+    ? blurDetectionsOpts.class_names.join(":")
     : "";
 
-  return `blur_detections:${sigma}:${classNamesStr}`;
+  return `bd:${sigma}:${classNamesStr}`.replace(/:+$/, "");
 };
 
 export { test, build };
