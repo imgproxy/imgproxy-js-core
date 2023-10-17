@@ -1,27 +1,40 @@
 import type { Pages, PagesOptionsPartial } from "../types/pages";
 
-const getOpt = (options: PagesOptionsPartial): Pages | undefined =>
-  options.pages || options.pgs;
+const getOpt = (options: PagesOptionsPartial): Pages | undefined => {
+  if ("pages" in options) {
+    return options.pages;
+  } else if ("pgs" in options) {
+    return options.pgs;
+  }
+  return undefined;
+};
 
 const test = (options: PagesOptionsPartial): boolean =>
-  Boolean(getOpt(options));
+  getOpt(options) !== undefined;
 
 const build = (options: PagesOptionsPartial): string => {
   const pages = getOpt(options);
 
-  if (!pages) {
+  if (pages === undefined) {
     throw new Error("pages option is undefined");
-  } else if (typeof pages !== "number") {
+  }
+  if (typeof pages !== "number") {
     throw new Error(
       "pages option is invalid. Must be a positive integer starting with 1"
     );
-  } else if (pages < 1) {
+  }
+  if (pages < 1) {
+    throw new Error(
+      "pages option is invalid. Must be a positive integer starting with 1"
+    );
+  }
+  if (!Number.isInteger(pages)) {
     throw new Error(
       "pages option is invalid. Must be a positive integer starting with 1"
     );
   }
 
-  return `pages:${pages}`;
+  return `pgs:${pages}`;
 };
 
 export { test, build };

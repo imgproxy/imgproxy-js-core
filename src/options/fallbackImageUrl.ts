@@ -14,10 +14,13 @@ const build = (options: FallbackImageUrlOptionsPartial): string => {
   const fallbackImageUrl = getOpt(options);
 
   if (!fallbackImageUrl) {
-    throw new Error("fallback image url option is undefined");
+    throw new Error("fallback_image_url option is undefined");
+  }
+  if (typeof fallbackImageUrl !== "string") {
+    throw new Error("fallback_image_url option is not a string");
   }
 
-  return `fallback_image_url:${fallbackImageUrl}`;
+  return `fiu:${fallbackImageUrl}`;
 };
 
 export { test, build };

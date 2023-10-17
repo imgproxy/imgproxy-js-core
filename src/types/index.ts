@@ -6,7 +6,7 @@ import type { BackgroundAlphaOptionsPartial } from "./backgroundAlpha";
 import type { BlurDetectionsOptionsPartial } from "./blurDetections";
 import type { BlurOptionsPartial } from "./blur";
 import type { BrightnessOptionsPartial } from "./brightness";
-import type { CacheBusterOptionsPartial } from "./cachebuster";
+import type { CacheBusterOptionsPartial } from "./cacheBuster";
 import type { ContrastOptionsPartial } from "./contrast";
 import type { CropOptionsPartial } from "./crop";
 import type { DisableAnimationOptionsPartial } from "./disableAnimation";

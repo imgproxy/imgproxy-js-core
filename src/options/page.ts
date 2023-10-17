@@ -10,13 +10,18 @@ const build = (options: PageOptionsPartial): string => {
 
   if (!page) {
     throw new Error("page option is undefined");
-  } else if (typeof page !== "number") {
+  }
+  if (typeof page !== "number") {
     throw new Error("page option is invalid. Must be a positive integer");
-  } else if (page < 0) {
+  }
+  if (page < 0) {
+    throw new Error("page option is invalid. Must be a positive integer");
+  }
+  if (!Number.isInteger(page)) {
     throw new Error("page option is invalid. Must be a positive integer");
   }
 
-  return `page:${page}`;
+  return `pg:${page}`;
 };
 
 export { test, build };

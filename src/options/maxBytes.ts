@@ -11,13 +11,15 @@ const build = (options: MaxBytesOptionsPartial): string => {
 
   if (!maxBytesOpts) {
     throw new Error("max bytes option is undefined");
-  } else if (typeof maxBytesOpts !== "number") {
+  }
+  if (typeof maxBytesOpts !== "number") {
     throw new Error("max bytes option must be a number");
-  } else if (maxBytesOpts < 0) {
+  }
+  if (maxBytesOpts < 0) {
     throw new Error("max bytes option must be a positive number");
   }
 
-  return `max_bytes:${maxBytesOpts}`;
+  return `mb:${maxBytesOpts}`;
 };
 
 export { test, build };

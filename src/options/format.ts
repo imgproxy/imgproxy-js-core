@@ -24,13 +24,14 @@ const build = (options: FormatOptionsPartial): string => {
 
   if (!format) {
     throw new Error("format option is undefined");
-  } else if (!formatValues[format]) {
+  }
+  if (!formatValues[format]) {
     throw new Error(
       "format option is invalid. Must be one of: 'png', 'jpg', 'webp', 'avif', 'gif', 'ico', 'svg', 'bmp', 'tiff', 'mp4'"
     );
   }
 
-  return `format:${format}`;
+  return `f:${format}`;
 };
 
 export { test, build };

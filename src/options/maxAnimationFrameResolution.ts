@@ -5,21 +5,34 @@ import type {
 
 const getOpt = (
   options: MAFROptionsPartial
-): MaxAnimationFrameResolution | undefined =>
-  options.max_animation_frame_resolution || options.mafr;
+): MaxAnimationFrameResolution | undefined => {
+  if ("max_animation_frame_resolution" in options) {
+    return options.max_animation_frame_resolution;
+  } else if ("mafr" in options) {
+    return options.mafr;
+  }
+  return undefined;
+};
 
-const test = (options: MAFROptionsPartial): boolean => Boolean(getOpt(options));
+const test = (options: MAFROptionsPartial): boolean =>
+  getOpt(options) !== undefined;
 
 const build = (options: MAFROptionsPartial): string => {
   const maxAnimationFrameResolution = getOpt(options);
 
-  if (!maxAnimationFrameResolution) {
+  if (maxAnimationFrameResolution === undefined) {
     throw new Error("max_animation_frame_resolution option is undefined");
-  } else if (typeof maxAnimationFrameResolution !== "number") {
+  }
+  if (typeof maxAnimationFrameResolution !== "number") {
     throw new Error("max_animation_frame_resolution option is not a number");
   }
+  if (maxAnimationFrameResolution < 0) {
+    throw new Error(
+      "max_animation_frame_resolution option can't be a negative"
+    );
+  }
 
-  return `max_animation_frame_resolution:${maxAnimationFrameResolution}`;
+  return `mafr:${maxAnimationFrameResolution}`;
 };
 
 export { test, build };

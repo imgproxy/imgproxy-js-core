@@ -1,7 +1,7 @@
 /**
  * *Video thumbnail second option*. **PRO feature**
  *
- * The timestamp of the frame (in seconds) that will be used for the thumbnail.
+ * The time in seconds of the frame that will be used for the thumbnail.
  * Redefining `IMGPROXY_VIDEO_THUMBNAIL_SECOND` config.
  *
  * @default 1

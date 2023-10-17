@@ -1,7 +1,7 @@
 import type {
   CacheBuster,
   CacheBusterOptionsPartial,
-} from "../types/cachebuster";
+} from "../types/cacheBuster";
 
 const getOpt = (options: CacheBusterOptionsPartial): CacheBuster | undefined =>
   options.cachebuster || options.cb;
@@ -13,10 +13,13 @@ const build = (options: CacheBusterOptionsPartial): string => {
   const cachebuster = getOpt(options);
 
   if (!cachebuster) {
-    throw new Error("cache buster option is undefined");
+    throw new Error("cachebuster option is undefined");
+  }
+  if (typeof cachebuster !== "string") {
+    throw new Error("cachebuster option must be a string");
   }
 
-  return `cachebuster:${cachebuster}`;
+  return `cb:${cachebuster}`;
 };
 
 export { test, build };

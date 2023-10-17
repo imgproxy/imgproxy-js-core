@@ -1,5 +1,11 @@
 import type { WebpOptions, WebpOptionsPartial } from "../types/webpOptions";
 
+const correctOptions = {
+  lossy: true,
+  near_lossless: true,
+  lossless: true,
+};
+
 const getOpt = (options: WebpOptionsPartial): WebpOptions | undefined =>
   options.webp_options || options.webpo;
 
@@ -10,17 +16,14 @@ const build = (options: WebpOptionsPartial): string => {
 
   if (!webpOptions) {
     throw new Error("webp options option is undefined");
-  } else if (
-    webpOptions !== "lossy" &&
-    webpOptions !== "near_lossless" &&
-    webpOptions !== "lossless"
-  ) {
+  }
+  if (!correctOptions[webpOptions]) {
     throw new Error(
       "webp options option is invalid. Must be one of: 'lossy', 'near_lossless', 'lossless'"
     );
   }
 
-  return `webp_options:${webpOptions}`;
+  return `webpo:${webpOptions}`;
 };
 
 export { test, build };

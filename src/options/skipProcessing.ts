@@ -3,6 +3,21 @@ import type {
   SkipProcessingOptionsPartial,
 } from "../types/skipProcessing";
 
+const extNames = [
+  "jpg",
+  "png",
+  "webp",
+  "avif",
+  "gif",
+  "ico",
+  "svg",
+  "heic",
+  "bmp",
+  "tiff",
+  "pdf",
+  "mp4",
+];
+
 const getOpt = (
   options: SkipProcessingOptionsPartial
 ): SkipProcessing | undefined => options.skip_processing || options.sp;
@@ -14,10 +29,23 @@ const build = (options: SkipProcessingOptionsPartial): string => {
   const skipProcessing = getOpt(options);
 
   if (!skipProcessing) {
-    throw new Error("skip processing option is undefined");
+    throw new Error("skip_processing option is undefined");
+  }
+  if (!Array.isArray(skipProcessing)) {
+    throw new Error("skip_processing option is not an array");
+  }
+  if (skipProcessing.length === 0) {
+    throw new Error("skip_processing option is empty");
+  }
+  if (skipProcessing.some(item => !extNames.includes(item))) {
+    throw new Error(
+      `skip_processing option contains unsupported extensions. Supported extensions: ${extNames.join(
+        ","
+      )}`
+    );
   }
 
-  return `skip_processing:${skipProcessing.join(":")}`;
+  return `sp:${skipProcessing.join(":")}`;
 };
 
 export { test, build };

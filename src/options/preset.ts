@@ -11,11 +11,18 @@ const build = (options: PresetOptionsPartial): string => {
 
   if (!preset) {
     throw new Error("preset option is undefined");
-  } else if (!Array.isArray(preset)) {
+  }
+  if (!Array.isArray(preset)) {
     throw new Error("preset option should be an array");
   }
+  if (preset.length === 0) {
+    throw new Error("preset option is empty array");
+  }
+  if (preset.some(item => typeof item !== "string")) {
+    throw new Error("preset option should contain only strings");
+  }
 
-  return `preset:${preset.join(":")}`;
+  return `pr:${preset.join(":")}`;
 };
 
 export { test, build };

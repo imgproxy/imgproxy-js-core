@@ -12,8 +12,11 @@ const build = (options: ExpiresOptionsPartial): string => {
   if (!expires) {
     throw new Error("expires option is undefined");
   }
+  if (typeof expires !== "number") {
+    throw new Error("expires option must be a number");
+  }
 
-  return `expires:${expires}`;
+  return `exp:${expires}`;
 };
 
 export { test, build };
