@@ -59,6 +59,7 @@ import type { UnsharpMaskingOptionsPartial } from "./unsharpMasking";
 import type { VideoThumbnailSecondOptionsPartial } from "./videoThumbnailSecond";
 import type { WatermarkOptionsPartial } from "./watermark";
 import type { WatermarkShadowOptionsPartial } from "./watermarkShadow";
+import type { WatermarkSizeOptionsPartial } from "./watermarkSize";
 import type { WatermarkTextOptionsPartial } from "./watermarkText";
 import type { WatermarkUrlOptionsPartial } from "./watermarkUrl";
 import type { WebpOptionsPartial } from "./webpOptions";
@@ -126,6 +127,7 @@ export type Options = AjustOptionsPartial &
   VideoThumbnailSecondOptionsPartial &
   WatermarkOptionsPartial &
   WatermarkShadowOptionsPartial &
+  WatermarkSizeOptionsPartial &
   WatermarkTextOptionsPartial &
   WatermarkUrlOptionsPartial &
   WebpOptionsPartial &

@@ -11,6 +11,7 @@ const formatValues = {
   bmp: true,
   tiff: true,
   mp4: true,
+  best: true,
 };
 
 const getOpt = (options: FormatOptionsPartial): Format | undefined =>
@@ -27,7 +28,9 @@ const build = (options: FormatOptionsPartial): string => {
   }
   if (!formatValues[format]) {
     throw new Error(
-      "format option is invalid. Must be one of: 'png', 'jpg', 'webp', 'avif', 'gif', 'ico', 'svg', 'bmp', 'tiff', 'mp4'"
+      `format option is invalid. Must be one of: ${Object.keys(
+        formatValues
+      ).join(",")}`
     );
   }
 

@@ -13,10 +13,14 @@
  * - `bmp` — Bitmap
  * - `tiff` — Tagged Image File Format
  * - `mp4` — **PRO feature** MPEG-4
+ * - `best` — **PRO feature** to make imgproxy pick the best format for the
+ * resultant image. Check out the {@link https://docs.imgproxy.net/best_format | Best format guide}
+ * to learn more.
  *
  * @see
  * - {@link https://docs.imgproxy.net/generating_the_url?id=format | format option imgproxy docs}
  * - {@link https://docs.imgproxy.net/image_formats_support | image formats support imgproxy docs}
+ * - {@link https://docs.imgproxy.net/best_format | Best format guide}
  */
 type Format =
   | "png"
@@ -28,7 +32,8 @@ type Format =
   | "svg"
   | "bmp"
   | "tiff"
-  | "mp4";
+  | "mp4"
+  | "best";
 
 /**
  * *Format option*
