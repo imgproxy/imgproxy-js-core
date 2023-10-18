@@ -13,7 +13,7 @@ const test = (options: ExtendOptionsPartial): boolean =>
   Boolean(getOpt(options));
 
 const withHead = (optString: string, headless: boolean): string =>
-  `${headless ? "" : "ex:"}${optString}`;
+  `${headless ? "" : "ex:"}${optString.replace(/:+$/, "")}`;
 
 const build = (
   options: ExtendOptionsPartial,

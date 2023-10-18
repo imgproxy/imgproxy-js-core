@@ -53,7 +53,7 @@ describe("extendAspectRatio", () => {
       ).toEqual("exar:t:soea:10:20");
     });
 
-    it("should return exar:t:nowe:20: if extend is 1 and gravity is {type: 'nowe', x_offset:20}", () => {
+    it("should return exar:t:nowe:20 if extend is 1 and gravity is {type: 'nowe', x_offset:20}", () => {
       expect(
         build({
           extend_aspect_ratio: {
@@ -61,15 +61,15 @@ describe("extendAspectRatio", () => {
             gravity: { type: "nowe", x_offset: 20 },
           },
         })
-      ).toEqual("exar:t:nowe:20:");
+      ).toEqual("exar:t:nowe:20");
     });
 
-    it("should return exar:t:we:: if draw is 't' and gravity is {type: 'we'}", () => {
+    it("should return exar:t:we if draw is 't' and gravity is {type: 'we'}", () => {
       expect(
         build({
           extend_ar: { extend: "t", gravity: { type: "we" } },
         })
-      ).toEqual("exar:t:we::");
+      ).toEqual("exar:t:we");
     });
 
     it("should return exar:f if extend is false and gravity is undefined", () => {

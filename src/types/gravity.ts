@@ -25,6 +25,11 @@ type GravityType =
 /**
  * BaseGravity. When imgproxy needs to cut some parts of the image, it is guided by the gravity option.
  *
+ *
+ * @param {GravityType} type - Must be one of the following values: `no`, `so`, `ea`, `we`, `noea`, `nowe`, `soea`, `sowe`, `ce`.
+ * @param {number} [x_offset] - The horizontal offset of the focal point from the type value.
+ * @param {number} [y_offset] - The vertical offset of the focal point from the type value.
+ *
  * @example
  * // In this case we set the image's focal point to be in the middle of its top edge.
  * {gravity: {type: "no"}}
@@ -48,6 +53,8 @@ interface BaseGravity {
  *
  * Offsets are not applicable here.
  *
+ * @param {string} type - Must be `sm`.
+ *
  * @example
  * {gravity: {type: "sm"}}
  *
@@ -63,6 +70,10 @@ interface SmartGravity {
  * `x` and `y` are floating point numbers between `0` and `1` that define the coordinates of the center of the resulting image.
  *
  * Treat `0` and `1` as right/left for `x` and top/bottom for `y`.
+ *
+ * @param {string} type - Must be `fp`.
+ * @param {number} x - The horizontal offset of the focal point from the type value.
+ * @param {number} y - The vertical offset of the focal point from the type value.
  *
  * @example
  * {gravity: {type: "fp", x: 0.5, y: 0.5}}
@@ -82,6 +93,9 @@ interface FPGravity {
  *
  * If class names are omited, imgproxy will use all the detected objects.
  *
+ * @param {string} type - Must be `obj`.
+ * @param {string[]} class_names - Array of class names.
+ *
  * @example
  * {gravity: {type: "obj", class_names: ["face", "person"]}}
  *
@@ -98,9 +112,9 @@ interface ObjGravity {
  * When imgproxy needs to cut some parts of the image, it is guided by the gravity option.
  *
  * *Base gravity*.
- * - `type`.
- * - `x_offset` (optional). The horizontal offset of the focal point from the type value.
- * - `y_offset` (optional). The vertical offset of the focal point from the type value.
+ * @param {GravityType} type - Must be one of the following values: `no`, `so`, `ea`, `we`, `noea`, `nowe`, `soea`, `sowe`, `ce`.
+ * @param {number} [x_offset] - The horizontal offset of the focal point from the type value.
+ * @param {number} [y_offset] - The vertical offset of the focal point from the type value.fset` (optional). The vertical offset of the focal point from the type value.
  *
  * Available type values:
  * - `no`: north (top edge)
@@ -117,15 +131,21 @@ interface ObjGravity {
  * *Smart gravity*.
  * libvips detects the most “interesting” section of the image and considers it as the center of the resulting image.
  * Offsets are not applicable here.
+ * @param {string} type - Must be `sm`.
  *
  * *Object-oriented gravity*. **PRO feature.**
  * imgproxy detects objects of provided classes on the image and calculates the resulting image center using their positions.
  * If class names are omited, imgproxy will use all the detected objects.
+ * @param {string} type - Must be `obj`.
+ * @param {string[]} class_names - Array of class names.
  *
  * *FP gravity*.
  * The gravity focus point.
  * `x` and `y` are floating point numbers between `0` and `1` that define the coordinates of the center of the resulting image.
  * Treat `0` and `1` as right/left for `x` and top/bottom for `y`.
+ * @param {string} type - Must be `fp`.
+ * @param {number} x - The horizontal offset of the focal point from the type value.
+ * @param {number} y - The vertical offset of the focal point from the type value.
  *
  * @default {gravity: {type: "ce", x_offset: 0, y_offset: 0}}
  *

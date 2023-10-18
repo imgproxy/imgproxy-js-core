@@ -47,20 +47,20 @@ describe("extend", () => {
       ).toEqual("ex:t:soea:10:20");
     });
 
-    it("should return ex:t:nowe:20: if extend is 1 and gravity is {type: 'nowe', x_offset:20}", () => {
+    it("should return ex:t:nowe:20 if extend is 1 and gravity is {type: 'nowe', x_offset:20}", () => {
       expect(
         build({
           extend: { extend: 1, gravity: { type: "nowe", x_offset: 20 } },
         })
-      ).toEqual("ex:t:nowe:20:");
+      ).toEqual("ex:t:nowe:20");
     });
 
-    it("should return ex:t:we:: if extend is 't' and gravity is {type: 'we'}", () => {
+    it("should return ex:t:we if extend is 't' and gravity is {type: 'we'}", () => {
       expect(
         build({
           ex: { extend: "t", gravity: { type: "we" } },
         })
-      ).toEqual("ex:t:we::");
+      ).toEqual("ex:t:we");
     });
 
     it("should return ex:f if extend is false and gravity is undefined", () => {
