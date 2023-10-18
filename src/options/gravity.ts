@@ -130,17 +130,6 @@ const build = (
     return withHead(`${type}:${class_names.join(":")}`, headless);
   } else {
     const gravityBase = gravityOpts as BaseGravity;
-
-    if (!currentBaseTypes[gravityBase.type]) {
-      throw new Error(
-        `gravity type "${
-          gravityBase.type
-        }" is not supported. Supported types: ${Object.keys(
-          currentBaseTypes
-        ).join(",")}`
-      );
-    }
-
     const type = gravityBase.type;
     const x_offset =
       gravityBase.x_offset === undefined ? "" : gravityBase.x_offset;

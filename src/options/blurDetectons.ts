@@ -23,7 +23,7 @@ const build = (options: BlurDetectionsOptionsPartial): string => {
     throw new Error("blur_detections.sigma option is not a number");
   }
 
-  const sigma = blurDetectionsOpts.sigma || "";
+  const sigma = blurDetectionsOpts.sigma;
   const classNamesStr = blurDetectionsOpts.class_names
     ? blurDetectionsOpts.class_names.join(":")
     : "";

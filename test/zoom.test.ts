@@ -50,14 +50,14 @@ describe("zoom", () => {
     it("should throw an error if zoom_x is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ zoom: { zoom_y: 0.5 } })).toThrow(
-        "zoom.zoom_x or zoom.zoom_y is undefined"
+        "zoom.zoom_x is undefined"
       );
     });
 
     it("should throw an error if zoom_y is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ zoom: { zoom_x: 1.5 } })).toThrow(
-        "zoom.zoom_x or zoom.zoom_y is undefined"
+        "zoom.zoom_y is undefined"
       );
     });
 

@@ -35,10 +35,6 @@ const build = (options: ZoomOptionsPartial): string => {
     return `z:${zoomOpts}`;
   }
 
-  if (!zoomOpts.zoom_x || !zoomOpts.zoom_y) {
-    throw new Error("zoom.zoom_x or zoom.zoom_y is undefined");
-  }
-
   validateValue(zoomOpts.zoom_x, "zoom.zoom_x");
   validateValue(zoomOpts.zoom_y, "zoom.zoom_y");
   return `z:${zoomOpts.zoom_x}:${zoomOpts.zoom_y}`;
