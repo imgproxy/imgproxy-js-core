@@ -1,5 +1,4 @@
-import configure from "./methods/configure";
 import generateUrl from "./methods/generateUrl";
-import generateInfoUrl from "./methods/generateInfoUrl";
+import generateInfoUrl from "./methods/generateImageInfoUrl";
 
-export { configure, generateUrl, generateInfoUrl };
+export { generateUrl, generateInfoUrl };

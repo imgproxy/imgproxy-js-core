@@ -8,7 +8,7 @@ import type { BlurOptionsPartial } from "./blur";
 import type { BrightnessOptionsPartial } from "./brightness";
 import type { CacheBusterOptionsPartial } from "./cacheBuster";
 import type { ContrastOptionsPartial } from "./contrast";
-import type { CropOptionsPartial } from "./crop";
+import type { CropOptionsPartial } from "../sharedTypes/crop";
 import type { DisableAnimationOptionsPartial } from "./disableAnimation";
 import type { DPIOptionsPartial } from "./dpi";
 import type { DPROptionsPartial } from "./dpr";

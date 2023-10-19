@@ -16,7 +16,7 @@ const build = (options: BlurOptionsPartial): string => {
     throw new Error("blur option is can't be less than 0");
   }
 
-  return `blur:${blurOpts}`;
+  return `bl:${blurOpts}`;
 };
 
 export { test, build };

@@ -1,0 +1,13 @@
+export * as average from "./average";
+export * as blurhash from "./blurhash";
+export * as crop from "../sharedOptions/crop";
+export * as detectObjects from "./detectObjects";
+export * as dimensions from "./dimensions";
+export * as dominantColors from "./dominantColors";
+export * as exif from "./exif";
+export * as format from "./format";
+export * as iptc from "./iptc";
+export * as palette from "./palette";
+export * as size from "./size";
+export * as videoMeta from "./videoMeta";
+export * as xmp from "./xmp";

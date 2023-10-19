@@ -8,7 +8,7 @@ export * as blurDetections from "./blurDetections";
 export * as brightness from "./brightness";
 export * as cacheBuster from "./cacheBuster";
 export * as contrast from "./contrast";
-export * as crop from "./crop";
+export * as crop from "../sharedOptions/crop";
 export * as disableAnimation from "./disableAnimation";
 export * as dpi from "./dpi";
 export * as dpr from "./dpr";
