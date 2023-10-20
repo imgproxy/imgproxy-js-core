@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { test, build } from "../../src/options/expires";
+import { test, build } from "../../src/optionsShared/expires";
 
 describe("expires", () => {
   describe("test", () => {

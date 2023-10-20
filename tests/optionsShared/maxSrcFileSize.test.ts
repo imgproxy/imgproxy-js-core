@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { test, build } from "../../src/options/maxSrcFileSize";
+import { test, build } from "../../src/optionsShared/maxSrcFileSize";
 
 describe("maxSrcFileSize", () => {
   describe("test", () => {

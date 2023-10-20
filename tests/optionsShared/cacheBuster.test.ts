@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { test, build } from "../../src/options/cacheBuster";
+import { test, build } from "../../src/optionsShared/cacheBuster";
 
 describe("cacheBuster", () => {
   describe("test", () => {

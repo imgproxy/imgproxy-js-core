@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { test, build } from "../../src/options/videoThumbnailSecond";
+import { test, build } from "../../src/optionsShared/videoThumbnailSecond";
 
 describe("videoThumbnailSecond", () => {
   describe("test", () => {
