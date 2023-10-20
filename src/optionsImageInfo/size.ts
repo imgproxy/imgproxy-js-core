@@ -1,7 +1,10 @@
-import type { Size, SizeImageInfoOptionsPartial } from "../typesImageInfo/size";
+import type {
+  NeedSize,
+  SizeImageInfoOptionsPartial,
+} from "../typesImageInfo/size";
 import { normalizeBoolean } from "../utils";
 
-const getOpt = (options: SizeImageInfoOptionsPartial): Size | undefined => {
+const getOpt = (options: SizeImageInfoOptionsPartial): NeedSize | undefined => {
   if ("size" in options) {
     return options.size;
   } else if ("s" in options) {

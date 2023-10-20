@@ -15,7 +15,7 @@
  *
  * @see {@link https://docs.imgproxy.net/getting_the_image_info?id=format | Format imgproxy docs}
  */
-type Format = 1 | "t" | true | false | string;
+type NeedFormat = 1 | "t" | true | false | string;
 
 /**
  * *Format option*
@@ -25,8 +25,8 @@ type Format = 1 | "t" | true | false | string;
  * @see https://docs.imgproxy.net/getting_the_image_info?id=format
  */
 interface FormatImageInfoOptionsPartial {
-  format?: Format;
-  f?: Format;
+  format?: NeedFormat;
+  f?: NeedFormat;
 }
 
-export { Format, FormatImageInfoOptionsPartial };
+export { NeedFormat, FormatImageInfoOptionsPartial };

@@ -1,10 +1,12 @@
 import type {
-  Format,
+  NeedFormat,
   FormatImageInfoOptionsPartial,
 } from "../typesImageInfo/format";
 import { normalizeBoolean } from "../utils";
 
-const getOpt = (options: FormatImageInfoOptionsPartial): Format | undefined => {
+const getOpt = (
+  options: FormatImageInfoOptionsPartial
+): NeedFormat | undefined => {
   if ("format" in options) {
     return options.format;
   } else if ("f" in options) {

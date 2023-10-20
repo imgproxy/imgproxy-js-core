@@ -1,4 +1,4 @@
-import { Options } from "../typesImageInfo";
+import { OptionsImageInfo } from "../typesImageInfo";
 import * as optionModules from "../optionsImageInfo";
 
 const correctUrlTypes = {
@@ -7,7 +7,7 @@ const correctUrlTypes = {
   encoded: true,
 };
 
-type URL = {
+type URLImageInfo = {
   value: string;
   type: "plain" | "base64" | "encoded";
 };
@@ -17,7 +17,10 @@ interface Result {
   suffix: string;
 }
 
-const generateImageInfoUrl = (url: URL, options?: Options): Result => {
+const generateImageInfoUrl = (
+  url: URLImageInfo,
+  options?: OptionsImageInfo
+): Result => {
   if (!url.value) {
     throw new Error("url.value is undefined. Must be a string");
   }

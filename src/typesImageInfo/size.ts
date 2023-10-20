@@ -16,7 +16,7 @@
  *
  * @see {@link https://docs.imgproxy.net/getting_the_image_info?id=size | Size imgproxy docs}
  */
-type Size = 1 | "t" | true | false | string;
+type NeedSize = 1 | "t" | true | false | string;
 
 /**
  * *Size option*
@@ -26,8 +26,8 @@ type Size = 1 | "t" | true | false | string;
  * @see https://docs.imgproxy.net/getting_the_image_info?id=size
  */
 interface SizeImageInfoOptionsPartial {
-  size?: Size;
-  s?: Size;
+  size?: NeedSize;
+  s?: NeedSize;
 }
 
-export { Size, SizeImageInfoOptionsPartial };
+export { NeedSize, SizeImageInfoOptionsPartial };

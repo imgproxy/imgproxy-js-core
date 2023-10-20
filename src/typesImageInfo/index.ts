@@ -19,7 +19,7 @@ import type { VideoMetaImageInfoOptionsPartial } from "./videoMeta";
 import type { VideoThumbnailSecondOptionsPartial } from "../typesShared/videoThumbnailSecond";
 import type { XmpImageInfoOptionsPartial } from "./xmp";
 
-export type Options = AverageImageInfoOptionsPartial &
+export type OptionsImageInfo = AverageImageInfoOptionsPartial &
   BHImageInfoOptionsPartial &
   CacheBusterOptionsPartial &
   CropOptionsPartial &

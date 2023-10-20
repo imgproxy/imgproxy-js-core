@@ -1,4 +1,4 @@
 import generateUrl from "./methods/generateUrl";
-import generateInfoUrl from "./methods/generateImageInfoUrl";
+import generateImageInfoUrl from "./methods/generateImageInfoUrl";
 
-export { generateUrl, generateInfoUrl };
+export { generateUrl, generateImageInfoUrl };
