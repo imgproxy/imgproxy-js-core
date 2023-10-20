@@ -1,7 +1,7 @@
 import type {
   VideoThumbnailSecond,
   VideoThumbnailSecondOptionsPartial,
-} from "../types/videoThumbnailSecond";
+} from "../typesShared/videoThumbnailSecond";
 
 const getOpt = (
   options: VideoThumbnailSecondOptionsPartial

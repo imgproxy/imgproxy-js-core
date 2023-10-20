@@ -1,4 +1,4 @@
-import { Preset, PresetOptionsPartial } from "../types/preset";
+import { Preset, PresetOptionsPartial } from "../typesShared/preset";
 
 const getOpt = (options: PresetOptionsPartial): Preset | undefined =>
   options.preset || options.pr;

@@ -3,6 +3,8 @@ import { Gravity } from "../types/gravity";
 /**
  * *Crop option*
  *
+ * **Description to the generateUrl method**
+ *
  * Defines an area of the image to be processed (crop before resize).
  *
  * `width` and `height` define the size of the area:
@@ -65,8 +67,31 @@ import { Gravity } from "../types/gravity";
  * {crop: {width: 100, height: 100, gravity: {type: "fp", x: 0.5, y: 0.5}}}
  *
  * @see
- * - `crop` - https://docs.imgproxy.net/generating_the_url?id=crop
- * - `gravity` - https://docs.imgproxy.net/generating_the_url?id=gravity
+ * - {@link https://docs.imgproxy.net/generating_the_url?id=crop | crop imgproxy docs}
+ * - {@link https://docs.imgproxy.net/generating_the_url?id=gravity | gravity imgproxy docs}
+ *
+ *
+ * **Description to the generateImageInfoUrl method**
+ *
+ * @warning **Slow**. This option requires the image to be fully downloaded and processed.
+ *
+ * When `width` and `height` are greater than zero, imgproxy will return the relative
+ * crop coordinates for the defined crop parameters.
+ *
+ * Response example:
+ *
+ * {
+ *  "crop": {
+ *   "left": 0.383203125,
+ *   "top": 0.2603861907548274,
+ *   "width": 0.1953125,
+ *   "height": 0.3510825043885313
+ *  }
+ * }
+ *
+ * @default: 0:0:ce.
+ *
+ * @see {@link https://docs.imgproxy.net/getting_the_image_info?id=crop | crop imgproxy docs}
  */
 interface Crop {
   width: number;

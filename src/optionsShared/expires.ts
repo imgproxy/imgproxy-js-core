@@ -1,4 +1,4 @@
-import type { Expires, ExpiresOptionsPartial } from "../types/expires";
+import type { Expires, ExpiresOptionsPartial } from "../typesShared/expires";
 
 const getOpt = (options: ExpiresOptionsPartial): Expires | undefined =>
   options.expires || options.exp;

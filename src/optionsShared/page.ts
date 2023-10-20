@@ -1,14 +1,21 @@
-import type { Page, PageOptionsPartial } from "../types/page";
+import type { Page, PageOptionsPartial } from "../typesShared/page";
 
-const getOpt = (options: PageOptionsPartial): Page | undefined =>
-  options.page || options.pg;
+const getOpt = (options: PageOptionsPartial): Page | undefined => {
+  if ("page" in options) {
+    return options.page;
+  } else if ("pg" in options) {
+    return options.pg;
+  }
+  return undefined;
+};
 
-const test = (options: PageOptionsPartial): boolean => Boolean(getOpt(options));
+const test = (options: PageOptionsPartial): boolean =>
+  getOpt(options) !== undefined;
 
 const build = (options: PageOptionsPartial): string => {
   const page = getOpt(options);
 
-  if (!page) {
+  if (page === undefined) {
     throw new Error("page option is undefined");
   }
   if (typeof page !== "number") {

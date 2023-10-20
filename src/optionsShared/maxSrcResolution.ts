@@ -1,7 +1,7 @@
 import type {
   MaxSrcResolution,
   MaxSrcResolutionOptionsPartial,
-} from "../types/maxSrcResolution";
+} from "../typesShared/maxSrcResolution";
 
 const getOpt = (
   options: MaxSrcResolutionOptionsPartial

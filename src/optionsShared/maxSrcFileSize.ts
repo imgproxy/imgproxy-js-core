@@ -1,7 +1,7 @@
 import type {
   MaxSrcFileSize,
   MaxSrcFileSizeOptionsPartial,
-} from "../types/maxSrcFileSize";
+} from "../typesShared/maxSrcFileSize";
 
 const getOpt = (
   options: MaxSrcFileSizeOptionsPartial

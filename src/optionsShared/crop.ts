@@ -1,4 +1,4 @@
-import type { Crop, CropOptionsPartial } from "../sharedTypes/crop";
+import type { Crop, CropOptionsPartial } from "../typesShared/crop";
 import * as gravityOpt from "../options/gravity";
 
 const getOpt = (options: CropOptionsPartial): Crop | undefined =>

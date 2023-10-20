@@ -40,6 +40,10 @@ describe("page", () => {
       );
     });
 
+    it("should return pg:0 if page option is 0", () => {
+      expect(build({ page: 0 })).toEqual("pg:0");
+    });
+
     it("should return pg:3 if page option is 3", () => {
       expect(build({ page: 3 })).toEqual("pg:3");
     });

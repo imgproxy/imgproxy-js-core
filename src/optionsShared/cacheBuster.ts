@@ -1,7 +1,7 @@
 import type {
   CacheBuster,
   CacheBusterOptionsPartial,
-} from "../types/cacheBuster";
+} from "../typesShared/cacheBuster";
 
 const getOpt = (options: CacheBusterOptionsPartial): CacheBuster | undefined =>
   options.cachebuster || options.cb;
