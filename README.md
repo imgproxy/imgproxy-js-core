@@ -14,7 +14,7 @@
 
 imgproxy can be used to provide a fast and secure way to _get rid of all the image resizing code_ in your web application (like calling ImageMagick or GraphicsMagick, or using libraries), while also being able to resize everything on the fly on a separate server that only you control. imgproxy is fast, easy to use, and requires zero processing power or storage from the main application. imgproxy is indispensable when handling image resizing of epic proportions, especially when original images are coming from a remote source.
 
-**This package is designed to be used as a part of framework-specific packages and plugins**
+**This package is designed to be used as part of framework-specific packages and plugins.**
 
 - [Install](#install)
 - [Usage](#usage)
@@ -54,6 +54,43 @@ const url = generateUrl(
 ```
 
 ## Methods
+
+### `generateUrl(source, options)`
+
+This method generates an imgproxy URL based on the provided source and options.
+
+The `imgproxy-js-core` library exposes a method called `generateUrl`, which takes two arguments:
+
+- `URL` (required): An object that contains the `value`, `type` and `format` properties.
+  - `value` (required): A string that contains the URL of the image.
+  - `type` (optional): A string that specifies the type of the URL. It can be one of the following:
+    - `plain`: A plain URL.
+    - `base64`: A base64 encoded URL.
+    - `enc`: An AES-CBC encrypted URL.
+  - `format` (optional): A string that specifies the format of the image. It can be one of the following: `png`, `jpg`, `webp`, `avif`, `gif`, `ico`, `svg`, `bmp`, `tiff`, `mp4`, or `best`.
+- `options` (optional): An object that contains [imgproxy options](https://docs.imgproxy.net/generating_the_url?id=processing-options).
+
+For a detailed description of the available options, please refer to the [imgproxy documentation](https://docs.imgproxy.net/generating_the_url?id=processing-options), as well as the option types files in the `imgproxy-js-core` library.
+
+The `generateUrl` method returns a string that contains the generated URL.
+
+### `generateImageInfoUrl(source, options)`
+
+**This method ia available only for the PRO version of imgproxy.**
+
+This method generates an imgproxy URL based on the provided source and options.
+
+The `imgproxy-js-core` library exposes a method called `generateImageInfoUrl`, which takes two arguments:
+
+- `URL` (required): An object that contains the `value` and `type` properties.
+  - `value` (required): A string that contains the URL of the image.
+  - `type` (optional): A string that specifies the type of the URL. It can be one of the following:
+    - `plain`: A plain URL.
+    - `base64`: A base64 encoded URL.
+    - `enc`: An AES-CBC encrypted URL.
+- `options` (optional): An object that contains [imgproxy options](https://docs.imgproxy.net/getting_the_image_info?id=info-options).
+
+For a detailed description of the available options, please refer to the [imgproxy documentation](https://docs.imgproxy.net/getting_the_image_info?id=info-options), as well as the option types files in the `imgproxy-js-core` library.
 
 ## Development
 
