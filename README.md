@@ -8,6 +8,10 @@
   </a>
 </p>
 
+<p align="center">
+  ![CI](https://github.com/imgproxy/imgproxy-js-core/actions/workflows/ci.yml/badge.svg?branch=main)
+</p>
+
 ---
 
 **[imgproxy](https://github.com/imgproxy/imgproxy)** is a fast and secure standalone server for resizing and converting remote images. The main principles of imgproxy are simplicity, speed, and security. It is a Go application, ready to be installed and used in any Unix environment—also ready to be containerized using Docker.
