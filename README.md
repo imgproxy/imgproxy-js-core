@@ -14,7 +14,7 @@
 
 imgproxy can be used to provide a fast and secure way to _get rid of all the image resizing code_ in your web application (like calling ImageMagick or GraphicsMagick, or using libraries), while also being able to resize everything on the fly on a separate server that only you control. imgproxy is fast, easy to use, and requires zero processing power or storage from the main application. imgproxy is indispensable when handling image resizing of epic proportions, especially when original images are coming from a remote source.
 
-**This package is designed to be used as part of framework-specific packages and plugins.**
+**imgproxy-js-core package is designed to be used as part of framework-specific packages and plugins.**
 
 - [Install](#install)
 - [Usage](#usage)
@@ -55,7 +55,7 @@ const url = generateUrl(
 
 ## Methods
 
-### `generateUrl(source, options)`
+### `generateUrl(URL, options)`
 
 This method generates an imgproxy URL based on the provided source and options.
 
@@ -74,7 +74,7 @@ For a detailed description of the available options, please refer to the [imgpro
 
 The `generateUrl` method returns a string that contains the generated URL.
 
-### `generateImageInfoUrl(source, options)`
+### `generateImageInfoUrl(URL, options)`
 
 **This method ia available only for the PRO version of imgproxy.**
 
