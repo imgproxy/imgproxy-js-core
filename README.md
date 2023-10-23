@@ -8,9 +8,7 @@
   </a>
 </p>
 
-<p align="center">
-  ![CI](https://github.com/imgproxy/imgproxy-js-core/actions/workflows/ci.yml/badge.svg?branch=main)
-</p>
+![CI](https://github.com/imgproxy/imgproxy-js-core/actions/workflows/ci.yml/badge.svg?branch=main)
 
 ---
 
