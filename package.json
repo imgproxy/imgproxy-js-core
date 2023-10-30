@@ -1,5 +1,5 @@
 {
-  "name": "imgproxy-js-core",
+  "name": "@imgproxy/imgproxy-js-core",
   "version": "1.0.0",
   "main": "./dist/imgproxy-js-core.cjs",
   "module": "./dist/imgproxy-js-core.mjs",
@@ -9,6 +9,7 @@
       "import": "./dist/imgproxy-js-core.mjs"
     }
   },
+  "license": "MIT",
   "types": "./dist/imgproxy-js-core.d.ts",
   "scripts": {
     "dev": "vite --host",
