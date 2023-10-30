@@ -1,10 +1,9 @@
 /// <reference types="vitest" />
 import path from "path";
 import { defineConfig } from "vite";
-import packageJson from "./package.json";
 
 const getPackageName = () => {
-  return packageJson.name;
+  return "imgproxy-js-core";
 };
 
 const getPackageNameCamelCase = () => {
