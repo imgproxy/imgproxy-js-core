@@ -26,13 +26,13 @@ imgproxy can be used to provide a fast and secure way to _get rid of all the ima
 ## Install
 
 ```bash
-npm install imgproxy-js-core
+npm install @imgproxy/imgproxy-js-core
 ```
 
 ## Usage
 
 ```ts
-import { generateUrl } from "imgproxy-js-core";
+import { generateUrl } from "@imgproxy/imgproxy-js-core";
 
 const url = generateUrl(
   {
@@ -68,8 +68,7 @@ The `imgproxy-js-core` library exposes a method called `generateUrl`, which take
   - `type` (optional): A string that specifies the type of the URL. It can be one of the following:
     - `plain`: A plain URL.
     - `base64`: A base64 encoded URL.
-    - `enc`: An AES-CBC encrypted URL.
-  - `format` (optional): A string that specifies the format of the image. It can be one of the following: `png`, `jpg`, `webp`, `avif`, `gif`, `ico`, `svg`, `bmp`, `tiff`, `mp4`, or `best`.
+    - `encoded`: An AES-CBC encrypted URL.
 - `options` (optional): An object that contains [imgproxy options](https://docs.imgproxy.net/generating_the_url?id=processing-options).
 
 For a detailed description of the available options, please refer to the [imgproxy documentation](https://docs.imgproxy.net/generating_the_url?id=processing-options), as well as the option types files in the `imgproxy-js-core` library.
@@ -89,7 +88,7 @@ The `imgproxy-js-core` library exposes a method called `generateImageInfoUrl`, w
   - `type` (optional): A string that specifies the type of the URL. It can be one of the following:
     - `plain`: A plain URL.
     - `base64`: A base64 encoded URL.
-    - `enc`: An AES-CBC encrypted URL.
+    - `encoded`: An AES-CBC encrypted URL.
 - `options` (optional): An object that contains [imgproxy options](https://docs.imgproxy.net/getting_the_image_info?id=info-options).
 
 For a detailed description of the available options, please refer to the [imgproxy documentation](https://docs.imgproxy.net/getting_the_image_info?id=info-options), as well as the option types files in the `imgproxy-js-core` library.

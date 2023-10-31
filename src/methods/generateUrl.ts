@@ -1,6 +1,5 @@
 import { Options } from "../types";
 import * as optionModules from "../options";
-import type { Format } from "../types/format";
 
 const correctUrlTypes = {
   plain: true,
@@ -8,24 +7,9 @@ const correctUrlTypes = {
   encoded: true,
 };
 
-const formatValues = {
-  png: true,
-  jpg: true,
-  webp: true,
-  avif: true,
-  gif: true,
-  ico: true,
-  svg: true,
-  bmp: true,
-  tiff: true,
-  mp4: true,
-  best: true,
-};
-
 type URL = {
   value: string;
   type: "plain" | "base64" | "encoded";
-  format?: Format;
 };
 
 const generateUrl = (url: URL, options?: Options): string => {
@@ -42,26 +26,13 @@ const generateUrl = (url: URL, options?: Options): string => {
       `url.type is invalid. Valid values are: 'plain', 'base64', 'encoded'. Got: ${url.type}`
     );
   }
-  if (url.format && !formatValues[url.format]) {
-    throw new Error(
-      `url.format is invalid. Must be one of: ${Object.keys(formatValues).join(
-        ","
-      )}`
-    );
-  }
-
-  let clonedOptions = options;
-
-  if ("format" in url) {
-    clonedOptions = { ...options, format: url.format };
-  }
 
   let optsPart = "";
-  if (clonedOptions) {
+  if (options) {
     for (const [, optionModule] of Object.entries(optionModules)) {
-      if (optionModule.test(clonedOptions)) {
+      if (optionModule.test(options)) {
         optsPart += "/";
-        optsPart += optionModule.build(clonedOptions);
+        optsPart += optionModule.build(options);
       }
     }
   }

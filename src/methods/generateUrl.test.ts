@@ -21,29 +21,10 @@ describe("generateUrl", () => {
     );
   });
 
-  it("should throw an error if url.format is invalid", () => {
-    expect(() =>
-      // @ts-expect-error: Let's ignore an error.
-      generateUrl({ value: "test", type: "plain", format: "test" })
-    ).toThrow(
-      "url.format is invalid. Must be one of: png,jpg,webp,avif,gif,ico,svg,bmp,tiff,mp4,best"
-    );
-  });
-
   it("should return plain url with no options", () => {
     expect(
       generateUrl({ value: "https://example.com/host/pic.png", type: "plain" })
     ).toEqual("/plain/https://example.com/host/pic.png");
-  });
-
-  it("should return plain url with format", () => {
-    expect(
-      generateUrl({
-        value: "https://example.com/host/pic.png",
-        type: "plain",
-        format: "webp",
-      })
-    ).toEqual("/f:webp/plain/https://example.com/host/pic.png");
   });
 
   it("should return base64 url with no options", () => {
