@@ -16,14 +16,6 @@ describe("brightness", () => {
   });
 
   describe("build", () => {
-    it("should return value of brightness if brightness option is defined", () => {
-      expect(build({ brightness: 255 })).toEqual("brightness:255");
-    });
-
-    it("should return value of brightness if br option is defined", () => {
-      expect(build({ br: -150 })).toEqual("brightness:-150");
-    });
-
     it("should throw an error if brightness option is undefined", () => {
       expect(() => build({})).toThrow("brightness option is undefined");
     });
@@ -45,6 +37,14 @@ describe("brightness", () => {
       expect(() => build({ brightness: -275 })).toThrow(
         "brightness is not correct. Set the value between -255 and 255"
       );
+    });
+
+    it("should return value of brightness if brightness option is defined", () => {
+      expect(build({ brightness: 255 })).toEqual("br:255");
+    });
+
+    it("should return value of brightness if br option is defined", () => {
+      expect(build({ br: -150 })).toEqual("br:-150");
     });
   });
 });

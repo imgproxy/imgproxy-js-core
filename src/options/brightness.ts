@@ -19,7 +19,7 @@ const build = (options: BrightnessOptionsPartial): string => {
     );
   }
 
-  return `brightness:${brightnessOpts}`;
+  return `br:${brightnessOpts}`;
 };
 
 export { test, build };
