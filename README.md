@@ -63,7 +63,7 @@ This method generates an imgproxy URL based on the provided source and options.
 
 The `imgproxy-js-core` library exposes a method called `generateUrl`, which takes two arguments:
 
-- `URL` (required): An object that contains the `value`, `type` and `format` properties.
+- `URL` (required): An object that contains the `value` and `type` properties.
   - `value` (required): A string that contains the URL of the image.
   - `type` (optional): A string that specifies the type of the URL. It can be one of the following:
     - `plain`: A plain URL.

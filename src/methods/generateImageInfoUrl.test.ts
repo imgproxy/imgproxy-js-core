@@ -24,10 +24,7 @@ describe("generateImageInfoUrl", () => {
   it("should return '/info/bh:0:5/cb:empty/exif:t/f:t/plain/https://example.com/host/pic.png' with cachebuster, exif, format, blurhash options", () => {
     expect(
       generateUrl({ value: "https://example.com/host/pic.png", type: "plain" })
-    ).toEqual({
-      prefix: "/info",
-      suffix: "/plain/https://example.com/host/pic.png",
-    });
+    ).toEqual("/plain/https://example.com/host/pic.png");
   });
 
   it("should return plain url with format", () => {
@@ -44,11 +41,9 @@ describe("generateImageInfoUrl", () => {
           blurhash: { x_components: 0, y_components: 5 },
         }
       )
-    ).toEqual({
-      prefix: "/info",
-      suffix:
-        "/bh:0:5/cb:empty/exif:t/f:t/plain/https://example.com/host/pic.png",
-    });
+    ).toEqual(
+      "/bh:0:5/cb:empty/exif:t/f:t/plain/https://example.com/host/pic.png"
+    );
   });
 
   it("should return base64 url with no options", () => {
@@ -57,10 +52,7 @@ describe("generateImageInfoUrl", () => {
         value: "aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS9waWMucG5n",
         type: "base64",
       })
-    ).toEqual({
-      prefix: "/info",
-      suffix: "/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS9waWMucG5n",
-    });
+    ).toEqual("/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS9waWMucG5n");
   });
 
   it("should return encoded url with no options", () => {
@@ -70,11 +62,9 @@ describe("generateImageInfoUrl", () => {
           "hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz",
         type: "encoded",
       })
-    ).toEqual({
-      prefix: "/info",
-      suffix:
-        "/enc/hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz",
-    });
+    ).toEqual(
+      "/enc/hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz"
+    );
   });
 
   it("should return plain url with options", () => {
@@ -92,10 +82,8 @@ describe("generateImageInfoUrl", () => {
           preset: ["test", "test2"],
         }
       )
-    ).toEqual({
-      prefix: "/info",
-      suffix:
-        "/avg:t:f/do:t/dc:t:t/exp:1729409825/iptc:t/p:6/pr:test:test2/s:t/plain/https://example.com/host/pic.png",
-    });
+    ).toEqual(
+      "/avg:t:f/do:t/dc:t:t/exp:1729409825/iptc:t/p:6/pr:test:test2/s:t/plain/https://example.com/host/pic.png"
+    );
   });
 });

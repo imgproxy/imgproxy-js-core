@@ -12,15 +12,10 @@ type URLImageInfo = {
   type: "plain" | "base64" | "encoded";
 };
 
-interface Result {
-  prefix: "/info";
-  suffix: string;
-}
-
 const generateImageInfoUrl = (
   url: URLImageInfo,
   options?: OptionsImageInfo
-): Result => {
+): string => {
   if (!url.value) {
     throw new Error("url.value is undefined. Must be a string");
   }
@@ -55,7 +50,8 @@ const generateImageInfoUrl = (
     urlPart = `/enc/${url.value}`;
   }
 
-  return { prefix: "/info", suffix: `${optsPart}${urlPart}` };
+  return `${optsPart}${urlPart}`;
 };
 
 export default generateImageInfoUrl;
+export const INFO_PREFIX = "/info";
