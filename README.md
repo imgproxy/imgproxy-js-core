@@ -93,6 +93,8 @@ The `imgproxy-js-core` library exposes a method called `generateImageInfoUrl`, w
 
 For a detailed description of the available options, please refer to the [imgproxy documentation](https://docs.imgproxy.net/getting_the_image_info?id=info-options), as well as the option types files in the `imgproxy-js-core` library.
 
+The `generateImageInfoUrl` method returns a string that contains the generated URL.
+
 ## Development
 
 1. Clone the repo
