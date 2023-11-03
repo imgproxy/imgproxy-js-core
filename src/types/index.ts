@@ -65,7 +65,7 @@ import type { WatermarkUrlOptionsPartial } from "./watermarkUrl";
 import type { WebpOptionsPartial } from "./webpOptions";
 import type { WidthOptionsPartial } from "./width";
 import type { ZoomOptionsPartial } from "./zoom";
-import type { RawOptionPartial } from "../typesShared/rawOptions";
+import type { WildOptionsPartial } from "../typesShared/wildOptions";
 
 export type Options = AjustOptionsPartial &
   AutoqualityOptionsPartial &
@@ -134,4 +134,4 @@ export type Options = AjustOptionsPartial &
   WebpOptionsPartial &
   WidthOptionsPartial &
   ZoomOptionsPartial &
-  RawOptionPartial;
+  WildOptionsPartial;

@@ -18,3 +18,4 @@ export * as size from "./size";
 export * as videoMeta from "./videoMeta";
 export * as videoThumbnailSecond from "../optionsShared/videoThumbnailSecond";
 export * as xmp from "./xmp";
+export * as wildOptions from "../optionsShared/wildOptions";

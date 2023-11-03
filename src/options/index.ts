@@ -65,3 +65,4 @@ export * as watermarkUrl from "./watermarkUrl";
 export * as webpOptions from "./webpOptions";
 export * as width from "./width";
 export * as zoom from "./zoom";
+export * as wildOptions from "../optionsShared/wildOptions";

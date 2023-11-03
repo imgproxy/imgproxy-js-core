@@ -12,7 +12,7 @@
  * // Option name is "resize", parametres is resizing_type: "fill", width: 100, height: 200 and one more Option with name resizing_algorithm: "lanczos2"
  * rawOption: [["resize", "fill", 100, 200], ["resizing_algorithm", "lanczos2"]]
  */
-type RawOptions = Array<Array<string | number | boolean>>;
+type WildOptions = Array<Array<string | number | boolean>>;
 
 /**
  * *Raw options*.
@@ -20,8 +20,8 @@ type RawOptions = Array<Array<string | number | boolean>>;
  * This is a type for options that are not yet supported by the library.
  *
  */
-interface RawOptionsPartial {
-  raw_options?: RawOptions;
+interface WildOptionsPartial {
+  wild_options?: WildOptions;
 }
 
-export { RawOptions, RawOptionsPartial };
+export { WildOptions, WildOptionsPartial };
