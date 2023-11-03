@@ -18,6 +18,7 @@ import type { SizeImageInfoOptionsPartial } from "./size";
 import type { VideoMetaImageInfoOptionsPartial } from "./videoMeta";
 import type { VideoThumbnailSecondOptionsPartial } from "../typesShared/videoThumbnailSecond";
 import type { XmpImageInfoOptionsPartial } from "./xmp";
+import type { RawOptionPartial } from "../typesShared/rawOptions";
 
 export type OptionsImageInfo = AverageImageInfoOptionsPartial &
   BHImageInfoOptionsPartial &
@@ -38,4 +39,5 @@ export type OptionsImageInfo = AverageImageInfoOptionsPartial &
   SizeImageInfoOptionsPartial &
   VideoMetaImageInfoOptionsPartial &
   VideoThumbnailSecondOptionsPartial &
-  XmpImageInfoOptionsPartial;
+  XmpImageInfoOptionsPartial &
+  RawOptionPartial;
