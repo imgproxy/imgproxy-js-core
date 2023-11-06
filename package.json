@@ -1,6 +1,6 @@
 {
   "name": "@imgproxy/imgproxy-js-core",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "./dist/imgproxy-js-core.cjs",
   "module": "./dist/imgproxy-js-core.mjs",
   "exports": {
