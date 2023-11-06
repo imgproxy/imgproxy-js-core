@@ -4,12 +4,12 @@ import * as optionModules from "../options";
 const correctUrlTypes = {
   plain: true,
   base64: true,
-  encoded: true,
+  encrypted: true,
 };
 
 type URL = {
   value: string;
-  type: "plain" | "base64" | "encoded";
+  type: "plain" | "base64" | "encrypted";
 };
 
 const generateUrl = (url: URL, options?: Options): string => {
@@ -18,12 +18,12 @@ const generateUrl = (url: URL, options?: Options): string => {
   }
   if (!url.type) {
     throw new Error(
-      "url.type is undefined. Valid values are: 'plain', 'base64', 'encoded'"
+      "url.type is undefined. Valid values are: 'plain', 'base64', 'encrypted'"
     );
   }
   if (!correctUrlTypes[url.type]) {
     throw new Error(
-      `url.type is invalid. Valid values are: 'plain', 'base64', 'encoded'. Got: ${url.type}`
+      `url.type is invalid. Valid values are: 'plain', 'base64', 'encrypted'. Got: ${url.type}`
     );
   }
 
@@ -43,7 +43,7 @@ const generateUrl = (url: URL, options?: Options): string => {
     urlPart = `/plain/${url.value}`;
   } else if (url.type === "base64") {
     urlPart = `/${url.value}`;
-  } else if (url.type === "encoded") {
+  } else if (url.type === "encrypted") {
     urlPart = `/enc/${url.value}`;
   }
 

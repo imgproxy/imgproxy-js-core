@@ -10,14 +10,14 @@ describe("generateUrl", () => {
   it("should throw an error if url.type is undefined", () => {
     // @ts-expect-error: Let's ignore an error.
     expect(() => generateUrl({ value: "test" })).toThrow(
-      "url.type is undefined. Valid values are: 'plain', 'base64', 'encoded'"
+      "url.type is undefined. Valid values are: 'plain', 'base64', 'encrypted'"
     );
   });
 
   it("should throw an error if url.type is invalid", () => {
     // @ts-expect-error: Let's ignore an error.
     expect(() => generateUrl({ value: "test", type: "test" })).toThrow(
-      "url.type is invalid. Valid values are: 'plain', 'base64', 'encoded'. Got: test"
+      "url.type is invalid. Valid values are: 'plain', 'base64', 'encrypted'. Got: test"
     );
   });
 
@@ -36,12 +36,12 @@ describe("generateUrl", () => {
     ).toEqual("/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS9waWMucG5n");
   });
 
-  it("should return encoded url with no options", () => {
+  it("should return encrypted url with no options", () => {
     expect(
       generateUrl({
         value:
           "hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz",
-        type: "encoded",
+        type: "encrypted",
       })
     ).toEqual(
       "/enc/hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz"
