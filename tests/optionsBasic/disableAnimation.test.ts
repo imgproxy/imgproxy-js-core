@@ -21,6 +21,10 @@ describe("disableAnimation", () => {
   });
 
   describe("build", () => {
+    it("should throw an error if disable animation option is undefined", () => {
+      expect(() => build({})).toThrow("disable_animation option is undefined");
+    });
+
     it("should return 't' if disable_animation option is true", () => {
       expect(build({ disable_animation: true })).toEqual("da:t");
     });
@@ -44,10 +48,6 @@ describe("disableAnimation", () => {
 
     it("should return 'f' if da is string (except 't')", () => {
       expect(build({ da: "true" })).toEqual("da:f");
-    });
-
-    it("should throw an error if disable animation option is undefined", () => {
-      expect(() => build({})).toThrow("disable animation option is undefined");
     });
   });
 });

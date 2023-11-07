@@ -18,7 +18,7 @@ describe("resize", () => {
 
   describe("build", () => {
     it("should return an error if resize option is undefined", () => {
-      expect(() => build({})).toThrow("resize options are undefined");
+      expect(() => build({})).toThrow("resize option is undefined");
     });
 
     it("should return an error if resizing_type is incorrect", () => {

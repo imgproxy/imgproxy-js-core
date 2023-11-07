@@ -16,16 +16,8 @@ describe("backgroundAlpha", () => {
   });
 
   describe("build", () => {
-    it("should return value of background alpha if background_alpha option is defined", () => {
-      expect(build({ background_alpha: 0.5 })).toEqual("background_alpha:0.5");
-    });
-
-    it("should return value of background alpha if bga option is defined", () => {
-      expect(build({ bga: 0.5 })).toEqual("background_alpha:0.5");
-    });
-
     it("should throw an error if background alpha option is undefined", () => {
-      expect(() => build({})).toThrow("background alpha option is undefined");
+      expect(() => build({})).toThrow("background_alpha option is undefined");
     });
 
     it("should throw an error if background alpha bigger than 1", () => {
@@ -45,6 +37,14 @@ describe("backgroundAlpha", () => {
       expect(() => build({ background_alpha: "0.5" })).toThrow(
         "background alpha is not correct. Set the value between 0 and 1"
       );
+    });
+
+    it("should return value of background alpha if background_alpha option is defined", () => {
+      expect(build({ background_alpha: 0.5 })).toEqual("background_alpha:0.5");
+    });
+
+    it("should return value of background alpha if bga option is defined", () => {
+      expect(build({ bga: 0.5 })).toEqual("background_alpha:0.5");
     });
   });
 });

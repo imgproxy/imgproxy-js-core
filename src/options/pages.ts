@@ -1,4 +1,5 @@
 import type { Pages, PagesOptionsPartial } from "../types/pages";
+import { errorParamIsUndef } from "../utils";
 
 const getOpt = (options: PagesOptionsPartial): Pages | undefined => {
   if ("pages" in options) {
@@ -15,9 +16,7 @@ const test = (options: PagesOptionsPartial): boolean =>
 const build = (options: PagesOptionsPartial): string => {
   const pages = getOpt(options);
 
-  if (pages === undefined) {
-    throw new Error("pages option is undefined");
-  }
+  errorParamIsUndef(pages, "pages");
   if (typeof pages !== "number") {
     throw new Error(
       "pages option is invalid. Must be a positive integer starting with 1"

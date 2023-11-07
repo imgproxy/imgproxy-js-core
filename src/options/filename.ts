@@ -1,5 +1,5 @@
 import type { Filename, FilenameOptionsPartial } from "../types/filename";
-import { normalizeBoolean } from "../utils";
+import { errorParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (options: FilenameOptionsPartial): Filename | undefined =>
   options.filename || options.fn;
@@ -10,13 +10,9 @@ const test = (options: FilenameOptionsPartial): boolean =>
 const build = (options: FilenameOptionsPartial): string => {
   const filename = getOpt(options);
 
-  if (!filename) {
-    throw new Error("filename option is undefined");
-  }
-  if (!filename.name) {
-    throw new Error("name in filename option is required");
-  }
-  if (typeof filename.name !== "string") {
+  errorParamIsUndef(filename, "filename");
+  errorParamIsUndef(filename?.name, "filename.name");
+  if (typeof filename?.name !== "string") {
     throw new Error("name in filename option should be a string");
   }
 

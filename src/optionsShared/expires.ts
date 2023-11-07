@@ -1,4 +1,5 @@
 import type { Expires, ExpiresOptionsPartial } from "../typesShared/expires";
+import { errorParamIsUndef } from "../utils";
 
 const getOpt = (options: ExpiresOptionsPartial): Expires | undefined =>
   options.expires || options.exp;
@@ -9,9 +10,7 @@ const test = (options: ExpiresOptionsPartial): boolean =>
 const build = (options: ExpiresOptionsPartial): string => {
   const expires = getOpt(options);
 
-  if (!expires) {
-    throw new Error("expires option is undefined");
-  }
+  errorParamIsUndef(expires, "expires");
   if (typeof expires !== "number") {
     throw new Error("expires option must be a number");
   }

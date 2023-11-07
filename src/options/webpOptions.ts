@@ -1,4 +1,5 @@
 import type { WebpOptions, WebpOptionsPartial } from "../types/webpOptions";
+import { errorParamIsUndef } from "../utils";
 
 const correctOptions = {
   lossy: true,
@@ -14,10 +15,8 @@ const test = (options: WebpOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: WebpOptionsPartial): string => {
   const webpOptions = getOpt(options);
 
-  if (!webpOptions) {
-    throw new Error("webp options option is undefined");
-  }
-  if (!correctOptions[webpOptions]) {
+  errorParamIsUndef(webpOptions, "webp_options");
+  if (!correctOptions[webpOptions as WebpOptions]) {
     throw new Error(
       "webp options option is invalid. Must be one of: 'lossy', 'near_lossless', 'lossless'"
     );

@@ -18,7 +18,7 @@ describe("crop", () => {
 
   describe("build", () => {
     it("should throw an error if crop option is undefined", () => {
-      expect(() => build({})).toThrow("crop options are undefined");
+      expect(() => build({})).toThrow("crop option is undefined");
     });
 
     it("should throw an error if width option is undefined", () => {

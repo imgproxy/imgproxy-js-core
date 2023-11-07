@@ -18,7 +18,7 @@ describe("webpOptions", () => {
 
   describe("build", () => {
     it("should throw an error if webp_options is undefined", () => {
-      expect(() => build({})).toThrow("webp options option is undefined");
+      expect(() => build({})).toThrow("webp_options option is undefined");
     });
 
     it("should throw an error if webp_options is invalid", () => {

@@ -18,7 +18,7 @@ describe("size", () => {
 
   describe("build", () => {
     it("should return an error if size option is undefined", () => {
-      expect(() => build({})).toThrow("size options are undefined");
+      expect(() => build({})).toThrow("size option is undefined");
     });
 
     it("should return an error if width is not a number", () => {

@@ -18,7 +18,7 @@ describe("pngOptions", () => {
 
   describe("build", () => {
     it("should throw an error if png_options option is undefined", () => {
-      expect(() => build({})).toThrow("png options option is undefined");
+      expect(() => build({})).toThrow("png_options option is undefined");
     });
 
     it("should throw an error if png_options.interlaced is not a boolean", () => {

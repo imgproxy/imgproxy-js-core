@@ -25,7 +25,7 @@ describe("filename", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ filename: { encoded: 1 } })
-      ).toThrow("name in filename option is required");
+      ).toThrow("filename.name is undefined");
     });
 
     it("should throw an error if name in filename option is not a string", () => {

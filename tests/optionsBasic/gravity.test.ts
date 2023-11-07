@@ -18,7 +18,7 @@ describe("gravity", () => {
 
   describe("build", () => {
     it("should throw an error if gravity option is undefined", () => {
-      expect(() => build({})).toThrow("gravity options are undefined");
+      expect(() => build({})).toThrow("gravity option is undefined");
     });
 
     it("should throw an error if type is undefined", () => {

@@ -16,14 +16,8 @@ describe("ajust", () => {
   });
 
   describe("build", () => {
-    it("should return value of brightness, contrast and saturation", () => {
-      expect(
-        build({ ajust: { brightness: 40, contrast: 1.5, saturation: 3 } })
-      ).toEqual("aj:40:1.5:3");
-    });
-
     it("should throw an error if ajust options are undefined", () => {
-      expect(() => build({})).toThrow("ajust options are undefined");
+      expect(() => build({})).toThrow("ajust option is undefined");
     });
 
     it("should throw an error if brightness begger than 255", () => {
@@ -36,6 +30,12 @@ describe("ajust", () => {
       expect(() => build({ ajust: { brightness: -300 } })).toThrow(
         "brightness must be in range [-255, 255]"
       );
+    });
+
+    it("should return value of brightness, contrast and saturation", () => {
+      expect(
+        build({ ajust: { brightness: 40, contrast: 1.5, saturation: 3 } })
+      ).toEqual("aj:40:1.5:3");
     });
 
     it("should return value of brightness, contrast and saturation if aj option is defined", () => {
@@ -56,7 +56,7 @@ describe("ajust", () => {
       );
     });
 
-    it("shold return value of contrast and saturation if brightness is undefined", () => {
+    it("should return value of contrast and saturation if brightness is undefined", () => {
       expect(build({ ajust: { contrast: 1.5, saturation: 3 } })).toEqual(
         "aj::1.5:3"
       );

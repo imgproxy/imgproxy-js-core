@@ -22,7 +22,7 @@ describe("zoom", () => {
 
   describe("build", () => {
     it("should throw an error if zoom option is undefined", () => {
-      expect(() => build({})).toThrow("zoom options are undefined");
+      expect(() => build({})).toThrow("zoom option is undefined");
     });
 
     it("should throw an error if zoom is not a number", () => {

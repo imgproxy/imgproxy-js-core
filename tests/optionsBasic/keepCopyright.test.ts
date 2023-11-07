@@ -22,7 +22,7 @@ describe("keepCopyright", () => {
 
   describe("build", () => {
     it("should throw an error if keep_copyright option is undefined", () => {
-      expect(() => build({})).toThrow("keep copyright option is undefined");
+      expect(() => build({})).toThrow("keep_copyright option is undefined");
     });
 
     it("should return 't' if keep_copyright option is true", () => {

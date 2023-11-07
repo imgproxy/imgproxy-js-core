@@ -1,5 +1,6 @@
 import { OptionsImageInfo } from "../typesImageInfo";
 import * as optionModules from "../optionsImageInfo";
+import { errorParamIsUndef } from "../utils";
 
 const correctUrlTypes = {
   plain: true,
@@ -16,14 +17,12 @@ const generateImageInfoUrl = (
   url: URLImageInfo,
   options?: OptionsImageInfo
 ): string => {
-  if (!url.value) {
-    throw new Error("url.value is undefined. Must be a string");
-  }
-  if (!url.type) {
-    throw new Error(
-      "url.type is undefined. Valid values are: 'plain', 'base64', 'encrypted'"
-    );
-  }
+  errorParamIsUndef(url.value, "url.value", "Must be a string");
+  errorParamIsUndef(
+    url.type,
+    "url.type",
+    `Valid values are: ${Object.keys(correctUrlTypes).join(", ")}`
+  );
   if (!correctUrlTypes[url.type]) {
     throw new Error(
       `url.type is invalid. Valid values are: 'plain', 'base64', 'encrypted'. Got: ${url.type}`

@@ -26,14 +26,14 @@ describe("blurhash", () => {
     it("should throw an error if blurhash.x_components is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ blurhash: { y_components: 3 } })).toThrow(
-        "blurhash.x_components option is undefined"
+        "blurhash.x_components is undefined"
       );
     });
 
     it("should throw an error if blurhash.y_components is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ blurhash: { x_components: 3 } })).toThrow(
-        "blurhash.y_components option is undefined"
+        "blurhash.y_components is undefined"
       );
     });
 

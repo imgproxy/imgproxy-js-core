@@ -19,9 +19,7 @@ describe("dpr", () => {
 
     it("should throw an error if dpr is not a number", () => {
       // @ts-expect-error: Let's ignore an error.
-      expect(() => build({ dpr: "1" })).toThrow(
-        "dpr option cannot be a string"
-      );
+      expect(() => build({ dpr: "1" })).toThrow("dpr must be a number");
     });
 
     it("should throw an error if dpr is less than 0", () => {

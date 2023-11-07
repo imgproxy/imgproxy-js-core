@@ -18,7 +18,7 @@ describe("background", () => {
 
   describe("build", () => {
     it("should throw an error if background option is undefined", () => {
-      expect(() => build({})).toThrow("background options are undefined");
+      expect(() => build({})).toThrow("background option is undefined");
     });
 
     it("should throw an error if background is not a string", () => {
@@ -43,7 +43,7 @@ describe("background", () => {
     it("should return an error if one of parameters (r,g,b) is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ background: { r: 255, g: 255 } })).toThrow(
-        "background options are undefined. You must specify options: r, g, b"
+        "background.b is undefined"
       );
     });
 

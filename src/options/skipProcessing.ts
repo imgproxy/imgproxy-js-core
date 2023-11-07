@@ -2,6 +2,7 @@ import type {
   SkipProcessing,
   SkipProcessingOptionsPartial,
 } from "../types/skipProcessing";
+import { errorParamIsUndef } from "../utils";
 
 const extNames = [
   "jpg",
@@ -28,9 +29,7 @@ const test = (options: SkipProcessingOptionsPartial): boolean =>
 const build = (options: SkipProcessingOptionsPartial): string => {
   const skipProcessing = getOpt(options);
 
-  if (!skipProcessing) {
-    throw new Error("skip_processing option is undefined");
-  }
+  errorParamIsUndef(skipProcessing, "skip_processing");
   if (!Array.isArray(skipProcessing)) {
     throw new Error("skip_processing option is not an array");
   }

@@ -1,6 +1,6 @@
 import type { ResizeOptionsPartial, Resize } from "../types/resize";
 import * as extendOpt from "./extend";
-import { normalizeBoolean } from "../utils";
+import { errorParamIsUndef, normalizeBoolean } from "../utils";
 
 const correctResizingTypes = {
   fit: true,
@@ -19,32 +19,35 @@ const test = (options: ResizeOptionsPartial): boolean =>
 const build = (options: ResizeOptionsPartial): string => {
   const resizeOpts = getOpt(options);
 
-  if (!resizeOpts) {
-    throw new Error("resize options are undefined");
-  } else if (
-    resizeOpts.resizing_type &&
+  errorParamIsUndef(resizeOpts, "resize");
+  if (
+    resizeOpts?.resizing_type &&
     !correctResizingTypes[resizeOpts.resizing_type]
   ) {
     throw new Error(`incorrect resizing_type`);
-  } else if (resizeOpts.width && typeof resizeOpts.width !== "number") {
+  }
+  if (resizeOpts?.width && typeof resizeOpts.width !== "number") {
     throw new Error(`incorrect width. width must be a number`);
-  } else if (resizeOpts.height && typeof resizeOpts.height !== "number") {
+  }
+  if (resizeOpts?.height && typeof resizeOpts.height !== "number") {
     throw new Error(`incorrect height. height must be a number`);
-  } else if (resizeOpts.width && resizeOpts.width < 0) {
+  }
+  if (resizeOpts?.width && resizeOpts.width < 0) {
     throw new Error(`incorrect width. width must be more than 0`);
-  } else if (resizeOpts.height && resizeOpts.height < 0) {
+  }
+  if (resizeOpts?.height && resizeOpts.height < 0) {
     throw new Error(`incorrect height. height must be more than 0`);
   }
 
-  const resizingType = resizeOpts.resizing_type || "";
-  const width = resizeOpts.width || "";
-  const height = resizeOpts.height || "";
+  const resizingType = resizeOpts?.resizing_type || "";
+  const width = resizeOpts?.width || "";
+  const height = resizeOpts?.height || "";
   const enlarge =
-    resizeOpts.enlarge === undefined
+    resizeOpts?.enlarge === undefined
       ? ""
       : normalizeBoolean(resizeOpts.enlarge);
-  const extend = extendOpt.test(resizeOpts)
-    ? extendOpt.build(resizeOpts, { headless: true })
+  const extend = extendOpt.test(resizeOpts as Resize)
+    ? extendOpt.build(resizeOpts as Resize, { headless: true })
     : "";
 
   const result =

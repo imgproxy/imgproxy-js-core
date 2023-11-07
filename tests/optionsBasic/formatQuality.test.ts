@@ -16,7 +16,7 @@ describe("formatQuality", () => {
 
   describe("build", () => {
     it("should throw an error if formatQuality option is undefined", () => {
-      expect(() => build({})).toThrow("format quality option is undefined");
+      expect(() => build({})).toThrow("format_quality option is undefined");
     });
 
     it("should throw an error if formatQuality is not an array", () => {

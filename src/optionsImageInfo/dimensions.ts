@@ -2,7 +2,7 @@ import type {
   Dimensions,
   DimensionsImageInfoOptionsPartial,
 } from "../typesImageInfo/dimensions";
-import { normalizeBoolean } from "../utils";
+import { errorParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: DimensionsImageInfoOptionsPartial
@@ -21,12 +21,8 @@ const test = (options: DimensionsImageInfoOptionsPartial): boolean =>
 
 const build = (options: DimensionsImageInfoOptionsPartial): string => {
   const dimensionsOpts = getOpt(options);
-
-  if (dimensionsOpts === undefined) {
-    throw new Error("dimensions option is undefined");
-  }
-
-  return `d:${normalizeBoolean(dimensionsOpts)}`;
+  errorParamIsUndef(dimensionsOpts, "dimensions");
+  return `d:${normalizeBoolean(dimensionsOpts as Dimensions)}`;
 };
 
 export { test, build };

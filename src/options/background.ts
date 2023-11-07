@@ -1,4 +1,5 @@
 import type { Background, BackgroundOptionsPartial } from "../types/background";
+import { errorParamIsUndef } from "../utils";
 
 const getOpt = (options: BackgroundOptionsPartial): Background | undefined =>
   options.background || options.bg;
@@ -9,10 +10,7 @@ const test = (options: BackgroundOptionsPartial): boolean =>
 const build = (options: BackgroundOptionsPartial): string => {
   const backgroundOpts = getOpt(options);
 
-  if (!backgroundOpts) {
-    throw new Error("background options are undefined");
-  }
-
+  errorParamIsUndef(backgroundOpts, "background");
   if (typeof backgroundOpts === "number") {
     throw new Error("background option is not a string or object");
   }
@@ -33,26 +31,20 @@ const build = (options: BackgroundOptionsPartial): string => {
     return `bg:${backgroundOpts}`;
   }
 
-  if (
-    backgroundOpts.r === undefined ||
-    backgroundOpts.g === undefined ||
-    backgroundOpts.b === undefined
-  ) {
-    throw new Error(
-      "background options are undefined. You must specify options: r, g, b"
-    );
-  }
-  if (typeof backgroundOpts.r !== "number") {
+  errorParamIsUndef(backgroundOpts?.r, "background.r");
+  errorParamIsUndef(backgroundOpts?.g, "background.g");
+  errorParamIsUndef(backgroundOpts?.b, "background.b");
+  if (typeof backgroundOpts?.r !== "number") {
     throw new Error("background.r option is not a number");
   }
-  if (typeof backgroundOpts.g !== "number") {
+  if (typeof backgroundOpts?.g !== "number") {
     throw new Error("background.g option is not a number");
   }
-  if (typeof backgroundOpts.b !== "number") {
+  if (typeof backgroundOpts?.b !== "number") {
     throw new Error("background.b option is not a number");
   }
 
-  return `bg:${backgroundOpts.r}:${backgroundOpts.g}:${backgroundOpts.b}`;
+  return `bg:${backgroundOpts?.r}:${backgroundOpts?.g}:${backgroundOpts?.b}`;
 };
 
 export { test, build };

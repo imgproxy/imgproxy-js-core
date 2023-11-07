@@ -18,7 +18,7 @@ describe("jpegOptions", () => {
 
   describe("build", () => {
     it("should throw an error if jpegOptions is undefined", () => {
-      expect(() => build({})).toThrow("jpeg options option is undefined");
+      expect(() => build({})).toThrow("jpeg_options option is undefined");
     });
 
     it("should throw an error if progressive is not a boolean", () => {

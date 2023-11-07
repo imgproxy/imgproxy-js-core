@@ -5,6 +5,7 @@ import type {
   ObjGravity,
   BaseGravity,
 } from "../types/gravity";
+import { errorParamIsUndef } from "../utils";
 
 interface BuildProps {
   headless?: boolean;
@@ -45,12 +46,8 @@ const build = (
   const { headless = false } = meta;
   const gravityOpts = getOpt(options);
 
-  if (!gravityOpts) {
-    throw new Error("gravity options are undefined");
-  }
-  if (!gravityOpts.type) {
-    throw new Error("gravity.type is undefined");
-  }
+  errorParamIsUndef(gravityOpts, "gravity");
+  errorParamIsUndef(gravityOpts?.type, "gravity.type");
   if (!currentAllTypes[gravityOpts.type]) {
     throw new Error(
       `gravity type "${

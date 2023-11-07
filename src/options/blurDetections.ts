@@ -2,6 +2,7 @@ import type {
   BlurDetections,
   BlurDetectionsOptionsPartial,
 } from "../types/blurDetections";
+import { errorParamIsUndef } from "../utils";
 
 const getOpt = (
   options: BlurDetectionsOptionsPartial
@@ -13,13 +14,9 @@ const test = (options: BlurDetectionsOptionsPartial): boolean =>
 const build = (options: BlurDetectionsOptionsPartial): string => {
   const blurDetectionsOpts = getOpt(options);
 
-  if (!blurDetectionsOpts) {
-    throw new Error("blur_detections option is undefined");
-  }
-  if (!blurDetectionsOpts.sigma) {
-    throw new Error("blur_detections.sigma option is required");
-  }
-  if (typeof blurDetectionsOpts.sigma !== "number") {
+  errorParamIsUndef(blurDetectionsOpts, "blur_detections");
+  errorParamIsUndef(blurDetectionsOpts?.sigma, "blur_detections.sigma");
+  if (typeof blurDetectionsOpts?.sigma !== "number") {
     throw new Error("blur_detections.sigma option is not a number");
   }
 

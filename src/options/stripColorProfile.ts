@@ -2,7 +2,7 @@ import type {
   StripColorProfile,
   StripColorProfileOptionsPartial,
 } from "../types/stripColorProfile";
-import { normalizeBoolean } from "../utils";
+import { errorParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: StripColorProfileOptionsPartial
@@ -21,12 +21,8 @@ const test = (options: StripColorProfileOptionsPartial): boolean =>
 
 const build = (options: StripColorProfileOptionsPartial): string => {
   const stripColorProfileOpts = getOpt(options);
-
-  if (stripColorProfileOpts === undefined) {
-    throw new Error("strip color profile option is undefined");
-  }
-
-  return `scp:${normalizeBoolean(stripColorProfileOpts)}`;
+  errorParamIsUndef(stripColorProfileOpts, "strip_color_profile");
+  return `scp:${normalizeBoolean(stripColorProfileOpts as StripColorProfile)}`;
 };
 
 export { test, build };

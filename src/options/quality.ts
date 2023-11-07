@@ -1,4 +1,5 @@
 import type { Quality, QualityOptionsPartial } from "../types/quality";
+import { errorParamIsUndef } from "../utils";
 
 const getOpt = (options: QualityOptionsPartial): Quality | undefined =>
   options.quality || options.q;
@@ -9,9 +10,7 @@ const test = (options: QualityOptionsPartial): boolean =>
 const build = (options: QualityOptionsPartial): string => {
   const qualityOpts = getOpt(options);
 
-  if (!qualityOpts) {
-    throw new Error("quality option is undefined");
-  }
+  errorParamIsUndef(qualityOpts, "quality");
   if (typeof qualityOpts !== "number") {
     throw new Error("quality option must be a number");
   }

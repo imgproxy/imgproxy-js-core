@@ -10,7 +10,7 @@ describe("generateImageInfoUrl", () => {
   it("should throw an error if url.type is undefined", () => {
     // @ts-expect-error: Let's ignore an error.
     expect(() => generateUrl({ value: "test" })).toThrow(
-      "url.type is undefined. Valid values are: 'plain', 'base64', 'encrypted'"
+      "url.type is undefined. Valid values are: plain, base64, encrypted"
     );
   });
 

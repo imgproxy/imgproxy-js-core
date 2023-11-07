@@ -1,8 +1,9 @@
-import {
+import type {
   DominantColors,
   DCImageInfoOptionsPartial,
 } from "../typesImageInfo/dominantColors";
-import { normalizeBoolean } from "../utils";
+import type imgProxyBool from "../typesShared/imgProxyBool";
+import { errorParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: DCImageInfoOptionsPartial
@@ -22,19 +23,17 @@ const test = (options: DCImageInfoOptionsPartial): boolean =>
 const build = (options: DCImageInfoOptionsPartial): string => {
   const dcOpts = getOpt(options);
 
-  if (dcOpts === undefined) {
-    throw new Error("dominant_colors option is undefined");
-  }
-  if (dcOpts.dominant_colors === undefined) {
-    throw new Error("dominant_colors.dominant_colors option is undefined");
-  }
+  errorParamIsUndef(dcOpts, "dominant_colors");
+  errorParamIsUndef(dcOpts?.dominant_colors, "dominant_colors.dominant_colors");
 
   const buildMissed =
-    dcOpts.build_missed === undefined
+    dcOpts?.build_missed === undefined
       ? ""
       : `:${normalizeBoolean(dcOpts.build_missed)}`;
 
-  return `dc:${normalizeBoolean(dcOpts.dominant_colors)}${buildMissed}`;
+  return `dc:${normalizeBoolean(
+    dcOpts?.dominant_colors as imgProxyBool
+  )}${buildMissed}`;
 };
 
 export { test, build };

@@ -1,5 +1,5 @@
 import type { Raw, RawOptionsPartial } from "../types/raw";
-import { normalizeBoolean } from "../utils";
+import { errorParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (options: RawOptionsPartial): Raw | undefined => {
   if ("raw" in options) {
@@ -14,12 +14,8 @@ const test = (options: RawOptionsPartial): boolean =>
 
 const build = (options: RawOptionsPartial): string => {
   const raw = getOpt(options);
-
-  if (raw === undefined) {
-    throw new Error("raw option is undefined");
-  }
-
-  return `raw:${normalizeBoolean(raw)}`;
+  errorParamIsUndef(raw, "raw");
+  return `raw:${normalizeBoolean(raw as Raw)}`;
 };
 
 export { test, build };

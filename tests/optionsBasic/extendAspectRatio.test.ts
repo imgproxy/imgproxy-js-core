@@ -23,7 +23,7 @@ describe("extendAspectRatio", () => {
   describe("build", () => {
     it("should throw an error if extend aspect ratio options are undefined ", () => {
       expect(() => build({})).toThrow(
-        "extend aspect ratio options are undefined"
+        "extend_aspect_ratio option is undefined"
       );
     });
 
@@ -31,7 +31,7 @@ describe("extendAspectRatio", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error.
         build({ exar: { gravity: { type: "we" } } })
-      ).toThrow("extend in extend aspect ratio option is required");
+      ).toThrow("extend_aspect_ratio.extend is undefined");
     });
 
     it("should return exar:t if extend is true and gravity is undefined", () => {

@@ -14,7 +14,7 @@ describe("rawOptions", () => {
 
   describe("build", () => {
     it("should throw an error if raw_options option is undefined", () => {
-      expect(() => build({})).toThrow("raw_options are undefined");
+      expect(() => build({})).toThrow("raw_options option is undefined");
     });
 
     it("should throw an error if raw_options is not an array", () => {

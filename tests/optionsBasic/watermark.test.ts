@@ -24,7 +24,7 @@ describe("watermark", () => {
     it("should return throw an error if opacity is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ watermark: {} })).toThrow(
-        "watermark opacity is required"
+        "watermark.opacity is undefined"
       );
     });
 

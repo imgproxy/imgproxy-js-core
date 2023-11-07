@@ -22,7 +22,7 @@ describe("stripMetadata", () => {
 
   describe("build", () => {
     it("should throw an error if strip_metadata option is undefined", () => {
-      expect(() => build({})).toThrow("strip metadata option is undefined");
+      expect(() => build({})).toThrow("strip_metadata option is undefined");
     });
 
     it("should return 't' if strip_metadata option is true", () => {

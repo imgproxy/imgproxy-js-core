@@ -18,7 +18,7 @@ describe("padding", () => {
 
   describe("build", () => {
     it("should throw an error if padding option is undefined", () => {
-      expect(() => build({})).toThrow("padding options are undefined");
+      expect(() => build({})).toThrow("padding option is undefined");
     });
 
     it("should throw an error if padding is not a number or object", () => {

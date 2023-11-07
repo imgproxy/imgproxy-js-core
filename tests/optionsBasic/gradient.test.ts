@@ -24,7 +24,7 @@ describe("gradient", () => {
     it("should throw an error if opacity is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ gradient: { color: "964b00" } })).toThrow(
-        "gradient opacity is required"
+        "gradient.opacity is undefined"
       );
     });
 
