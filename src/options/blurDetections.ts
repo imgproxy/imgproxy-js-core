@@ -15,8 +15,8 @@ const build = (options: BlurDetectionsOptionsPartial): string => {
   const blurDetectionsOpts = getOpt(options);
 
   errorParamIsUndef(blurDetectionsOpts, "blur_detections");
-  errorParamIsUndef(blurDetectionsOpts?.sigma, "blur_detections.sigma");
-  if (typeof blurDetectionsOpts?.sigma !== "number") {
+  errorParamIsUndef(blurDetectionsOpts.sigma, "blur_detections.sigma");
+  if (typeof blurDetectionsOpts.sigma !== "number") {
     throw new Error("blur_detections.sigma option is not a number");
   }
 

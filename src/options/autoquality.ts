@@ -21,7 +21,7 @@ const build = (options: AutoqualityOptionsPartial): string => {
   const autoqualityOpts = getOpt(options);
 
   errorParamIsUndef(autoqualityOpts, "autoquality");
-  if (autoqualityOpts?.method && !currentMethods[autoqualityOpts.method]) {
+  if (autoqualityOpts.method && !currentMethods[autoqualityOpts.method]) {
     throw new Error(
       `autoquality method "${
         autoqualityOpts.method
@@ -30,7 +30,7 @@ const build = (options: AutoqualityOptionsPartial): string => {
       ).join(",")}`
     );
   }
-  if (autoqualityOpts?.target) {
+  if (autoqualityOpts.target) {
     if (typeof autoqualityOpts.target !== "number") {
       throw new Error("autoquality.target is not a number");
     }
@@ -38,7 +38,7 @@ const build = (options: AutoqualityOptionsPartial): string => {
       throw new Error("autoquality.target can't be a negative");
     }
   }
-  if (autoqualityOpts?.min_quality) {
+  if (autoqualityOpts.min_quality) {
     if (typeof autoqualityOpts.min_quality !== "number") {
       throw new Error("autoquality.min_quality is not a number");
     }
@@ -49,7 +49,7 @@ const build = (options: AutoqualityOptionsPartial): string => {
       throw new Error("autoquality.min_quality can't be more than 100");
     }
   }
-  if (autoqualityOpts?.max_quality) {
+  if (autoqualityOpts.max_quality) {
     if (typeof autoqualityOpts.max_quality !== "number") {
       throw new Error("autoquality.max_quality is not a number");
     }
@@ -60,7 +60,7 @@ const build = (options: AutoqualityOptionsPartial): string => {
       throw new Error("autoquality.max_quality can't be more than 100");
     }
   }
-  if (autoqualityOpts?.allowed_error) {
+  if (autoqualityOpts.allowed_error) {
     if (autoqualityOpts.method !== "dssim" && autoqualityOpts.method !== "ml") {
       throw new Error(
         "autoquality.allowed_error is applicable only to dssim and ml methods"
@@ -77,11 +77,11 @@ const build = (options: AutoqualityOptionsPartial): string => {
     }
   }
 
-  const method = autoqualityOpts?.method || "";
-  const target = autoqualityOpts?.target || "";
-  const min_quality = autoqualityOpts?.min_quality || "";
-  const max_quality = autoqualityOpts?.max_quality || "";
-  const allowed_error = autoqualityOpts?.allowed_error || "";
+  const method = autoqualityOpts.method || "";
+  const target = autoqualityOpts.target || "";
+  const min_quality = autoqualityOpts.min_quality || "";
+  const max_quality = autoqualityOpts.max_quality || "";
+  const allowed_error = autoqualityOpts.allowed_error || "";
 
   return `aq:${method}:${target}:${min_quality}:${max_quality}:${allowed_error}`.replace(
     /:+$/,

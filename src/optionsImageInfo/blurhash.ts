@@ -21,22 +21,22 @@ const build = (options: BHImageInfoOptionsPartial): string => {
   const blurhashOpts = getOpt(options);
 
   errorParamIsUndef(blurhashOpts, "blurhash");
-  errorParamIsUndef(blurhashOpts?.x_components, "blurhash.x_components");
-  errorParamIsUndef(blurhashOpts?.y_components, "blurhash.y_components");
-  if ((blurhashOpts?.x_components as number) < 0) {
+  errorParamIsUndef(blurhashOpts.x_components, "blurhash.x_components");
+  errorParamIsUndef(blurhashOpts.y_components, "blurhash.y_components");
+  if (blurhashOpts.x_components < 0) {
     throw new Error("blurhash.x_components can't be a negative");
   }
-  if ((blurhashOpts?.y_components as number) < 0) {
+  if (blurhashOpts.y_components < 0) {
     throw new Error("blurhash.y_components can't be a negative");
   }
-  if ((blurhashOpts?.x_components as number) > 9) {
+  if (blurhashOpts.x_components > 9) {
     throw new Error("blurhash.x_components can't be more than 9");
   }
-  if ((blurhashOpts?.y_components as number) > 9) {
+  if (blurhashOpts.y_components > 9) {
     throw new Error("blurhash.y_components can't be more than 9");
   }
   if (
-    typeof blurhashOpts?.x_components !== "number" ||
+    typeof blurhashOpts.x_components !== "number" ||
     typeof blurhashOpts.y_components !== "number"
   ) {
     throw new Error(

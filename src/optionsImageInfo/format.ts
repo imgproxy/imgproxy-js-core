@@ -22,7 +22,7 @@ const test = (options: FormatImageInfoOptionsPartial): boolean =>
 const build = (options: FormatImageInfoOptionsPartial): string => {
   const formatOpts = getOpt(options);
   errorParamIsUndef(formatOpts, "format");
-  return `f:${normalizeBoolean(formatOpts as NeedFormat)}`;
+  return `f:${normalizeBoolean(formatOpts)}`;
 };
 
 export { test, build };

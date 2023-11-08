@@ -47,7 +47,7 @@ const build = (
   const gravityOpts = getOpt(options);
 
   errorParamIsUndef(gravityOpts, "gravity");
-  errorParamIsUndef(gravityOpts?.type, "gravity.type");
+  errorParamIsUndef(gravityOpts.type, "gravity.type");
   if (!currentAllTypes[gravityOpts.type]) {
     throw new Error(
       `gravity type "${

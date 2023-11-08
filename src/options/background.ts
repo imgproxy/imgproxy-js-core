@@ -31,20 +31,20 @@ const build = (options: BackgroundOptionsPartial): string => {
     return `bg:${backgroundOpts}`;
   }
 
-  errorParamIsUndef(backgroundOpts?.r, "background.r");
-  errorParamIsUndef(backgroundOpts?.g, "background.g");
-  errorParamIsUndef(backgroundOpts?.b, "background.b");
-  if (typeof backgroundOpts?.r !== "number") {
+  errorParamIsUndef(backgroundOpts.r, "background.r");
+  errorParamIsUndef(backgroundOpts.g, "background.g");
+  errorParamIsUndef(backgroundOpts.b, "background.b");
+  if (typeof backgroundOpts.r !== "number") {
     throw new Error("background.r option is not a number");
   }
-  if (typeof backgroundOpts?.g !== "number") {
+  if (typeof backgroundOpts.g !== "number") {
     throw new Error("background.g option is not a number");
   }
-  if (typeof backgroundOpts?.b !== "number") {
+  if (typeof backgroundOpts.b !== "number") {
     throw new Error("background.b option is not a number");
   }
 
-  return `bg:${backgroundOpts?.r}:${backgroundOpts?.g}:${backgroundOpts?.b}`;
+  return `bg:${backgroundOpts.r}:${backgroundOpts.g}:${backgroundOpts.b}`;
 };
 
 export { test, build };

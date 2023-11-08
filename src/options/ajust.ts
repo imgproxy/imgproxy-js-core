@@ -12,15 +12,15 @@ const build = (options: AjustOptionsPartial): string => {
 
   errorParamIsUndef(ajustOpts, "ajust");
   if (
-    ajustOpts?.brightness &&
+    ajustOpts.brightness &&
     (ajustOpts.brightness > 255 || ajustOpts.brightness < -255)
   ) {
     throw new Error("brightness must be in range [-255, 255]");
   }
 
-  const brightness = ajustOpts?.brightness || "";
-  const contrast = ajustOpts?.contrast || "";
-  const saturation = ajustOpts?.saturation || "";
+  const brightness = ajustOpts.brightness || "";
+  const contrast = ajustOpts.contrast || "";
+  const saturation = ajustOpts.saturation || "";
 
   return `aj:${brightness}:${contrast}:${saturation}`;
 };

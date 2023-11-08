@@ -15,7 +15,7 @@ const test = (options: RawOptionsPartial): boolean =>
 const build = (options: RawOptionsPartial): string => {
   const raw = getOpt(options);
   errorParamIsUndef(raw, "raw");
-  return `raw:${normalizeBoolean(raw as Raw)}`;
+  return `raw:${normalizeBoolean(raw)}`;
 };
 
 export { test, build };

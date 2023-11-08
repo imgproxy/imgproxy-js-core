@@ -22,7 +22,7 @@ const test = (options: ReturnAttachmentOptionsPartial): boolean =>
 const build = (options: ReturnAttachmentOptionsPartial): string => {
   const returnAttachment = getOpt(options);
   errorParamIsUndef(returnAttachment, "return_attachment");
-  return `ra:${normalizeBoolean(returnAttachment as ReturnAttachment)}`;
+  return `ra:${normalizeBoolean(returnAttachment)}`;
 };
 
 export { test, build };

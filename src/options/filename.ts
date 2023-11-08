@@ -11,8 +11,8 @@ const build = (options: FilenameOptionsPartial): string => {
   const filename = getOpt(options);
 
   errorParamIsUndef(filename, "filename");
-  errorParamIsUndef(filename?.name, "filename.name");
-  if (typeof filename?.name !== "string") {
+  errorParamIsUndef(filename.name, "filename.name");
+  if (typeof filename.name !== "string") {
     throw new Error("name in filename option should be a string");
   }
 

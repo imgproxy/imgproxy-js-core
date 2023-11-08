@@ -11,18 +11,18 @@ const build = (options: CropOptionsPartial): string => {
   const cropOpts = getOpt(options);
 
   errorParamIsUndef(cropOpts, "crop");
-  errorParamIsUndef(cropOpts?.width, "crop.width");
-  errorParamIsUndef(cropOpts?.height, "crop.height");
-  if (typeof cropOpts?.width !== "number") {
+  errorParamIsUndef(cropOpts.width, "crop.width");
+  errorParamIsUndef(cropOpts.height, "crop.height");
+  if (typeof cropOpts.width !== "number") {
     throw new Error("crop.width is not a number");
   }
-  if (typeof cropOpts?.height !== "number") {
+  if (typeof cropOpts.height !== "number") {
     throw new Error("crop.height is not a number");
   }
-  if (cropOpts?.width < 0) {
+  if (cropOpts.width < 0) {
     throw new Error("crop.width is can't be negative");
   }
-  if (cropOpts?.height < 0) {
+  if (cropOpts.height < 0) {
     throw new Error("crop.height is can't be negative");
   }
 

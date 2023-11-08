@@ -23,7 +23,7 @@ const test = (options: EnforceThumbnailOptionsPartial): boolean =>
 const build = (options: EnforceThumbnailOptionsPartial): string => {
   const enforceThumbnailOpts = getOpt(options);
   errorParamIsUndef(enforceThumbnailOpts, "enforce_thumbnail");
-  return `eth:${normalizeBoolean(enforceThumbnailOpts as EnforceThumbnail)}`;
+  return `eth:${normalizeBoolean(enforceThumbnailOpts)}`;
 };
 
 export { test, build };

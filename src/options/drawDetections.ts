@@ -15,7 +15,7 @@ const build = (options: DrawDetectionsOptionsPartial): string => {
   const drawDetectionsOpts = getOpt(options);
 
   errorParamIsUndef(drawDetectionsOpts, "draw_detections");
-  errorParamIsUndef(drawDetectionsOpts?.draw, "draw_detections.draw");
+  errorParamIsUndef(drawDetectionsOpts.draw, "draw_detections.draw");
 
   const draw = normalizeBoolean(drawDetectionsOpts.draw);
   const classNamesStr = drawDetectionsOpts.class_names

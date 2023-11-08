@@ -22,7 +22,7 @@ const test = (options: DimensionsImageInfoOptionsPartial): boolean =>
 const build = (options: DimensionsImageInfoOptionsPartial): string => {
   const dimensionsOpts = getOpt(options);
   errorParamIsUndef(dimensionsOpts, "dimensions");
-  return `d:${normalizeBoolean(dimensionsOpts as Dimensions)}`;
+  return `d:${normalizeBoolean(dimensionsOpts)}`;
 };
 
 export { test, build };

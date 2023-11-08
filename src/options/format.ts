@@ -25,7 +25,7 @@ const build = (options: FormatOptionsPartial): string => {
   const format = getOpt(options);
 
   errorParamIsUndef(format, "format");
-  if (!formatValues[format as Format]) {
+  if (!formatValues[format]) {
     throw new Error(
       `format option is invalid. Must be one of: ${Object.keys(
         formatValues

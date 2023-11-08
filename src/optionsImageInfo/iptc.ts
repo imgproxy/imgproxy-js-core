@@ -15,7 +15,7 @@ const test = (options: IptcImageInfoOptionsPartial): boolean =>
 const build = (options: IptcImageInfoOptionsPartial): string => {
   const iptcOpts = getOpt(options);
   errorParamIsUndef(iptcOpts, "IPTC");
-  return `iptc:${normalizeBoolean(iptcOpts as Iptc)}`;
+  return `iptc:${normalizeBoolean(iptcOpts)}`;
 };
 
 export { test, build };

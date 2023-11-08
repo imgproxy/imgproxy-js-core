@@ -22,7 +22,7 @@ const test = (options: KeepCopyrightOptionsPartial): boolean =>
 const build = (options: KeepCopyrightOptionsPartial): string => {
   const keepCopyrightOpts = getOpt(options);
   errorParamIsUndef(keepCopyrightOpts, "keep_copyright");
-  return `kcr:${normalizeBoolean(keepCopyrightOpts as KeepCopyright)}`;
+  return `kcr:${normalizeBoolean(keepCopyrightOpts)}`;
 };
 
 export { test, build };

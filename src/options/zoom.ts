@@ -33,9 +33,9 @@ const build = (options: ZoomOptionsPartial): string => {
     return `z:${zoomOpts}`;
   }
 
-  validateValue(zoomOpts?.zoom_x as number, "zoom.zoom_x");
-  validateValue(zoomOpts?.zoom_y as number, "zoom.zoom_y");
-  return `z:${zoomOpts?.zoom_x}:${zoomOpts?.zoom_y}`;
+  validateValue(zoomOpts.zoom_x, "zoom.zoom_x");
+  validateValue(zoomOpts.zoom_y, "zoom.zoom_y");
+  return `z:${zoomOpts.zoom_x}:${zoomOpts.zoom_y}`;
 };
 
 export { test, build };

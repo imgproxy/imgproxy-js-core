@@ -22,7 +22,7 @@ const test = (options: VideoMetaImageInfoOptionsPartial): boolean =>
 const build = (options: VideoMetaImageInfoOptionsPartial): string => {
   const videoMetaOpts = getOpt(options);
   errorParamIsUndef(videoMetaOpts, "video_meta");
-  return `vm:${normalizeBoolean(videoMetaOpts as VideoMeta)}`;
+  return `vm:${normalizeBoolean(videoMetaOpts)}`;
 };
 
 export { test, build };

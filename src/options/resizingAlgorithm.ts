@@ -23,7 +23,7 @@ const build = (options: ResizingAlgorithmOptionsPartial): string => {
   const resizingAlgorithmOpts = getOpt(options);
 
   errorParamIsUndef(resizingAlgorithmOpts, "resizing_algorithm");
-  if (!correctValues[resizingAlgorithmOpts as ResizingAlgorithm]) {
+  if (!correctValues[resizingAlgorithmOpts]) {
     throw new Error(
       "resizing_algorithm option is not correct. You can use: 'nearest', 'linear', 'cubic', 'lanczos2', 'lanczos3'"
     );

@@ -17,7 +17,7 @@ const test = (options: EnlargeOptionsPartial): boolean =>
 const build = (options: EnlargeOptionsPartial): string => {
   const enlargeOpts = getOpt(options);
   errorParamIsUndef(enlargeOpts, "enlarge");
-  return `el:${normalizeBoolean(enlargeOpts as Enlarge)}`;
+  return `el:${normalizeBoolean(enlargeOpts)}`;
 };
 
 export { test, build };

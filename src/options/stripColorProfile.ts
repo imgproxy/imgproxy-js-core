@@ -22,7 +22,7 @@ const test = (options: StripColorProfileOptionsPartial): boolean =>
 const build = (options: StripColorProfileOptionsPartial): string => {
   const stripColorProfileOpts = getOpt(options);
   errorParamIsUndef(stripColorProfileOpts, "strip_color_profile");
-  return `scp:${normalizeBoolean(stripColorProfileOpts as StripColorProfile)}`;
+  return `scp:${normalizeBoolean(stripColorProfileOpts)}`;
 };
 
 export { test, build };

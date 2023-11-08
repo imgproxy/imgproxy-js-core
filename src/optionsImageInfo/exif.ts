@@ -15,7 +15,7 @@ const test = (options: ExifImageInfoOptionsPartial): boolean =>
 const build = (options: ExifImageInfoOptionsPartial): string => {
   const exifOpts = getOpt(options);
   errorParamIsUndef(exifOpts, "EXIF");
-  return `exif:${normalizeBoolean(exifOpts as Exif)}`;
+  return `exif:${normalizeBoolean(exifOpts)}`;
 };
 
 export { test, build };

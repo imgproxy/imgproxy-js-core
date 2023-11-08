@@ -10,8 +10,8 @@ const build = (options: TrimOptionsPartial): string => {
   const trimOpts = getOpt(options);
 
   errorParamIsUndef(trimOpts, "trim");
-  errorParamIsUndef(trimOpts?.threshold, "trim.threshold");
-  if (typeof trimOpts?.threshold !== "number") {
+  errorParamIsUndef(trimOpts.threshold, "trim.threshold");
+  if (typeof trimOpts.threshold !== "number") {
     throw new Error("threshold in trim is not a number");
   }
 

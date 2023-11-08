@@ -23,10 +23,10 @@ const build = (
   const extendOpts = getOpt(options);
 
   errorParamIsUndef(extendOpts, "extend");
-  errorParamIsUndef(extendOpts?.extend, "extend.extend");
+  errorParamIsUndef(extendOpts.extend, "extend.extend");
 
-  const gravity = gravityOpt.test(extendOpts as Extend)
-    ? `:${gravityOpt.build(extendOpts as Extend, { headless: true })}`
+  const gravity = gravityOpt.test(extendOpts)
+    ? `:${gravityOpt.build(extendOpts, { headless: true })}`
     : "";
 
   return withHead(`${normalizeBoolean(extendOpts.extend)}${gravity}`, headless);

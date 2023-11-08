@@ -24,7 +24,7 @@ const test = (options: StripMetadataOptionsPartial): boolean =>
 const build = (options: StripMetadataOptionsPartial): string => {
   const stripMetadataOpts = getOpt(options);
   errorParamIsUndef(stripMetadataOpts, "strip_metadata");
-  return `sm:${normalizeBoolean(stripMetadataOpts as StripMetadata)}`;
+  return `sm:${normalizeBoolean(stripMetadataOpts)}`;
 };
 
 export { test, build };

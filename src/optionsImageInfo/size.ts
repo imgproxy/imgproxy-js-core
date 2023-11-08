@@ -20,7 +20,7 @@ const test = (options: SizeImageInfoOptionsPartial): boolean =>
 const build = (options: SizeImageInfoOptionsPartial): string => {
   const sizeOpts = getOpt(options);
   errorParamIsUndef(sizeOpts, "size");
-  return `s:${normalizeBoolean(sizeOpts as NeedSize)}`;
+  return `s:${normalizeBoolean(sizeOpts)}`;
 };
 
 export { test, build };

@@ -16,14 +16,8 @@ const test = (options: ExtendAspectRatioOptionsPartial): boolean =>
 const build = (options: ExtendAspectRatioOptionsPartial): string => {
   const extendOpts = getOpt(options);
 
-  // if (!extendOpts) {
-  //   throw new Error("extend aspect ratio options are undefined");
-  // }
-  // if (!("extend" in extendOpts)) {
-  //   throw new Error("extend in extend aspect ratio option is required");
-  // }
   errorParamIsUndef(extendOpts, "extend_aspect_ratio");
-  errorParamIsUndef(extendOpts?.extend, "extend_aspect_ratio.extend");
+  errorParamIsUndef(extendOpts.extend, "extend_aspect_ratio.extend");
 
   const gravity = gravityOpt.test(extendOpts)
     ? `:${gravityOpt.build(extendOpts, { headless: true })}`

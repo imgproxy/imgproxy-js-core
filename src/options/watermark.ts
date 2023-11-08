@@ -25,8 +25,8 @@ const build = (options: WatermarkOptionsPartial): string => {
 
   errorParamIsUndef(watermarkOpts, "watermark");
   // watermarkOpts.opacity
-  errorParamIsUndef(watermarkOpts?.opacity, "watermark.opacity");
-  if (typeof watermarkOpts?.opacity !== "number") {
+  errorParamIsUndef(watermarkOpts.opacity, "watermark.opacity");
+  if (typeof watermarkOpts.opacity !== "number") {
     throw new Error("watermark.opacity is not a number");
   }
   if (watermarkOpts.opacity < 0 || watermarkOpts.opacity > 1) {

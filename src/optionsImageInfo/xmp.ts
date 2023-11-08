@@ -15,7 +15,7 @@ const test = (options: XmpImageInfoOptionsPartial): boolean =>
 const build = (options: XmpImageInfoOptionsPartial): string => {
   const xmpOpts = getOpt(options);
   errorParamIsUndef(xmpOpts, "XMP");
-  return `xmp:${normalizeBoolean(xmpOpts as Xmp)}`;
+  return `xmp:${normalizeBoolean(xmpOpts)}`;
 };
 
 export { test, build };

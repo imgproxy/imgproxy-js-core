@@ -19,8 +19,8 @@ const build = (options: GradientOptionsPartial): string => {
 
   errorParamIsUndef(gradientOpts, "gradient");
   // gradientOpts.opacity
-  errorParamIsUndef(gradientOpts?.opacity, "gradient.opacity");
-  if (typeof gradientOpts?.opacity !== "number") {
+  errorParamIsUndef(gradientOpts.opacity, "gradient.opacity");
+  if (typeof gradientOpts.opacity !== "number") {
     throw new Error("gradient.opacity is not a number");
   }
   if (gradientOpts.opacity < 0 || gradientOpts.opacity > 1) {

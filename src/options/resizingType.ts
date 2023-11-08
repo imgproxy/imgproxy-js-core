@@ -23,7 +23,7 @@ const build = (options: ResizingTypeOptionsPartial): string => {
   const resizingTypeOpts = getOpt(options);
 
   errorParamIsUndef(resizingTypeOpts, "resizing_type");
-  if (!correctValues[resizingTypeOpts as ResizingType]) {
+  if (!correctValues[resizingTypeOpts]) {
     throw new Error(
       "resizing_type option is not correct. You can use: fit, fill, fill_down, force, auto"
     );

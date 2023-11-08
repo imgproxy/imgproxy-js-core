@@ -2,7 +2,6 @@ import type {
   Average,
   AverageImageInfoOptionsPartial,
 } from "../typesImageInfo/average";
-import type imgProxyBool from "../typesShared/imgProxyBool";
 import { errorParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
@@ -24,16 +23,14 @@ const build = (options: AverageImageInfoOptionsPartial): string => {
   const averageOpts = getOpt(options);
 
   errorParamIsUndef(averageOpts, "average");
-  errorParamIsUndef(averageOpts?.average, "average.average");
+  errorParamIsUndef(averageOpts.average, "average.average");
 
   const ignoreTransparent =
-    averageOpts?.ignore_transparent === undefined
+    averageOpts.ignore_transparent === undefined
       ? ""
       : `:${normalizeBoolean(averageOpts.ignore_transparent)}`;
 
-  return `avg:${normalizeBoolean(
-    averageOpts?.average as imgProxyBool
-  )}${ignoreTransparent}`;
+  return `avg:${normalizeBoolean(averageOpts.average)}${ignoreTransparent}`;
 };
 
 export { test, build };

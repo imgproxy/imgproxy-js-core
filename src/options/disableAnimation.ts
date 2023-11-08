@@ -22,7 +22,7 @@ const test = (options: DisableAnimationOptionsPartial): boolean =>
 const build = (options: DisableAnimationOptionsPartial): string => {
   const disableAnimation = getOpt(options);
   errorParamIsUndef(disableAnimation, "disable_animation");
-  return `da:${normalizeBoolean(disableAnimation as DisableAnimation)}`;
+  return `da:${normalizeBoolean(disableAnimation)}`;
 };
 
 export { test, build };

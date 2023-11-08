@@ -16,7 +16,7 @@ const build = (options: WebpOptionsPartial): string => {
   const webpOptions = getOpt(options);
 
   errorParamIsUndef(webpOptions, "webp_options");
-  if (!correctOptions[webpOptions as WebpOptions]) {
+  if (!correctOptions[webpOptions]) {
     throw new Error(
       "webp options option is invalid. Must be one of: 'lossy', 'near_lossless', 'lossless'"
     );

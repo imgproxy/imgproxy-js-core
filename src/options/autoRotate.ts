@@ -17,7 +17,7 @@ const test = (options: AutoRotateOptionsPartial): boolean =>
 const build = (options: AutoRotateOptionsPartial): string => {
   const autoRotateOpts = getOpt(options);
   errorParamIsUndef(autoRotateOpts, "auto_rotate");
-  return `ar:${normalizeBoolean(autoRotateOpts as AutoRotate)}`;
+  return `ar:${normalizeBoolean(autoRotateOpts)}`;
 };
 
 export { test, build };
