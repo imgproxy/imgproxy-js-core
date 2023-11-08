@@ -1,5 +1,5 @@
 import type { Gradient, GradientOptionsPartial } from "../types/gradient";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const currentDirection = {
   down: true,
@@ -17,17 +17,12 @@ const test = (options: GradientOptionsPartial): boolean =>
 const build = (options: GradientOptionsPartial): string => {
   const gradientOpts = getOpt(options);
 
-  guardParamIsUndef(gradientOpts, "gradient");
+  guardIsUndef(gradientOpts, "gradient");
   // gradientOpts.opacity
-  guardParamIsUndef(gradientOpts.opacity, "gradient.opacity");
-  if (typeof gradientOpts.opacity !== "number") {
-    throw new Error("gradient.opacity is not a number");
-  }
-  if (gradientOpts.opacity < 0 || gradientOpts.opacity > 1) {
-    throw new Error(
-      "gradient.opacity is not correct. Set the value between 0 and 1"
-    );
-  }
+  guardIsUndef(gradientOpts.opacity, "gradient.opacity");
+  guardIsNotNum(gradientOpts.opacity, "gradient.opacity", {
+    addParam: { type: "minmax", value: [0, 1] },
+  });
 
   // gradientOpts.color
   if (gradientOpts.color) {
@@ -62,26 +57,16 @@ const build = (options: GradientOptionsPartial): string => {
 
   // gradientOpts.start
   if (gradientOpts.start) {
-    if (typeof gradientOpts.start !== "number") {
-      throw new Error("gradient.start is not a number");
-    }
-    if (gradientOpts.start < 0 || gradientOpts.start > 1) {
-      throw new Error(
-        "gradient.start is not correct. Set the value between 0 and 1"
-      );
-    }
+    guardIsNotNum(gradientOpts.start, "gradient.start", {
+      addParam: { type: "minmax", value: [0, 1] },
+    });
   }
 
   // gradientOpts.stop
   if (gradientOpts.stop) {
-    if (typeof gradientOpts.stop !== "number") {
-      throw new Error("gradient.stop is not a number");
-    }
-    if (gradientOpts.stop < 0 || gradientOpts.stop > 1) {
-      throw new Error(
-        "gradient.stop is not correct. Set the value between 0 and 1"
-      );
-    }
+    guardIsNotNum(gradientOpts.stop, "gradient.stop", {
+      addParam: { type: "minmax", value: [0, 1] },
+    });
   }
 
   const opacity = gradientOpts.opacity;

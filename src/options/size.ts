@@ -1,6 +1,6 @@
 import type { SizeOptionsPartial, Size } from "../types/size";
 import * as extendOpt from "./extend";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (options: SizeOptionsPartial): Size | undefined =>
   options.size || options.s;
@@ -10,7 +10,7 @@ const test = (options: SizeOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: SizeOptionsPartial): string => {
   const sizeOpts = getOpt(options);
 
-  guardParamIsUndef(sizeOpts, "size");
+  guardIsUndef(sizeOpts, "size");
   if (sizeOpts.width && typeof sizeOpts.width !== "number") {
     throw new Error(`incorrect width. width must be a number`);
   }

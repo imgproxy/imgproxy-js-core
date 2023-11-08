@@ -1,5 +1,5 @@
 import type { MinWidth, MinWidthOptionsPartial } from "../types/minWidth";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const getOpt = (options: MinWidthOptionsPartial): MinWidth | undefined =>
   options.min_width || options.mw;
@@ -10,7 +10,7 @@ const test = (options: MinWidthOptionsPartial): boolean =>
 const build = (options: MinWidthOptionsPartial): string => {
   const minWidthOpts = getOpt(options);
 
-  guardParamIsUndef(minWidthOpts, "min_width");
+  guardIsUndef(minWidthOpts, "min_width");
   if (typeof minWidthOpts !== "number") {
     throw new Error("min_width option is not a number");
   }

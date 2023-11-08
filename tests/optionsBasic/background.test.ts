@@ -50,21 +50,21 @@ describe("background", () => {
     it("shold return an error if b parameter is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ background: { r: 255, g: 255, b: "255" } })).toThrow(
-        "background.b option is not a number"
+        "background.b is not a number"
       );
     });
 
     it("shold return an error if g parameter is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ background: { r: 255, g: "255", b: 255 } })).toThrow(
-        "background.g option is not a number"
+        "background.g is not a number"
       );
     });
 
     it("shold return an error if r parameter is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ background: { r: "255", g: 255, b: 255 } })).toThrow(
-        "background.r option is not a number"
+        "background.r is not a number"
       );
     });
 

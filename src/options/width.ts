@@ -1,5 +1,5 @@
 import type { Width, WidthOptionsPartial } from "../types/width";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const getOpt = (options: WidthOptionsPartial): Width | undefined =>
   options.width || options.w;
@@ -10,7 +10,7 @@ const test = (options: WidthOptionsPartial): boolean =>
 const build = (options: WidthOptionsPartial): string => {
   const widthOpts = getOpt(options);
 
-  guardParamIsUndef(widthOpts, "width");
+  guardIsUndef(widthOpts, "width");
   if (typeof widthOpts !== "number") {
     throw new Error("width option is not a number");
   }

@@ -2,7 +2,7 @@ import type {
   UnsharpMasking,
   UnsharpMaskingOptionsPartial,
 } from "../types/unsharpMasking";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const correctMode = {
   auto: true,
@@ -20,7 +20,7 @@ const test = (options: UnsharpMaskingOptionsPartial): boolean =>
 const build = (options: UnsharpMaskingOptionsPartial): string => {
   const unsharpMaskingOpts = getOpt(options);
 
-  guardParamIsUndef(unsharpMaskingOpts, "unsharp_masking");
+  guardIsUndef(unsharpMaskingOpts, "unsharp_masking");
   if (unsharpMaskingOpts.mode && !correctMode[unsharpMaskingOpts.mode]) {
     throw new Error(
       "unsharp_masking.mode option is not correct. Set the value auto, none or always"

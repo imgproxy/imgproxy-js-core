@@ -2,7 +2,7 @@ import type {
   Average,
   AverageImageInfoOptionsPartial,
 } from "../typesImageInfo/average";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: AverageImageInfoOptionsPartial
@@ -22,8 +22,8 @@ const test = (options: AverageImageInfoOptionsPartial): boolean =>
 const build = (options: AverageImageInfoOptionsPartial): string => {
   const averageOpts = getOpt(options);
 
-  guardParamIsUndef(averageOpts, "average");
-  guardParamIsUndef(averageOpts.average, "average.average");
+  guardIsUndef(averageOpts, "average");
+  guardIsUndef(averageOpts.average, "average.average");
 
   const ignoreTransparent =
     averageOpts.ignore_transparent === undefined

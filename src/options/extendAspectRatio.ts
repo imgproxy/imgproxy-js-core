@@ -3,7 +3,7 @@ import type {
   ExtendAspectRatio,
 } from "../types/extendAspectRatio";
 import * as gravityOpt from "./gravity";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: ExtendAspectRatioOptionsPartial
@@ -16,8 +16,8 @@ const test = (options: ExtendAspectRatioOptionsPartial): boolean =>
 const build = (options: ExtendAspectRatioOptionsPartial): string => {
   const extendOpts = getOpt(options);
 
-  guardParamIsUndef(extendOpts, "extend_aspect_ratio");
-  guardParamIsUndef(extendOpts.extend, "extend_aspect_ratio.extend");
+  guardIsUndef(extendOpts, "extend_aspect_ratio");
+  guardIsUndef(extendOpts.extend, "extend_aspect_ratio.extend");
 
   const gravity = gravityOpt.test(extendOpts)
     ? `:${gravityOpt.build(extendOpts, { headless: true })}`

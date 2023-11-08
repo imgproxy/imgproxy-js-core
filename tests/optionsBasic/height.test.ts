@@ -30,7 +30,7 @@ describe("height", () => {
 
     it("should throw an error if height is less than 0", () => {
       expect(() => build({ height: -1 })).toThrow(
-        "height option is can't be less than 0"
+        "height option value can't be less then 0"
       );
     });
 

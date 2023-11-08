@@ -1,6 +1,6 @@
 import { Options } from "../types";
 import * as optionModules from "../options";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const correctUrlTypes = {
   plain: true,
@@ -14,8 +14,8 @@ type URL = {
 };
 
 const generateUrl = (url: URL, options?: Options): string => {
-  guardParamIsUndef(url.value, "url.value", "Must be a string");
-  guardParamIsUndef(
+  guardIsUndef(url.value, "url.value", "Must be a string");
+  guardIsUndef(
     url.type,
     "url.type",
     `Valid values are: ${Object.keys(correctUrlTypes).join(", ")}`

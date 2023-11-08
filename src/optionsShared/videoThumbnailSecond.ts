@@ -2,7 +2,7 @@ import type {
   VideoThumbnailSecond,
   VideoThumbnailSecondOptionsPartial,
 } from "../typesShared/videoThumbnailSecond";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const getOpt = (
   options: VideoThumbnailSecondOptionsPartial
@@ -21,7 +21,7 @@ const test = (options: VideoThumbnailSecondOptionsPartial): boolean =>
 const build = (options: VideoThumbnailSecondOptionsPartial): string => {
   const videoThumbnailSecond = getOpt(options);
 
-  guardParamIsUndef(videoThumbnailSecond, "video_thumbnail_second");
+  guardIsUndef(videoThumbnailSecond, "video_thumbnail_second");
   if (typeof videoThumbnailSecond !== "number") {
     throw new Error(
       "video_thumbnail_second option is not a number. Must be a positive integer"

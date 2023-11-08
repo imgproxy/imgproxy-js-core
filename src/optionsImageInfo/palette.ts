@@ -2,7 +2,7 @@ import {
   Palette,
   PaletteImageInfoOptionsPartial,
 } from "../typesImageInfo/palette";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const getOpt = (
   options: PaletteImageInfoOptionsPartial
@@ -22,7 +22,7 @@ const test = (options: PaletteImageInfoOptionsPartial): boolean =>
 const build = (options: PaletteImageInfoOptionsPartial): string => {
   const paletteOpts = getOpt(options);
 
-  guardParamIsUndef(paletteOpts, "palette");
+  guardIsUndef(paletteOpts, "palette");
   if (typeof paletteOpts !== "number") {
     throw new Error("palette option is not a number");
   }

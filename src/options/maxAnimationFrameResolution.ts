@@ -2,7 +2,7 @@ import type {
   MaxAnimationFrameResolution,
   MAFROptionsPartial,
 } from "../types/maxAnimationFrameResolution";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: MAFROptionsPartial
@@ -21,18 +21,10 @@ const test = (options: MAFROptionsPartial): boolean =>
 const build = (options: MAFROptionsPartial): string => {
   const maxAnimationFrameResolution = getOpt(options);
 
-  guardParamIsUndef(
-    maxAnimationFrameResolution,
-    "max_animation_frame_resolution"
-  );
-  if (typeof maxAnimationFrameResolution !== "number") {
-    throw new Error("max_animation_frame_resolution option is not a number");
-  }
-  if (maxAnimationFrameResolution < 0) {
-    throw new Error(
-      "max_animation_frame_resolution option can't be a negative"
-    );
-  }
+  guardIsUndef(maxAnimationFrameResolution, "max_animation_frame_resolution");
+  guardIsNotNum(maxAnimationFrameResolution, "max_animation_frame_resolution", {
+    addParam: { type: "min", value: 0 },
+  });
 
   return `mafr:${maxAnimationFrameResolution}`;
 };

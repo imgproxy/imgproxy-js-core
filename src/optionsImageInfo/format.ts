@@ -2,7 +2,7 @@ import type {
   NeedFormat,
   FormatImageInfoOptionsPartial,
 } from "../typesImageInfo/format";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: FormatImageInfoOptionsPartial
@@ -21,7 +21,7 @@ const test = (options: FormatImageInfoOptionsPartial): boolean =>
 
 const build = (options: FormatImageInfoOptionsPartial): string => {
   const formatOpts = getOpt(options);
-  guardParamIsUndef(formatOpts, "format");
+  guardIsUndef(formatOpts, "format");
   return `f:${normalizeBoolean(formatOpts)}`;
 };
 

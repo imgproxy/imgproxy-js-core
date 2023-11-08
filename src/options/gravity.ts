@@ -5,7 +5,7 @@ import type {
   ObjGravity,
   BaseGravity,
 } from "../types/gravity";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 interface BuildProps {
   headless?: boolean;
@@ -46,8 +46,8 @@ const build = (
   const { headless = false } = meta;
   const gravityOpts = getOpt(options);
 
-  guardParamIsUndef(gravityOpts, "gravity");
-  guardParamIsUndef(gravityOpts.type, "gravity.type");
+  guardIsUndef(gravityOpts, "gravity");
+  guardIsUndef(gravityOpts.type, "gravity.type");
   if (!currentAllTypes[gravityOpts.type]) {
     throw new Error(
       `gravity type "${
@@ -93,8 +93,8 @@ const build = (
   if (type === "fp") {
     const gravityFP = gravityOpts as FPGravity;
 
-    guardParamIsUndef(gravityFP.x, "gravity.x");
-    guardParamIsUndef(gravityFP.y, "gravity.y");
+    guardIsUndef(gravityFP.x, "gravity.x");
+    guardIsUndef(gravityFP.y, "gravity.y");
     if (gravityFP.x < 0 || gravityFP.x > 1) {
       throw new Error("gravity.x must be between 0 and 1");
     }
@@ -111,7 +111,7 @@ const build = (
   if (type === "obj") {
     const gravityObj = gravityOpts as ObjGravity;
 
-    guardParamIsUndef(gravityOpts.class_names, "gravity.class_names");
+    guardIsUndef(gravityOpts.class_names, "gravity.class_names");
     if (!Array.isArray(gravityObj.class_names)) {
       throw new Error("gravity.class_names is not an array");
     }

@@ -37,7 +37,7 @@ describe("autoquality", () => {
 
     it("should throw an error if autoquality.target is less than 0", () => {
       expect(() => build({ autoquality: { target: -1 } })).toThrow(
-        "autoquality.target can't be a negative"
+        "autoquality.target value can't be less then 0"
       );
     });
 
@@ -50,13 +50,13 @@ describe("autoquality", () => {
 
     it("should throw an error if autoquality.min_quality is less than 0", () => {
       expect(() => build({ autoquality: { min_quality: -1 } })).toThrow(
-        "autoquality.min_quality can't be a negative"
+        "autoquality.min_quality value can't be less then 0"
       );
     });
 
     it("should throw an error if autoquality.min_quality is more than 100", () => {
       expect(() => build({ autoquality: { min_quality: 101 } })).toThrow(
-        "autoquality.min_quality can't be more than 100"
+        "autoquality.min_quality value can't be more than 100"
       );
     });
 
@@ -69,13 +69,13 @@ describe("autoquality", () => {
 
     it("should throw an error if autoquality.max_quality is less than 0", () => {
       expect(() => build({ autoquality: { max_quality: -1 } })).toThrow(
-        "autoquality.max_quality can't be a negative"
+        "autoquality.max_quality value can't be less then 0"
       );
     });
 
     it("should throw an error if autoquality.max_quality is more than 100", () => {
       expect(() => build({ autoquality: { max_quality: 101 } })).toThrow(
-        "autoquality.max_quality can't be more than 100"
+        "autoquality.max_quality value can't be more than 100"
       );
     });
 
@@ -83,19 +83,19 @@ describe("autoquality", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ autoquality: { method: "dssim", allowed_error: "0.001" } })
-      ).toThrow("autoquality allowed_error is not a number");
+      ).toThrow("autoquality.allowed_error is not a number");
     });
 
     it("should throw an error if autoquality.allowed_error is less than 0", () => {
       expect(() =>
         build({ autoquality: { method: "ml", allowed_error: -1 } })
-      ).toThrow("autoquality allowed_error can't be a negative");
+      ).toThrow("autoquality.allowed_error value can't be less then 0");
     });
 
     it("should throw an error if autoquality.allowed_error is more than 1", () => {
       expect(() =>
         build({ autoquality: { method: "dssim", allowed_error: 1.1 } })
-      ).toThrow("autoquality allowed_error can't be more than 1");
+      ).toThrow("autoquality.allowed_error value can't be more than 1");
     });
 
     it("should throw an error if autoquality.allowed_error is defined and autoquality.method is not dssim or ml", () => {

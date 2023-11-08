@@ -1,5 +1,5 @@
 import type { Rotate, RotateOptionsPartial } from "../types/rotate";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const correctAngles = {
   0: true,
@@ -17,7 +17,7 @@ const test = (options: RotateOptionsPartial): boolean =>
 const build = (options: RotateOptionsPartial): string => {
   const rotateOpts = getOpt(options);
 
-  guardParamIsUndef(rotateOpts, "rotate");
+  guardIsUndef(rotateOpts, "rotate");
   if (typeof rotateOpts !== "number") {
     throw new Error(
       "rotate option is not a number. You can use numbers 0, 90, 180 or 270"

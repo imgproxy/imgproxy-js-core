@@ -1,5 +1,5 @@
 import type { Pixelate, PixelateOptionsPartial } from "../types/pixelate";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const getOpt = (options: PixelateOptionsPartial): Pixelate | undefined =>
   options.pixelate || options.pix;
@@ -10,7 +10,7 @@ const test = (options: PixelateOptionsPartial): boolean =>
 const build = (options: PixelateOptionsPartial): string => {
   const pixelateOpts = getOpt(options);
 
-  guardParamIsUndef(pixelateOpts, "pixelate");
+  guardIsUndef(pixelateOpts, "pixelate");
   if (typeof pixelateOpts !== "number") {
     throw new Error("pixelate option is not a number");
   }

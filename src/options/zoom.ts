@@ -1,8 +1,8 @@
 import type { Zoom, ZoomOptionsPartial } from "../types/zoom";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const validateValue = (value: number, optName: string): void => {
-  guardParamIsUndef(value, optName);
+  guardIsUndef(value, optName);
   if (value < 0) {
     throw new Error(`${optName} cannot be negative`);
   }
@@ -20,7 +20,7 @@ const test = (options: ZoomOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: ZoomOptionsPartial): string => {
   const zoomOpts = getOpt(options);
 
-  guardParamIsUndef(zoomOpts, "zoom");
+  guardIsUndef(zoomOpts, "zoom");
   if (typeof zoomOpts === "string") {
     throw new Error("zoom option is not a number");
   }

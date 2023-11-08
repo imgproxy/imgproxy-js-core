@@ -1,5 +1,5 @@
 import type { EnlargeOptionsPartial, Enlarge } from "../types/enlarge";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (options: EnlargeOptionsPartial): Enlarge | undefined => {
   if ("enlarge" in options) {
@@ -16,7 +16,7 @@ const test = (options: EnlargeOptionsPartial): boolean =>
 
 const build = (options: EnlargeOptionsPartial): string => {
   const enlargeOpts = getOpt(options);
-  guardParamIsUndef(enlargeOpts, "enlarge");
+  guardIsUndef(enlargeOpts, "enlarge");
   return `el:${normalizeBoolean(enlargeOpts)}`;
 };
 

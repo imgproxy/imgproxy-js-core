@@ -2,7 +2,7 @@ import type {
   EnforceThumbnail,
   EnforceThumbnailOptionsPartial,
 } from "../types/enforceThumbnail";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: EnforceThumbnailOptionsPartial
@@ -22,7 +22,7 @@ const test = (options: EnforceThumbnailOptionsPartial): boolean =>
 
 const build = (options: EnforceThumbnailOptionsPartial): string => {
   const enforceThumbnailOpts = getOpt(options);
-  guardParamIsUndef(enforceThumbnailOpts, "enforce_thumbnail");
+  guardIsUndef(enforceThumbnailOpts, "enforce_thumbnail");
   return `eth:${normalizeBoolean(enforceThumbnailOpts)}`;
 };
 

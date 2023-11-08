@@ -27,7 +27,7 @@ describe("blur", () => {
 
     it("should throw an error if blur is less than 0", () => {
       expect(() => build({ bl: -1 })).toThrow(
-        "blur option is can't be less than 0"
+        "blur option value can't be less then 0"
       );
     });
 

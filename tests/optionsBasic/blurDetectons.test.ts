@@ -28,10 +28,10 @@ describe("blurDetectons", () => {
       );
     });
 
-    it("should throw an error if blur_detections.sigma option is not a number", () => {
+    it("should throw an error if blur_detections.sigma is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ blur_detections: { sigma: "2" } })).toThrow(
-        "blur_detections.sigma option is not a number"
+        "blur_detections.sigma is not a number"
       );
     });
 

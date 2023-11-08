@@ -1,5 +1,5 @@
 import type { JPEGOptions, JPEGOptionsPartial } from "../types/jpegOptions";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: JPEGOptionsPartial): JPEGOptions | undefined =>
   options.jpeg_options || options.jpgo;
@@ -9,7 +9,7 @@ const test = (options: JPEGOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: JPEGOptionsPartial): string => {
   const jpegOptions = getOpt(options);
 
-  guardParamIsUndef(jpegOptions, "jpeg_options");
+  guardIsUndef(jpegOptions, "jpeg_options");
   if (jpegOptions.progressive && typeof jpegOptions.progressive !== "boolean") {
     throw new Error("jpeg_options.progressive is not a boolean");
   }
@@ -45,12 +45,9 @@ const build = (options: JPEGOptionsPartial): string => {
     }
   }
   if (jpegOptions.quant_table) {
-    if (typeof jpegOptions.quant_table !== "number") {
-      throw new Error("jpeg_options.quant_table is not a number");
-    }
-    if (jpegOptions.quant_table < 0 || jpegOptions.quant_table > 8) {
-      throw new Error("jpeg_options.quant_table is out of range. Must be 0-8");
-    }
+    guardIsNotNum(jpegOptions.quant_table, "jpeg_options.quant_table", {
+      addParam: { type: "minmax", value: [0, 8] },
+    });
   }
 
   const progressive =

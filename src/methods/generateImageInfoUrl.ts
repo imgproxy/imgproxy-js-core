@@ -1,6 +1,6 @@
 import { OptionsImageInfo } from "../typesImageInfo";
 import * as optionModules from "../optionsImageInfo";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const correctUrlTypes = {
   plain: true,
@@ -17,8 +17,8 @@ const generateImageInfoUrl = (
   url: URLImageInfo,
   options?: OptionsImageInfo
 ): string => {
-  guardParamIsUndef(url.value, "url.value", "Must be a string");
-  guardParamIsUndef(
+  guardIsUndef(url.value, "url.value", "Must be a string");
+  guardIsUndef(
     url.type,
     "url.type",
     `Valid values are: ${Object.keys(correctUrlTypes).join(", ")}`

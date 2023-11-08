@@ -1,5 +1,5 @@
 import type { Ajust, AjustOptionsPartial } from "../types/ajust";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const getOpt = (options: AjustOptionsPartial): Ajust | undefined =>
   options.ajust || options.aj;
@@ -10,7 +10,7 @@ const test = (options: AjustOptionsPartial): boolean =>
 const build = (options: AjustOptionsPartial): string => {
   const ajustOpts = getOpt(options);
 
-  guardParamIsUndef(ajustOpts, "ajust");
+  guardIsUndef(ajustOpts, "ajust");
   if (
     ajustOpts.brightness &&
     (ajustOpts.brightness > 255 || ajustOpts.brightness < -255)

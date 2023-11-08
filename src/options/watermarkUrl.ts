@@ -2,7 +2,7 @@ import type {
   WatermarkUrl,
   WatermarkUrlOptionsPartial,
 } from "../types/watermarkUrl";
-import { guardParamIsUndef } from "../utils";
+import { guardIsUndef } from "../utils";
 
 const getOpt = (
   options: WatermarkUrlOptionsPartial
@@ -14,7 +14,7 @@ const test = (options: WatermarkUrlOptionsPartial): boolean =>
 const build = (options: WatermarkUrlOptionsPartial): string => {
   const watermarkUrlOpts = getOpt(options);
 
-  guardParamIsUndef(watermarkUrlOpts, "watermark_url");
+  guardIsUndef(watermarkUrlOpts, "watermark_url");
   if (typeof watermarkUrlOpts !== "string") {
     throw new Error("watermark_url option is not a string");
   }

@@ -1,5 +1,5 @@
 import type { Trim, TrimOptionsPartial } from "../types/trim";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (options: TrimOptionsPartial): Trim | undefined =>
   options.trim || options.t;
@@ -9,8 +9,8 @@ const test = (options: TrimOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: TrimOptionsPartial): string => {
   const trimOpts = getOpt(options);
 
-  guardParamIsUndef(trimOpts, "trim");
-  guardParamIsUndef(trimOpts.threshold, "trim.threshold");
+  guardIsUndef(trimOpts, "trim");
+  guardIsUndef(trimOpts.threshold, "trim.threshold");
   if (typeof trimOpts.threshold !== "number") {
     throw new Error("threshold in trim is not a number");
   }

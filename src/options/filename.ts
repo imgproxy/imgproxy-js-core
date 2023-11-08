@@ -1,5 +1,5 @@
 import type { Filename, FilenameOptionsPartial } from "../types/filename";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (options: FilenameOptionsPartial): Filename | undefined =>
   options.filename || options.fn;
@@ -10,8 +10,8 @@ const test = (options: FilenameOptionsPartial): boolean =>
 const build = (options: FilenameOptionsPartial): string => {
   const filename = getOpt(options);
 
-  guardParamIsUndef(filename, "filename");
-  guardParamIsUndef(filename.name, "filename.name");
+  guardIsUndef(filename, "filename");
+  guardIsUndef(filename.name, "filename.name");
   if (typeof filename.name !== "string") {
     throw new Error("name in filename option should be a string");
   }

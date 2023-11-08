@@ -1,5 +1,5 @@
 import type { Exif, ExifImageInfoOptionsPartial } from "../typesImageInfo/exif";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (options: ExifImageInfoOptionsPartial): Exif | undefined => {
   if ("exif" in options) {
@@ -14,7 +14,7 @@ const test = (options: ExifImageInfoOptionsPartial): boolean =>
 
 const build = (options: ExifImageInfoOptionsPartial): string => {
   const exifOpts = getOpt(options);
-  guardParamIsUndef(exifOpts, "EXIF");
+  guardIsUndef(exifOpts, "EXIF");
   return `exif:${normalizeBoolean(exifOpts)}`;
 };
 

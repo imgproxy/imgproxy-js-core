@@ -2,7 +2,7 @@ import type {
   ReturnAttachment,
   ReturnAttachmentOptionsPartial,
 } from "../types/returnAttachment";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: ReturnAttachmentOptionsPartial
@@ -21,7 +21,7 @@ const test = (options: ReturnAttachmentOptionsPartial): boolean =>
 
 const build = (options: ReturnAttachmentOptionsPartial): string => {
   const returnAttachment = getOpt(options);
-  guardParamIsUndef(returnAttachment, "return_attachment");
+  guardIsUndef(returnAttachment, "return_attachment");
   return `ra:${normalizeBoolean(returnAttachment)}`;
 };
 

@@ -1,5 +1,5 @@
 import type { Iptc, IptcImageInfoOptionsPartial } from "../typesImageInfo/iptc";
-import { guardParamIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (options: IptcImageInfoOptionsPartial): Iptc | undefined => {
   if ("iptc" in options) {
@@ -14,7 +14,7 @@ const test = (options: IptcImageInfoOptionsPartial): boolean =>
 
 const build = (options: IptcImageInfoOptionsPartial): string => {
   const iptcOpts = getOpt(options);
-  guardParamIsUndef(iptcOpts, "IPTC");
+  guardIsUndef(iptcOpts, "IPTC");
   return `iptc:${normalizeBoolean(iptcOpts)}`;
 };
 
