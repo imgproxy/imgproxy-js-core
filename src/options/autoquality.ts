@@ -2,7 +2,7 @@ import type {
   Autoquality,
   AutoqualityOptionsPartial,
 } from "../types/autoquality";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const currentMethods = {
   none: true,
@@ -20,7 +20,7 @@ const test = (options: AutoqualityOptionsPartial): boolean =>
 const build = (options: AutoqualityOptionsPartial): string => {
   const autoqualityOpts = getOpt(options);
 
-  errorParamIsUndef(autoqualityOpts, "autoquality");
+  guardParamIsUndef(autoqualityOpts, "autoquality");
   if (autoqualityOpts.method && !currentMethods[autoqualityOpts.method]) {
     throw new Error(
       `autoquality method "${

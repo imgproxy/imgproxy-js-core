@@ -2,7 +2,7 @@ import type {
   Blurhash,
   BHImageInfoOptionsPartial,
 } from "../typesImageInfo/blurhash";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: BHImageInfoOptionsPartial): Blurhash | undefined => {
   if ("blurhash" in options) {
@@ -20,9 +20,9 @@ const test = (options: BHImageInfoOptionsPartial): boolean =>
 const build = (options: BHImageInfoOptionsPartial): string => {
   const blurhashOpts = getOpt(options);
 
-  errorParamIsUndef(blurhashOpts, "blurhash");
-  errorParamIsUndef(blurhashOpts.x_components, "blurhash.x_components");
-  errorParamIsUndef(blurhashOpts.y_components, "blurhash.y_components");
+  guardParamIsUndef(blurhashOpts, "blurhash");
+  guardParamIsUndef(blurhashOpts.x_components, "blurhash.x_components");
+  guardParamIsUndef(blurhashOpts.y_components, "blurhash.y_components");
   if (blurhashOpts.x_components < 0) {
     throw new Error("blurhash.x_components can't be a negative");
   }

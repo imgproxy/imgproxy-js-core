@@ -1,5 +1,5 @@
 import type { PNGOptions, PNGOptionsPartial } from "../types/pngOptions";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: PNGOptionsPartial): PNGOptions | undefined =>
   options.png_options || options.pngo;
@@ -9,7 +9,7 @@ const test = (options: PNGOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: PNGOptionsPartial): string => {
   const pngOptions = getOpt(options);
 
-  errorParamIsUndef(pngOptions, "png_options");
+  guardParamIsUndef(pngOptions, "png_options");
   if (pngOptions.interlaced && typeof pngOptions.interlaced !== "boolean") {
     throw new Error("png_options.interlaced is not a boolean");
   }

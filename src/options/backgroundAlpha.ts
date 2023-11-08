@@ -2,7 +2,7 @@ import type {
   BackgroundAlpha,
   BackgroundAlphaOptionsPartial,
 } from "../types/backgroundAlpha";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (
   options: BackgroundAlphaOptionsPartial
@@ -14,7 +14,7 @@ const test = (options: BackgroundAlphaOptionsPartial): boolean =>
 const build = (options: BackgroundAlphaOptionsPartial): string => {
   const backgroundAlphaOpts = getOpt(options);
 
-  errorParamIsUndef(backgroundAlphaOpts, "background_alpha");
+  guardParamIsUndef(backgroundAlphaOpts, "background_alpha");
   if (typeof backgroundAlphaOpts !== "number") {
     throw new Error(
       "background alpha is not correct. Set the value between 0 and 1"

@@ -1,5 +1,5 @@
 import type { Xmp, XmpImageInfoOptionsPartial } from "../typesImageInfo/xmp";
-import { errorParamIsUndef, normalizeBoolean } from "../utils";
+import { guardParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (options: XmpImageInfoOptionsPartial): Xmp | undefined => {
   if ("xmp" in options) {
@@ -14,7 +14,7 @@ const test = (options: XmpImageInfoOptionsPartial): boolean =>
 
 const build = (options: XmpImageInfoOptionsPartial): string => {
   const xmpOpts = getOpt(options);
-  errorParamIsUndef(xmpOpts, "XMP");
+  guardParamIsUndef(xmpOpts, "XMP");
   return `xmp:${normalizeBoolean(xmpOpts)}`;
 };
 

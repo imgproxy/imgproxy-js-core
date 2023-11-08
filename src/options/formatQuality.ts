@@ -2,7 +2,7 @@ import type {
   FormatQuality,
   FormatQualityOptionsPartial,
 } from "../types/formatQuality";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (
   options: FormatQualityOptionsPartial
@@ -14,7 +14,7 @@ const test = (options: FormatQualityOptionsPartial): boolean =>
 const build = (options: FormatQualityOptionsPartial): string => {
   const formatQualityOpts = getOpt(options);
 
-  errorParamIsUndef(formatQualityOpts, "format_quality");
+  guardParamIsUndef(formatQualityOpts, "format_quality");
   if (!Array.isArray(formatQualityOpts)) {
     throw new Error("format quality option must be an array");
   }

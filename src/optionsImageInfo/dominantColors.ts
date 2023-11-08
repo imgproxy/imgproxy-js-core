@@ -2,7 +2,7 @@ import type {
   DominantColors,
   DCImageInfoOptionsPartial,
 } from "../typesImageInfo/dominantColors";
-import { errorParamIsUndef, normalizeBoolean } from "../utils";
+import { guardParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: DCImageInfoOptionsPartial
@@ -22,8 +22,8 @@ const test = (options: DCImageInfoOptionsPartial): boolean =>
 const build = (options: DCImageInfoOptionsPartial): string => {
   const dcOpts = getOpt(options);
 
-  errorParamIsUndef(dcOpts, "dominant_colors");
-  errorParamIsUndef(dcOpts.dominant_colors, "dominant_colors.dominant_colors");
+  guardParamIsUndef(dcOpts, "dominant_colors");
+  guardParamIsUndef(dcOpts.dominant_colors, "dominant_colors.dominant_colors");
 
   const buildMissed =
     dcOpts.build_missed === undefined

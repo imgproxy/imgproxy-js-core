@@ -2,7 +2,7 @@ import type {
   WatermarkShadow,
   WatermarkShadowOptionsPartial,
 } from "../types/watermarkShadow";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (
   options: WatermarkShadowOptionsPartial
@@ -14,7 +14,7 @@ const test = (options: WatermarkShadowOptionsPartial): boolean =>
 const build = (options: WatermarkShadowOptionsPartial): string => {
   const watermarkShadowOpts = getOpt(options);
 
-  errorParamIsUndef(watermarkShadowOpts, "watermark_shadow");
+  guardParamIsUndef(watermarkShadowOpts, "watermark_shadow");
   if (typeof watermarkShadowOpts !== "number") {
     throw new Error("watermark_shadow option is not a number");
   }

@@ -1,5 +1,5 @@
 import type { Watermark, WatermarkOptionsPartial } from "../types/watermark";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const currentPositions = {
   ce: true,
@@ -23,9 +23,9 @@ const test = (options: WatermarkOptionsPartial): boolean =>
 const build = (options: WatermarkOptionsPartial): string => {
   const watermarkOpts = getOpt(options);
 
-  errorParamIsUndef(watermarkOpts, "watermark");
+  guardParamIsUndef(watermarkOpts, "watermark");
   // watermarkOpts.opacity
-  errorParamIsUndef(watermarkOpts.opacity, "watermark.opacity");
+  guardParamIsUndef(watermarkOpts.opacity, "watermark.opacity");
   if (typeof watermarkOpts.opacity !== "number") {
     throw new Error("watermark.opacity is not a number");
   }

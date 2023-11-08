@@ -2,7 +2,7 @@ import type {
   DetectObjects,
   DetectObjectsImageInfoOptionsPartial,
 } from "../typesImageInfo/detectObjects";
-import { errorParamIsUndef, normalizeBoolean } from "../utils";
+import { guardParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: DetectObjectsImageInfoOptionsPartial
@@ -21,7 +21,7 @@ const test = (options: DetectObjectsImageInfoOptionsPartial): boolean =>
 
 const build = (options: DetectObjectsImageInfoOptionsPartial): string => {
   const detectObjectsOpts = getOpt(options);
-  errorParamIsUndef(detectObjectsOpts, "detect_objects");
+  guardParamIsUndef(detectObjectsOpts, "detect_objects");
   return `do:${normalizeBoolean(detectObjectsOpts)}`;
 };
 

@@ -1,6 +1,6 @@
 import type { ExtendOptionsPartial, Extend } from "../types/extend";
 import * as gravityOpt from "./gravity";
-import { errorParamIsUndef, normalizeBoolean } from "../utils";
+import { guardParamIsUndef, normalizeBoolean } from "../utils";
 
 interface BuildProps {
   headless?: boolean;
@@ -22,8 +22,8 @@ const build = (
   const { headless = false } = meta;
   const extendOpts = getOpt(options);
 
-  errorParamIsUndef(extendOpts, "extend");
-  errorParamIsUndef(extendOpts.extend, "extend.extend");
+  guardParamIsUndef(extendOpts, "extend");
+  guardParamIsUndef(extendOpts.extend, "extend.extend");
 
   const gravity = gravityOpt.test(extendOpts)
     ? `:${gravityOpt.build(extendOpts, { headless: true })}`

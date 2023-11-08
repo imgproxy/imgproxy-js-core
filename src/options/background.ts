@@ -1,5 +1,5 @@
 import type { Background, BackgroundOptionsPartial } from "../types/background";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: BackgroundOptionsPartial): Background | undefined =>
   options.background || options.bg;
@@ -10,7 +10,7 @@ const test = (options: BackgroundOptionsPartial): boolean =>
 const build = (options: BackgroundOptionsPartial): string => {
   const backgroundOpts = getOpt(options);
 
-  errorParamIsUndef(backgroundOpts, "background");
+  guardParamIsUndef(backgroundOpts, "background");
   if (typeof backgroundOpts === "number") {
     throw new Error("background option is not a string or object");
   }
@@ -31,9 +31,9 @@ const build = (options: BackgroundOptionsPartial): string => {
     return `bg:${backgroundOpts}`;
   }
 
-  errorParamIsUndef(backgroundOpts.r, "background.r");
-  errorParamIsUndef(backgroundOpts.g, "background.g");
-  errorParamIsUndef(backgroundOpts.b, "background.b");
+  guardParamIsUndef(backgroundOpts.r, "background.r");
+  guardParamIsUndef(backgroundOpts.g, "background.g");
+  guardParamIsUndef(backgroundOpts.b, "background.b");
   if (typeof backgroundOpts.r !== "number") {
     throw new Error("background.r option is not a number");
   }

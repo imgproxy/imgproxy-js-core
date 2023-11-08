@@ -2,7 +2,7 @@ import type {
   DisableAnimation,
   DisableAnimationOptionsPartial,
 } from "../types/disableAnimation";
-import { normalizeBoolean, errorParamIsUndef } from "../utils";
+import { normalizeBoolean, guardParamIsUndef } from "../utils";
 
 const getOpt = (
   options: DisableAnimationOptionsPartial
@@ -21,7 +21,7 @@ const test = (options: DisableAnimationOptionsPartial): boolean =>
 
 const build = (options: DisableAnimationOptionsPartial): string => {
   const disableAnimation = getOpt(options);
-  errorParamIsUndef(disableAnimation, "disable_animation");
+  guardParamIsUndef(disableAnimation, "disable_animation");
   return `da:${normalizeBoolean(disableAnimation)}`;
 };
 

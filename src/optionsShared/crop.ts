@@ -1,6 +1,6 @@
 import type { Crop, CropOptionsPartial } from "../typesShared/crop";
 import * as gravityOpt from "../options/gravity";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: CropOptionsPartial): Crop | undefined =>
   options.crop || options.c;
@@ -10,9 +10,9 @@ const test = (options: CropOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: CropOptionsPartial): string => {
   const cropOpts = getOpt(options);
 
-  errorParamIsUndef(cropOpts, "crop");
-  errorParamIsUndef(cropOpts.width, "crop.width");
-  errorParamIsUndef(cropOpts.height, "crop.height");
+  guardParamIsUndef(cropOpts, "crop");
+  guardParamIsUndef(cropOpts.width, "crop.width");
+  guardParamIsUndef(cropOpts.height, "crop.height");
   if (typeof cropOpts.width !== "number") {
     throw new Error("crop.width is not a number");
   }

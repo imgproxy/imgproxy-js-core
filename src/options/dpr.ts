@@ -1,5 +1,5 @@
 import type { DPR, DPROptionsPartial } from "../types/dpr";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: DPROptionsPartial): DPR | undefined => options.dpr;
 
@@ -8,7 +8,7 @@ const test = (options: DPROptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: DPROptionsPartial): string => {
   const dprOpts = getOpt(options);
 
-  errorParamIsUndef(dprOpts, "dpr");
+  guardParamIsUndef(dprOpts, "dpr");
   if (typeof dprOpts !== "number") {
     throw new Error("dpr must be a number");
   }

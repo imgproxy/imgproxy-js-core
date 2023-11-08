@@ -1,5 +1,5 @@
 import { Preset, PresetOptionsPartial } from "../typesShared/preset";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: PresetOptionsPartial): Preset | undefined =>
   options.preset || options.pr;
@@ -10,7 +10,7 @@ const test = (options: PresetOptionsPartial): boolean =>
 const build = (options: PresetOptionsPartial): string => {
   const preset = getOpt(options);
 
-  errorParamIsUndef(preset, "preset");
+  guardParamIsUndef(preset, "preset");
   if (!Array.isArray(preset)) {
     throw new Error("preset option should be an array");
   }

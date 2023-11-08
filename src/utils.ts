@@ -5,7 +5,7 @@ export const normalizeBoolean = (value: 1 | string | boolean): string => {
   return "f";
 };
 
-export function errorParamIsUndef<T>(
+export function guardParamIsUndef<T>(
   param: T | undefined,
   paramName: string,
   addInfo?: string

@@ -1,5 +1,5 @@
 import type { Gradient, GradientOptionsPartial } from "../types/gradient";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const currentDirection = {
   down: true,
@@ -17,9 +17,9 @@ const test = (options: GradientOptionsPartial): boolean =>
 const build = (options: GradientOptionsPartial): string => {
   const gradientOpts = getOpt(options);
 
-  errorParamIsUndef(gradientOpts, "gradient");
+  guardParamIsUndef(gradientOpts, "gradient");
   // gradientOpts.opacity
-  errorParamIsUndef(gradientOpts.opacity, "gradient.opacity");
+  guardParamIsUndef(gradientOpts.opacity, "gradient.opacity");
   if (typeof gradientOpts.opacity !== "number") {
     throw new Error("gradient.opacity is not a number");
   }

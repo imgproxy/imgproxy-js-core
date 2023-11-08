@@ -157,7 +157,7 @@ describe("gravity", () => {
               y: 0.5,
             },
           })
-        ).toThrow(`gravity.x or gravity.y is undefined`);
+        ).toThrow(`gravity.x is undefined`);
       });
 
       it("should throw an error if y is undefined", () => {
@@ -169,7 +169,7 @@ describe("gravity", () => {
               x: 0.5,
             },
           })
-        ).toThrow(`gravity.x or gravity.y is undefined`);
+        ).toThrow(`gravity.y is undefined`);
       });
 
       it("should throw an error if x is less than 0", () => {

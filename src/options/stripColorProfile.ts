@@ -2,7 +2,7 @@ import type {
   StripColorProfile,
   StripColorProfileOptionsPartial,
 } from "../types/stripColorProfile";
-import { errorParamIsUndef, normalizeBoolean } from "../utils";
+import { guardParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: StripColorProfileOptionsPartial
@@ -21,7 +21,7 @@ const test = (options: StripColorProfileOptionsPartial): boolean =>
 
 const build = (options: StripColorProfileOptionsPartial): string => {
   const stripColorProfileOpts = getOpt(options);
-  errorParamIsUndef(stripColorProfileOpts, "strip_color_profile");
+  guardParamIsUndef(stripColorProfileOpts, "strip_color_profile");
   return `scp:${normalizeBoolean(stripColorProfileOpts)}`;
 };
 

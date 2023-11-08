@@ -1,5 +1,5 @@
 import type { Blur, BlurOptionsPartial } from "../types/blur";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: BlurOptionsPartial): Blur | undefined =>
   options.blur || options.bl;
@@ -9,7 +9,7 @@ const test = (options: BlurOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: BlurOptionsPartial): string => {
   const blurOpts = getOpt(options);
 
-  errorParamIsUndef(blurOpts, "blur");
+  guardParamIsUndef(blurOpts, "blur");
   if (typeof blurOpts !== "number") {
     throw new Error("blur option is not a number");
   }

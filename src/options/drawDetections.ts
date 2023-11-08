@@ -2,7 +2,7 @@ import type {
   DrawDetections,
   DrawDetectionsOptionsPartial,
 } from "../types/drawDetections";
-import { errorParamIsUndef, normalizeBoolean } from "../utils";
+import { guardParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: DrawDetectionsOptionsPartial
@@ -14,8 +14,8 @@ const test = (options: DrawDetectionsOptionsPartial): boolean =>
 const build = (options: DrawDetectionsOptionsPartial): string => {
   const drawDetectionsOpts = getOpt(options);
 
-  errorParamIsUndef(drawDetectionsOpts, "draw_detections");
-  errorParamIsUndef(drawDetectionsOpts.draw, "draw_detections.draw");
+  guardParamIsUndef(drawDetectionsOpts, "draw_detections");
+  guardParamIsUndef(drawDetectionsOpts.draw, "draw_detections.draw");
 
   const draw = normalizeBoolean(drawDetectionsOpts.draw);
   const classNamesStr = drawDetectionsOpts.class_names

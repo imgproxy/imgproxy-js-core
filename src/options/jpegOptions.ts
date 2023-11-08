@@ -1,5 +1,5 @@
 import type { JPEGOptions, JPEGOptionsPartial } from "../types/jpegOptions";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: JPEGOptionsPartial): JPEGOptions | undefined =>
   options.jpeg_options || options.jpgo;
@@ -9,7 +9,7 @@ const test = (options: JPEGOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: JPEGOptionsPartial): string => {
   const jpegOptions = getOpt(options);
 
-  errorParamIsUndef(jpegOptions, "jpeg_options");
+  guardParamIsUndef(jpegOptions, "jpeg_options");
   if (jpegOptions.progressive && typeof jpegOptions.progressive !== "boolean") {
     throw new Error("jpeg_options.progressive is not a boolean");
   }

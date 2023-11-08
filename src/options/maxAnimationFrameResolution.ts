@@ -2,7 +2,7 @@ import type {
   MaxAnimationFrameResolution,
   MAFROptionsPartial,
 } from "../types/maxAnimationFrameResolution";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (
   options: MAFROptionsPartial
@@ -21,7 +21,7 @@ const test = (options: MAFROptionsPartial): boolean =>
 const build = (options: MAFROptionsPartial): string => {
   const maxAnimationFrameResolution = getOpt(options);
 
-  errorParamIsUndef(
+  guardParamIsUndef(
     maxAnimationFrameResolution,
     "max_animation_frame_resolution"
   );

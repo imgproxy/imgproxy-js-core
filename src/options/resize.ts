@@ -1,6 +1,6 @@
 import type { ResizeOptionsPartial, Resize } from "../types/resize";
 import * as extendOpt from "./extend";
-import { errorParamIsUndef, normalizeBoolean } from "../utils";
+import { guardParamIsUndef, normalizeBoolean } from "../utils";
 
 const correctResizingTypes = {
   fit: true,
@@ -19,7 +19,7 @@ const test = (options: ResizeOptionsPartial): boolean =>
 const build = (options: ResizeOptionsPartial): string => {
   const resizeOpts = getOpt(options);
 
-  errorParamIsUndef(resizeOpts, "resize");
+  guardParamIsUndef(resizeOpts, "resize");
   if (
     resizeOpts.resizing_type &&
     !correctResizingTypes[resizeOpts.resizing_type]

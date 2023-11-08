@@ -2,7 +2,7 @@ import type {
   WatermarkSize,
   WatermarkSizeOptionsPartial,
 } from "../types/watermarkSize";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (
   options: WatermarkSizeOptionsPartial
@@ -14,7 +14,7 @@ const test = (options: WatermarkSizeOptionsPartial): boolean =>
 const build = (options: WatermarkSizeOptionsPartial): string => {
   const watermarkSizeOpts = getOpt(options);
 
-  errorParamIsUndef(watermarkSizeOpts, "watermark_size");
+  guardParamIsUndef(watermarkSizeOpts, "watermark_size");
   if (watermarkSizeOpts.width) {
     if (typeof watermarkSizeOpts.width !== "number") {
       throw new Error("watermark_size.width option is not a number");

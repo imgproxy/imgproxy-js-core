@@ -1,5 +1,5 @@
 import type { Height, HeightOptionsPartial } from "../types/height";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: HeightOptionsPartial): Height | undefined =>
   options.height || options.h;
@@ -10,7 +10,7 @@ const test = (options: HeightOptionsPartial): boolean =>
 const build = (options: HeightOptionsPartial): string => {
   const heightOpts = getOpt(options);
 
-  errorParamIsUndef(heightOpts, "height");
+  guardParamIsUndef(heightOpts, "height");
   if (typeof heightOpts !== "number") {
     throw new Error("height option is not a number");
   }

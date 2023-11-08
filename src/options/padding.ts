@@ -1,5 +1,5 @@
 import type { Padding, PaddingOptionsPartial } from "../types/padding";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: PaddingOptionsPartial): Padding | undefined =>
   options.padding || options.pd;
@@ -10,7 +10,7 @@ const test = (options: PaddingOptionsPartial): boolean =>
 const build = (options: PaddingOptionsPartial): string => {
   const paddingOpts = getOpt(options);
 
-  errorParamIsUndef(paddingOpts, "padding");
+  guardParamIsUndef(paddingOpts, "padding");
   if (typeof paddingOpts === "string") {
     throw new Error("padding option is not a number or object");
   }

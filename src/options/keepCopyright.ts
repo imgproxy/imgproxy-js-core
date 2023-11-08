@@ -2,7 +2,7 @@ import type {
   KeepCopyright,
   KeepCopyrightOptionsPartial,
 } from "../types/keepCopyright";
-import { errorParamIsUndef, normalizeBoolean } from "../utils";
+import { guardParamIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: KeepCopyrightOptionsPartial
@@ -21,7 +21,7 @@ const test = (options: KeepCopyrightOptionsPartial): boolean =>
 
 const build = (options: KeepCopyrightOptionsPartial): string => {
   const keepCopyrightOpts = getOpt(options);
-  errorParamIsUndef(keepCopyrightOpts, "keep_copyright");
+  guardParamIsUndef(keepCopyrightOpts, "keep_copyright");
   return `kcr:${normalizeBoolean(keepCopyrightOpts)}`;
 };
 

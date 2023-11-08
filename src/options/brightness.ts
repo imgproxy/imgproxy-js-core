@@ -1,5 +1,5 @@
 import type { Brightness, BrightnessOptionsPartial } from "../types/brightness";
-import { errorParamIsUndef } from "../utils";
+import { guardParamIsUndef } from "../utils";
 
 const getOpt = (options: BrightnessOptionsPartial): Brightness | undefined =>
   options.brightness || options.br;
@@ -10,7 +10,7 @@ const test = (options: BrightnessOptionsPartial): boolean =>
 const build = (options: BrightnessOptionsPartial): string => {
   const brightnessOpts = getOpt(options);
 
-  errorParamIsUndef(brightnessOpts, "brightness");
+  guardParamIsUndef(brightnessOpts, "brightness");
   if (typeof brightnessOpts !== "number") {
     throw new Error("brightness option is not a number");
   }
