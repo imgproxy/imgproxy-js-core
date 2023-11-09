@@ -19,39 +19,29 @@ export function guardIsUndef<T>(
   }
 }
 
-interface OneNum {
-  type: "max" | "min" | "equal" | "int";
-  value: number;
-}
-
-interface TwoNums {
-  type: "minmax";
-  value: number[];
+interface IAddParam {
+  max?: number;
+  min?: number;
+  isInt?: boolean;
+  minEqual?: boolean;
 }
 
 interface AddParams {
   addInfo?: string;
-  addParam?: OneNum | TwoNums;
+  addParam?: IAddParam;
 }
 
 function getMinNumText(
   paramName: string,
   value: number,
-  addInfo?: string
+  addInfo?: string,
+  isEqual?: boolean
 ): string {
   return `${paramName}${
     paramName.includes(".") ? "" : " option"
-  } value can't be less then ${value}${addInfo ? `. ${addInfo}` : ""}`;
-}
-
-function getMaxNumText(
-  paramName: string,
-  value: number,
-  addInfo?: string
-): string {
-  return `${paramName}${
-    paramName.includes(".") ? "" : " option"
-  } value can't be more than ${value}${addInfo ? `. ${addInfo}` : ""}`;
+  } value can't be less${isEqual ? " or equal" : ""} then ${value}${
+    addInfo ? `. ${addInfo}` : ""
+  }`;
 }
 
 export function guardIsNotNum(
@@ -67,26 +57,30 @@ export function guardIsNotNum(
     );
   }
 
-  if (additional?.addParam) {
-    const addParam = additional.addParam;
-    if (addParam.type === "min" && param < addParam.value) {
+  if (!additional?.addParam) return;
+
+  const addParam = additional.addParam;
+  const addInfo = additional?.addInfo;
+  if (addParam.min !== undefined) {
+    if (addParam.minEqual && param <= addParam.min)
+      throw new Error(getMinNumText(paramName, addParam.min, addInfo, true));
+    if (param < addParam.min)
+      throw new Error(getMinNumText(paramName, addParam.min, addInfo));
+    if (addParam.max !== undefined && param > addParam.max) {
       throw new Error(
-        getMinNumText(paramName, addParam.value, additional?.addInfo)
+        `${paramName}${
+          paramName.includes(".") ? "" : " option"
+        } value can't be more than ${addParam.max}${
+          addInfo ? `. ${addInfo}` : ""
+        }`
       );
     }
-
-    if (addParam.type === "minmax") {
-      if (param < addParam.value[0]) {
-        throw new Error(
-          getMinNumText(paramName, addParam.value[0], additional?.addInfo)
-        );
-      }
-
-      if (param > addParam.value[1]) {
-        throw new Error(
-          getMaxNumText(paramName, addParam.value[1], additional?.addInfo)
-        );
-      }
-    }
   }
+
+  if (addParam.isInt && !Number.isInteger(param))
+    throw new Error(
+      `${paramName}${
+        paramName.includes(".") ? "" : " option"
+      } is must be an integer`
+    );
 }

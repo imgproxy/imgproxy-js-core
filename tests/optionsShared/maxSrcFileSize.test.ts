@@ -30,7 +30,7 @@ describe("maxSrcFileSize", () => {
 
     it("should throw an error if max_src_file_size is less than 0", () => {
       expect(() => build({ max_src_file_size: -1 })).toThrow(
-        "max_src_file_size option can't be a negative"
+        "max_src_file_size option value can't be less then 0"
       );
     });
 

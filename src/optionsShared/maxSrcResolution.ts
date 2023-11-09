@@ -2,7 +2,7 @@ import type {
   MaxSrcResolution,
   MaxSrcResolutionOptionsPartial,
 } from "../typesShared/maxSrcResolution";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: MaxSrcResolutionOptionsPartial
@@ -22,12 +22,9 @@ const build = (options: MaxSrcResolutionOptionsPartial): string => {
   const maxSrcResolution = getOpt(options);
 
   guardIsUndef(maxSrcResolution, "max_src_resolution");
-  if (typeof maxSrcResolution !== "number") {
-    throw new Error("max_src_resolution option is not a number");
-  }
-  if (maxSrcResolution <= 0) {
-    throw new Error("max_src_resolution option can't be 0 or less");
-  }
+  guardIsNotNum(maxSrcResolution, "max_src_resolution", {
+    addParam: { min: 0, minEqual: true },
+  });
 
   return `msr:${maxSrcResolution}`;
 };

@@ -10,7 +10,7 @@ const build = (options: BlurOptionsPartial): string => {
   const blurOpts = getOpt(options);
 
   guardIsUndef(blurOpts, "blur");
-  guardIsNotNum(blurOpts, "blur", { addParam: { type: "min", value: 0 } });
+  guardIsNotNum(blurOpts, "blur", { addParam: { min: 0 } });
 
   return `bl:${blurOpts}`;
 };

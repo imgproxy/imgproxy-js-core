@@ -1,5 +1,5 @@
 import type { DPI, DPIOptionsPartial } from "../types/dpi";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: DPIOptionsPartial): DPI | undefined => options.dpi;
 
@@ -9,9 +9,7 @@ const build = (options: DPIOptionsPartial): string => {
   const dpiOpts = getOpt(options);
 
   guardIsUndef(dpiOpts, "dpi");
-  if (typeof dpiOpts !== "number") {
-    throw new Error("dpi option must be a number");
-  }
+  guardIsNotNum(dpiOpts, "dpi");
 
   return `dpi:${dpiOpts}`;
 };

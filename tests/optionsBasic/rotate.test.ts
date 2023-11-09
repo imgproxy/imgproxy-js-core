@@ -24,14 +24,14 @@ describe("rotate", () => {
     it("should throw an error if rotate is not in available", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ rotate: 150 })).toThrow(
-        "rotate is not correct. You can use numbers 0, 90, 180 or 270"
+        "rotate is not correct. You can use values 0, 90, 180, 270"
       );
     });
 
     it("should throw an error if rot is not correct", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ rot: "90" })).toThrow(
-        "rotate option is not a number. You can use numbers 0, 90, 180 or 270"
+        "rotate option is not a number. You can use values 0, 90, 180, 270"
       );
     });
 

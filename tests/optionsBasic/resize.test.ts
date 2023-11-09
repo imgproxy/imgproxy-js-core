@@ -31,26 +31,26 @@ describe("resize", () => {
     it("should return an error if width is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ resize: { width: "100" } })).toThrow(
-        "incorrect width. width must be a number"
+        "resize.width is not a number"
       );
     });
 
     it("should return an error if height is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ resize: { height: "100" } })).toThrow(
-        "incorrect height. height must be a number"
+        "resize.height is not a number"
       );
     });
 
     it("should return an error if width is less than 0", () => {
       expect(() => build({ resize: { width: -15 } })).toThrow(
-        "incorrect width. width must be more than 0"
+        "resize.width value can't be less then 0"
       );
     });
 
     it("should return an error if height is less than 0", () => {
       expect(() => build({ resize: { height: -25 } })).toThrow(
-        "incorrect height. height must be more than 0"
+        "resize.height value can't be less then 0"
       );
     });
 

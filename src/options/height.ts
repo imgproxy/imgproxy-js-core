@@ -11,7 +11,7 @@ const build = (options: HeightOptionsPartial): string => {
   const heightOpts = getOpt(options);
 
   guardIsUndef(heightOpts, "height");
-  guardIsNotNum(heightOpts, "height", { addParam: { type: "min", value: 0 } });
+  guardIsNotNum(heightOpts, "height", { addParam: { min: 0 } });
 
   return `h:${heightOpts}`;
 };

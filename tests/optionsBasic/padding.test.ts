@@ -30,35 +30,35 @@ describe("padding", () => {
 
     it("should throw an error if pd is less than 0", () => {
       expect(() => build({ pd: -1 })).toThrow(
-        "padding option is can't be a negative number"
+        "padding option value can't be less then 0"
       );
     });
 
     it("should throw an error if padding.top is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ padding: { top: "150", right: 20 } })).toThrow(
-        "padding.top option is not a number"
+        "padding.top is not a number"
       );
     });
 
     it("should throw an error if pd.right is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ pd: { top: 150, right: "20" } })).toThrow(
-        "padding.right option is not a number"
+        "padding.right is not a number"
       );
     });
 
     it("should throw an error if padding.bottom is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ padding: { right: 20, bottom: "20" } })).toThrow(
-        "padding.bottom option is not a number"
+        "padding.bottom is not a number"
       );
     });
 
     it("should throw an error if pd.left is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ pd: { top: 20, left: "20" } })).toThrow(
-        "padding.left option is not a number"
+        "padding.left is not a number"
       );
     });
 

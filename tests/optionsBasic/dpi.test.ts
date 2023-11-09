@@ -19,9 +19,7 @@ describe("dpi", () => {
 
     it("should throw an error if dpi is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
-      expect(() => build({ dpi: "150" })).toThrow(
-        "dpi option must be a number"
-      );
+      expect(() => build({ dpi: "150" })).toThrow("dpi option is not a number");
     });
 
     it("should return dpi:150 if dpi option is 150", () => {

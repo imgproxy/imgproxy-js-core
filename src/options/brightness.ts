@@ -12,7 +12,7 @@ const build = (options: BrightnessOptionsPartial): string => {
 
   guardIsUndef(brightnessOpts, "brightness");
   guardIsNotNum(brightnessOpts, "brightness", {
-    addParam: { type: "minmax", value: [-255, 255] },
+    addParam: { min: -255, max: 255 },
   });
 
   return `br:${brightnessOpts}`;

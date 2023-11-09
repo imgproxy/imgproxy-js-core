@@ -10,62 +10,47 @@ const build = (options: JPEGOptionsPartial): string => {
   const jpegOptions = getOpt(options);
 
   guardIsUndef(jpegOptions, "jpeg_options");
-  if (jpegOptions.progressive && typeof jpegOptions.progressive !== "boolean") {
+  const {
+    progressive,
+    no_subsample,
+    trellis_quant,
+    overshoot_deringing,
+    optimize_scans,
+    quant_table,
+  } = jpegOptions;
+
+  if (progressive && typeof progressive !== "boolean")
     throw new Error("jpeg_options.progressive is not a boolean");
-  }
-  if (
-    jpegOptions.no_subsample &&
-    typeof jpegOptions.no_subsample !== "boolean"
-  ) {
+  if (no_subsample && typeof no_subsample !== "boolean")
     throw new Error("jpeg_options.no_subsample is not a boolean");
-  }
-  if (
-    jpegOptions.trellis_quant &&
-    typeof jpegOptions.trellis_quant !== "boolean"
-  ) {
+  if (trellis_quant && typeof trellis_quant !== "boolean")
     throw new Error("jpeg_options.trellis_quant is not a boolean");
-  }
-  if (
-    jpegOptions.overshoot_deringing &&
-    typeof jpegOptions.overshoot_deringing !== "boolean"
-  ) {
+  if (overshoot_deringing && typeof overshoot_deringing !== "boolean")
     throw new Error("jpeg_options.overshoot_deringing is not a boolean");
-  }
-  if (jpegOptions.optimize_scans) {
-    if (
-      jpegOptions.progressive === false &&
-      jpegOptions.optimize_scans === true
-    ) {
+
+  if (optimize_scans) {
+    if (progressive === false && optimize_scans === true) {
       throw new Error(
         "jpeg_options.progressive must be true if jpeg_options.optimize_scans is true"
       );
     }
-    if (typeof jpegOptions.optimize_scans !== "boolean") {
+    if (typeof optimize_scans !== "boolean") {
       throw new Error("jpeg_options.optimize_scans is not a boolean");
     }
   }
-  if (jpegOptions.quant_table) {
-    guardIsNotNum(jpegOptions.quant_table, "jpeg_options.quant_table", {
-      addParam: { type: "minmax", value: [0, 8] },
+  if (quant_table)
+    guardIsNotNum(quant_table, "jpeg_options.quant_table", {
+      addParam: { min: 0, max: 8 },
     });
-  }
 
-  const progressive =
-    jpegOptions.progressive === undefined ? "" : jpegOptions.progressive;
-  const ns =
-    jpegOptions.no_subsample === undefined ? "" : jpegOptions.no_subsample;
-  const tq =
-    jpegOptions.trellis_quant === undefined ? "" : jpegOptions.trellis_quant;
-  const od =
-    jpegOptions.overshoot_deringing === undefined
-      ? ""
-      : jpegOptions.overshoot_deringing;
-  const os =
-    jpegOptions.optimize_scans === undefined ? "" : jpegOptions.optimize_scans;
-  const qt =
-    jpegOptions.quant_table === undefined ? "" : jpegOptions.quant_table;
+  const pr = progressive === undefined ? "" : progressive;
+  const ns = no_subsample === undefined ? "" : no_subsample;
+  const tq = trellis_quant === undefined ? "" : trellis_quant;
+  const od = overshoot_deringing === undefined ? "" : overshoot_deringing;
+  const os = optimize_scans === undefined ? "" : optimize_scans;
+  const qt = quant_table === undefined ? "" : quant_table;
 
-  return `jpgo:${progressive}:${ns}:${tq}:${od}:${os}:${qt}`.replace(/:+$/, "");
+  return `jpgo:${pr}:${ns}:${tq}:${od}:${os}:${qt}`.replace(/:+$/, "");
 };
 
 export { test, build };

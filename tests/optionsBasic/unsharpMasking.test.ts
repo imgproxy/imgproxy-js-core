@@ -30,27 +30,27 @@ describe("unsharpMasking", () => {
 
     it("should throw an error if unsharp_masking.weight is not correct", () => {
       expect(() => build({ unsharp_masking: { weight: -1 } })).toThrow(
-        "unsharp_masking.weight option is not correct. Set the value greater than zero"
+        "unsharp_masking.weight value can't be less or equal then 0"
       );
     });
 
     it("should throw an error if unsharp_masking.weight is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ unsharp_masking: { weight: "test" } })).toThrow(
-        "unsharp_masking.weight option is not a number. Set the value greater than zero"
+        "unsharp_masking.weight is not a number"
       );
     });
 
     it("should throw an error if unsharp_masking.divider is not correct", () => {
       expect(() => build({ unsharp_masking: { divider: -1 } })).toThrow(
-        "unsharp_masking.divider option is not correct. Set the value greater than zero"
+        "unsharp_masking.divider value can't be less or equal then 0"
       );
     });
 
     it("should throw an error if unsharp_masking.divider is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ unsharp_masking: { divider: "test" } })).toThrow(
-        "unsharp_masking.divider option is not a number. Set the value greater than zero"
+        "unsharp_masking.divider is not a number"
       );
     });
 

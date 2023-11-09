@@ -1,5 +1,5 @@
 import type { Quality, QualityOptionsPartial } from "../types/quality";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: QualityOptionsPartial): Quality | undefined =>
   options.quality || options.q;
@@ -11,12 +11,7 @@ const build = (options: QualityOptionsPartial): string => {
   const qualityOpts = getOpt(options);
 
   guardIsUndef(qualityOpts, "quality");
-  if (typeof qualityOpts !== "number") {
-    throw new Error("quality option must be a number");
-  }
-  if (qualityOpts < 0 || qualityOpts > 100) {
-    throw new Error("quality option must be in range from 1 to 100");
-  }
+  guardIsNotNum(qualityOpts, "quality", { addParam: { min: 0, max: 100 } });
 
   return `q:${qualityOpts}`;
 };

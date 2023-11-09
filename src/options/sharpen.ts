@@ -1,5 +1,5 @@
 import type { Sharpen, SharpenOptionsPartial } from "../types/sharpen";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: SharpenOptionsPartial): Sharpen | undefined =>
   options.sharpen || options.sh;
@@ -11,14 +11,7 @@ const build = (options: SharpenOptionsPartial): string => {
   const sharpenOpts = getOpt(options);
 
   guardIsUndef(sharpenOpts, "sharpen");
-  if (typeof sharpenOpts !== "number") {
-    throw new Error("sharpen option is not a number");
-  }
-  if (sharpenOpts < 0) {
-    throw new Error(
-      "sharpen is not correct. Set the value between 0 and any positive number"
-    );
-  }
+  guardIsNotNum(sharpenOpts, "sharpen", { addParam: { min: 0 } });
 
   return `sh:${sharpenOpts}`;
 };

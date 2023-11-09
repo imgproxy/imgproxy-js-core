@@ -37,13 +37,13 @@ describe("watermark", () => {
 
     it("should return throw an error if opacity is less than 0", () => {
       expect(() => build({ watermark: { opacity: -1 } })).toThrow(
-        "watermark.opacity is not correct. Set the value between 0 and 1"
+        "watermark.opacity value can't be less then 0"
       );
     });
 
     it("should return throw an error if opacity is greater than 1", () => {
       expect(() => build({ watermark: { opacity: 2 } })).toThrow(
-        "watermark.opacity is not correct. Set the value between 0 and 1"
+        "watermark.opacity value can't be more than 1"
       );
     });
 

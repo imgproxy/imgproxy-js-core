@@ -18,25 +18,22 @@ const build = (options: GradientOptionsPartial): string => {
   const gradientOpts = getOpt(options);
 
   guardIsUndef(gradientOpts, "gradient");
-  // gradientOpts.opacity
-  guardIsUndef(gradientOpts.opacity, "gradient.opacity");
-  guardIsNotNum(gradientOpts.opacity, "gradient.opacity", {
-    addParam: { type: "minmax", value: [0, 1] },
+  const { opacity, color, direction, start, stop } = gradientOpts;
+
+  guardIsUndef(opacity, "gradient.opacity");
+  guardIsNotNum(opacity, "gradient.opacity", {
+    addParam: { min: 0, max: 1 },
   });
 
   // gradientOpts.color
-  if (gradientOpts.color) {
-    if (typeof gradientOpts.color !== "string") {
+  if (color) {
+    if (typeof color !== "string") {
       throw new Error("gradient.color is not a string");
     }
-    if (gradientOpts.color.match(/[^0-9a-fA-F]/)) {
+    if (color.match(/[^0-9a-fA-F]/)) {
       throw new Error("gradient.color must be hexadecimal");
     }
-    if (
-      gradientOpts.color.length !== 3 &&
-      gradientOpts.color.length !== 6 &&
-      gradientOpts.color.length !== 8
-    ) {
+    if (color.length !== 3 && color.length !== 6 && color.length !== 8) {
       throw new Error(
         "gradient.color must be 3, 6 or 8 characters long (with alpha)"
       );
@@ -44,41 +41,29 @@ const build = (options: GradientOptionsPartial): string => {
   }
 
   // gradientOpts.direction
-  if (gradientOpts.direction) {
-    if (typeof gradientOpts.direction !== "string") {
+  if (direction) {
+    if (typeof direction !== "string") {
       throw new Error("gradient.direction is not a string");
     }
-    if (!currentDirection[gradientOpts.direction]) {
+    if (!currentDirection[direction]) {
       throw new Error(
         "gradient.direction must be one of: down, up, right, left"
       );
     }
   }
 
-  // gradientOpts.start
-  if (gradientOpts.start) {
-    guardIsNotNum(gradientOpts.start, "gradient.start", {
-      addParam: { type: "minmax", value: [0, 1] },
-    });
-  }
+  if (start)
+    guardIsNotNum(start, "gradient.start", { addParam: { min: 0, max: 1 } });
+  if (stop)
+    guardIsNotNum(stop, "gradient.stop", { addParam: { min: 0, max: 1 } });
 
-  // gradientOpts.stop
-  if (gradientOpts.stop) {
-    guardIsNotNum(gradientOpts.stop, "gradient.stop", {
-      addParam: { type: "minmax", value: [0, 1] },
-    });
-  }
+  const op = opacity;
+  const c = color || "";
+  const dir = direction || "";
+  const or = start || "";
+  const end = stop || "";
 
-  const opacity = gradientOpts.opacity;
-  const color = gradientOpts.color || "";
-  const direction = gradientOpts.direction || "";
-  const start = gradientOpts.start || "";
-  const stop = gradientOpts.stop || "";
-
-  return `gr:${opacity}:${color}:${direction}:${start}:${stop}`.replace(
-    /:+$/,
-    ""
-  );
+  return `gr:${op}:${c}:${dir}:${or}:${end}`.replace(/:+$/, "");
 };
 
 export { test, build };

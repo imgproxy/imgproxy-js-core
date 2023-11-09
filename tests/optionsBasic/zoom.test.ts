@@ -31,7 +31,9 @@ describe("zoom", () => {
     });
 
     it("should throw an error if zoom is less than 0", () => {
-      expect(() => build({ z: -1 })).toThrow("zoom cannot be negative");
+      expect(() => build({ z: -1 })).toThrow(
+        "zoom option value can't be less then 0"
+      );
     });
 
     it("should throw an error if zoom_x is not a number", () => {
@@ -43,7 +45,7 @@ describe("zoom", () => {
 
     it("should throw an error if zoom_x is less than 0", () => {
       expect(() => build({ zoom: { zoom_x: -1, zoom_y: 0.5 } })).toThrow(
-        "zoom.zoom_x cannot be negative"
+        "zoom.zoom_x value can't be less then 0"
       );
     });
 

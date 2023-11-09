@@ -21,51 +21,45 @@ const build = (options: AutoqualityOptionsPartial): string => {
   const autoqualityOpts = getOpt(options);
 
   guardIsUndef(autoqualityOpts, "autoquality");
-  if (autoqualityOpts.method && !currentMethods[autoqualityOpts.method]) {
+  const { method, target, min_quality, max_quality, allowed_error } =
+    autoqualityOpts;
+  if (method && !currentMethods[method]) {
     throw new Error(
-      `autoquality method "${
-        autoqualityOpts.method
-      }" is not supported. Supported methods: ${Object.keys(
+      `autoquality method "${method}" is not supported. Supported methods: ${Object.keys(
         currentMethods
       ).join(",")}`
     );
   }
-  if (autoqualityOpts.target) {
-    guardIsNotNum(autoqualityOpts.target, "autoquality.target", {
-      addParam: { type: "min", value: 0 },
+  if (target)
+    guardIsNotNum(target, "autoquality.target", {
+      addParam: { min: 0 },
     });
-  }
-  if (autoqualityOpts.min_quality) {
-    guardIsNotNum(autoqualityOpts.min_quality, "autoquality.min_quality", {
-      addParam: { type: "minmax", value: [0, 100] },
+  if (min_quality)
+    guardIsNotNum(min_quality, "autoquality.min_quality", {
+      addParam: { min: 0, max: 100 },
     });
-  }
-  if (autoqualityOpts.max_quality) {
-    guardIsNotNum(autoqualityOpts.max_quality, "autoquality.max_quality", {
-      addParam: { type: "minmax", value: [0, 100] },
+  if (max_quality)
+    guardIsNotNum(max_quality, "autoquality.max_quality", {
+      addParam: { min: 0, max: 100 },
     });
-  }
-  if (autoqualityOpts.allowed_error) {
-    if (autoqualityOpts.method !== "dssim" && autoqualityOpts.method !== "ml") {
+  if (allowed_error) {
+    if (method !== "dssim" && method !== "ml") {
       throw new Error(
         "autoquality.allowed_error is applicable only to dssim and ml methods"
       );
     }
-    guardIsNotNum(autoqualityOpts.allowed_error, "autoquality.allowed_error", {
-      addParam: { type: "minmax", value: [0, 1] },
+    guardIsNotNum(allowed_error, "autoquality.allowed_error", {
+      addParam: { min: 0, max: 1 },
     });
   }
 
-  const method = autoqualityOpts.method || "";
-  const target = autoqualityOpts.target || "";
-  const min_quality = autoqualityOpts.min_quality || "";
-  const max_quality = autoqualityOpts.max_quality || "";
-  const allowed_error = autoqualityOpts.allowed_error || "";
+  const m = method || "";
+  const t = target || "";
+  const minQuality = min_quality || "";
+  const maxQuality = max_quality || "";
+  const ae = allowed_error || "";
 
-  return `aq:${method}:${target}:${min_quality}:${max_quality}:${allowed_error}`.replace(
-    /:+$/,
-    ""
-  );
+  return `aq:${m}:${t}:${minQuality}:${maxQuality}:${ae}`.replace(/:+$/, "");
 };
 
 export { test, build };

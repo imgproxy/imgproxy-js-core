@@ -23,7 +23,7 @@ const build = (options: MAFROptionsPartial): string => {
 
   guardIsUndef(maxAnimationFrameResolution, "max_animation_frame_resolution");
   guardIsNotNum(maxAnimationFrameResolution, "max_animation_frame_resolution", {
-    addParam: { type: "min", value: 0 },
+    addParam: { min: 0 },
   });
 
   return `mafr:${maxAnimationFrameResolution}`;

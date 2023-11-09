@@ -1,5 +1,5 @@
 import type { MaxBytes, MaxBytesOptionsPartial } from "../types/maxBytes";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: MaxBytesOptionsPartial): MaxBytes | undefined =>
   options.max_bytes || options.mb;
@@ -11,12 +11,7 @@ const build = (options: MaxBytesOptionsPartial): string => {
   const maxBytesOpts = getOpt(options);
 
   guardIsUndef(maxBytesOpts, "max_bytes");
-  if (typeof maxBytesOpts !== "number") {
-    throw new Error("max_bytes option must be a number");
-  }
-  if (maxBytesOpts < 0) {
-    throw new Error("max_bytes option must be a positive number");
-  }
+  guardIsNotNum(maxBytesOpts, "max_bytes", { addParam: { min: 0 } });
 
   return `mb:${maxBytesOpts}`;
 };

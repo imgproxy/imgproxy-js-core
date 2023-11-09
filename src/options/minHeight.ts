@@ -1,5 +1,5 @@
 import type { MinHeight, MinHeightOptionsPartial } from "../types/minHeight";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: MinHeightOptionsPartial): MinHeight | undefined =>
   options.min_height || options.mh;
@@ -11,12 +11,7 @@ const build = (options: MinHeightOptionsPartial): string => {
   const minHeightOpts = getOpt(options);
 
   guardIsUndef(minHeightOpts, "min_height");
-  if (typeof minHeightOpts !== "number") {
-    throw new Error("min_height option is not a number");
-  }
-  if (minHeightOpts < 0) {
-    throw new Error("min_height option is can't be less than 0");
-  }
+  guardIsNotNum(minHeightOpts, "min_height", { addParam: { min: 0 } });
 
   return `mh:${minHeightOpts}`;
 };

@@ -2,7 +2,7 @@ import type {
   WatermarkSize,
   WatermarkSizeOptionsPartial,
 } from "../types/watermarkSize";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: WatermarkSizeOptionsPartial
@@ -15,27 +15,16 @@ const build = (options: WatermarkSizeOptionsPartial): string => {
   const watermarkSizeOpts = getOpt(options);
 
   guardIsUndef(watermarkSizeOpts, "watermark_size");
-  if (watermarkSizeOpts.width) {
-    if (typeof watermarkSizeOpts.width !== "number") {
-      throw new Error("watermark_size.width option is not a number");
-    }
-    if (watermarkSizeOpts.width < 0) {
-      throw new Error("watermark_size.width option is can't be a negative");
-    }
-  }
-  if (watermarkSizeOpts.height) {
-    if (typeof watermarkSizeOpts.height !== "number") {
-      throw new Error("watermark_size.height option is not a number");
-    }
-    if (watermarkSizeOpts.height < 0) {
-      throw new Error("watermark_size.height option is can't be a negative");
-    }
-  }
+  const { width, height } = watermarkSizeOpts;
+  if (width)
+    guardIsNotNum(width, "watermark_size.width", { addParam: { min: 0 } });
+  if (height)
+    guardIsNotNum(height, "watermark_size.height", { addParam: { min: 0 } });
 
-  const width = watermarkSizeOpts.width || "";
-  const height = watermarkSizeOpts.height || "";
+  const w = width || "";
+  const h = height || "";
 
-  return `wms:${width}:${height}`.replace(/:+$/, "");
+  return `wms:${w}:${h}`.replace(/:+$/, "");
 };
 
 export { test, build };

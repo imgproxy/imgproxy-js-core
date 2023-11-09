@@ -24,26 +24,26 @@ describe("watermarkSize", () => {
     it("should throw an error if watermark_size.width is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ watermark_size: { width: "150" } })).toThrow(
-        "watermark_size.width option is not a number"
+        "watermark_size.width is not a number"
       );
     });
 
     it("should throw an error if watermark_size.width is less than 0", () => {
       expect(() => build({ watermark_size: { width: -1 } })).toThrow(
-        "watermark_size.width option is can't be a negative"
+        "watermark_size.width value can't be less then 0"
       );
     });
 
     it("should throw an error if watermark_size.height is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ watermark_size: { height: "150" } })).toThrow(
-        "watermark_size.height option is not a number"
+        "watermark_size.height is not a number"
       );
     });
 
     it("should throw an error if wms.height is less than 0", () => {
       expect(() => build({ wms: { height: -1 } })).toThrow(
-        "watermark_size.height option is can't be a negative"
+        "watermark_size.height value can't be less then 0"
       );
     });
 

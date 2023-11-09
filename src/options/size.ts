@@ -1,6 +1,6 @@
 import type { SizeOptionsPartial, Size } from "../types/size";
 import * as extendOpt from "./extend";
-import { guardIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, guardIsNotNum, normalizeBoolean } from "../utils";
 
 const getOpt = (options: SizeOptionsPartial): Size | undefined =>
   options.size || options.s;
@@ -11,30 +11,19 @@ const build = (options: SizeOptionsPartial): string => {
   const sizeOpts = getOpt(options);
 
   guardIsUndef(sizeOpts, "size");
-  if (sizeOpts.width && typeof sizeOpts.width !== "number") {
-    throw new Error(`incorrect width. width must be a number`);
-  }
-  if (sizeOpts.height && typeof sizeOpts.height !== "number") {
-    throw new Error(`incorrect height. height must be a number`);
-  }
-  if (sizeOpts.width && sizeOpts.width < 0) {
-    throw new Error(`incorrect width. width must be more than 0`);
-  }
-  if (sizeOpts.height && sizeOpts.height < 0) {
-    throw new Error(`incorrect height. height must be more than 0`);
-  }
+  const { width, height, enlarge } = sizeOpts;
 
-  const width = sizeOpts.width || "";
-  const height = sizeOpts.height || "";
-  const enlarge =
-    sizeOpts.enlarge === undefined ? "" : normalizeBoolean(sizeOpts.enlarge);
-  const extend = extendOpt.test(sizeOpts)
+  if (width) guardIsNotNum(width, "size.width", { addParam: { min: 0 } });
+  if (height) guardIsNotNum(height, "size.height", { addParam: { min: 0 } });
+
+  const w = width || "";
+  const h = height || "";
+  const el = enlarge === undefined ? "" : normalizeBoolean(enlarge);
+  const ex = extendOpt.test(sizeOpts)
     ? extendOpt.build(sizeOpts, { headless: true })
     : "";
 
-  const result = `${width}:${height}:${enlarge}:${extend}`.replace(/:+$/, "");
-
-  return `s:${result}`;
+  return `s:${w}:${h}:${el}:${ex}`.replace(/:+$/, "");
 };
 
 export { test, build };
