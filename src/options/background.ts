@@ -1,5 +1,5 @@
 import type { Background, BackgroundOptionsPartial } from "../types/background";
-import { guardIsUndef, guardIsNotNum } from "../utils";
+import { guardIsUndef, guardIsNotNum, guardIsNotStr } from "../utils";
 
 const getOpt = (options: BackgroundOptionsPartial): Background | undefined =>
   options.background || options.bg;
@@ -16,18 +16,7 @@ const build = (options: BackgroundOptionsPartial): string => {
   }
 
   if (typeof backgroundOpts === "string") {
-    if (!backgroundOpts.match(/^[0-9a-fA-F]+$/)) {
-      throw new Error("color in trim option must be hexadecimal");
-    }
-
-    if (
-      backgroundOpts.length !== 6 &&
-      backgroundOpts.length !== 3 &&
-      backgroundOpts.length !== 8
-    ) {
-      throw new Error("color in trim option must be 3, 6 or 8 characters");
-    }
-
+    guardIsNotStr(backgroundOpts, "background", true);
     return `bg:${backgroundOpts}`;
   }
 

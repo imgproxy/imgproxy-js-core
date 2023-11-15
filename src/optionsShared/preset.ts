@@ -1,5 +1,5 @@
 import { Preset, PresetOptionsPartial } from "../typesShared/preset";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotArray } from "../utils";
 
 const getOpt = (options: PresetOptionsPartial): Preset | undefined =>
   options.preset || options.pr;
@@ -11,12 +11,8 @@ const build = (options: PresetOptionsPartial): string => {
   const preset = getOpt(options);
 
   guardIsUndef(preset, "preset");
-  if (!Array.isArray(preset)) {
-    throw new Error("preset option should be an array");
-  }
-  if (preset.length === 0) {
-    throw new Error("preset option is empty array");
-  }
+  guardIsNotArray(preset, "preset");
+
   if (preset.some(item => typeof item !== "string")) {
     throw new Error("preset option should contain only strings");
   }

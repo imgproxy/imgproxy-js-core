@@ -30,13 +30,13 @@ describe("background", () => {
 
     it("should throw an error if background is not hexadecimal", () => {
       expect(() => build({ background: "#ff00f" })).toThrow(
-        "color in trim option must be hexadecimal"
+        "background option must be hexadecimal"
       );
     });
 
     it("should throw an error if background is not 3, 6 or 8 characters", () => {
       expect(() => build({ background: "fff0" })).toThrow(
-        "color in trim option must be 3, 6 or 8 characters"
+        "background option must be 3, 6 or 8 characters long (with alpha)"
       );
     });
 

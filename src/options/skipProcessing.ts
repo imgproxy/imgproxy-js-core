@@ -2,7 +2,7 @@ import type {
   SkipProcessing,
   SkipProcessingOptionsPartial,
 } from "../types/skipProcessing";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotArray } from "../utils";
 
 const extNames = [
   "jpg",
@@ -30,12 +30,8 @@ const build = (options: SkipProcessingOptionsPartial): string => {
   const skipProcessing = getOpt(options);
 
   guardIsUndef(skipProcessing, "skip_processing");
-  if (!Array.isArray(skipProcessing)) {
-    throw new Error("skip_processing option is not an array");
-  }
-  if (skipProcessing.length === 0) {
-    throw new Error("skip_processing option is empty");
-  }
+  guardIsNotArray(skipProcessing, "skip_processing");
+
   if (skipProcessing.some(item => !extNames.includes(item))) {
     throw new Error(
       `skip_processing option contains unsupported extensions. Supported extensions: ${extNames.join(

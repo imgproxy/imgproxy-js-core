@@ -1,5 +1,10 @@
 import type { Gradient, GradientOptionsPartial } from "../types/gradient";
-import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
+import {
+  guardIsUndef,
+  guardIsNotNum,
+  guardIsNotStr,
+  guardIsValidVal,
+} from "../utils";
 
 const currentDirection = {
   down: true,
@@ -25,29 +30,11 @@ const build = (options: GradientOptionsPartial): string => {
     addParam: { min: 0, max: 1 },
   });
 
-  // gradientOpts.color
-  if (color) {
-    if (typeof color !== "string") {
-      throw new Error("gradient.color is not a string");
-    }
-    if (color.match(/[^0-9a-fA-F]/)) {
-      throw new Error("gradient.color must be hexadecimal");
-    }
-    if (color.length !== 3 && color.length !== 6 && color.length !== 8) {
-      throw new Error(
-        "gradient.color must be 3, 6 or 8 characters long (with alpha)"
-      );
-    }
-  }
-
-  // gradientOpts.direction
+  if (color) guardIsNotStr(color, "gradient.color", true);
   if (direction) {
-    if (typeof direction !== "string") {
-      throw new Error("gradient.direction is not a string");
-    }
+    guardIsNotStr(direction, "gradient.direction");
     guardIsValidVal(currentDirection, direction, "gradient.direction");
   }
-
   if (start)
     guardIsNotNum(start, "gradient.start", { addParam: { min: 0, max: 1 } });
   if (stop)

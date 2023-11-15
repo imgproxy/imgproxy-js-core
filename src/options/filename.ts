@@ -1,5 +1,5 @@
 import type { Filename, FilenameOptionsPartial } from "../types/filename";
-import { guardIsUndef, normalizeBoolean } from "../utils";
+import { guardIsUndef, guardIsNotStr, normalizeBoolean } from "../utils";
 
 const getOpt = (options: FilenameOptionsPartial): Filename | undefined =>
   options.filename || options.fn;
@@ -12,9 +12,7 @@ const build = (options: FilenameOptionsPartial): string => {
 
   guardIsUndef(filename, "filename");
   guardIsUndef(filename.name, "filename.name");
-  if (typeof filename.name !== "string") {
-    throw new Error("name in filename option should be a string");
-  }
+  guardIsNotStr(filename.name, "filename.name");
 
   const encoded =
     filename.encoded === undefined

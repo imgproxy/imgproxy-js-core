@@ -5,7 +5,12 @@ import type {
   ObjGravity,
   BaseGravity,
 } from "../types/gravity";
-import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
+import {
+  guardIsUndef,
+  guardIsNotNum,
+  guardIsValidVal,
+  guardIsNotArray,
+} from "../utils";
 
 interface BuildProps {
   headless?: boolean;
@@ -81,15 +86,9 @@ const build = (
     const gravityObj = gravityOpts as ObjGravity;
 
     guardIsUndef(gravityOpts.class_names, "gravity.class_names");
-    if (!Array.isArray(gravityObj.class_names)) {
-      throw new Error("gravity.class_names is not an array");
-    }
-    if (gravityObj.class_names.length === 0) {
-      throw new Error("gravity.class_names is empty");
-    }
+    guardIsNotArray(gravityObj.class_names, "gravity.class_names");
 
     const class_names = gravityObj.class_names;
-
     return withHead(`${type}:${class_names.join(":")}`, headless);
   } else {
     const gravityBase = gravityOpts as BaseGravity;

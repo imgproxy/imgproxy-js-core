@@ -1,5 +1,5 @@
 import type { Style, StyleOptionsPartial } from "../types/style";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotStr } from "../utils";
 
 const getOpt = (options: StyleOptionsPartial): Style | undefined =>
   options.style || options.stl;
@@ -11,9 +11,7 @@ const build = (options: StyleOptionsPartial): string => {
   const styleOpts = getOpt(options);
 
   guardIsUndef(styleOpts, "style");
-  if (typeof styleOpts !== "string") {
-    throw new Error("style option is not a string");
-  }
+  guardIsNotStr(styleOpts, "style");
 
   return `stl:${styleOpts}`;
 };

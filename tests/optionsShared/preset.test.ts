@@ -24,14 +24,12 @@ describe("preset", () => {
     it("should throw an error if preset option is not an array", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ preset: "borders" })).toThrow(
-        "preset option should be an array"
+        "preset option is not an array"
       );
     });
 
     it("should throw an error if preset option is empty array", () => {
-      expect(() => build({ preset: [] })).toThrow(
-        "preset option is empty array"
-      );
+      expect(() => build({ preset: [] })).toThrow("preset option is empty");
     });
 
     it("should throw an error if preset option contains non-string items", () => {

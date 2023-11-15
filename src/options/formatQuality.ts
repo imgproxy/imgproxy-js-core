@@ -2,7 +2,7 @@ import type {
   FormatQuality,
   FormatQualityOptionsPartial,
 } from "../types/formatQuality";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotArray } from "../utils";
 
 const getOpt = (
   options: FormatQualityOptionsPartial
@@ -15,12 +15,7 @@ const build = (options: FormatQualityOptionsPartial): string => {
   const formatQualityOpts = getOpt(options);
 
   guardIsUndef(formatQualityOpts, "format_quality");
-  if (!Array.isArray(formatQualityOpts)) {
-    throw new Error("format quality option must be an array");
-  }
-  if (formatQualityOpts.length === 0) {
-    throw new Error("format quality option is empty");
-  }
+  guardIsNotArray(formatQualityOpts, "format_quality");
 
   const formatQualityValue: string[] = [];
   formatQualityOpts.forEach(formatQuality => {

@@ -2,7 +2,7 @@ import type {
   CacheBuster,
   CacheBusterOptionsPartial,
 } from "../typesShared/cacheBuster";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotStr } from "../utils";
 
 const getOpt = (options: CacheBusterOptionsPartial): CacheBuster | undefined =>
   options.cachebuster || options.cb;
@@ -14,9 +14,7 @@ const build = (options: CacheBusterOptionsPartial): string => {
   const cachebuster = getOpt(options);
 
   guardIsUndef(cachebuster, "cachebuster");
-  if (typeof cachebuster !== "string") {
-    throw new Error("cachebuster option must be a string");
-  }
+  guardIsNotStr(cachebuster, "cachebuster");
 
   return `cb:${cachebuster}`;
 };

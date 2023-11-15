@@ -22,13 +22,13 @@ describe("formatQuality", () => {
     it("should throw an error if formatQuality is not an array", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ format_quality: "test" })).toThrow(
-        "format quality option must be an array"
+        "format_quality option is not an array"
       );
     });
 
     it("should throw an error if formatQuality is empty", () => {
       expect(() => build({ format_quality: [] })).toThrow(
-        "format quality option is empty"
+        "format_quality option is empty"
       );
     });
 

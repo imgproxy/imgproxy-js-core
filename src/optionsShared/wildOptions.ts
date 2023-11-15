@@ -2,7 +2,7 @@ import type {
   WildOptions,
   WildOptionsPartial,
 } from "../typesShared/wildOptions";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotArray } from "../utils";
 
 const getOpt = (options: WildOptionsPartial): WildOptions | undefined =>
   options.wild_options;
@@ -13,9 +13,7 @@ const build = (options: WildOptionsPartial): string => {
   const wildOptions = options.wild_options;
 
   guardIsUndef(wildOptions, "raw_options");
-  if (!Array.isArray(wildOptions)) {
-    throw new Error("raw_options is not an array");
-  }
+  guardIsNotArray(wildOptions, "raw_options");
   if (!wildOptions.every(opt => Array.isArray(opt))) {
     throw new Error("raw_options is not an array of arrays");
   }

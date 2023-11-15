@@ -90,3 +90,35 @@ export function guardIsValidVal(valObj, value: string | number, name: string) {
     throw new Error(`${getParamName(name)} is invalid. ${text}`);
   }
 }
+
+export function guardIsNotStr(
+  param: string | undefined,
+  pn: string,
+  isHex?: boolean
+): asserts param is string {
+  if (typeof param !== "string") {
+    throw new Error(`${getParamName(pn)} is not a string`);
+  }
+  if (isHex) {
+    if (param.match(/[^0-9a-fA-F]/)) {
+      throw new Error(`${getParamName(pn)} must be hexadecimal`);
+    }
+    if (param.length !== 3 && param.length !== 6 && param.length !== 8) {
+      throw new Error(
+        `${getParamName(pn)} must be 3, 6 or 8 characters long (with alpha)`
+      );
+    }
+  }
+}
+
+export function guardIsNotArray(
+  param: Array | undefined,
+  pn: string
+): asserts param is Array {
+  if (!Array.isArray(param)) {
+    throw new Error(`${getParamName(pn)} is not an array`);
+  }
+  if (param.length === 0) {
+    throw new Error(`${getParamName(pn)} is empty`);
+  }
+}

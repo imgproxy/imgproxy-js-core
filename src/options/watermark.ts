@@ -1,5 +1,10 @@
 import type { Watermark, WatermarkOptionsPartial } from "../types/watermark";
-import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
+import {
+  guardIsUndef,
+  guardIsNotNum,
+  guardIsValidVal,
+  guardIsNotStr,
+} from "../utils";
 
 const currentPositions = {
   ce: true,
@@ -32,9 +37,7 @@ const build = (options: WatermarkOptionsPartial): string => {
 
   // watermarkOpts.position
   if (position) {
-    if (typeof position !== "string") {
-      throw new Error("watermark.position is not a string");
-    }
+    guardIsNotStr(position, "watermark.position");
     guardIsValidVal(currentPositions, position, "watermark.position");
   }
 

@@ -2,7 +2,7 @@ import type {
   WatermarkText,
   WatermarkTextOptionsPartial,
 } from "../types/watermarkText";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotStr } from "../utils";
 
 const getOpt = (
   options: WatermarkTextOptionsPartial
@@ -15,9 +15,7 @@ const build = (options: WatermarkTextOptionsPartial): string => {
   const watermarkTextOpts = getOpt(options);
 
   guardIsUndef(watermarkTextOpts, "watermark_text");
-  if (typeof watermarkTextOpts !== "string") {
-    throw new Error("watermark_text option is not a string");
-  }
+  guardIsNotStr(watermarkTextOpts, "watermark_text");
 
   return `wmt:${watermarkTextOpts}`;
 };
