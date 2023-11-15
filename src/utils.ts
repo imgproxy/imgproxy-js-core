@@ -79,11 +79,13 @@ export function guardIsNotNum(
     throw new Error(`${getParamName(paramName)} is must be an integer`);
 }
 
-interface IValidValues {
-  [string | number]: boolean;
-}
+type ValidValues = Record<string | number, boolean>;
 
-export function guardIsValidVal(valObj, value: string | number, name: string) {
+export function guardIsValidVal(
+  valObj: ValidValues,
+  value: string | number,
+  name: string
+) {
   const text = `Valid values are: ${Object.keys(valObj).join(", ")}`;
 
   if (!valObj[value]) {
@@ -112,9 +114,9 @@ export function guardIsNotStr(
 }
 
 export function guardIsNotArray(
-  param: Array | undefined,
+  param: Array<unknown> | undefined,
   pn: string
-): asserts param is Array {
+): asserts param is Array<unknown> {
   if (!Array.isArray(param)) {
     throw new Error(`${getParamName(pn)} is not an array`);
   }
