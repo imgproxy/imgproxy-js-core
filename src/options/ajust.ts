@@ -1,5 +1,5 @@
 import type { Ajust, AjustOptionsPartial } from "../types/ajust";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: AjustOptionsPartial): Ajust | undefined =>
   options.ajust || options.aj;
@@ -11,12 +11,10 @@ const build = (options: AjustOptionsPartial): string => {
   const ajustOpts = getOpt(options);
 
   guardIsUndef(ajustOpts, "ajust");
-  if (
-    ajustOpts.brightness &&
-    (ajustOpts.brightness > 255 || ajustOpts.brightness < -255)
-  ) {
-    throw new Error("brightness must be in range [-255, 255]");
-  }
+  if (ajustOpts.brightness)
+    guardIsNotNum(ajustOpts.brightness, "ajust.brightness", {
+      addParam: { min: -255, max: 255 },
+    });
 
   const brightness = ajustOpts.brightness || "";
   const contrast = ajustOpts.contrast || "";

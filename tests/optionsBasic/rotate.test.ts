@@ -24,7 +24,7 @@ describe("rotate", () => {
     it("should throw an error if rotate is not in available", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ rotate: 150 })).toThrow(
-        "rotate is not correct. You can use values 0, 90, 180, 270"
+        "rotate option is invalid. Valid values are: 0, 90, 180, 270"
       );
     });
 

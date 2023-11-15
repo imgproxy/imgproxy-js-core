@@ -2,7 +2,7 @@ import type {
   Autoquality,
   AutoqualityOptionsPartial,
 } from "../types/autoquality";
-import { guardIsUndef, guardIsNotNum } from "../utils";
+import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
 
 const currentMethods = {
   none: true,
@@ -23,13 +23,7 @@ const build = (options: AutoqualityOptionsPartial): string => {
   guardIsUndef(autoqualityOpts, "autoquality");
   const { method, target, min_quality, max_quality, allowed_error } =
     autoqualityOpts;
-  if (method && !currentMethods[method]) {
-    throw new Error(
-      `autoquality method "${method}" is not supported. Supported methods: ${Object.keys(
-        currentMethods
-      ).join(",")}`
-    );
-  }
+  if (method) guardIsValidVal(currentMethods, method, "autoquality.method");
   if (target)
     guardIsNotNum(target, "autoquality.target", {
       addParam: { min: 0 },

@@ -24,7 +24,7 @@ describe("resize", () => {
     it("should return an error if resizing_type is incorrect", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ resize: { resizing_type: "fill-up" } })).toThrow(
-        "incorrect resizing_type"
+        "resize.resizing_type is invalid. Valid values are: fit, fill, auto, fill_down, force"
       );
     });
 

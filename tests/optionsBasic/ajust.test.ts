@@ -22,13 +22,13 @@ describe("ajust", () => {
 
     it("should throw an error if brightness begger than 255", () => {
       expect(() => build({ ajust: { brightness: 300 } })).toThrow(
-        "brightness must be in range [-255, 255]"
+        "ajust.brightness value can't be more than 255"
       );
     });
 
     it("should throw an error if brightness less than -255", () => {
       expect(() => build({ ajust: { brightness: -300 } })).toThrow(
-        "brightness must be in range [-255, 255]"
+        "ajust.brightness value can't be less then -255"
       );
     });
 

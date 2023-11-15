@@ -24,7 +24,7 @@ describe("autoquality", () => {
     it("should throw an error if autoquality.method is not supported", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ autoquality: { method: "unsupported" } })).toThrow(
-        'autoquality method "unsupported" is not supported. Supported methods: none,size,dssim,ml'
+        "autoquality.method is invalid. Valid values are: none, size, dssim, ml"
       );
     });
 

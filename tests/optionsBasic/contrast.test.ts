@@ -24,13 +24,13 @@ describe("contrast", () => {
     it("should throw an error if contrast is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ contrast: "150" })).toThrow(
-        "contrast is not correct. Set the value between 0 and any positive number"
+        "contrast option is not a number"
       );
     });
 
     it("should throw an error if contrast is less than 0", () => {
       expect(() => build({ contrast: -1 })).toThrow(
-        "contrast is not correct. Set the value between 0 and any positive number"
+        "contrast option value can't be less then 0"
       );
     });
 

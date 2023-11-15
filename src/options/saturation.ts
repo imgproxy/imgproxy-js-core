@@ -1,5 +1,5 @@
 import type { Saturation, SaturationOptionsPartial } from "../types/saturation";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: SaturationOptionsPartial): Saturation | undefined =>
   options.saturation || options.sa;
@@ -11,11 +11,7 @@ const build = (options: SaturationOptionsPartial): string => {
   const saturationOpts = getOpt(options);
 
   guardIsUndef(saturationOpts, "saturation");
-  if (typeof saturationOpts !== "number" || saturationOpts < 0) {
-    throw new Error(
-      "saturation is not correct. Set the value between 0 and any positive number"
-    );
-  }
+  guardIsNotNum(saturationOpts, "saturation", { addParam: { min: 0 } });
 
   return `sa:${saturationOpts}`;
 };

@@ -79,7 +79,9 @@ describe("gradient", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ gradient: { opacity: 0.5, direction: "top" } })
-      ).toThrow("gradient.direction must be one of: down, up, right, left");
+      ).toThrow(
+        "gradient.direction is invalid. Valid values are: down, up, right, left"
+      );
     });
 
     it("should throw an error if start is not a number", () => {

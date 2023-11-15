@@ -1,5 +1,5 @@
 import type { Format, FormatOptionsPartial } from "../types/format";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsValidVal } from "../utils";
 
 const formatValues = {
   png: true,
@@ -25,13 +25,7 @@ const build = (options: FormatOptionsPartial): string => {
   const format = getOpt(options);
 
   guardIsUndef(format, "format");
-  if (!formatValues[format]) {
-    throw new Error(
-      `format option is invalid. Must be one of: ${Object.keys(
-        formatValues
-      ).join(",")}`
-    );
-  }
+  guardIsValidVal(formatValues, format, "format");
 
   return `f:${format}`;
 };

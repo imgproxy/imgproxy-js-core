@@ -1,5 +1,5 @@
 import type { Gradient, GradientOptionsPartial } from "../types/gradient";
-import { guardIsUndef, guardIsNotNum } from "../utils";
+import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
 
 const currentDirection = {
   down: true,
@@ -45,11 +45,7 @@ const build = (options: GradientOptionsPartial): string => {
     if (typeof direction !== "string") {
       throw new Error("gradient.direction is not a string");
     }
-    if (!currentDirection[direction]) {
-      throw new Error(
-        "gradient.direction must be one of: down, up, right, left"
-      );
-    }
+    guardIsValidVal(currentDirection, direction, "gradient.direction");
   }
 
   if (start)

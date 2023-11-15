@@ -59,7 +59,7 @@ describe("watermark", () => {
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ watermark: { opacity: 0.2, position: "top" } })
       ).toThrow(
-        "watermark.position is not correct. Set the value from ce, no, so, ea, we, noea, nowe, soea, sowe, re"
+        "watermark.position is invalid. Valid values are: ce, no, so, ea, we, noea, nowe, soea, sowe, re"
       );
     });
 

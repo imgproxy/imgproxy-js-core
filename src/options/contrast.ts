@@ -1,5 +1,5 @@
 import type { Contrast, ContrastOptionsPartial } from "../types/contrast";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: ContrastOptionsPartial): Contrast | undefined =>
   options.contrast || options.co;
@@ -11,11 +11,7 @@ const build = (options: ContrastOptionsPartial): string => {
   const contrastOpts = getOpt(options);
 
   guardIsUndef(contrastOpts, "contrast");
-  if (typeof contrastOpts !== "number" || contrastOpts < 0) {
-    throw new Error(
-      "contrast is not correct. Set the value between 0 and any positive number"
-    );
-  }
+  guardIsNotNum(contrastOpts, "contrast", { addParam: { min: 0 } });
 
   return `co:${contrastOpts}`;
 };

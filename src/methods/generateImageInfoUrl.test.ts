@@ -17,7 +17,7 @@ describe("generateImageInfoUrl", () => {
   it("should throw an error if url.type is invalid", () => {
     // @ts-expect-error: Let's ignore an error.
     expect(() => generateUrl({ value: "test", type: "test" })).toThrow(
-      "url.type is invalid. Valid values are: 'plain', 'base64', 'encrypted'. Got: test"
+      "url.type is invalid. Valid values are: plain, base64, encrypted"
     );
   });
 

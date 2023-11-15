@@ -2,7 +2,7 @@ import type {
   ResizingTypeOptionsPartial,
   ResizingType,
 } from "../types/resizingType";
-import { guardIsUndef } from "../utils";
+import { guardIsUndef, guardIsValidVal } from "../utils";
 
 const correctValues = {
   fit: true,
@@ -23,11 +23,7 @@ const build = (options: ResizingTypeOptionsPartial): string => {
   const resizingTypeOpts = getOpt(options);
 
   guardIsUndef(resizingTypeOpts, "resizing_type");
-  if (!correctValues[resizingTypeOpts]) {
-    throw new Error(
-      "resizing_type option is not correct. You can use: fit, fill, fill_down, force, auto"
-    );
-  }
+  guardIsValidVal(correctValues, resizingTypeOpts, "resizing_type");
 
   return `rt:${resizingTypeOpts}`;
 };

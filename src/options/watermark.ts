@@ -1,5 +1,5 @@
 import type { Watermark, WatermarkOptionsPartial } from "../types/watermark";
-import { guardIsUndef, guardIsNotNum } from "../utils";
+import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
 
 const currentPositions = {
   ce: true,
@@ -35,13 +35,7 @@ const build = (options: WatermarkOptionsPartial): string => {
     if (typeof position !== "string") {
       throw new Error("watermark.position is not a string");
     }
-    if (!currentPositions[position]) {
-      throw new Error(
-        `watermark.position is not correct. Set the value from ${Object.keys(
-          currentPositions
-        ).join(", ")}`
-      );
-    }
+    guardIsValidVal(currentPositions, position, "watermark.position");
   }
 
   if (x_offset) guardIsNotNum(x_offset, "watermark.x_offset");

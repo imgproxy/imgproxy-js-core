@@ -24,7 +24,7 @@ describe("unsharpMasking", () => {
     it("should throw an error if unsharp_masking.mode is not correct", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ unsharp_masking: { mode: "test" } })).toThrow(
-        "unsharp_masking.mode option is not correct. Set the value auto, none or always"
+        "unsharp_masking.mode is invalid. Valid values are: auto, none, always"
       );
     });
 

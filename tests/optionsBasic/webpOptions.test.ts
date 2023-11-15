@@ -24,14 +24,14 @@ describe("webpOptions", () => {
     it("should throw an error if webp_options is invalid", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ webp_options: "invalid" })).toThrow(
-        "webp options option is invalid. Must be one of: 'lossy', 'near_lossless', 'lossless'"
+        "webp_options option is invalid. Valid values are: lossy, near_lossless, lossless"
       );
     });
 
     it("should throw an error if webp_options is a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ webp_options: 1 })).toThrow(
-        "webp options option is invalid. Must be one of: 'lossy', 'near_lossless', 'lossless'"
+        "webp_options option is invalid. Valid values are: lossy, near_lossless, lossless"
       );
     });
 

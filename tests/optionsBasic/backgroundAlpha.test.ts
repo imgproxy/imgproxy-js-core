@@ -22,20 +22,20 @@ describe("backgroundAlpha", () => {
 
     it("should throw an error if background alpha bigger than 1", () => {
       expect(() => build({ background_alpha: 1.5 })).toThrow(
-        "background alpha is not correct. Set the value between 0 and 1"
+        "background_alpha option value can't be more than 1"
       );
     });
 
     it("should throw an error if background alpha less than 0", () => {
       expect(() => build({ background_alpha: -0.5 })).toThrow(
-        "background alpha is not correct. Set the value between 0 and 1"
+        "background_alpha option value can't be less then 0"
       );
     });
 
     it("should throw an error if background alpha is not a number", () => {
       // @ts-expect-error: Let's ignore an error.
       expect(() => build({ background_alpha: "0.5" })).toThrow(
-        "background alpha is not correct. Set the value between 0 and 1"
+        "background_alpha option is not a number"
       );
     });
 

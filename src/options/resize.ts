@@ -1,8 +1,13 @@
 import type { ResizeOptionsPartial, Resize } from "../types/resize";
 import * as extendOpt from "./extend";
-import { guardIsUndef, guardIsNotNum, normalizeBoolean } from "../utils";
+import {
+  guardIsUndef,
+  guardIsNotNum,
+  guardIsValidVal,
+  normalizeBoolean,
+} from "../utils";
 
-const correctResizingTypes = {
+const correctTypes = {
   fit: true,
   fill: true,
   auto: true,
@@ -22,9 +27,8 @@ const build = (options: ResizeOptionsPartial): string => {
   guardIsUndef(resizeOpts, "resize");
   const { resizing_type, width, height, enlarge } = resizeOpts;
 
-  if (resizing_type && !correctResizingTypes[resizing_type]) {
-    throw new Error(`incorrect resizing_type`);
-  }
+  if (resizing_type)
+    guardIsValidVal(correctTypes, resizing_type, "resize.resizing_type");
   if (width) guardIsNotNum(width, "resize.width", { addParam: { min: 0 } });
   if (height) guardIsNotNum(height, "resize.height", { addParam: { min: 0 } });
 

@@ -5,6 +5,10 @@ export const normalizeBoolean = (value: 1 | string | boolean): string => {
   return "f";
 };
 
+const getParamName = (name: string): string => {
+  return `${name}${name.includes(".") ? "" : " option"}`;
+};
+
 export function guardIsUndef<T>(
   param: T | undefined,
   paramName: string,
@@ -12,9 +16,7 @@ export function guardIsUndef<T>(
 ): asserts param is T {
   if (param === undefined) {
     throw new Error(
-      `${paramName}${paramName.includes(".") ? "" : " option"} is undefined${
-        addInfo ? `. ${addInfo}` : ""
-      }`
+      `${getParamName(paramName)} is undefined${addInfo ? `. ${addInfo}` : ""}`
     );
   }
 }
@@ -37,11 +39,9 @@ function getMinNumText(
   addInfo?: string,
   isEqual?: boolean
 ): string {
-  return `${paramName}${
-    paramName.includes(".") ? "" : " option"
-  } value can't be less${isEqual ? " or equal" : ""} then ${value}${
-    addInfo ? `. ${addInfo}` : ""
-  }`;
+  return `${getParamName(paramName)} value can't be less${
+    isEqual ? " or equal" : ""
+  } then ${value}${addInfo ? `. ${addInfo}` : ""}`;
 }
 
 export function guardIsNotNum(
@@ -51,7 +51,7 @@ export function guardIsNotNum(
 ): asserts param is number {
   if (typeof param !== "number") {
     throw new Error(
-      `${paramName}${paramName.includes(".") ? "" : " option"} is not a number${
+      `${getParamName(paramName)} is not a number${
         additional?.addInfo ? `. ${additional?.addInfo}` : ""
       }`
     );
@@ -68,9 +68,7 @@ export function guardIsNotNum(
       throw new Error(getMinNumText(paramName, addParam.min, addInfo));
     if (addParam.max !== undefined && param > addParam.max) {
       throw new Error(
-        `${paramName}${
-          paramName.includes(".") ? "" : " option"
-        } value can't be more than ${addParam.max}${
+        `${getParamName(paramName)} value can't be more than ${addParam.max}${
           addInfo ? `. ${addInfo}` : ""
         }`
       );
@@ -78,9 +76,17 @@ export function guardIsNotNum(
   }
 
   if (addParam.isInt && !Number.isInteger(param))
-    throw new Error(
-      `${paramName}${
-        paramName.includes(".") ? "" : " option"
-      } is must be an integer`
-    );
+    throw new Error(`${getParamName(paramName)} is must be an integer`);
+}
+
+interface IValidValues {
+  [string | number]: boolean;
+}
+
+export function guardIsValidVal(valObj, value: string | number, name: string) {
+  const text = `Valid values are: ${Object.keys(valObj).join(", ")}`;
+
+  if (!valObj[value]) {
+    throw new Error(`${getParamName(name)} is invalid. ${text}`);
+  }
 }

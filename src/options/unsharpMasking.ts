@@ -2,7 +2,7 @@ import type {
   UnsharpMasking,
   UnsharpMaskingOptionsPartial,
 } from "../types/unsharpMasking";
-import { guardIsUndef, guardIsNotNum } from "../utils";
+import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
 
 const correctMode = {
   auto: true,
@@ -22,10 +22,7 @@ const build = (options: UnsharpMaskingOptionsPartial): string => {
 
   guardIsUndef(unsharpMaskingOpts, "unsharp_masking");
   const { mode, weight, divider } = unsharpMaskingOpts;
-  if (mode && !correctMode[mode])
-    throw new Error(
-      "unsharp_masking.mode option is not correct. Set the value auto, none or always"
-    );
+  if (mode) guardIsValidVal(correctMode, mode, "unsharp_masking.mode");
   if (weight)
     guardIsNotNum(weight, "unsharp_masking.weight", {
       addParam: { min: 0, minEqual: true },
