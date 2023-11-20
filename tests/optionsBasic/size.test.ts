@@ -18,32 +18,32 @@ describe("size", () => {
 
   describe("build", () => {
     it("should return an error if size option is undefined", () => {
-      expect(() => build({})).toThrow("size options are undefined");
+      expect(() => build({})).toThrow("size option is undefined");
     });
 
     it("should return an error if width is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ size: { width: "100" } })).toThrow(
-        "incorrect width. width must be a number"
+        "size.width is not a number"
       );
     });
 
     it("should return an error if height is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ size: { height: "100" } })).toThrow(
-        "incorrect height. height must be a number"
+        "size.height is not a number"
       );
     });
 
     it("should return an error if width is less than 0", () => {
       expect(() => build({ size: { width: -15 } })).toThrow(
-        "incorrect width. width must be more than 0"
+        "size.width value can't be less then 0"
       );
     });
 
     it("should return an error if height is less than 0", () => {
       expect(() => build({ size: { height: -25 } })).toThrow(
-        "incorrect height. height must be more than 0"
+        "size.height value can't be less then 0"
       );
     });
 

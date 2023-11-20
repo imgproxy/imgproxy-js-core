@@ -24,19 +24,19 @@ describe("quality", () => {
     it("should throw an error if quality is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ quality: "test" })).toThrow(
-        "quality option must be a number"
+        "quality option is not a number"
       );
     });
 
     it("should throw an error if quality is less than 0", () => {
       expect(() => build({ quality: -1 })).toThrow(
-        "quality option must be in range from 1 to 100"
+        "quality option value can't be less then 0"
       );
     });
 
     it("should throw an error if quality is greater than 100", () => {
       expect(() => build({ quality: 101 })).toThrow(
-        "quality option must be in range from 1 to 100"
+        "quality option value can't be more than 100"
       );
     });
 

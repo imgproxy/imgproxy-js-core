@@ -30,7 +30,7 @@ describe("min_width", () => {
 
     it("should throw an error if min_width is less than 0", () => {
       expect(() => build({ min_width: -1 })).toThrow(
-        "min_width option is can't be less than 0"
+        "min_width option value can't be less then 0"
       );
     });
 

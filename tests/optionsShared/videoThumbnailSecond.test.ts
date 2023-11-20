@@ -26,19 +26,19 @@ describe("videoThumbnailSecond", () => {
     it("should throw an error if video_thumbnail_second is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ video_thumbnail_second: "150" })).toThrow(
-        "video_thumbnail_second option is not a number. Must be a positive integer"
+        "video_thumbnail_second option is not a number"
       );
     });
 
     it("should throw an error if video_thumbnail_second is less than 1", () => {
       expect(() => build({ video_thumbnail_second: 0 })).toThrow(
-        "video_thumbnail_second option is negative. Must be a positive integer"
+        "video_thumbnail_second option value can't be less then 1"
       );
     });
 
     it("should throw an error if video_thumbnail_second is not an integer", () => {
       expect(() => build({ video_thumbnail_second: 1.5 })).toThrow(
-        "video_thumbnail_second must be a positive integer"
+        "video_thumbnail_second option is must be an integer"
       );
     });
 

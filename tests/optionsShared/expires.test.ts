@@ -24,7 +24,7 @@ describe("expires", () => {
     it("should throw an error if expires option is not a number", () => {
       // @ts-expect-error: Let's ignore an error.
       expect(() => build({ expires: "1" })).toThrow(
-        "expires option must be a number"
+        "expires option is not a number"
       );
     });
 

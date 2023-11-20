@@ -18,14 +18,14 @@ describe("extend", () => {
 
   describe("build", () => {
     it("should throw an error if extend options are undefined ", () => {
-      expect(() => build({})).toThrow("extend options are undefined");
+      expect(() => build({})).toThrow("extend option is undefined");
     });
 
     it("should throw an error if extend.extend is undefined", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error.
         build({ extend: { gravity: { type: "we" } } })
-      ).toThrow("extend in extend option is required");
+      ).toThrow("extend.extend is undefined");
     });
 
     it("should return ex:t if extend is true and gravity is undefined", () => {

@@ -1,5 +1,6 @@
 import { Options } from "../types";
 import * as optionModules from "../options";
+import { guardIsUndef, guardIsValidVal } from "../utils";
 
 const correctUrlTypes = {
   plain: true,
@@ -13,19 +14,13 @@ type URL = {
 };
 
 const generateUrl = (url: URL, options?: Options): string => {
-  if (!url.value) {
-    throw new Error("url.value is undefined. Must be a string");
-  }
-  if (!url.type) {
-    throw new Error(
-      "url.type is undefined. Valid values are: 'plain', 'base64', 'encrypted'"
-    );
-  }
-  if (!correctUrlTypes[url.type]) {
-    throw new Error(
-      `url.type is invalid. Valid values are: 'plain', 'base64', 'encrypted'. Got: ${url.type}`
-    );
-  }
+  guardIsUndef(url.value, "url.value", "Must be a string");
+  guardIsUndef(
+    url.type,
+    "url.type",
+    `Valid values are: ${Object.keys(correctUrlTypes).join(", ")}`
+  );
+  guardIsValidVal(correctUrlTypes, url.type, "url.type");
 
   let optsPart = "";
   if (options) {

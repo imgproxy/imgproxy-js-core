@@ -18,7 +18,7 @@ describe("gravity", () => {
 
   describe("build", () => {
     it("should throw an error if gravity option is undefined", () => {
-      expect(() => build({})).toThrow("gravity options are undefined");
+      expect(() => build({})).toThrow("gravity option is undefined");
     });
 
     it("should throw an error if type is undefined", () => {
@@ -29,7 +29,7 @@ describe("gravity", () => {
     it("should throw an error if type is not supported", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ gravity: { type: "empty" } })).toThrow(
-        `gravity type "empty" is not supported. Supported types: no,so,ea,we,ce,noea,nowe,soea,sowe,sm,fp,obj`
+        `gravity.type is invalid. Valid values are: no, so, ea, we, ce, noea, nowe, soea, sowe, sm, fp, obj`
       );
     });
 
@@ -37,14 +37,14 @@ describe("gravity", () => {
       it("should throw an error if type is not supported", () => {
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         expect(() => build({ gravity: { type: "empty" } })).toThrow(
-          `gravity type "empty" is not supported. Supported types: no,so,ea,we,ce,noea,nowe,soea,sowe`
+          `gravity.type is invalid. Valid values are: no, so, ea, we, ce, noea, nowe, soea, sowe, sm, fp, obj`
         );
       });
 
       it("should throw an error if gravity includes property x_offset but type is not from BaseGravity", () => {
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         expect(() => build({ gravity: { type: "fp", x_offset: 10 } })).toThrow(
-          `gravity type "fp" is not supported. Supported types: no,so,ea,we,ce,noea,nowe,soea,sowe`
+          `gravity.type is invalid. Valid values are: no, so, ea, we, ce, noea, nowe, soea, sowe`
         );
       });
 
@@ -81,9 +81,7 @@ describe("gravity", () => {
               class_names: ["class1", "class2"],
             },
           })
-        ).toThrow(
-          `gravity.class_names can be used only with gravityOpts.type obj`
-        );
+        ).toThrow(`gravity.class_names can be used only with type obj`);
       });
 
       it("should throw an error if class_names is undefined", () => {
@@ -143,9 +141,7 @@ describe("gravity", () => {
               y: 0.5,
             },
           })
-        ).toThrow(
-          `gravity.x and gravity.y can be used only with gravityOpts.type fp`
-        );
+        ).toThrow(`gravity.x and gravity.y can be used only with type fp`);
       });
 
       it("should throw an error if x is undefined", () => {
@@ -157,7 +153,7 @@ describe("gravity", () => {
               y: 0.5,
             },
           })
-        ).toThrow(`gravity.x or gravity.y is undefined`);
+        ).toThrow(`gravity.x is undefined`);
       });
 
       it("should throw an error if y is undefined", () => {
@@ -169,7 +165,7 @@ describe("gravity", () => {
               x: 0.5,
             },
           })
-        ).toThrow(`gravity.x or gravity.y is undefined`);
+        ).toThrow(`gravity.y is undefined`);
       });
 
       it("should throw an error if x is less than 0", () => {
@@ -181,7 +177,7 @@ describe("gravity", () => {
               y: 0.5,
             },
           })
-        ).toThrow(`gravity.x must be between 0 and 1`);
+        ).toThrow(`gravity.x value can't be less then 0`);
       });
 
       it("should throw an error if x is greater than 1", () => {
@@ -193,7 +189,7 @@ describe("gravity", () => {
               y: 0.5,
             },
           })
-        ).toThrow(`gravity.x must be between 0 and 1`);
+        ).toThrow(`gravity.x value can't be more than 1`);
       });
 
       it("should throw an error if y is less than 0", () => {
@@ -205,7 +201,7 @@ describe("gravity", () => {
               y: -0.5,
             },
           })
-        ).toThrow(`gravity.y must be between 0 and 1`);
+        ).toThrow(`gravity.y value can't be less then 0`);
       });
 
       it("should throw an error if y is greater than 1", () => {
@@ -217,7 +213,7 @@ describe("gravity", () => {
               y: 1.5,
             },
           })
-        ).toThrow(`gravity.y must be between 0 and 1`);
+        ).toThrow(`gravity.y value can't be more than 1`);
       });
 
       it("should return g:fp:0.5:0.5 if gravity is {type: 'fp', x: 0.5, y: 0.5} ", () => {

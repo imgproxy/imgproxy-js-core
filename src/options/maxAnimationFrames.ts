@@ -2,6 +2,7 @@ import {
   MaxAnimationFrames,
   MaxAnimationFramesOptionsPartial,
 } from "../types/maxAnimationFrames";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: MaxAnimationFramesOptionsPartial
@@ -20,15 +21,10 @@ const test = (options: MaxAnimationFramesOptionsPartial): boolean =>
 const build = (options: MaxAnimationFramesOptionsPartial): string => {
   const maxAnimationFrames = getOpt(options);
 
-  if (maxAnimationFrames === undefined) {
-    throw new Error("max_animation_frames option is undefined");
-  }
-  if (typeof maxAnimationFrames !== "number") {
-    throw new Error("max_animation_frames option is not a number");
-  }
-  if (maxAnimationFrames <= 0) {
-    throw new Error("max_animation_frames option can't be 0 or less");
-  }
+  guardIsUndef(maxAnimationFrames, "max_animation_frames");
+  guardIsNotNum(maxAnimationFrames, "max_animation_frames", {
+    addParam: { min: 0, minEqual: true },
+  });
 
   return `maf:${maxAnimationFrames}`;
 };

@@ -18,7 +18,7 @@ describe("jpegOptions", () => {
 
   describe("build", () => {
     it("should throw an error if jpegOptions is undefined", () => {
-      expect(() => build({})).toThrow("jpeg options option is undefined");
+      expect(() => build({})).toThrow("jpeg_options option is undefined");
     });
 
     it("should throw an error if progressive is not a boolean", () => {
@@ -75,14 +75,14 @@ describe("jpegOptions", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ jpeg_options: { quant_table: -1 } })
-      ).toThrow("jpeg_options.quant_table is out of range. Must be 0-8");
+      ).toThrow("jpeg_options.quant_table value can't be less then 0");
     });
 
     it("should throw an error if quant_table is more than 8", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ jpeg_options: { quant_table: 9 } })
-      ).toThrow("jpeg_options.quant_table is out of range. Must be 0-8");
+      ).toThrow("jpeg_options.quant_table value can't be more than 8");
     });
 
     it("should return jpgo:true:true:true:true:true:true:1 if all parametres are true", () => {

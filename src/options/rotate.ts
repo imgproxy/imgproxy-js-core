@@ -1,4 +1,5 @@
 import type { Rotate, RotateOptionsPartial } from "../types/rotate";
+import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
 
 const correctAngles = {
   0: true,
@@ -15,20 +16,11 @@ const test = (options: RotateOptionsPartial): boolean =>
 
 const build = (options: RotateOptionsPartial): string => {
   const rotateOpts = getOpt(options);
+  const addText = `You can use values ${Object.keys(correctAngles).join(", ")}`;
 
-  if (!rotateOpts) {
-    throw new Error("rotate option is undefined");
-  }
-  if (typeof rotateOpts !== "number") {
-    throw new Error(
-      "rotate option is not a number. You can use numbers 0, 90, 180 or 270"
-    );
-  }
-  if (!correctAngles[rotateOpts]) {
-    throw new Error(
-      "rotate is not correct. You can use numbers 0, 90, 180 or 270"
-    );
-  }
+  guardIsUndef(rotateOpts, "rotate");
+  guardIsNotNum(rotateOpts, "rotate", { addInfo: addText });
+  guardIsValidVal(correctAngles, rotateOpts, "rotate");
 
   return `rot:${rotateOpts}`;
 };

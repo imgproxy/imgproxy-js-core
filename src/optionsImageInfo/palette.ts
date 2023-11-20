@@ -2,6 +2,7 @@ import {
   Palette,
   PaletteImageInfoOptionsPartial,
 } from "../typesImageInfo/palette";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: PaletteImageInfoOptionsPartial
@@ -21,24 +22,12 @@ const test = (options: PaletteImageInfoOptionsPartial): boolean =>
 const build = (options: PaletteImageInfoOptionsPartial): string => {
   const paletteOpts = getOpt(options);
 
-  if (paletteOpts === undefined) {
-    throw new Error("palette option is undefined");
-  }
-  if (typeof paletteOpts !== "number") {
-    throw new Error("palette option is not a number");
-  }
-  if (paletteOpts < 0) {
-    throw new Error("palette option is can't be a negative");
-  }
-  if (paletteOpts > 256) {
-    throw new Error("palette option is can't be more than 256");
-  }
-  if (paletteOpts > 0 && paletteOpts < 2) {
-    throw new Error("palette option is should be 0 or more than 2");
-  }
-  if (!Number.isInteger(paletteOpts)) {
-    throw new Error("palette option is should be integer");
-  }
+  guardIsUndef(paletteOpts, "palette");
+  guardIsNotNum(paletteOpts, "palette", {
+    addParam: { min: 0, max: 256, isInt: true },
+  });
+  if (paletteOpts === 1)
+    throw new Error("palette option is should be 0 or between 2 and 256");
 
   return `p:${paletteOpts}`;
 };

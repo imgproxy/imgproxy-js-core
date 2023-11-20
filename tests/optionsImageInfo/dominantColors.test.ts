@@ -25,7 +25,7 @@ describe("dominant_colors", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ dominant_colors: { build_missed: "t" } })
-      ).toThrow("dominant_colors.dominant_colors option is undefined");
+      ).toThrow("dominant_colors.dominant_colors is undefined");
     });
 
     it("should return dc:t if dominant_colors.dominant_colors option is 1", () => {

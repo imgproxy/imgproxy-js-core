@@ -18,7 +18,7 @@ describe("background", () => {
 
   describe("build", () => {
     it("should throw an error if background option is undefined", () => {
-      expect(() => build({})).toThrow("background options are undefined");
+      expect(() => build({})).toThrow("background option is undefined");
     });
 
     it("should throw an error if background is not a string", () => {
@@ -30,41 +30,41 @@ describe("background", () => {
 
     it("should throw an error if background is not hexadecimal", () => {
       expect(() => build({ background: "#ff00f" })).toThrow(
-        "color in trim option must be hexadecimal"
+        "background option must be hexadecimal"
       );
     });
 
     it("should throw an error if background is not 3, 6 or 8 characters", () => {
       expect(() => build({ background: "fff0" })).toThrow(
-        "color in trim option must be 3, 6 or 8 characters"
+        "background option must be 3, 6 or 8 characters long (with alpha)"
       );
     });
 
     it("should return an error if one of parameters (r,g,b) is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ background: { r: 255, g: 255 } })).toThrow(
-        "background options are undefined. You must specify options: r, g, b"
+        "background.b is undefined"
       );
     });
 
     it("shold return an error if b parameter is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ background: { r: 255, g: 255, b: "255" } })).toThrow(
-        "background.b option is not a number"
+        "background.b is not a number"
       );
     });
 
     it("shold return an error if g parameter is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ background: { r: 255, g: "255", b: 255 } })).toThrow(
-        "background.g option is not a number"
+        "background.g is not a number"
       );
     });
 
     it("shold return an error if r parameter is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ background: { r: "255", g: 255, b: 255 } })).toThrow(
-        "background.r option is not a number"
+        "background.r is not a number"
       );
     });
 

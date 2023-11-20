@@ -2,6 +2,7 @@ import type {
   FallbackImageUrl,
   FallbackImageUrlOptionsPartial,
 } from "../types/fallbackImageUrl";
+import { guardIsUndef, guardIsNotStr } from "../utils";
 
 const getOpt = (
   options: FallbackImageUrlOptionsPartial
@@ -13,12 +14,8 @@ const test = (options: FallbackImageUrlOptionsPartial): boolean =>
 const build = (options: FallbackImageUrlOptionsPartial): string => {
   const fallbackImageUrl = getOpt(options);
 
-  if (!fallbackImageUrl) {
-    throw new Error("fallback_image_url option is undefined");
-  }
-  if (typeof fallbackImageUrl !== "string") {
-    throw new Error("fallback_image_url option is not a string");
-  }
+  guardIsUndef(fallbackImageUrl, "fallback_image_url");
+  guardIsNotStr(fallbackImageUrl, "fallback_image_url");
 
   return `fiu:${fallbackImageUrl}`;
 };

@@ -2,7 +2,7 @@ import type {
   VideoMeta,
   VideoMetaImageInfoOptionsPartial,
 } from "../typesImageInfo/videoMeta";
-import { normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: VideoMetaImageInfoOptionsPartial
@@ -21,11 +21,7 @@ const test = (options: VideoMetaImageInfoOptionsPartial): boolean =>
 
 const build = (options: VideoMetaImageInfoOptionsPartial): string => {
   const videoMetaOpts = getOpt(options);
-
-  if (videoMetaOpts === undefined) {
-    throw new Error("video_meta option is undefined");
-  }
-
+  guardIsUndef(videoMetaOpts, "video_meta");
   return `vm:${normalizeBoolean(videoMetaOpts)}`;
 };
 

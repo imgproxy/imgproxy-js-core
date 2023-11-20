@@ -25,14 +25,14 @@ describe("filename", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ filename: { encoded: 1 } })
-      ).toThrow("name in filename option is required");
+      ).toThrow("filename.name is undefined");
     });
 
     it("should throw an error if name in filename option is not a string", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ filename: { name: 25 } })
-      ).toThrow("name in filename option should be a string");
+      ).toThrow("filename.name is not a string");
     });
 
     it("should return fn:sunset if extend is defined and encoded is undefined", () => {

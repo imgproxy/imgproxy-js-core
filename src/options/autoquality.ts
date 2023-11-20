@@ -2,6 +2,7 @@ import type {
   Autoquality,
   AutoqualityOptionsPartial,
 } from "../types/autoquality";
+import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
 
 const currentMethods = {
   none: true,
@@ -19,75 +20,40 @@ const test = (options: AutoqualityOptionsPartial): boolean =>
 const build = (options: AutoqualityOptionsPartial): string => {
   const autoqualityOpts = getOpt(options);
 
-  if (!autoqualityOpts) {
-    throw new Error("autoquality option is undefined");
-  }
-  if (autoqualityOpts.method && !currentMethods[autoqualityOpts.method]) {
-    throw new Error(
-      `autoquality method "${
-        autoqualityOpts.method
-      }" is not supported. Supported methods: ${Object.keys(
-        currentMethods
-      ).join(",")}`
-    );
-  }
-  if (autoqualityOpts.target) {
-    if (typeof autoqualityOpts.target !== "number") {
-      throw new Error("autoquality.target is not a number");
-    }
-    if (autoqualityOpts.target < 0) {
-      throw new Error("autoquality.target can't be a negative");
-    }
-  }
-  if (autoqualityOpts.min_quality) {
-    if (typeof autoqualityOpts.min_quality !== "number") {
-      throw new Error("autoquality.min_quality is not a number");
-    }
-    if (autoqualityOpts.min_quality < 0) {
-      throw new Error("autoquality.min_quality can't be a negative");
-    }
-    if (autoqualityOpts.min_quality > 100) {
-      throw new Error("autoquality.min_quality can't be more than 100");
-    }
-  }
-  if (autoqualityOpts.max_quality) {
-    if (typeof autoqualityOpts.max_quality !== "number") {
-      throw new Error("autoquality.max_quality is not a number");
-    }
-    if (autoqualityOpts.max_quality < 0) {
-      throw new Error("autoquality.max_quality can't be a negative");
-    }
-    if (autoqualityOpts.max_quality > 100) {
-      throw new Error("autoquality.max_quality can't be more than 100");
-    }
-  }
-  if (autoqualityOpts.allowed_error) {
-    if (autoqualityOpts.method !== "dssim" && autoqualityOpts.method !== "ml") {
+  guardIsUndef(autoqualityOpts, "autoquality");
+  const { method, target, min_quality, max_quality, allowed_error } =
+    autoqualityOpts;
+  if (method) guardIsValidVal(currentMethods, method, "autoquality.method");
+  if (target)
+    guardIsNotNum(target, "autoquality.target", {
+      addParam: { min: 0 },
+    });
+  if (min_quality)
+    guardIsNotNum(min_quality, "autoquality.min_quality", {
+      addParam: { min: 0, max: 100 },
+    });
+  if (max_quality)
+    guardIsNotNum(max_quality, "autoquality.max_quality", {
+      addParam: { min: 0, max: 100 },
+    });
+  if (allowed_error) {
+    if (method !== "dssim" && method !== "ml") {
       throw new Error(
         "autoquality.allowed_error is applicable only to dssim and ml methods"
       );
     }
-    if (typeof autoqualityOpts.allowed_error !== "number") {
-      throw new Error("autoquality allowed_error is not a number");
-    }
-    if (autoqualityOpts.allowed_error < 0) {
-      throw new Error("autoquality allowed_error can't be a negative");
-    }
-    if (autoqualityOpts.allowed_error > 1) {
-      throw new Error("autoquality allowed_error can't be more than 1");
-    }
+    guardIsNotNum(allowed_error, "autoquality.allowed_error", {
+      addParam: { min: 0, max: 1 },
+    });
   }
 
-  const method = autoqualityOpts.method || "";
-  const target = autoqualityOpts.target || "";
-  const min_quality = autoqualityOpts.min_quality || "";
-  const max_quality = autoqualityOpts.max_quality || "";
-  const allowed_error = autoqualityOpts.allowed_error || "";
+  const m = method || "";
+  const t = target || "";
+  const minQuality = min_quality || "";
+  const maxQuality = max_quality || "";
+  const ae = allowed_error || "";
 
-  return `aq:${method}:${target}:${min_quality}:${max_quality}:${allowed_error}`.replace(
-    /:+$/,
-    ""
-  );
+  return `aq:${m}:${t}:${minQuality}:${maxQuality}:${ae}`.replace(/:+$/, "");
 };
 
 export { test, build };

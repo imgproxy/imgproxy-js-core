@@ -25,7 +25,7 @@ describe("drawDetections", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error.
         build({ draw_detections: { class_names: ["face", "comma"] } })
-      ).toThrow("draw in draw_detections option is required");
+      ).toThrow("draw_detections.draw is undefined");
     });
 
     it("should return dd:t if draw is true and class_names is undefined", () => {

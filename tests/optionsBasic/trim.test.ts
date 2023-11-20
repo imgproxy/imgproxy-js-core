@@ -18,32 +18,32 @@ describe("trim", () => {
 
   describe("build", () => {
     it("should throw an error if trim option is undefined", () => {
-      expect(() => build({})).toThrow("trim options are undefined");
+      expect(() => build({})).toThrow("trim option is undefined");
     });
 
     it("should throw an error if threshold is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ trim: { color: "00ff00", equal_hor: 1 } })).toThrow(
-        "threshold in trim option is required"
+        "trim.threshold is undefined"
       );
     });
 
     it("should throw an error if trim is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ trim: { threshold: "1" } })).toThrow(
-        "threshold in trim is not a number"
+        "trim.threshold is not a number"
       );
     });
 
     it("should throw an error if color has invalid format", () => {
       expect(() => build({ trim: { threshold: 25, color: "#ff" } })).toThrow(
-        "color in trim option must be hexadecimal"
+        "trim.color must be hexadecimal"
       );
     });
 
     it("should throw an error if color has invalid length", () => {
       expect(() => build({ trim: { threshold: 25, color: "fff0" } })).toThrow(
-        "color in trim option must be 3, 6 or 8 characters"
+        "trim.color must be 3, 6 or 8 characters"
       );
     });
 

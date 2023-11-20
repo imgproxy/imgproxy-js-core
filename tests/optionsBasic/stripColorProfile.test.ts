@@ -23,7 +23,7 @@ describe("stripColorProfile", () => {
   describe("build", () => {
     it("should throw an error if strip_color_profile option is undefined", () => {
       expect(() => build({})).toThrow(
-        "strip color profile option is undefined"
+        "strip_color_profile option is undefined"
       );
     });
 

@@ -1,4 +1,5 @@
 import type { Width, WidthOptionsPartial } from "../types/width";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: WidthOptionsPartial): Width | undefined =>
   options.width || options.w;
@@ -9,17 +10,8 @@ const test = (options: WidthOptionsPartial): boolean =>
 const build = (options: WidthOptionsPartial): string => {
   const widthOpts = getOpt(options);
 
-  if (!widthOpts) {
-    throw new Error("width option is undefined");
-  }
-
-  if (typeof widthOpts !== "number") {
-    throw new Error("width option is not a number");
-  }
-
-  if (widthOpts < 0) {
-    throw new Error("width option is can't be less than 0");
-  }
+  guardIsUndef(widthOpts, "width");
+  guardIsNotNum(widthOpts, "width", { addParam: { min: 0 } });
 
   return `w:${widthOpts}`;
 };

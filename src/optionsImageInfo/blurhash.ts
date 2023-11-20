@@ -1,7 +1,8 @@
-import {
+import type {
   Blurhash,
   BHImageInfoOptionsPartial,
 } from "../typesImageInfo/blurhash";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: BHImageInfoOptionsPartial): Blurhash | undefined => {
   if ("blurhash" in options) {
@@ -19,37 +20,19 @@ const test = (options: BHImageInfoOptionsPartial): boolean =>
 const build = (options: BHImageInfoOptionsPartial): string => {
   const blurhashOpts = getOpt(options);
 
-  if (blurhashOpts === undefined) {
-    throw new Error("blurhash option is undefined");
-  }
-  if (blurhashOpts.x_components === undefined) {
-    throw new Error("blurhash.x_components option is undefined");
-  }
-  if (blurhashOpts.y_components === undefined) {
-    throw new Error("blurhash.y_components option is undefined");
-  }
-  if (blurhashOpts.x_components < 0) {
-    throw new Error("blurhash.x_components can't be a negative");
-  }
-  if (blurhashOpts.y_components < 0) {
-    throw new Error("blurhash.y_components can't be a negative");
-  }
-  if (blurhashOpts.x_components > 9) {
-    throw new Error("blurhash.x_components can't be more than 9");
-  }
-  if (blurhashOpts.y_components > 9) {
-    throw new Error("blurhash.y_components can't be more than 9");
-  }
-  if (
-    typeof blurhashOpts.x_components !== "number" ||
-    typeof blurhashOpts.y_components !== "number"
-  ) {
-    throw new Error(
-      "blurhash.x_components and blurhash.y_components must be numbers"
-    );
-  }
+  guardIsUndef(blurhashOpts, "blurhash");
+  const { x_components, y_components } = blurhashOpts;
 
-  return `bh:${blurhashOpts.x_components}:${blurhashOpts.y_components}`;
+  guardIsUndef(x_components, "blurhash.x_components");
+  guardIsUndef(y_components, "blurhash.y_components");
+  guardIsNotNum(x_components, "blurhash.x_components", {
+    addParam: { min: 0, max: 9 },
+  });
+  guardIsNotNum(y_components, "blurhash.y_components", {
+    addParam: { min: 0, max: 9 },
+  });
+
+  return `bh:${x_components}:${y_components}`;
 };
 
 export { test, build };

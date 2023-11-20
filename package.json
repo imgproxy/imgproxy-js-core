@@ -1,6 +1,22 @@
 {
   "name": "@imgproxy/imgproxy-js-core",
   "version": "1.0.5",
+  "description": "imgproxy-js-core package is designed to be used as part of framework-specific packages and plugins.",
+  "keywords": [
+    "imgproxy",
+    "url-builder",
+    "image optimization",
+    "image processing",
+    "typescript"
+  ],
+  "homepage": "https://imgproxy.net/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imgproxy/imgproxy-js-core"
+  },
+  "bugs": {
+    "url": "https://github.com/imgproxy/imgproxy-js-core/issues"
+  },
   "main": "./dist/imgproxy-js-core.cjs",
   "module": "./dist/imgproxy-js-core.mjs",
   "exports": {

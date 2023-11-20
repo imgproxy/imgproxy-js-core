@@ -1,8 +1,8 @@
-import {
+import type {
   Average,
   AverageImageInfoOptionsPartial,
 } from "../typesImageInfo/average";
-import { normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: AverageImageInfoOptionsPartial
@@ -22,12 +22,8 @@ const test = (options: AverageImageInfoOptionsPartial): boolean =>
 const build = (options: AverageImageInfoOptionsPartial): string => {
   const averageOpts = getOpt(options);
 
-  if (averageOpts === undefined) {
-    throw new Error("average option is undefined");
-  }
-  if (averageOpts.average === undefined) {
-    throw new Error("average.average option is undefined");
-  }
+  guardIsUndef(averageOpts, "average");
+  guardIsUndef(averageOpts.average, "average.average");
 
   const ignoreTransparent =
     averageOpts.ignore_transparent === undefined

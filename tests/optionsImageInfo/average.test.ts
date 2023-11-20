@@ -24,7 +24,7 @@ describe("average", () => {
     it("should throw an error if average.average is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ average: { ignore_transparent: "t" } })).toThrow(
-        "average.average option is undefined"
+        "average.average is undefined"
       );
     });
 

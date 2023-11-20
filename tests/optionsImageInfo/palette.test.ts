@@ -27,19 +27,19 @@ describe("palette", () => {
 
     it("should throw an error if palette option is 1", () => {
       expect(() => build({ palette: 1 })).toThrow(
-        "palette option is should be 0 or more than 2"
+        "palette option is should be 0 or between 2 and 256"
       );
     });
 
     it("should throw an error if palette option is -2", () => {
       expect(() => build({ palette: -2 })).toThrow(
-        "palette option is can't be a negative"
+        "palette option value can't be less then 0"
       );
     });
 
     it("should throw an error if palette option is 1.5", () => {
       expect(() => build({ palette: 3.5 })).toThrow(
-        "palette option is should be integer"
+        "palette option is must be an integer"
       );
     });
 
@@ -52,7 +52,7 @@ describe("palette", () => {
 
     it("should throw an error if palette option is more than 256", () => {
       expect(() => build({ palette: 257 })).toThrow(
-        "palette option is can't be more than 256"
+        "palette option value can't be more than 256"
       );
     });
 

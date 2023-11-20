@@ -2,6 +2,7 @@ import type {
   BackgroundAlpha,
   BackgroundAlphaOptionsPartial,
 } from "../types/backgroundAlpha";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: BackgroundAlphaOptionsPartial
@@ -13,17 +14,10 @@ const test = (options: BackgroundAlphaOptionsPartial): boolean =>
 const build = (options: BackgroundAlphaOptionsPartial): string => {
   const backgroundAlphaOpts = getOpt(options);
 
-  if (!backgroundAlphaOpts) {
-    throw new Error("background alpha option is undefined");
-  } else if (typeof backgroundAlphaOpts !== "number") {
-    throw new Error(
-      "background alpha is not correct. Set the value between 0 and 1"
-    );
-  } else if (backgroundAlphaOpts < 0 || backgroundAlphaOpts > 1) {
-    throw new Error(
-      "background alpha is not correct. Set the value between 0 and 1"
-    );
-  }
+  guardIsUndef(backgroundAlphaOpts, "background_alpha");
+  guardIsNotNum(backgroundAlphaOpts, "background_alpha", {
+    addParam: { min: 0, max: 1 },
+  });
 
   return `background_alpha:${backgroundAlphaOpts}`;
 };

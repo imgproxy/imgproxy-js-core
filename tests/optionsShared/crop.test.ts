@@ -18,7 +18,7 @@ describe("crop", () => {
 
   describe("build", () => {
     it("should throw an error if crop option is undefined", () => {
-      expect(() => build({})).toThrow("crop options are undefined");
+      expect(() => build({})).toThrow("crop option is undefined");
     });
 
     it("should throw an error if width option is undefined", () => {
@@ -51,13 +51,13 @@ describe("crop", () => {
 
     it("should throw an error if width is less than 0", () => {
       expect(() => build({ crop: { width: -1, height: 150 } })).toThrowError(
-        "crop.width is can't be negative"
+        "crop.width value can't be less then 0"
       );
     });
 
     it("should throw an error if height is less than 0", () => {
       expect(() => build({ c: { width: 150, height: -1 } })).toThrowError(
-        "crop.height is can't be negative"
+        "crop.height value can't be less then 0"
       );
     });
 

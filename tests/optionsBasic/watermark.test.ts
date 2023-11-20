@@ -24,7 +24,7 @@ describe("watermark", () => {
     it("should return throw an error if opacity is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ watermark: {} })).toThrow(
-        "watermark opacity is required"
+        "watermark.opacity is undefined"
       );
     });
 
@@ -37,13 +37,13 @@ describe("watermark", () => {
 
     it("should return throw an error if opacity is less than 0", () => {
       expect(() => build({ watermark: { opacity: -1 } })).toThrow(
-        "watermark.opacity is not correct. Set the value between 0 and 1"
+        "watermark.opacity value can't be less then 0"
       );
     });
 
     it("should return throw an error if opacity is greater than 1", () => {
       expect(() => build({ watermark: { opacity: 2 } })).toThrow(
-        "watermark.opacity is not correct. Set the value between 0 and 1"
+        "watermark.opacity value can't be more than 1"
       );
     });
 
@@ -59,7 +59,7 @@ describe("watermark", () => {
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ watermark: { opacity: 0.2, position: "top" } })
       ).toThrow(
-        "watermark.position is not correct. Set the value from ce, no, so, ea, we, noea, nowe, soea, sowe, re"
+        "watermark.position is invalid. Valid values are: ce, no, so, ea, we, noea, nowe, soea, sowe, re"
       );
     });
 

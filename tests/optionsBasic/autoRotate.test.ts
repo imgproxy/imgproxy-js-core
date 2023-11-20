@@ -21,6 +21,10 @@ describe("autoRotate", () => {
   });
 
   describe("build", () => {
+    it("should throw an error if auto_rotate option is undefined", () => {
+      expect(() => build({})).toThrow("auto_rotate option is undefined");
+    });
+
     it("should return 't' if auto_rotate option is 1", () => {
       expect(build({ auto_rotate: 1 })).toEqual("ar:t");
     });
@@ -44,10 +48,6 @@ describe("autoRotate", () => {
 
     it("should return 'f' if auto_rotate is string (except 't')", () => {
       expect(build({ auto_rotate: "true" })).toEqual("ar:f");
-    });
-
-    it("should throw an error if auto_rotate option is undefined", () => {
-      expect(() => build({})).toThrow("auto rotate option is undefined");
     });
   });
 });

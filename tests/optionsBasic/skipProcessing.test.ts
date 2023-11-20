@@ -37,7 +37,7 @@ describe("skipProcessing", () => {
     it("should throw an error if skipProcessing contains unsupported extensions", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ skip_processing: ["tiff", "jpeg"] })).toThrow(
-        "skip_processing option contains unsupported extensions. Supported extensions: jpg,png,webp,avif,gif,ico,svg,heic,bmp,tiff,pdf,mp4"
+        "skip_processing option contains unsupported extension. Valid values are: jpg,png,webp,avif,gif,ico,svg,heic,bmp,tiff,pdf,mp4"
       );
     });
 

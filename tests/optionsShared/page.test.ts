@@ -24,19 +24,19 @@ describe("page", () => {
     it("should throw an error if page is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ page: "150" })).toThrow(
-        "page option is invalid. Must be a positive integer"
+        "page option is not a number"
       );
     });
 
     it("should throw an error if page is less than 0", () => {
       expect(() => build({ page: -1 })).toThrow(
-        "page option is invalid. Must be a positive integer"
+        "page option value can't be less then 0"
       );
     });
 
     it("should throw an error if page is not an integer", () => {
       expect(() => build({ page: 1.5 })).toThrow(
-        "page option is invalid. Must be a positive integer"
+        "page option is must be an integer"
       );
     });
 

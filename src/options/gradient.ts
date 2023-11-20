@@ -1,4 +1,10 @@
 import type { Gradient, GradientOptionsPartial } from "../types/gradient";
+import {
+  guardIsUndef,
+  guardIsNotNum,
+  guardIsNotStr,
+  guardIsValidVal,
+} from "../utils";
 
 const currentDirection = {
   down: true,
@@ -16,87 +22,31 @@ const test = (options: GradientOptionsPartial): boolean =>
 const build = (options: GradientOptionsPartial): string => {
   const gradientOpts = getOpt(options);
 
-  if (!gradientOpts) {
-    throw new Error("gradient option is undefined");
-  }
-  // gradientOpts.opacity
-  if (!gradientOpts.opacity) {
-    throw new Error("gradient opacity is required");
-  }
-  if (typeof gradientOpts.opacity !== "number") {
-    throw new Error("gradient.opacity is not a number");
-  }
-  if (gradientOpts.opacity < 0 || gradientOpts.opacity > 1) {
-    throw new Error(
-      "gradient.opacity is not correct. Set the value between 0 and 1"
-    );
-  }
+  guardIsUndef(gradientOpts, "gradient");
+  const { opacity, color, direction, start, stop } = gradientOpts;
 
-  // gradientOpts.color
-  if (gradientOpts.color) {
-    if (typeof gradientOpts.color !== "string") {
-      throw new Error("gradient.color is not a string");
-    }
-    if (gradientOpts.color.match(/[^0-9a-fA-F]/)) {
-      throw new Error("gradient.color must be hexadecimal");
-    }
-    if (
-      gradientOpts.color.length !== 3 &&
-      gradientOpts.color.length !== 6 &&
-      gradientOpts.color.length !== 8
-    ) {
-      throw new Error(
-        "gradient.color must be 3, 6 or 8 characters long (with alpha)"
-      );
-    }
+  guardIsUndef(opacity, "gradient.opacity");
+  guardIsNotNum(opacity, "gradient.opacity", {
+    addParam: { min: 0, max: 1 },
+  });
+
+  if (color) guardIsNotStr(color, "gradient.color", true);
+  if (direction) {
+    guardIsNotStr(direction, "gradient.direction");
+    guardIsValidVal(currentDirection, direction, "gradient.direction");
   }
+  if (start)
+    guardIsNotNum(start, "gradient.start", { addParam: { min: 0, max: 1 } });
+  if (stop)
+    guardIsNotNum(stop, "gradient.stop", { addParam: { min: 0, max: 1 } });
 
-  // gradientOpts.direction
-  if (gradientOpts.direction) {
-    if (typeof gradientOpts.direction !== "string") {
-      throw new Error("gradient.direction is not a string");
-    }
-    if (!currentDirection[gradientOpts.direction]) {
-      throw new Error(
-        "gradient.direction must be one of: down, up, right, left"
-      );
-    }
-  }
+  const op = opacity;
+  const c = color || "";
+  const dir = direction || "";
+  const or = start || "";
+  const end = stop || "";
 
-  // gradientOpts.start
-  if (gradientOpts.start) {
-    if (typeof gradientOpts.start !== "number") {
-      throw new Error("gradient.start is not a number");
-    }
-    if (gradientOpts.start < 0 || gradientOpts.start > 1) {
-      throw new Error(
-        "gradient.start is not correct. Set the value between 0 and 1"
-      );
-    }
-  }
-
-  // gradientOpts.stop
-  if (gradientOpts.stop) {
-    if (typeof gradientOpts.stop !== "number") {
-      throw new Error("gradient.stop is not a number");
-    }
-    if (gradientOpts.stop < 0 || gradientOpts.stop > 1) {
-      throw new Error(
-        "gradient.stop is not correct. Set the value between 0 and 1"
-      );
-    }
-  }
-
-  const opacity = gradientOpts.opacity;
-  const color = gradientOpts.color || "";
-  const direction = gradientOpts.direction || "";
-  const start = gradientOpts.start || "";
-  const stop = gradientOpts.stop || "";
-
-  return `gr:${opacity}:${color}:${direction}:${start}:${stop}`.replace(
-    /:+$/,
-    ""
-  );
+  return `gr:${op}:${c}:${dir}:${or}:${end}`.replace(/:+$/, "");
 };
 
 export { test, build };

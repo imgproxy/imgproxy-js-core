@@ -2,7 +2,7 @@ import type {
   ReturnAttachment,
   ReturnAttachmentOptionsPartial,
 } from "../types/returnAttachment";
-import { normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: ReturnAttachmentOptionsPartial
@@ -15,18 +15,13 @@ const getOpt = (
 
   return undefined;
 };
-// options.return_attachment || options.ra;
 
 const test = (options: ReturnAttachmentOptionsPartial): boolean =>
   getOpt(options) !== undefined;
 
 const build = (options: ReturnAttachmentOptionsPartial): string => {
   const returnAttachment = getOpt(options);
-
-  if (returnAttachment === undefined) {
-    throw new Error("return_attachment option is undefined");
-  }
-
+  guardIsUndef(returnAttachment, "return_attachment");
   return `ra:${normalizeBoolean(returnAttachment)}`;
 };
 

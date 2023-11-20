@@ -2,6 +2,7 @@ import type {
   WatermarkShadow,
   WatermarkShadowOptionsPartial,
 } from "../types/watermarkShadow";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: WatermarkShadowOptionsPartial
@@ -13,15 +14,10 @@ const test = (options: WatermarkShadowOptionsPartial): boolean =>
 const build = (options: WatermarkShadowOptionsPartial): string => {
   const watermarkShadowOpts = getOpt(options);
 
-  if (!watermarkShadowOpts) {
-    throw new Error("watermark shadow option is undefined");
-  }
-  if (typeof watermarkShadowOpts !== "number") {
-    throw new Error("watermark shadow option is not a number");
-  }
-  if (watermarkShadowOpts < 0) {
-    throw new Error("watermark shadow option is can't be a negative");
-  }
+  guardIsUndef(watermarkShadowOpts, "watermark_shadow");
+  guardIsNotNum(watermarkShadowOpts, "watermark_shadow", {
+    addParam: { min: 0 },
+  });
 
   return `wmsh:${watermarkShadowOpts}`;
 };

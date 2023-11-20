@@ -24,7 +24,7 @@ describe("resizingAlgorithm", () => {
     it("should throw an error if resizing_type is not one of 'nearest', 'linear', 'cubic', 'lanczos2', 'lanczos3'", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ resizing_algorithm: "invalid" })).toThrow(
-        "resizing_algorithm option is not correct. You can use: 'nearest', 'linear', 'cubic', 'lanczos2', 'lanczos3'"
+        "resizing_algorithm option is invalid. Valid values are: nearest, linear, cubic, lanczos2, lanczos3"
       );
     });
 

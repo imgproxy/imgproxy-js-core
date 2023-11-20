@@ -24,13 +24,13 @@ describe("saturation", () => {
     it("should throw an error if saturation is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ saturation: "150" })).toThrow(
-        "saturation is not correct. Set the value between 0 and any positive number"
+        "saturation option is not a number"
       );
     });
 
     it("should throw an error if saturation is less than 0", () => {
       expect(() => build({ saturation: -1 })).toThrow(
-        "saturation is not correct. Set the value between 0 and any positive number"
+        "saturation option value can't be less then 0"
       );
     });
 

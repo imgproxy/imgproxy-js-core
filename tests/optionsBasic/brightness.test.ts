@@ -29,13 +29,13 @@ describe("brightness", () => {
 
     it("should throw an error if brightness is bigger than 255", () => {
       expect(() => build({ brightness: 340 })).toThrow(
-        "brightness is not correct. Set the value between -255 and 255"
+        "brightness option value can't be more than 255"
       );
     });
 
     it("should throw an error if brightness is less than -255", () => {
       expect(() => build({ brightness: -275 })).toThrow(
-        "brightness is not correct. Set the value between -255 and 255"
+        "brightness option value can't be less then -255"
       );
     });
 

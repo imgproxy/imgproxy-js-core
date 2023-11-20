@@ -2,6 +2,7 @@ import type {
   WatermarkUrl,
   WatermarkUrlOptionsPartial,
 } from "../types/watermarkUrl";
+import { guardIsUndef, guardIsNotStr } from "../utils";
 
 const getOpt = (
   options: WatermarkUrlOptionsPartial
@@ -13,12 +14,8 @@ const test = (options: WatermarkUrlOptionsPartial): boolean =>
 const build = (options: WatermarkUrlOptionsPartial): string => {
   const watermarkUrlOpts = getOpt(options);
 
-  if (!watermarkUrlOpts) {
-    throw new Error("watermark_url option is undefined");
-  }
-  if (typeof watermarkUrlOpts !== "string") {
-    throw new Error("watermark_url option is not a string");
-  }
+  guardIsUndef(watermarkUrlOpts, "watermark_url");
+  guardIsNotStr(watermarkUrlOpts, "watermark_url");
 
   return `wmu:${watermarkUrlOpts}`;
 };

@@ -5,6 +5,12 @@ import type {
   ObjGravity,
   BaseGravity,
 } from "../types/gravity";
+import {
+  guardIsUndef,
+  guardIsNotNum,
+  guardIsValidVal,
+  guardIsNotArray,
+} from "../utils";
 
 interface BuildProps {
   headless?: boolean;
@@ -45,49 +51,21 @@ const build = (
   const { headless = false } = meta;
   const gravityOpts = getOpt(options);
 
-  if (!gravityOpts) {
-    throw new Error("gravity options are undefined");
-  }
-  if (!gravityOpts.type) {
-    throw new Error("gravity.type is undefined");
-  }
-  if (!currentAllTypes[gravityOpts.type]) {
-    throw new Error(
-      `gravity type "${
-        gravityOpts.type
-      }" is not supported. Supported types: ${Object.keys(currentAllTypes).join(
-        ","
-      )}`
-    );
-  }
-  if (
-    // @ts-expect-error: Let's ignore an error.
-    (gravityOpts.x_offset || gravityOpts.y_offset) &&
-    // @ts-expect-error: Let's ignore an error.
-    !currentBaseTypes[gravityOpts.type]
-  ) {
-    throw new Error(
-      `gravity type "${
-        gravityOpts.type
-      }" is not supported. Supported types: ${Object.keys(
-        currentBaseTypes
-      ).join(",")}`
-    );
-  }
-  // @ts-expect-error: Let's ignore an error.
-  if (gravityOpts.class_names && gravityOpts.type !== "obj") {
-    throw new Error(
-      "gravity.class_names can be used only with gravityOpts.type obj"
-    );
-  }
-  // @ts-expect-error: Let's ignore an error.
-  if ((gravityOpts.x || gravityOpts.y) && gravityOpts.type !== "fp") {
-    throw new Error(
-      "gravity.x and gravity.y can be used only with gravityOpts.type fp"
-    );
-  }
+  guardIsUndef(gravityOpts, "gravity");
+  guardIsUndef(gravityOpts.type, "gravity.type");
 
   const type = gravityOpts.type;
+
+  guardIsValidVal(currentAllTypes, type, "gravity.type");
+  // @ts-expect-error: Let's ignore an error.
+  if (gravityOpts.x_offset || gravityOpts.y_offset)
+    guardIsValidVal(currentBaseTypes, type, "gravity.type");
+  // @ts-expect-error: Let's ignore an error.
+  if (gravityOpts.class_names && type !== "obj")
+    throw new Error("gravity.class_names can be used only with type obj");
+  // @ts-expect-error: Let's ignore an error.
+  if ((gravityOpts.x || gravityOpts.y) && type !== "fp")
+    throw new Error("gravity.x and gravity.y can be used only with type fp");
 
   if (type === "sm") {
     return withHead(type, headless);
@@ -96,47 +74,30 @@ const build = (
   if (type === "fp") {
     const gravityFP = gravityOpts as FPGravity;
 
-    if (gravityFP.x === undefined || gravityFP.y === undefined) {
-      throw new Error("gravity.x or gravity.y is undefined");
-    }
-    if (gravityFP.x < 0 || gravityFP.x > 1) {
-      throw new Error("gravity.x must be between 0 and 1");
-    }
-    if (gravityFP.y < 0 || gravityFP.y > 1) {
-      throw new Error("gravity.y must be between 0 and 1");
-    }
+    guardIsUndef(gravityFP.x, "gravity.x");
+    guardIsUndef(gravityFP.y, "gravity.y");
+    guardIsNotNum(gravityFP.x, "gravity.x", { addParam: { min: 0, max: 1 } });
+    guardIsNotNum(gravityFP.y, "gravity.y", { addParam: { min: 0, max: 1 } });
 
-    const x = gravityFP.x;
-    const y = gravityFP.y;
-
-    return withHead(`${type}:${x}:${y}`, headless);
+    return withHead(`${type}:${gravityFP.x}:${gravityFP.y}`, headless);
   }
 
   if (type === "obj") {
     const gravityObj = gravityOpts as ObjGravity;
 
-    if (gravityOpts.type === "obj" && !gravityOpts.class_names) {
-      throw new Error("gravity.class_names is undefined");
-    }
-    if (!Array.isArray(gravityObj.class_names)) {
-      throw new Error("gravity.class_names is not an array");
-    }
-    if (gravityObj.class_names.length === 0) {
-      throw new Error("gravity.class_names is empty");
-    }
+    guardIsUndef(gravityOpts.class_names, "gravity.class_names");
+    guardIsNotArray(gravityObj.class_names, "gravity.class_names");
 
     const class_names = gravityObj.class_names;
-
     return withHead(`${type}:${class_names.join(":")}`, headless);
   } else {
     const gravityBase = gravityOpts as BaseGravity;
-    const type = gravityBase.type;
     const x_offset =
       gravityBase.x_offset === undefined ? "" : gravityBase.x_offset;
     const y_offset =
       gravityBase.y_offset === undefined ? "" : gravityBase.y_offset;
 
-    return withHead(`${type}:${x_offset}:${y_offset}`, headless);
+    return withHead(`${gravityBase.type}:${x_offset}:${y_offset}`, headless);
   }
 };
 

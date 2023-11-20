@@ -1,8 +1,13 @@
 import type { ResizeOptionsPartial, Resize } from "../types/resize";
 import * as extendOpt from "./extend";
-import { normalizeBoolean } from "../utils";
+import {
+  guardIsUndef,
+  guardIsNotNum,
+  guardIsValidVal,
+  normalizeBoolean,
+} from "../utils";
 
-const correctResizingTypes = {
+const correctTypes = {
   fit: true,
   fill: true,
   auto: true,
@@ -19,41 +24,23 @@ const test = (options: ResizeOptionsPartial): boolean =>
 const build = (options: ResizeOptionsPartial): string => {
   const resizeOpts = getOpt(options);
 
-  if (!resizeOpts) {
-    throw new Error("resize options are undefined");
-  } else if (
-    resizeOpts.resizing_type &&
-    !correctResizingTypes[resizeOpts.resizing_type]
-  ) {
-    throw new Error(`incorrect resizing_type`);
-  } else if (resizeOpts.width && typeof resizeOpts.width !== "number") {
-    throw new Error(`incorrect width. width must be a number`);
-  } else if (resizeOpts.height && typeof resizeOpts.height !== "number") {
-    throw new Error(`incorrect height. height must be a number`);
-  } else if (resizeOpts.width && resizeOpts.width < 0) {
-    throw new Error(`incorrect width. width must be more than 0`);
-  } else if (resizeOpts.height && resizeOpts.height < 0) {
-    throw new Error(`incorrect height. height must be more than 0`);
-  }
+  guardIsUndef(resizeOpts, "resize");
+  const { resizing_type, width, height, enlarge } = resizeOpts;
 
-  const resizingType = resizeOpts.resizing_type || "";
-  const width = resizeOpts.width || "";
-  const height = resizeOpts.height || "";
-  const enlarge =
-    resizeOpts.enlarge === undefined
-      ? ""
-      : normalizeBoolean(resizeOpts.enlarge);
-  const extend = extendOpt.test(resizeOpts)
+  if (resizing_type)
+    guardIsValidVal(correctTypes, resizing_type, "resize.resizing_type");
+  if (width) guardIsNotNum(width, "resize.width", { addParam: { min: 0 } });
+  if (height) guardIsNotNum(height, "resize.height", { addParam: { min: 0 } });
+
+  const rt = resizing_type || "";
+  const w = width || "";
+  const h = height || "";
+  const el = enlarge === undefined ? "" : normalizeBoolean(enlarge);
+  const ex = extendOpt.test(resizeOpts)
     ? extendOpt.build(resizeOpts, { headless: true })
     : "";
 
-  const result =
-    `${resizingType}:${width}:${height}:${enlarge}:${extend}`.replace(
-      /:+$/,
-      ""
-    );
-
-  return `rs:${result}`;
+  return `rs:${rt}:${w}:${h}:${el}:${ex}`.replace(/:+$/, "");
 };
 
 export { test, build };

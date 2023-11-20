@@ -26,14 +26,14 @@ describe("blurhash", () => {
     it("should throw an error if blurhash.x_components is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ blurhash: { y_components: 3 } })).toThrow(
-        "blurhash.x_components option is undefined"
+        "blurhash.x_components is undefined"
       );
     });
 
     it("should throw an error if blurhash.y_components is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ blurhash: { x_components: 3 } })).toThrow(
-        "blurhash.y_components option is undefined"
+        "blurhash.y_components is undefined"
       );
     });
 
@@ -41,33 +41,31 @@ describe("blurhash", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ blurhash: { x_components: "3", y_components: "1" } })
-      ).toThrow(
-        "blurhash.x_components and blurhash.y_components must be numbers"
-      );
+      ).toThrow("blurhash.x_components is not a number");
     });
 
     it("should throw an error if blurhash.x_components is less than 0", () => {
       expect(() =>
         build({ blurhash: { x_components: -1, y_components: 3 } })
-      ).toThrow("blurhash.x_components can't be a negative");
+      ).toThrow("blurhash.x_components value can't be less then 0");
     });
 
     it("should throw an error if blurhash.x_components is more than 9", () => {
       expect(() =>
         build({ blurhash: { x_components: 10, y_components: 7 } })
-      ).toThrow("blurhash.x_components can't be more than 9");
+      ).toThrow("blurhash.x_components value can't be more than 9");
     });
 
     it("should throw an error if blurhash.y_components is less than 0", () => {
       expect(() =>
         build({ blurhash: { x_components: 8, y_components: -4 } })
-      ).toThrow("blurhash.y_components can't be a negative");
+      ).toThrow("blurhash.y_components value can't be less then 0");
     });
 
     it("should throw an error if blurhash.y_components is more than 9", () => {
       expect(() =>
         build({ blurhash: { x_components: 3, y_components: 10 } })
-      ).toThrow("blurhash.y_components can't be more than 9");
+      ).toThrow("blurhash.y_components value can't be more than 9");
     });
 
     it("should return bh:3:3 if blurhash is {x_components: 3, y_components: 3}", () => {

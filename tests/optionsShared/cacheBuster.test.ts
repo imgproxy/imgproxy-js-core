@@ -24,7 +24,7 @@ describe("cacheBuster", () => {
     it("should throw an error if cacheBuster option is not a string", () => {
       // @ts-expect-error: Let's ignore an error.
       expect(() => build({ cachebuster: 1 })).toThrow(
-        "cachebuster option must be a string"
+        "cachebuster option is not a string"
       );
     });
 

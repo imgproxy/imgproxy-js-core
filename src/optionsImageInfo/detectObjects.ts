@@ -2,7 +2,7 @@ import type {
   DetectObjects,
   DetectObjectsImageInfoOptionsPartial,
 } from "../typesImageInfo/detectObjects";
-import { normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: DetectObjectsImageInfoOptionsPartial
@@ -21,11 +21,7 @@ const test = (options: DetectObjectsImageInfoOptionsPartial): boolean =>
 
 const build = (options: DetectObjectsImageInfoOptionsPartial): string => {
   const detectObjectsOpts = getOpt(options);
-
-  if (detectObjectsOpts === undefined) {
-    throw new Error("detect_objects option is undefined");
-  }
-
+  guardIsUndef(detectObjectsOpts, "detect_objects");
   return `do:${normalizeBoolean(detectObjectsOpts)}`;
 };
 

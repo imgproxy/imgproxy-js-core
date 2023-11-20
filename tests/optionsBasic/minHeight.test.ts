@@ -30,7 +30,7 @@ describe("min_height", () => {
 
     it("should throw an error if min_height is less than 0", () => {
       expect(() => build({ min_height: -10 })).toThrow(
-        "min_height option is can't be less than 0"
+        "min_height option value can't be less then 0"
       );
     });
 

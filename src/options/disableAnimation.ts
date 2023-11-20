@@ -2,7 +2,7 @@ import type {
   DisableAnimation,
   DisableAnimationOptionsPartial,
 } from "../types/disableAnimation";
-import { normalizeBoolean } from "../utils";
+import { normalizeBoolean, guardIsUndef } from "../utils";
 
 const getOpt = (
   options: DisableAnimationOptionsPartial
@@ -21,11 +21,7 @@ const test = (options: DisableAnimationOptionsPartial): boolean =>
 
 const build = (options: DisableAnimationOptionsPartial): string => {
   const disableAnimation = getOpt(options);
-
-  if (disableAnimation === undefined) {
-    throw new Error("disable animation option is undefined");
-  }
-
+  guardIsUndef(disableAnimation, "disable_animation");
   return `da:${normalizeBoolean(disableAnimation)}`;
 };
 

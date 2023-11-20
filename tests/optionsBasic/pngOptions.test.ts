@@ -18,7 +18,7 @@ describe("pngOptions", () => {
 
   describe("build", () => {
     it("should throw an error if png_options option is undefined", () => {
-      expect(() => build({})).toThrow("png options option is undefined");
+      expect(() => build({})).toThrow("png_options option is undefined");
     });
 
     it("should throw an error if png_options.interlaced is not a boolean", () => {
@@ -44,14 +44,14 @@ describe("pngOptions", () => {
 
     it("should throw an error if png_options.quantization_colors is less than 2", () => {
       expect(() => build({ png_options: { quantization_colors: 1 } })).toThrow(
-        "png_options.quantization_colors should be between 2 and 256"
+        "png_options.quantization_colors value can't be less then 2"
       );
     });
 
     it("should throw an error if png_options.quantization_colors is greater than 256", () => {
       expect(() =>
         build({ png_options: { quantization_colors: 257 } })
-      ).toThrow("png_options.quantization_colors should be between 2 and 256");
+      ).toThrow("png_options.quantization_colors value can't be more than 256");
     });
 
     it("should return pngo:true:false:108 if png_options is {interlaced: true, quantize: false, quantization_colors: 108}", () => {

@@ -24,7 +24,7 @@ describe("gradient", () => {
     it("should throw an error if opacity is undefined", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ gradient: { color: "964b00" } })).toThrow(
-        "gradient opacity is required"
+        "gradient.opacity is undefined"
       );
     });
 
@@ -37,13 +37,13 @@ describe("gradient", () => {
 
     it("should throw an error if opacity is less than 0", () => {
       expect(() => build({ gradient: { opacity: -0.5 } })).toThrow(
-        "gradient.opacity is not correct. Set the value between 0 and 1"
+        "gradient.opacity value can't be less then 0"
       );
     });
 
     it("should throw an error if opacity is bigger than 1", () => {
       expect(() => build({ gradient: { opacity: 1.5 } })).toThrow(
-        "gradient.opacity is not correct. Set the value between 0 and 1"
+        "gradient.opacity value can't be more than 1"
       );
     });
 
@@ -79,7 +79,9 @@ describe("gradient", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ gradient: { opacity: 0.5, direction: "top" } })
-      ).toThrow("gradient.direction must be one of: down, up, right, left");
+      ).toThrow(
+        "gradient.direction is invalid. Valid values are: down, up, right, left"
+      );
     });
 
     it("should throw an error if start is not a number", () => {
@@ -91,13 +93,13 @@ describe("gradient", () => {
 
     it("should throw an error if start is less than 0", () => {
       expect(() => build({ gradient: { opacity: 0.5, start: -0.5 } })).toThrow(
-        "gradient.start is not correct. Set the value between 0 and 1"
+        "gradient.start value can't be less then 0"
       );
     });
 
     it("should throw an error if start is bigger than 1", () => {
       expect(() => build({ gradient: { opacity: 0.5, start: 1.5 } })).toThrow(
-        "gradient.start is not correct. Set the value between 0 and 1"
+        "gradient.start value can't be more than 1"
       );
     });
 
@@ -110,13 +112,13 @@ describe("gradient", () => {
 
     it("should throw an error if stop is less than 0", () => {
       expect(() => build({ gradient: { opacity: 0.5, stop: -0.5 } })).toThrow(
-        "gradient.stop is not correct. Set the value between 0 and 1"
+        "gradient.stop value can't be less then 0"
       );
     });
 
     it("should throw an error if stop is bigger than 1", () => {
       expect(() => build({ gradient: { opacity: 0.5, stop: 1.5 } })).toThrow(
-        "gradient.stop is not correct. Set the value between 0 and 1"
+        "gradient.stop value can't be more than 1"
       );
     });
 

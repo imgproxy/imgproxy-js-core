@@ -30,7 +30,7 @@ describe("width", () => {
 
     it("should throw an error if width is less than 0", () => {
       expect(() => build({ width: -1 })).toThrow(
-        "width option is can't be less than 0"
+        "width option value can't be less then 0"
       );
     });
 

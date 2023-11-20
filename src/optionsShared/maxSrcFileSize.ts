@@ -2,6 +2,7 @@ import type {
   MaxSrcFileSize,
   MaxSrcFileSizeOptionsPartial,
 } from "../typesShared/maxSrcFileSize";
+import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: MaxSrcFileSizeOptionsPartial
@@ -20,15 +21,8 @@ const test = (options: MaxSrcFileSizeOptionsPartial): boolean =>
 const build = (options: MaxSrcFileSizeOptionsPartial): string => {
   const maxSrcFileSize = getOpt(options);
 
-  if (maxSrcFileSize === undefined) {
-    throw new Error("max_src_file_size option is undefined");
-  }
-  if (typeof maxSrcFileSize !== "number") {
-    throw new Error("max_src_file_size option is not a number");
-  }
-  if (maxSrcFileSize < 0) {
-    throw new Error("max_src_file_size option can't be a negative");
-  }
+  guardIsUndef(maxSrcFileSize, "max_src_file_size");
+  guardIsNotNum(maxSrcFileSize, "max_src_file_size", { addParam: { min: 0 } });
 
   return `msfs:${maxSrcFileSize}`;
 };

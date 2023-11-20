@@ -32,7 +32,7 @@ describe("maxAnimationFrameResolution", () => {
 
     it("should throw an error if max_animation_frame_resolution is less than 0", () => {
       expect(() => build({ max_animation_frame_resolution: -1 })).toThrow(
-        "max_animation_frame_resolution option can't be a negative"
+        "max_animation_frame_resolution option value can't be less then 0"
       );
     });
 

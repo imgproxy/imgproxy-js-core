@@ -2,6 +2,7 @@ import type {
   UnsharpMasking,
   UnsharpMaskingOptionsPartial,
 } from "../types/unsharpMasking";
+import { guardIsUndef, guardIsNotNum, guardIsValidVal } from "../utils";
 
 const correctMode = {
   auto: true,
@@ -19,44 +20,21 @@ const test = (options: UnsharpMaskingOptionsPartial): boolean =>
 const build = (options: UnsharpMaskingOptionsPartial): string => {
   const unsharpMaskingOpts = getOpt(options);
 
-  if (!unsharpMaskingOpts) {
-    throw new Error("unsharp_masking option is undefined");
-  }
-  if (unsharpMaskingOpts.mode && !correctMode[unsharpMaskingOpts.mode]) {
-    throw new Error(
-      "unsharp_masking.mode option is not correct. Set the value auto, none or always"
-    );
-  }
-  if (unsharpMaskingOpts.weight && unsharpMaskingOpts.weight <= 0) {
-    throw new Error(
-      "unsharp_masking.weight option is not correct. Set the value greater than zero"
-    );
-  }
-  if (
-    unsharpMaskingOpts.weight &&
-    typeof unsharpMaskingOpts.weight !== "number"
-  ) {
-    throw new Error(
-      "unsharp_masking.weight option is not a number. Set the value greater than zero"
-    );
-  }
-  if (unsharpMaskingOpts.divider && unsharpMaskingOpts.divider <= 0) {
-    throw new Error(
-      "unsharp_masking.divider option is not correct. Set the value greater than zero"
-    );
-  }
-  if (
-    unsharpMaskingOpts.divider &&
-    typeof unsharpMaskingOpts.divider !== "number"
-  ) {
-    throw new Error(
-      "unsharp_masking.divider option is not a number. Set the value greater than zero"
-    );
-  }
+  guardIsUndef(unsharpMaskingOpts, "unsharp_masking");
+  const { mode, weight, divider } = unsharpMaskingOpts;
+  if (mode) guardIsValidVal(correctMode, mode, "unsharp_masking.mode");
+  if (weight)
+    guardIsNotNum(weight, "unsharp_masking.weight", {
+      addParam: { min: 0, minEqual: true },
+    });
+  if (divider)
+    guardIsNotNum(divider, "unsharp_masking.divider", {
+      addParam: { min: 0, minEqual: true },
+    });
 
-  const modeStr = unsharpMaskingOpts.mode || "";
-  const weightStr = unsharpMaskingOpts.weight || "";
-  const dividerStr = unsharpMaskingOpts.divider || "";
+  const modeStr = mode || "";
+  const weightStr = weight || "";
+  const dividerStr = divider || "";
 
   return `ush:${modeStr}:${weightStr}:${dividerStr}`.replace(/:+$/, "");
 };

@@ -3,7 +3,7 @@ import type {
   ExtendAspectRatio,
 } from "../types/extendAspectRatio";
 import * as gravityOpt from "./gravity";
-import { normalizeBoolean } from "../utils";
+import { guardIsUndef, normalizeBoolean } from "../utils";
 
 const getOpt = (
   options: ExtendAspectRatioOptionsPartial
@@ -16,11 +16,8 @@ const test = (options: ExtendAspectRatioOptionsPartial): boolean =>
 const build = (options: ExtendAspectRatioOptionsPartial): string => {
   const extendOpts = getOpt(options);
 
-  if (!extendOpts) {
-    throw new Error("extend aspect ratio options are undefined");
-  } else if (!("extend" in extendOpts)) {
-    throw new Error("extend in extend aspect ratio option is required");
-  }
+  guardIsUndef(extendOpts, "extend_aspect_ratio");
+  guardIsUndef(extendOpts.extend, "extend_aspect_ratio.extend");
 
   const gravity = gravityOpt.test(extendOpts)
     ? `:${gravityOpt.build(extendOpts, { headless: true })}`

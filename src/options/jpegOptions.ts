@@ -1,4 +1,5 @@
 import type { JPEGOptions, JPEGOptionsPartial } from "../types/jpegOptions";
+import { guardIsUndef, guardIsNotNum, guardIsNotBool } from "../utils";
 
 const getOpt = (options: JPEGOptionsPartial): JPEGOptions | undefined =>
   options.jpeg_options || options.jpgo;
@@ -8,68 +9,43 @@ const test = (options: JPEGOptionsPartial): boolean => Boolean(getOpt(options));
 const build = (options: JPEGOptionsPartial): string => {
   const jpegOptions = getOpt(options);
 
-  if (!jpegOptions) {
-    throw new Error("jpeg options option is undefined");
-  }
-  if (jpegOptions.progressive && typeof jpegOptions.progressive !== "boolean") {
-    throw new Error("jpeg_options.progressive is not a boolean");
-  }
-  if (
-    jpegOptions.no_subsample &&
-    typeof jpegOptions.no_subsample !== "boolean"
-  ) {
-    throw new Error("jpeg_options.no_subsample is not a boolean");
-  }
-  if (
-    jpegOptions.trellis_quant &&
-    typeof jpegOptions.trellis_quant !== "boolean"
-  ) {
-    throw new Error("jpeg_options.trellis_quant is not a boolean");
-  }
-  if (
-    jpegOptions.overshoot_deringing &&
-    typeof jpegOptions.overshoot_deringing !== "boolean"
-  ) {
-    throw new Error("jpeg_options.overshoot_deringing is not a boolean");
-  }
-  if (jpegOptions.optimize_scans) {
-    if (
-      jpegOptions.progressive === false &&
-      jpegOptions.optimize_scans === true
-    ) {
+  guardIsUndef(jpegOptions, "jpeg_options");
+  const {
+    progressive,
+    no_subsample,
+    trellis_quant,
+    overshoot_deringing,
+    optimize_scans,
+    quant_table,
+  } = jpegOptions;
+
+  if (progressive) guardIsNotBool(progressive, "jpeg_options.progressive");
+  if (no_subsample) guardIsNotBool(no_subsample, "jpeg_options.no_subsample");
+  if (trellis_quant)
+    guardIsNotBool(trellis_quant, "jpeg_options.trellis_quant");
+  if (overshoot_deringing)
+    guardIsNotBool(overshoot_deringing, "jpeg_options.overshoot_deringing");
+
+  if (optimize_scans) {
+    guardIsNotBool(optimize_scans, "jpeg_options.optimize_scans");
+    if (progressive === false)
       throw new Error(
         "jpeg_options.progressive must be true if jpeg_options.optimize_scans is true"
       );
-    }
-    if (typeof jpegOptions.optimize_scans !== "boolean") {
-      throw new Error("jpeg_options.optimize_scans is not a boolean");
-    }
   }
-  if (jpegOptions.quant_table) {
-    if (typeof jpegOptions.quant_table !== "number") {
-      throw new Error("jpeg_options.quant_table is not a number");
-    }
-    if (jpegOptions.quant_table < 0 || jpegOptions.quant_table > 8) {
-      throw new Error("jpeg_options.quant_table is out of range. Must be 0-8");
-    }
-  }
+  if (quant_table)
+    guardIsNotNum(quant_table, "jpeg_options.quant_table", {
+      addParam: { min: 0, max: 8 },
+    });
 
-  const progressive =
-    jpegOptions.progressive === undefined ? "" : jpegOptions.progressive;
-  const ns =
-    jpegOptions.no_subsample === undefined ? "" : jpegOptions.no_subsample;
-  const tq =
-    jpegOptions.trellis_quant === undefined ? "" : jpegOptions.trellis_quant;
-  const od =
-    jpegOptions.overshoot_deringing === undefined
-      ? ""
-      : jpegOptions.overshoot_deringing;
-  const os =
-    jpegOptions.optimize_scans === undefined ? "" : jpegOptions.optimize_scans;
-  const qt =
-    jpegOptions.quant_table === undefined ? "" : jpegOptions.quant_table;
+  const pr = progressive === undefined ? "" : progressive;
+  const ns = no_subsample === undefined ? "" : no_subsample;
+  const tq = trellis_quant === undefined ? "" : trellis_quant;
+  const od = overshoot_deringing === undefined ? "" : overshoot_deringing;
+  const os = optimize_scans === undefined ? "" : optimize_scans;
+  const qt = quant_table === undefined ? "" : quant_table;
 
-  return `jpgo:${progressive}:${ns}:${tq}:${od}:${os}:${qt}`.replace(/:+$/, "");
+  return `jpgo:${pr}:${ns}:${tq}:${od}:${os}:${qt}`.replace(/:+$/, "");
 };
 
 export { test, build };

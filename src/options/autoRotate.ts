@@ -1,5 +1,5 @@
 import type { AutoRotate, AutoRotateOptionsPartial } from "../types/autoRotate";
-import { normalizeBoolean } from "../utils";
+import { normalizeBoolean, guardIsUndef } from "../utils";
 
 const getOpt = (options: AutoRotateOptionsPartial): AutoRotate | undefined => {
   if ("auto_rotate" in options) {
@@ -16,11 +16,7 @@ const test = (options: AutoRotateOptionsPartial): boolean =>
 
 const build = (options: AutoRotateOptionsPartial): string => {
   const autoRotateOpts = getOpt(options);
-
-  if (autoRotateOpts === undefined) {
-    throw new Error("auto rotate option is undefined");
-  }
-
+  guardIsUndef(autoRotateOpts, "auto_rotate");
   return `ar:${normalizeBoolean(autoRotateOpts)}`;
 };
 
