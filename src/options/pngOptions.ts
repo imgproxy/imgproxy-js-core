@@ -1,5 +1,5 @@
 import type { PNGOptions, PNGOptionsPartial } from "../types/pngOptions";
-import { guardIsUndef, guardIsNotNum } from "../utils";
+import { guardIsUndef, guardIsNotNum, guardIsNotBool } from "../utils";
 
 const getOpt = (options: PNGOptionsPartial): PNGOptions | undefined =>
   options.png_options || options.pngo;
@@ -12,10 +12,8 @@ const build = (options: PNGOptionsPartial): string => {
   guardIsUndef(pngOptions, "png_options");
   const { interlaced, quantize, quantization_colors } = pngOptions;
 
-  if (interlaced && typeof interlaced !== "boolean")
-    throw new Error("png_options.interlaced is not a boolean");
-  if (quantize && typeof quantize !== "boolean")
-    throw new Error("png_options.quantize is not a boolean");
+  if (interlaced) guardIsNotBool(interlaced, "png_options.interlaced");
+  if (quantize) guardIsNotBool(quantize, "png_options.quantize");
   if (quantization_colors)
     guardIsNotNum(quantization_colors, "png_options.quantization_colors", {
       addParam: { min: 2, max: 256 },

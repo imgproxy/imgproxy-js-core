@@ -33,10 +33,9 @@ const build = (options: SkipProcessingOptionsPartial): string => {
   guardIsNotArray(skipProcessing, "skip_processing");
 
   if (skipProcessing.some(item => !extNames.includes(item))) {
+    const text = `Valid values are: ${extNames.join(",")}`;
     throw new Error(
-      `skip_processing option contains unsupported extensions. Supported extensions: ${extNames.join(
-        ","
-      )}`
+      `skip_processing option contains unsupported extension. ${text}`
     );
   }
 

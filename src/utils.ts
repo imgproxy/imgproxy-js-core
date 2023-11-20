@@ -124,3 +124,12 @@ export function guardIsNotArray(
     throw new Error(`${getParamName(pn)} is empty`);
   }
 }
+
+export function guardIsNotBool(
+  param: unknown,
+  pn: string
+): asserts param is boolean {
+  if (typeof param !== "boolean") {
+    throw new Error(`${getParamName(pn)} is not a boolean`);
+  }
+}
