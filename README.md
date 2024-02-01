@@ -4,12 +4,24 @@
      <picture>
       <source media="(prefers-color-scheme: dark)" srcset="assets/imgproxy-js-core-dark.svg?sanitize=true">
       <source media="(prefers-color-scheme: light)" srcset="assets/imgproxy-js-core-light.svg?sanitize=true">
-      <img width="150" alt="imgproxy-nodejs logo" src="assets/imgproxy-js-core-light.svg?sanitize=true">
+      <img alt="imgproxy-nodejs logo" src="assets/imgproxy-js-core-light.svg?sanitize=true">
     </picture>
   </a>
 </p>
 
-![CI](https://github.com/imgproxy/imgproxy-js-core/actions/workflows/ci.yml/badge.svg?branch=main)
+<h4 align="center">
+  <a href="https://imgproxy.net">Website</a> |
+  <a href="https://imgproxy.net/blog/">Blog</a> |
+  <a href="https://docs.imgproxy.net">Documentation</a> |
+  <a href="https://imgproxy.net/#pro">imgproxy Pro</a> |
+  <a href="https://hub.docker.com/r/darthsim/imgproxy/">Docker</a> |
+  <a href="https://twitter.com/imgproxy_net">Twitter</a> |
+  <a href="https://discord.gg/5GgpXgtC9u">Discord</a>
+</h4>
+
+<p align="center">
+<a href="https://github.com/imgproxy/imgproxy-js-core/actions"><img alt="GH CI" src="https://img.shields.io/github/actions/workflow/status/imgproxy/imgproxy-js-core/ci.yml?branch=main&label=CI&style=for-the-badge" /></a>
+</p>
 
 ---
 
