@@ -14,13 +14,13 @@ type ReturnAttachment = 1 | "t" | true | false | string;
 /**
  * *Return attachment option*
  *
- * To describe the Return attachment option, you can use the keyword `return_attachment` or `ra`.
+ * To describe the Return attachment option, you can use the keyword `return_attachment` or `att`.
  *
  * @see https://docs.imgproxy.net/generating_the_url?id=return-attachment
  */
 interface ReturnAttachmentOptionsPartial {
   return_attachment?: ReturnAttachment;
-  ra?: ReturnAttachment;
+  att?: ReturnAttachment;
 }
 
 export { ReturnAttachment, ReturnAttachmentOptionsPartial };

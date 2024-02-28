@@ -9,8 +9,8 @@ const getOpt = (
 ): ReturnAttachment | undefined => {
   if ("return_attachment" in options) {
     return options.return_attachment;
-  } else if ("ra" in options) {
-    return options.ra;
+  } else if ("att" in options) {
+    return options.att;
   }
 
   return undefined;
@@ -22,7 +22,7 @@ const test = (options: ReturnAttachmentOptionsPartial): boolean =>
 const build = (options: ReturnAttachmentOptionsPartial): string => {
   const returnAttachment = getOpt(options);
   guardIsUndef(returnAttachment, "return_attachment");
-  return `ra:${normalizeBoolean(returnAttachment)}`;
+  return `att:${normalizeBoolean(returnAttachment)}`;
 };
 
 export { test, build };
