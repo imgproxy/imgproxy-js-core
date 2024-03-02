@@ -15,8 +15,8 @@ describe("disableAnimation", () => {
       expect(test({})).toEqual(false);
     });
 
-    it("should return true if ra option is defined", () => {
-      expect(test({ ra: "t" })).toEqual(true);
+    it("should return true if att option is defined", () => {
+      expect(test({ att: "t" })).toEqual(true);
     });
   });
 
@@ -26,28 +26,28 @@ describe("disableAnimation", () => {
     });
 
     it("should return 't' if return_attachment option is true", () => {
-      expect(build({ return_attachment: true })).toEqual("ra:t");
+      expect(build({ return_attachment: true })).toEqual("att:t");
     });
 
-    it("should return 't' if ra option is t", () => {
-      expect(build({ ra: "t" })).toEqual("ra:t");
+    it("should return 't' if att option is t", () => {
+      expect(build({ att: "t" })).toEqual("att:t");
     });
 
     it("should return 't' if return_attachment is 1", () => {
-      expect(build({ return_attachment: 1 })).toEqual("ra:t");
+      expect(build({ return_attachment: 1 })).toEqual("att:t");
     });
 
-    it("should return 'f' if ra is false", () => {
-      expect(build({ ra: false })).toEqual("ra:f");
+    it("should return 'f' if att is false", () => {
+      expect(build({ att: false })).toEqual("att:f");
     });
 
     it("should return 'f' if return_attachment is 0", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
-      expect(build({ return_attachment: 0 })).toEqual("ra:f");
+      expect(build({ return_attachment: 0 })).toEqual("att:f");
     });
 
-    it("should return 'f' if ra is string (except 't')", () => {
-      expect(build({ ra: "true" })).toEqual("ra:f");
+    it("should return 'f' if att is string (except 't')", () => {
+      expect(build({ att: "true" })).toEqual("att:f");
     });
   });
 });
