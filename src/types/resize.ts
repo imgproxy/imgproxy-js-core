@@ -9,7 +9,7 @@ import { ResizingType } from "./resizingType";
  *
  * - `fit`: resizes the image while keeping aspect ratio to fit a given size. (**default value**)
  * - `fill`: resizes the image while keeping aspect ratio to fill a given size and crops projecting parts.
- * - `fill_down`: the same as fill, but if the resized image is smaller than the requested size,
+ * - `fill-down`: the same as fill, but if the resized image is smaller than the requested size,
  * imgproxy will crop the result to keep the requested aspect ratio.
  * - `force`: resizes the image without keeping the aspect ratio.
  * - `auto`: if both source and resulting dimensions have the same orientation (portrait or landscape),

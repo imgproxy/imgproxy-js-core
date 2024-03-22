@@ -11,7 +11,7 @@ const correctTypes = {
   fit: true,
   fill: true,
   auto: true,
-  fill_down: true,
+  "fill-down": true,
   force: true,
 };
 
