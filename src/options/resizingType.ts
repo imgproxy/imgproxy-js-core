@@ -7,7 +7,7 @@ import { guardIsUndef, guardIsValidVal } from "../utils";
 const correctValues = {
   fit: true,
   fill: true,
-  fill_down: true,
+  "fill-down": true,
   force: true,
   auto: true,
 };

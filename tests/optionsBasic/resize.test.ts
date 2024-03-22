@@ -24,7 +24,7 @@ describe("resize", () => {
     it("should return an error if resizing_type is incorrect", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ resize: { resizing_type: "fill-up" } })).toThrow(
-        "resize.resizing_type is invalid. Valid values are: fit, fill, auto, fill_down, force"
+        "resize.resizing_type is invalid. Valid values are: fit, fill, auto, fill-down, force"
       );
     });
 
@@ -68,10 +68,10 @@ describe("resize", () => {
       );
     });
 
-    it("should return rs:fill_down:::t if resizing_type is 'fill_down' and enlarge is true, other parametres are undefined", () => {
+    it("should return rs:fill-down:::t if resizing_type is 'fill-down' and enlarge is true, other parametres are undefined", () => {
       expect(
-        build({ rs: { resizing_type: "fill_down", enlarge: true } })
-      ).toEqual("rs:fill_down:::t");
+        build({ rs: { resizing_type: "fill-down", enlarge: true } })
+      ).toEqual("rs:fill-down:::t");
     });
 
     it("should return rs::::t:t if enlarge and extend are 't'", () => {
