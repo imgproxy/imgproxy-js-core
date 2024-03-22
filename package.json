@@ -1,6 +1,6 @@
 {
   "name": "@imgproxy/imgproxy-js-core",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "imgproxy-js-core package is designed to be used as part of framework-specific packages and plugins.",
   "keywords": [
     "imgproxy",
