@@ -22,7 +22,8 @@
   "exports": {
     ".": {
       "require": "./dist/imgproxy-js-core.cjs",
-      "import": "./dist/imgproxy-js-core.mjs"
+      "import": "./dist/imgproxy-js-core.mjs",
+      "types": "./dist/imgproxy-js-core.d.ts"
     }
   },
   "license": "MIT",
