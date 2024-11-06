@@ -77,5 +77,11 @@ describe("padding", () => {
     it("should return pd::::5 if pd option is { left: 5 }", () => {
       expect(build({ pd: { left: 5 } })).toEqual("pd::::5");
     });
+
+    it("should return pd:5:0:0:5 if pd option is { top: 10, bottom: 0, left: 5, right: 0 }", () => {
+      expect(build({ pd: { top: 10, bottom: 0, left: 5, right: 0 } })).toEqual(
+        "pd:10:0:0:5"
+      );
+    });
   });
 });

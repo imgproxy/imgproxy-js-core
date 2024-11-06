@@ -19,15 +19,19 @@ const build = (options: PaddingOptionsPartial): string => {
     return `pd:${paddingOpts}`;
   }
 
-  if (paddingOpts.top) guardIsNotNum(paddingOpts.top, "padding.top");
-  if (paddingOpts.right) guardIsNotNum(paddingOpts.right, "padding.right");
-  if (paddingOpts.bottom) guardIsNotNum(paddingOpts.bottom, "padding.bottom");
-  if (paddingOpts.left) guardIsNotNum(paddingOpts.left, "padding.left");
+  if (paddingOpts.top !== undefined)
+    guardIsNotNum(paddingOpts.top, "padding.top");
+  if (paddingOpts.right !== undefined)
+    guardIsNotNum(paddingOpts.right, "padding.right");
+  if (paddingOpts.bottom !== undefined)
+    guardIsNotNum(paddingOpts.bottom, "padding.bottom");
+  if (paddingOpts.left !== undefined)
+    guardIsNotNum(paddingOpts.left, "padding.left");
 
-  const top = paddingOpts.top || "";
-  const right = paddingOpts.right || "";
-  const bottom = paddingOpts.bottom || "";
-  const left = paddingOpts.left || "";
+  const top = paddingOpts.top ?? "";
+  const right = paddingOpts.right ?? "";
+  const bottom = paddingOpts.bottom ?? "";
+  const left = paddingOpts.left ?? "";
 
   return `pd:${top}:${right}:${bottom}:${left}`.replace(/:+$/, "");
 };
