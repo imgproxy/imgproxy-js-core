@@ -3,10 +3,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - ".changeset/**"
-      - ".github/workflows/publish.yml"
-  workflow_dispatch:
 
 env:
   CI: true
@@ -37,7 +33,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Publish to npm
+      - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@v1
         with:
           version: npx @changesets/cli version
