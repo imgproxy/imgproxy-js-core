@@ -21,6 +21,7 @@
   "module": "./dist/imgproxy-js-core.mjs",
   "exports": {
     ".": {
+      "types": "./dist/imgproxy-js-core.d.ts",
       "require": "./dist/imgproxy-js-core.cjs",
       "import": "./dist/imgproxy-js-core.mjs"
     }
