@@ -132,4 +132,4 @@ Typical workflow is as follow:
 2. run `npm run changesets` at project root and follow prompt to generate a "changeset" (logging a change),
 3. commit both (1) and (2) into git.
 
-The [changesets Github action](./.github/workflows/changesets.yaml) is triggered on `push` to `main` and will create a corresponding "Changesets: Versioning & Publication" pull request, which, upon merged, will trigger publication of the new version to NPM.
+The [changesets Github action](./.github/workflows/publish.yml) is triggered on `push` to `main` and will create a corresponding "Changesets: Versioning & Publication" pull request, which, upon merged, will trigger publication of the new version to NPM.
