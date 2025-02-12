@@ -34,6 +34,7 @@ import type { MaxSrcFileSizeOptionsPartial } from "../typesShared/maxSrcFileSize
 import type { MaxSrcResolutionOptionsPartial } from "../typesShared/maxSrcResolution";
 import type { MinHeightOptionsPartial } from "./minHeight";
 import type { MinWidthOptionsPartial } from "./minWidth";
+import type { ObjectsPositionOptionsPartial } from "./objectsPosition";
 import type { PaddingOptionsPartial } from "./padding";
 import type { PageOptionsPartial } from "../typesShared/page";
 import type { PagesOptionsPartial } from "./pages";
@@ -103,6 +104,7 @@ export type Options = AdjustOptionsPartial &
   MaxSrcResolutionOptionsPartial &
   MinHeightOptionsPartial &
   MinWidthOptionsPartial &
+  ObjectsPositionOptionsPartial &
   PaddingOptionsPartial &
   PageOptionsPartial &
   PagesOptionsPartial &

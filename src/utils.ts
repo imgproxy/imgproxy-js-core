@@ -93,6 +93,17 @@ export function guardIsValidVal(
   }
 }
 
+export function guardIsOneOf(
+  validOptions: string[],
+  value: string,
+  name: string
+) {
+  if (!validOptions.includes(value)) {
+    const text = `Valid values are: ${validOptions.join(", ")}`;
+    throw new Error(`${getParamName(name)} is invalid. ${text}`);
+  }
+}
+
 export function guardIsNotStr(
   param: string | undefined,
   pn: string,
