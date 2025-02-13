@@ -47,5 +47,10 @@ describe("maxAnimationFrameResolution", () => {
     it("should return mafr:84 if max_animation_frame_resolution option is 84", () => {
       expect(build({ max_animation_frame_resolution: 84 })).toEqual("mafr:84");
     });
+
+    it("should work with 0", () => {
+      expect(build({ max_animation_frame_resolution: 0 })).toEqual("mafr:0");
+      expect(build({ mafr: 0 })).toEqual("mafr:0");
+    });
   });
 });

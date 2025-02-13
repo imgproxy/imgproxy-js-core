@@ -46,5 +46,10 @@ describe("backgroundAlpha", () => {
     it("should return value of background alpha if bga option is defined", () => {
       expect(build({ bga: 0.5 })).toEqual("background_alpha:0.5");
     });
+
+    it("should return value of background alpha if bga option is 0", () => {
+      expect(build({ bga: 0 })).toEqual("background_alpha:0");
+      expect(build({ background_alpha: 0 })).toEqual("background_alpha:0");
+    });
   });
 });

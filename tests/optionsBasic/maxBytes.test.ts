@@ -41,5 +41,10 @@ describe("maxBytes", () => {
     it("should return mb:500 if mb option is 500", () => {
       expect(build({ mb: 500 })).toEqual("mb:500");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ mb: 0 })).toEqual("mb:0");
+      expect(build({ max_bytes: 0 })).toEqual("mb:0");
+    });
   });
 });

@@ -41,5 +41,10 @@ describe("min_width", () => {
     it("should return mw:500 if mw option is 500", () => {
       expect(build({ mw: 500 })).toEqual("mw:500");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ mw: 0 })).toEqual("mw:0");
+      expect(build({ min_width: 0 })).toEqual("mw:0");
+    });
   });
 });

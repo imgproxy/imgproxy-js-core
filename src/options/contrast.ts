@@ -2,7 +2,7 @@ import type { Contrast, ContrastOptionsPartial } from "../types/contrast";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: ContrastOptionsPartial): Contrast | undefined =>
-  options.contrast || options.co;
+  options.contrast ?? options.co;
 
 const test = (options: ContrastOptionsPartial): boolean =>
   Boolean(getOpt(options));

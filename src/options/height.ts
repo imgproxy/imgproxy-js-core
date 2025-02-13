@@ -2,7 +2,7 @@ import type { Height, HeightOptionsPartial } from "../types/height";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: HeightOptionsPartial): Height | undefined =>
-  options.height || options.h;
+  options.height ?? options.h;
 
 const test = (options: HeightOptionsPartial): boolean =>
   Boolean(getOpt(options));

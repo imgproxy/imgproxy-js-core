@@ -37,5 +37,10 @@ describe("contrast", () => {
     it("should return co:150 if contrast option is 150", () => {
       expect(build({ contrast: 150 })).toEqual("co:150");
     });
+
+    it("should correctly handle 0 contrast", () => {
+      expect(build({ contrast: 0 })).toEqual("co:0");
+      expect(build({ co: 0 })).toEqual("co:0");
+    });
   });
 });

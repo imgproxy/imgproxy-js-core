@@ -43,5 +43,10 @@ describe("quality", () => {
     it("should return q:77 if quality option is 77", () => {
       expect(build({ quality: 77 })).toEqual("q:77");
     });
+
+    it("should correctly handle 0", () => {
+      expect(build({ quality: 0 })).toEqual("q:0");
+      expect(build({ q: 0 })).toEqual("q:0");
+    });
   });
 });

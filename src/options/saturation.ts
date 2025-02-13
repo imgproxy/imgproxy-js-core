@@ -2,7 +2,7 @@ import type { Saturation, SaturationOptionsPartial } from "../types/saturation";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: SaturationOptionsPartial): Saturation | undefined =>
-  options.saturation || options.sa;
+  options.saturation ?? options.sa;
 
 const test = (options: SaturationOptionsPartial): boolean =>
   Boolean(getOpt(options));

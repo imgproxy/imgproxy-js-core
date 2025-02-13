@@ -38,5 +38,10 @@ describe("blur", () => {
     it("should return value of blur if bl option is defined", () => {
       expect(build({ bl: 15 })).toEqual("bl:15");
     });
+
+    it("should return value of blur if bl option is 0", () => {
+      expect(build({ bl: 0 })).toEqual("bl:0");
+      expect(build({ blur: 0 })).toEqual("bl:0");
+    });
   });
 });

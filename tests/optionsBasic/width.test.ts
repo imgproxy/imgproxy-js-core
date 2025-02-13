@@ -41,5 +41,10 @@ describe("width", () => {
     it("should return w:500 if w option is 500", () => {
       expect(build({ w: 500 })).toEqual("w:500");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ w: 0 })).toEqual("w:0");
+      expect(build({ width: 0 })).toEqual("w:0");
+    });
   });
 });
