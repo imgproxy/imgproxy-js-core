@@ -2,7 +2,7 @@ import type { Quality, QualityOptionsPartial } from "../types/quality";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: QualityOptionsPartial): Quality | undefined =>
-  options.quality || options.q;
+  options.quality ?? options.q;
 
 const test = (options: QualityOptionsPartial): boolean =>
   Boolean(getOpt(options));

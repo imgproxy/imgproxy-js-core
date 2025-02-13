@@ -168,5 +168,16 @@ describe("gradient", () => {
         })
       ).toEqual("gr:0.15::::0.85");
     });
+
+    it("should correctly handle 0 opacity", () => {
+      expect(
+        build({
+          gradient: {
+            opacity: 0,
+            stop: 0.85,
+          },
+        })
+      ).toEqual("gr:0::::0.85");
+    });
   });
 });

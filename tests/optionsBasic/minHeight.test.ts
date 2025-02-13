@@ -41,5 +41,10 @@ describe("min_height", () => {
     it("should return mh:333 if mh option is 333", () => {
       expect(build({ mh: 333 })).toEqual("mh:333");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ mh: 0 })).toEqual("mh:0");
+      expect(build({ min_height: 0 })).toEqual("mh:0");
+    });
   });
 });

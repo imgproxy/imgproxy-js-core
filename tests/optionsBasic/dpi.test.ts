@@ -25,5 +25,9 @@ describe("dpi", () => {
     it("should return dpi:150 if dpi option is 150", () => {
       expect(build({ dpi: 150 })).toEqual("dpi:150");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ dpi: 0 })).toEqual("dpi:0");
+    });
   });
 });

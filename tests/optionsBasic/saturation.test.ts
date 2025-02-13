@@ -37,5 +37,10 @@ describe("saturation", () => {
     it("should return sa:30 if saturation option is 30", () => {
       expect(build({ saturation: 30 })).toEqual("sa:30");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ saturation: 0 })).toEqual("sa:0");
+      expect(build({ sa: 0 })).toEqual("sa:0");
+    });
   });
 });

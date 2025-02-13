@@ -24,19 +24,19 @@ const build = (options: AutoqualityOptionsPartial): string => {
   const { method, target, min_quality, max_quality, allowed_error } =
     autoqualityOpts;
   if (method) guardIsValidVal(currentMethods, method, "autoquality.method");
-  if (target)
+  if (target !== undefined)
     guardIsNotNum(target, "autoquality.target", {
       addParam: { min: 0 },
     });
-  if (min_quality)
+  if (min_quality !== undefined)
     guardIsNotNum(min_quality, "autoquality.min_quality", {
       addParam: { min: 0, max: 100 },
     });
-  if (max_quality)
+  if (max_quality !== undefined)
     guardIsNotNum(max_quality, "autoquality.max_quality", {
       addParam: { min: 0, max: 100 },
     });
-  if (allowed_error) {
+  if (allowed_error !== undefined) {
     if (method !== "dssim" && method !== "ml") {
       throw new Error(
         "autoquality.allowed_error is applicable only to dssim and ml methods"
@@ -47,11 +47,11 @@ const build = (options: AutoqualityOptionsPartial): string => {
     });
   }
 
-  const m = method || "";
-  const t = target || "";
-  const minQuality = min_quality || "";
-  const maxQuality = max_quality || "";
-  const ae = allowed_error || "";
+  const m = method ?? "";
+  const t = target ?? "";
+  const minQuality = min_quality ?? "";
+  const maxQuality = max_quality ?? "";
+  const ae = allowed_error ?? "";
 
   return `aq:${m}:${t}:${minQuality}:${maxQuality}:${ae}`.replace(/:+$/, "");
 };

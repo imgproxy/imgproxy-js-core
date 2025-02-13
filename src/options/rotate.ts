@@ -9,7 +9,7 @@ const correctAngles = {
 };
 
 const getOpt = (options: RotateOptionsPartial): Rotate | undefined =>
-  options.rotate || options.rot;
+  options.rotate ?? options.rot;
 
 const test = (options: RotateOptionsPartial): boolean =>
   Boolean(getOpt(options));

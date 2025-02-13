@@ -31,5 +31,9 @@ describe("dpr", () => {
     it("should return value of dpr if dpr option is defined", () => {
       expect(build({ dpr: 100 })).toEqual("dpr:100");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ dpr: 0 })).toEqual("dpr:0");
+    });
   });
 });

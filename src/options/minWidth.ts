@@ -2,7 +2,7 @@ import type { MinWidth, MinWidthOptionsPartial } from "../types/minWidth";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: MinWidthOptionsPartial): MinWidth | undefined =>
-  options.min_width || options.mw;
+  options.min_width ?? options.mw;
 
 const test = (options: MinWidthOptionsPartial): boolean =>
   Boolean(getOpt(options));

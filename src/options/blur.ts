@@ -2,7 +2,7 @@ import type { Blur, BlurOptionsPartial } from "../types/blur";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: BlurOptionsPartial): Blur | undefined =>
-  options.blur || options.bl;
+  options.blur ?? options.bl;
 
 const test = (options: BlurOptionsPartial): boolean => Boolean(getOpt(options));
 

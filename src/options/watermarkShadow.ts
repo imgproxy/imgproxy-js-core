@@ -6,7 +6,7 @@ import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: WatermarkShadowOptionsPartial
-): WatermarkShadow | undefined => options.watermark_shadow || options.wmsh;
+): WatermarkShadow | undefined => options.watermark_shadow ?? options.wmsh;
 
 const test = (options: WatermarkShadowOptionsPartial): boolean =>
   Boolean(getOpt(options));

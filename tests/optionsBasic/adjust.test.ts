@@ -73,5 +73,11 @@ describe("adjust", () => {
     it("should return value of saturation if brightness and contrast are undefined", () => {
       expect(build({ adjust: { saturation: 1.2 } })).toEqual("a:::1.2");
     });
+
+    it("should correctly handle 0 for `brightness`, `contrast`, and `saturation`", () => {
+      expect(
+        build({ adjust: { brightness: 0, contrast: 0, saturation: 0 } })
+      ).toEqual("a:0:0:0");
+    });
   });
 });

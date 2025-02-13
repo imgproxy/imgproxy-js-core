@@ -41,5 +41,10 @@ describe("pixelate", () => {
     it("should return pix:7 if pix option is 7", () => {
       expect(build({ pix: 7 })).toEqual("pix:7");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ pix: 0 })).toEqual("pix:0");
+      expect(build({ pixelate: 0 })).toEqual("pix:0");
+    });
   });
 });

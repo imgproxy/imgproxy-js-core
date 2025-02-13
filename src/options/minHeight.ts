@@ -2,7 +2,7 @@ import type { MinHeight, MinHeightOptionsPartial } from "../types/minHeight";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: MinHeightOptionsPartial): MinHeight | undefined =>
-  options.min_height || options.mh;
+  options.min_height ?? options.mh;
 
 const test = (options: MinHeightOptionsPartial): boolean =>
   Boolean(getOpt(options));

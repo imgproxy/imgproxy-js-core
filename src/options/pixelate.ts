@@ -2,7 +2,7 @@ import type { Pixelate, PixelateOptionsPartial } from "../types/pixelate";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: PixelateOptionsPartial): Pixelate | undefined =>
-  options.pixelate || options.pix;
+  options.pixelate ?? options.pix;
 
 const test = (options: PixelateOptionsPartial): boolean =>
   Boolean(getOpt(options));

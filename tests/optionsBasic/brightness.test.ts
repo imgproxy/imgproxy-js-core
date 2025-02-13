@@ -43,6 +43,11 @@ describe("brightness", () => {
       expect(build({ brightness: 255 })).toEqual("br:255");
     });
 
+    it("should correctly handle 0 value", () => {
+      expect(build({ brightness: 0 })).toEqual("br:0");
+      expect(build({ br: 0 })).toEqual("br:0");
+    });
+
     it("should return value of brightness if br option is defined", () => {
       expect(build({ br: -150 })).toEqual("br:-150");
     });
