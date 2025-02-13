@@ -11,14 +11,14 @@ const build = (options: AdjustOptionsPartial): string => {
   const adjustOpts = getOpt(options);
 
   guardIsUndef(adjustOpts, "adjust");
-  if (adjustOpts.brightness)
+  if (adjustOpts.brightness !== undefined)
     guardIsNotNum(adjustOpts.brightness, "adjust.brightness", {
       addParam: { min: -255, max: 255 },
     });
 
-  const brightness = adjustOpts.brightness || "";
-  const contrast = adjustOpts.contrast || "";
-  const saturation = adjustOpts.saturation || "";
+  const brightness = adjustOpts.brightness ?? "";
+  const contrast = adjustOpts.contrast ?? "";
+  const saturation = adjustOpts.saturation ?? "";
 
   return `a:${brightness}:${contrast}:${saturation}`;
 };
