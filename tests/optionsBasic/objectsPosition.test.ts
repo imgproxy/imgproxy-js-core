@@ -9,6 +9,10 @@ describe("objectsPosition", () => {
         expect(test({ [option]: {} })).toBe(true);
       }
     );
+
+    it("Should return false if it is undefined", () => {
+      expect(test({})).toBe(false);
+    });
   });
 
   describe("build", () => {
@@ -36,6 +40,15 @@ describe("objectsPosition", () => {
       expect(
         build({ objects_position: { type: "fp", x: 0.1, y: 0.2 } })
       ).toEqual("op:fp:0.1:0.2");
+    });
+
+    it("Should correctly handle min and max values for `fp` type", () => {
+      expect(build({ objects_position: { type: "fp", x: 0, y: 0 } })).toEqual(
+        "op:fp:0:0"
+      );
+      expect(build({ objects_position: { type: "fp", x: 1, y: 1 } })).toEqual(
+        "op:fp:1:1"
+      );
     });
 
     it("Should return objects_position with `prop` type", () => {
