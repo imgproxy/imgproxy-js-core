@@ -1,4 +1,4 @@
-export * as ajust from "./ajust";
+export * as adjust from "./adjust";
 export * as autoquality from "./autoquality";
 export * as autoRotate from "./autoRotate";
 export * as background from "./background";

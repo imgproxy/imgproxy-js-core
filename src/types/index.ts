@@ -1,4 +1,4 @@
-import type { AjustOptionsPartial } from "./ajust";
+import type { AdjustOptionsPartial } from "./adjust";
 import type { AutoqualityOptionsPartial } from "./autoquality";
 import type { AutoRotateOptionsPartial } from "./autoRotate";
 import type { BackgroundOptionsPartial } from "./background";
@@ -67,7 +67,7 @@ import type { WidthOptionsPartial } from "./width";
 import type { ZoomOptionsPartial } from "./zoom";
 import type { WildOptionsPartial } from "../typesShared/wildOptions";
 
-export type Options = AjustOptionsPartial &
+export type Options = AdjustOptionsPartial &
   AutoqualityOptionsPartial &
   AutoRotateOptionsPartial &
   BackgroundOptionsPartial &
