@@ -23,11 +23,11 @@ const build = (options: UnsharpMaskingOptionsPartial): string => {
   guardIsUndef(unsharpMaskingOpts, "unsharp_masking");
   const { mode, weight, divider } = unsharpMaskingOpts;
   if (mode) guardIsValidVal(correctMode, mode, "unsharp_masking.mode");
-  if (weight)
+  if (weight !== undefined)
     guardIsNotNum(weight, "unsharp_masking.weight", {
       addParam: { min: 0, minEqual: true },
     });
-  if (divider)
+  if (divider !== undefined)
     guardIsNotNum(divider, "unsharp_masking.divider", {
       addParam: { min: 0, minEqual: true },
     });
