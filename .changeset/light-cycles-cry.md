@@ -1,5 +1,5 @@
 ---
-"@imgproxy/imgproxy-js-core": minor
+"@imgproxy/imgproxy-js-core": major
 ---
 
 Fix padding option not allowing zero values. Thanks @sevrai
