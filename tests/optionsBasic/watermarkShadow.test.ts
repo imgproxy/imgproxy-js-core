@@ -41,5 +41,10 @@ describe("watermarkShadow", () => {
     it("should return wmsh:36 if wmsh option is 36", () => {
       expect(build({ wmsh: 36 })).toEqual("wmsh:36");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ wmsh: 0 })).toEqual("wmsh:0");
+      expect(build({ watermark_shadow: 0 })).toEqual("wmsh:0");
+    });
   });
 });

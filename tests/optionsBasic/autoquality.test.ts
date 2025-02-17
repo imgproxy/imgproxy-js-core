@@ -141,5 +141,19 @@ describe("autoquality", () => {
         })
       ).toEqual("aq:ml::::0.007");
     });
+
+    it("should correctly handle 0 values for numeric properties", () => {
+      expect(
+        build({
+          aq: {
+            method: "dssim",
+            min_quality: 0,
+            max_quality: 0,
+            allowed_error: 0,
+            target: 0,
+          },
+        })
+      ).toEqual("aq:dssim:0:0:0:0");
+    });
   });
 });

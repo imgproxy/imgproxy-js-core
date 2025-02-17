@@ -6,7 +6,7 @@ import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (
   options: BackgroundAlphaOptionsPartial
-): BackgroundAlpha | undefined => options.background_alpha || options.bga;
+): BackgroundAlpha | undefined => options.background_alpha ?? options.bga;
 
 const test = (options: BackgroundAlphaOptionsPartial): boolean =>
   Boolean(getOpt(options));

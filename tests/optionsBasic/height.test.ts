@@ -41,5 +41,10 @@ describe("height", () => {
     it("should return h:250 if w option is 250", () => {
       expect(build({ h: 250 })).toEqual("h:250");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ h: 0 })).toEqual("h:0");
+      expect(build({ height: 0 })).toEqual("h:0");
+    });
   });
 });

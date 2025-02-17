@@ -37,5 +37,10 @@ describe("sharpen", () => {
     it("should return sh:0.5 if sharpen option is 0.5", () => {
       expect(build({ sharpen: 0.5 })).toEqual("sh:0.5");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ sharpen: 0 })).toEqual("sh:0");
+      expect(build({ sh: 0 })).toEqual("sh:0");
+    });
   });
 });

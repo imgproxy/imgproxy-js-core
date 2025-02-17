@@ -45,12 +45,21 @@ describe("unsharpMasking", () => {
       expect(() => build({ unsharp_masking: { divider: -1 } })).toThrow(
         "unsharp_masking.divider value can't be less or equal then 0"
       );
+      expect(() => build({ unsharp_masking: { divider: 0 } })).toThrow(
+        "unsharp_masking.divider value can't be less or equal then 0"
+      );
     });
 
     it("should throw an error if unsharp_masking.divider is not a number", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ unsharp_masking: { divider: "test" } })).toThrow(
         "unsharp_masking.divider is not a number"
+      );
+    });
+
+    it("should throw an error if unsharp_masking.weight is not greater than zero", () => {
+      expect(() => build({ unsharp_masking: { weight: 0 } })).toThrow(
+        "unsharp_masking.weight value can't be less or equal then 0"
       );
     });
 

@@ -2,7 +2,7 @@ import type { Width, WidthOptionsPartial } from "../types/width";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const getOpt = (options: WidthOptionsPartial): Width | undefined =>
-  options.width || options.w;
+  options.width ?? options.w;
 
 const test = (options: WidthOptionsPartial): boolean =>
   Boolean(getOpt(options));

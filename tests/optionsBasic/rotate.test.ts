@@ -42,5 +42,10 @@ describe("rotate", () => {
     it("should return rot:270 if rot option is 270", () => {
       expect(build({ rot: 270 })).toEqual("rot:270");
     });
+
+    it("should correctly handle 0 value", () => {
+      expect(build({ rot: 0 })).toEqual("rot:0");
+      expect(build({ rotate: 0 })).toEqual("rot:0");
+    });
   });
 });
