@@ -1,5 +1,5 @@
 ---
-"@imgproxy/imgproxy-js-core": major
+"@imgproxy/imgproxy-js-core": patch
 ---
 
-Add a rule that unsharpMasking.weight should be greater than 0
+Add a validation rule that `unsharpMasking.weight` should be greater than 0

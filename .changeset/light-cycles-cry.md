@@ -1,5 +1,5 @@
 ---
-"@imgproxy/imgproxy-js-core": major
+"@imgproxy/imgproxy-js-core": patch
 ---
 
-Fix padding option not allowing zero values. Thanks @sevrai
+Fix padding option to not omit `0` values when serializing to imgproxy URL. Thanks @sevrai!
