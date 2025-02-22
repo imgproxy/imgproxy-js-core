@@ -1,6 +1,7 @@
 import { Options } from "../types";
 import * as optionModules from "../options";
 import { guardIsUndef, guardIsValidVal } from "../utils";
+import type { URLImageInfo } from "./generateImageInfoUrl";
 
 const correctUrlTypes = {
   plain: true,
@@ -8,12 +9,7 @@ const correctUrlTypes = {
   encrypted: true,
 };
 
-type URL = {
-  value: string;
-  type: "plain" | "base64" | "encrypted";
-};
-
-const generateUrl = (url: URL, options?: Options): string => {
+const generateUrl = (url: URLImageInfo, options?: Options): string => {
   guardIsUndef(url.value, "url.value", "Must be a string");
   guardIsUndef(
     url.type,

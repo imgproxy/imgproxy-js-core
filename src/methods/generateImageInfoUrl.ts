@@ -8,7 +8,7 @@ const correctUrlTypes = {
   encrypted: true,
 };
 
-type URLImageInfo = {
+export type URLImageInfo = {
   value: string;
   type: "plain" | "base64" | "encrypted";
 };

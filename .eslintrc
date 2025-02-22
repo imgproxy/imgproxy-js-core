@@ -11,5 +11,14 @@
   "env": {
     "browser": true,
     "node": true
-  }
+  },
+  "ignores": [
+    ".history",
+    ".husky",
+    ".vscode",
+    "coverage",
+    "dist",
+    "node_modules",
+    "vite.config.ts"
+  ]
 }
