@@ -17,6 +17,7 @@ const currentPositions = {
   soea: true,
   sowe: true,
   re: true,
+  ch: true,
 };
 
 const getOpt = (options: WatermarkOptionsPartial): Watermark | undefined =>
