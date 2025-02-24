@@ -1,5 +1,6 @@
-import { describe, expect, expectTypeOf, it } from "vitest";
+import { assertType, describe, expect, expectTypeOf, it } from "vitest";
 import { test, build } from "../../src/options/watermarkRotate";
+import { Options } from "../../src/types";
 
 const NAMES = ["watermark_rotate", "wm_rot", "wmr"] as const;
 
@@ -39,11 +40,27 @@ describe.each(NAMES)("%s", name => {
   });
 });
 
-it("watermark_rotate option should have `number` type", () => {
-  expectTypeOf(build).parameter(0).toEqualTypeOf<{
-    watermark_rotate?: number;
-    wm_rot?: number;
-    wmr?: number;
-  }>();
-  expectTypeOf(build).returns.toEqualTypeOf<string>();
+describe("Check `watermark_rotate` type declarations", () => {
+  it("watermark_rotate option should have `number` type", () => {
+    expectTypeOf(build).parameter(0).toEqualTypeOf<{
+      watermark_rotate?: number;
+      wm_rot?: number;
+      wmr?: number;
+    }>();
+    expectTypeOf(build).returns.toEqualTypeOf<string>();
+  });
+
+  it("check TS type declaration", () => {
+    assertType<Options>({
+      watermark_rotate: 45,
+    });
+
+    assertType<Options>({
+      wm_rot: 45,
+    });
+
+    assertType<Options>({
+      wmr: 45,
+    });
+  });
 });

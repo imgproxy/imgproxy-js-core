@@ -59,6 +59,7 @@ import type { TrimOptionsPartial } from "./trim";
 import type { UnsharpMaskingOptionsPartial } from "./unsharpMasking";
 import type { VideoThumbnailSecondOptionsPartial } from "../typesShared/videoThumbnailSecond";
 import type { WatermarkOptionsPartial } from "./watermark";
+import type { WatermarkRotateOptionsPartial } from "./watermarkRotate";
 import type { WatermarkShadowOptionsPartial } from "./watermarkShadow";
 import type { WatermarkSizeOptionsPartial } from "./watermarkSize";
 import type { WatermarkTextOptionsPartial } from "./watermarkText";
@@ -133,6 +134,7 @@ export type Options = AdjustOptionsPartial &
   WatermarkSizeOptionsPartial &
   WatermarkTextOptionsPartial &
   WatermarkUrlOptionsPartial &
+  WatermarkRotateOptionsPartial &
   WebpOptionsPartial &
   WidthOptionsPartial &
   ZoomOptionsPartial &
