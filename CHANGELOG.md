@@ -1,5 +1,12 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.2.0
+
+### Minor Changes
+
+- df3940d: - Add `ch` (chessboard order) position to `watermark` option.
+  - Add `watermark_rotate` option.
+
 ## 1.1.0
 
 ### Minor Changes
