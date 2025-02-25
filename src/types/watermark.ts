@@ -3,7 +3,7 @@
  *
  * @param {number} opacity - watermark opacity modifier.
  * Final opacity is calculated like general opacity option * opacity watermark. Value range: `0` - `1`.
- * @param {"ce" | "no" | "so" | "ea" | "we" | "noea" | "nowe" | "soea" | "sowe" | "re"} [position="ce"] -
+ * @param {"ce" | "no" | "so" | "ea" | "we" | "noea" | "nowe" | "soea" | "sowe" | "re" | "ch"} [position="ce"] -
  * (optional) specifies the position of the watermark. Default `"ce"`.
  *
  * Available values:
@@ -17,15 +17,16 @@
  * - `soea`: south-east (bottom-right corner)
  * - `sowe`: south-west (bottom-left corner)
  * - `re`: repeat and tile the watermark to fill the entire image
+ * - `ch`: **PRO feature** same as `re` but watermarks are placed in a chessboard order
  *
  * @param {number} [x_offset] - (optional) specifies the horizontal offset for the watermark.
  * You can use negative values, this means that the watermark will be shifted towards the edge that is selected.
  * That is, shifted by the selected number of pixels beyond the edge.
- * When using `re` position, these values define the spacing between the tiles.
+ * When using `re` or `ch` position, these values define the spacing between the tiles.
  * @param {number} [y_offset] - (optional) specifies the vertical offset for the watermark.
  * You can use negative values, this means that the watermark will be shifted towards the edge that is selected.
  * That is, shifted by the selected number of pixels beyond the edge.
- * When using `re` position, these values define the spacing between the tiles.
+ * When using `re` or `ch` position, these values define the spacing between the tiles.
  * @param {number} [scale] - (optional) a floating-point number that defines
  * the watermark size relative to the resultant image size.
  * When set to 0 or when omitted, the watermark size won’t be changed.
@@ -65,7 +66,8 @@ interface Watermark {
     | "nowe"
     | "soea"
     | "sowe"
-    | "re";
+    | "re"
+    | "ch";
   x_offset?: number;
   y_offset?: number;
   scale?: number;
