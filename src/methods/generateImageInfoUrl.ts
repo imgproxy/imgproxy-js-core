@@ -1,6 +1,7 @@
 import { OptionsImageInfo } from "../typesImageInfo";
 import * as optionModules from "../optionsImageInfo";
 import { guardIsUndef, guardIsValidVal } from "../utils";
+import { Settings } from "../settings";
 
 const correctUrlTypes = {
   plain: true,
@@ -15,7 +16,8 @@ export type URLImageInfo = {
 
 const generateImageInfoUrl = (
   url: URLImageInfo,
-  options?: OptionsImageInfo
+  options?: OptionsImageInfo,
+  settings?: Settings
 ): string => {
   guardIsUndef(url.value, "url.value", "Must be a string");
   guardIsUndef(
@@ -30,7 +32,7 @@ const generateImageInfoUrl = (
     for (const [, optionModule] of Object.entries(optionModules)) {
       if (optionModule.test(options)) {
         optsPart += "/";
-        optsPart += optionModule.build(options);
+        optsPart += optionModule.build(options, settings);
       }
     }
   }
