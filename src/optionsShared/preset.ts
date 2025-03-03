@@ -1,3 +1,4 @@
+import { Settings } from "../settings";
 import { Preset, PresetOptionsPartial } from "../typesShared/preset";
 import { guardIsUndef, guardIsNotArray } from "../utils";
 
@@ -7,8 +8,8 @@ const getOpt = (options: PresetOptionsPartial): Preset | undefined =>
 const test = (options: PresetOptionsPartial): boolean =>
   Boolean(getOpt(options));
 
-const build = (options: PresetOptionsPartial): string => {
-  const preset = getOpt(options);
+const build = (options: PresetOptionsPartial, settings?: Settings): string => {
+  let preset = getOpt(options);
 
   guardIsUndef(preset, "preset");
   guardIsNotArray(preset, "preset");
@@ -17,7 +18,11 @@ const build = (options: PresetOptionsPartial): string => {
     throw new Error("preset option should contain only strings");
   }
 
-  return `pr:${preset.join(":")}`;
+  if (!settings?.onlyPresets) {
+    preset = ["pr", ...preset];
+  }
+
+  return `${preset.join(":")}`;
 };
 
 export { test, build };

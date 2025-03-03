@@ -86,4 +86,16 @@ describe("generateImageInfoUrl", () => {
       "/avg:t:f/do:t/dc:t:t/exp:1729409825/iptc:t/p:6/pr:test:test2/s:t/plain/https://example.com/host/pic.png"
     );
   });
+
+  it("should work with `onlyPresets` setting", () => {
+    expect(
+      generateUrl(
+        { value: "https://example.com/host/pic.png", type: "plain" },
+        {
+          preset: ["test", "test2"],
+        },
+        { onlyPresets: true }
+      )
+    ).toEqual("/test:test2/plain/https://example.com/host/pic.png");
+  });
 });
