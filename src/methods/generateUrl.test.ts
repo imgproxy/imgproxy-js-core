@@ -70,4 +70,27 @@ describe("generateUrl", () => {
       "/bl:5/el:t/ex:t:nowe::5/f:webp/h:150/q:80/w:150/z:1.5/plain/https://example.com/host/pic.png"
     );
   });
+
+  it("should work with `onlyPresets` setting", () => {
+    expect(
+      generateUrl(
+        { value: "https://example.com/host/pic.png", type: "plain" },
+        {
+          preset: ["preset1", "preset2"],
+          width: 150,
+          height: 150,
+          format: "webp",
+          quality: 80,
+          enlarge: "t",
+          extend: {
+            extend: 1,
+            gravity: { type: "nowe", y_offset: 5 },
+          },
+          blur: 5,
+          zoom: 1.5,
+        },
+        { onlyPresets: true }
+      )
+    ).toEqual("/preset1:preset2/plain/https://example.com/host/pic.png");
+  });
 });

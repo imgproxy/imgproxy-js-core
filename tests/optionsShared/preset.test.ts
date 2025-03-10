@@ -46,5 +46,11 @@ describe("preset", () => {
     it("should return 'pr:paddings:jpg' if pr option is ['paddings', 'jpg']", () => {
       expect(build({ pr: ["paddings", "jpg"] })).toEqual("pr:paddings:jpg");
     });
+
+    it("should work with `onlyPresets` setting ", () => {
+      expect(build({ pr: ["paddings", "jpg"] }, { onlyPresets: true })).toEqual(
+        "paddings:jpg"
+      );
+    });
   });
 });

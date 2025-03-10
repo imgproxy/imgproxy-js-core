@@ -1,6 +1,7 @@
 import { OptionsImageInfo } from "../typesImageInfo";
 import * as optionModules from "../optionsImageInfo";
 import { guardIsUndef, guardIsValidVal } from "../utils";
+import { Settings } from "../settings";
 
 const correctUrlTypes = {
   plain: true,
@@ -13,9 +14,13 @@ export type URLImageInfo = {
   type: "plain" | "base64" | "encrypted";
 };
 
+const allModules = Object.values(optionModules);
+const presetOnlyModule = [optionModules.preset];
+
 const generateImageInfoUrl = (
   url: URLImageInfo,
-  options?: OptionsImageInfo
+  options?: OptionsImageInfo,
+  settings?: Settings
 ): string => {
   guardIsUndef(url.value, "url.value", "Must be a string");
   guardIsUndef(
@@ -27,10 +32,12 @@ const generateImageInfoUrl = (
 
   let optsPart = "";
   if (options) {
-    for (const [, optionModule] of Object.entries(optionModules)) {
+    const modules = settings?.onlyPresets ? presetOnlyModule : allModules;
+
+    for (const optionModule of modules) {
       if (optionModule.test(options)) {
         optsPart += "/";
-        optsPart += optionModule.build(options);
+        optsPart += optionModule.build(options, settings);
       }
     }
   }
