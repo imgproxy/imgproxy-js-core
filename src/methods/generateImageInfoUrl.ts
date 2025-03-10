@@ -14,6 +14,9 @@ export type URLImageInfo = {
   type: "plain" | "base64" | "encrypted";
 };
 
+const allModules = Object.values(optionModules);
+const presetOnlyModule = [optionModules.preset];
+
 const generateImageInfoUrl = (
   url: URLImageInfo,
   options?: OptionsImageInfo,
@@ -29,7 +32,9 @@ const generateImageInfoUrl = (
 
   let optsPart = "";
   if (options) {
-    for (const [, optionModule] of Object.entries(optionModules)) {
+    const modules = settings?.onlyPresets ? presetOnlyModule : allModules;
+
+    for (const optionModule of modules) {
       if (optionModule.test(options)) {
         optsPart += "/";
         optsPart += optionModule.build(options, settings);

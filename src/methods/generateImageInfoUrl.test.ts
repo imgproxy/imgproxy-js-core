@@ -98,4 +98,20 @@ describe("generateImageInfoUrl", () => {
       )
     ).toEqual("/test:test2/plain/https://example.com/host/pic.png");
   });
+
+  it("should ignore other options with `onlyPresets` setting", () => {
+    expect(
+      generateUrl(
+        { value: "https://example.com/host/pic.png", type: "plain" },
+        {
+          preset: ["test", "test2"],
+          crop: {
+            width: 100,
+            height: 100,
+          },
+        },
+        { onlyPresets: true }
+      )
+    ).toEqual("/test:test2/plain/https://example.com/host/pic.png");
+  });
 });
