@@ -1,8 +1,4 @@
 /**
- * *WEBP options*. **PRO feature**
- *
- * Allows redefining WebP saving options.
- *
  * Available values:
  * - `"lossy"` - (default) lossy compression. The lossy compression is based on VP8 key frame encoding.
  * VP8 is a video compression format created by On2 Technologies as a successor to the VP6 and VP7 formats.
@@ -15,11 +11,27 @@
  * For the entropy coding we use a variant of LZ77-Huffman coding, which uses 2D encoding of distance values
  * and compact sparse values.
  *
+ */
+type WebPCompressionOptions = "lossy" | "near_lossless" | "lossless";
+
+/**
+ * *WEBP options*. **PRO feature**
+ *
+ * Allows redefining WebP saving options.
+ *
  * @default "lossy"
  *
  * @see {@link https://docs.imgproxy.net/generating_the_url?id=webp-options | WEBP options imgproxy docs}
  */
-type WebpOptions = "lossy" | "near_lossless" | "lossless";
+type WebpOptions =
+  | WebPCompressionOptions
+  | {
+      compression: WebPCompressionOptions;
+      /**
+       * when `true`, enables smart subsampling. Smart subsampling increases the resulting file size and compression time but improves quality. Default: `false`
+       */
+      smart_subsample?: boolean;
+    };
 
 /**
  * *WEBP options option*. **PRO feature**

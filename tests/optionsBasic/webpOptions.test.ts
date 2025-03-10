@@ -42,5 +42,21 @@ describe("webpOptions", () => {
     it("should return webpo:near_lossless if webpo option is near_lossless", () => {
       expect(build({ webpo: "near_lossless" })).toEqual("webpo:near_lossless");
     });
+
+    it("should support `smart_subsample` option", () => {
+      expect(build({ webp_options: { compression: "lossy" } })).toEqual(
+        "webpo:lossy"
+      );
+
+      expect(
+        build({ webp_options: { compression: "lossy", smart_subsample: true } })
+      ).toEqual("webpo:lossy:true");
+
+      expect(
+        build({
+          webp_options: { compression: "lossy", smart_subsample: false },
+        })
+      ).toEqual("webpo:lossy:false");
+    });
   });
 });
