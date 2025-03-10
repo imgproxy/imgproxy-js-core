@@ -1,5 +1,13 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.2.0
+
+### Minor Changes
+
+- df3940d: - Add `ch` (chessboard order) position to `watermark` option.
+  - Add `watermark_rotate` option.
+- d1a2acf: Add support for `onlyPresets` setting to generate [presets-only urls](https://docs.imgproxy.net/usage/presets#only-presets)
+
 ## 1.1.0
 
 ### Minor Changes
