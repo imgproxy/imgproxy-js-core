@@ -1,5 +1,5 @@
 import type { WebpOptions, WebpOptionsPartial } from "../types/webpOptions";
-import { guardIsUndef, guardIsValidVal } from "../utils";
+import { guardIsNotBool, guardIsUndef, guardIsValidVal } from "../utils";
 
 const correctOptions = {
   lossy: true,
@@ -14,11 +14,24 @@ const test = (options: WebpOptionsPartial): boolean => Boolean(getOpt(options));
 
 const build = (options: WebpOptionsPartial): string => {
   const webpOptions = getOpt(options);
+  let compression: string, smart_subsample: boolean | undefined;
 
   guardIsUndef(webpOptions, "webp_options");
-  guardIsValidVal(correctOptions, webpOptions, "webp_options");
 
-  return `webpo:${webpOptions}`;
+  if (typeof webpOptions === "string") {
+    compression = webpOptions;
+  } else {
+    compression = webpOptions.compression;
+
+    if (webpOptions.smart_subsample !== undefined) {
+      smart_subsample = webpOptions.smart_subsample;
+      guardIsNotBool(smart_subsample, "webp_options.smart_subsample");
+    }
+  }
+
+  guardIsValidVal(correctOptions, compression, "webp_options");
+
+  return `webpo:${compression}${smart_subsample !== undefined ? `:${smart_subsample}` : ""}`;
 };
 
 export { test, build };
