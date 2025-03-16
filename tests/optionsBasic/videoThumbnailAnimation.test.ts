@@ -10,6 +10,8 @@ describe("videoThumbnailAnimation", () => {
         step: 1,
         delay: 100,
         frames: 10,
+        frame_width: 320,
+        frame_height: 240,
       };
       expect(test({ video_thumbnail_animation: vta })).toEqual(true);
     });
@@ -19,6 +21,8 @@ describe("videoThumbnailAnimation", () => {
         step: 2,
         delay: 200,
         frames: 5,
+        frame_width: 320,
+        frame_height: 240,
       };
       expect(test({ vta })).toEqual(true);
     });
