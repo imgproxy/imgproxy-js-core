@@ -57,6 +57,7 @@ import type { StripMetadataOptionsPartial } from "./stripMetadata";
 import type { StyleOptionsPartial } from "./style";
 import type { TrimOptionsPartial } from "./trim";
 import type { UnsharpMaskingOptionsPartial } from "./unsharpMasking";
+import type { VideoThumbnailAnimationOptionsPartial } from "./videoThumbnailAnimation";
 import type { VideoThumbnailSecondOptionsPartial } from "../typesShared/videoThumbnailSecond";
 import type { WatermarkOptionsPartial } from "./watermark";
 import type { WatermarkRotateOptionsPartial } from "./watermarkRotate";
@@ -128,6 +129,7 @@ export type Options = AdjustOptionsPartial &
   StyleOptionsPartial &
   TrimOptionsPartial &
   UnsharpMaskingOptionsPartial &
+  VideoThumbnailAnimationOptionsPartial &
   VideoThumbnailSecondOptionsPartial &
   WatermarkOptionsPartial &
   WatermarkShadowOptionsPartial &
