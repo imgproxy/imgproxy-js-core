@@ -240,5 +240,70 @@ describe("gravity", () => {
         ).toEqual("g:fp:0:0");
       });
     });
+
+    describe("ObjwGravity", () => {
+      it("should throw an error if gravity includes property class_weights but type is not 'objw'", () => {
+        expect(() =>
+          build({
+            gravity: {
+              type: "no",
+              // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+              class_weights: [{ class: "face", weight: 1 }],
+            },
+          })
+        ).toThrow(`gravity.class_weights can be used only with type objw`);
+      });
+
+      it("should throw an error if class_weights is undefined", () => {
+        expect(() =>
+          build({
+            // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+            gravity: {
+              type: "objw",
+            },
+          })
+        ).toThrow(`gravity.class_weights is undefined`);
+      });
+
+      it("should throw an error if class_weights is not an array", () => {
+        expect(() =>
+          build({
+            gravity: {
+              type: "objw",
+              // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+              class_weights: "face:1",
+            },
+          })
+        ).toThrow(`gravity.class_weights is not an array`);
+      });
+
+      it("should throw an error if a class_weights item is missing class or weight", () => {
+        expect(() =>
+          build({
+            gravity: {
+              type: "objw",
+              // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+              class_weights: [{ class: "face" }],
+            },
+          })
+        ).toThrow(
+          `Each item in gravity.class_weights must have 'class' and 'weight' properties`
+        );
+      });
+
+      it("should return g:objw:face:1:person:0.5 if gravity is {type: 'objw', class_weights: [{class: 'face', weight: 1}, {class: 'person', weight: 0.5}]} ", () => {
+        expect(
+          build({
+            gravity: {
+              type: "objw",
+              class_weights: [
+                { class: "face", weight: 1 },
+                { class: "person", weight: 0.5 },
+              ],
+            },
+          })
+        ).toEqual("g:objw:face:1:person:0.5");
+      });
+    });
   });
 });

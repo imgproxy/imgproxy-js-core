@@ -3,6 +3,7 @@ import type {
   Gravity,
   FPGravity,
   ObjGravity,
+  ObjwGravity,
   BaseGravity,
 } from "../types/gravity";
 import {
@@ -33,6 +34,7 @@ const currentAllTypes = {
   sm: true,
   fp: true,
   obj: true,
+  objw: true,
 };
 
 const getOpt = (options: GravityOptionsPartial): Gravity | undefined =>
@@ -64,6 +66,9 @@ const build = (
   if (gravityOpts.class_names && type !== "obj")
     throw new Error("gravity.class_names can be used only with type obj");
   // @ts-expect-error: Let's ignore an error.
+  if (gravityOpts.class_weights && type !== "objw")
+    throw new Error("gravity.class_weights can be used only with type objw");
+  // @ts-expect-error: Let's ignore an error.
   if ((gravityOpts.x || gravityOpts.y) && type !== "fp")
     throw new Error("gravity.x and gravity.y can be used only with type fp");
 
@@ -90,6 +95,28 @@ const build = (
 
     const class_names = gravityObj.class_names;
     return withHead(`${type}:${class_names.join(":")}`, headless);
+  }
+
+  if (type === "objw") {
+    const gravityObjw = gravityOpts as ObjwGravity;
+
+    guardIsUndef(gravityObjw.class_weights, "gravity.class_weights");
+    guardIsNotArray(gravityObjw.class_weights, "gravity.class_weights");
+
+    const weightPairs = gravityObjw.class_weights.map(item => {
+      if (
+        typeof item !== "object" ||
+        !item.class ||
+        typeof item.weight !== "number"
+      ) {
+        throw new Error(
+          "Each item in gravity.class_weights must have 'class' and 'weight' properties"
+        );
+      }
+      return `${item.class}:${item.weight}`;
+    });
+
+    return withHead(`${type}:${weightPairs.join(":")}`, headless);
   } else {
     const gravityBase = gravityOpts as BaseGravity;
     const x_offset =

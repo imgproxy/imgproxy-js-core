@@ -107,6 +107,26 @@ interface ObjGravity {
 }
 
 /**
+ * **PRO feature.**
+ *
+ * Object-weighted gravity. imgproxy detects objects of provided classes on the image, calculates the resulting image center using their positions, and adds weights to these positions.
+ *
+ * If class weights are omited, imgproxy will use all the detected objects with equal weights.
+ *
+ * @param {string} type - Must be `objw`.
+ * @param {Array<{class: string, weight: number}>} class_weights - Array of objects with class names and their weights.
+ *
+ * @example
+ * {gravity: {type: "objw", class_weights: [{class: "face", weight: 1}, {class: "person", weight: 0.5}]}}
+ *
+ * @see https://docs.imgproxy.net/generating_the_url?id=gravity
+ */
+interface ObjwGravity {
+  type: "objw";
+  class_weights: Array<{ class: string; weight: number }>;
+}
+
+/**
  * *Gravity option*
  *
  * When imgproxy needs to cut some parts of the image, it is guided by the gravity option.
@@ -138,6 +158,12 @@ interface ObjGravity {
  * If class names are omited, imgproxy will use all the detected objects.
  * @param {string} type - Must be `obj`.
  * @param {string[]} class_names - Array of class names.
+ * 
+ * *Object-weighted gravity*. **PRO feature.**
+ * imgproxy detects objects of provided classes on the image, calculates the resulting image center using their positions, and adds weights to these positions.
+ * If class weights are omited, imgproxy will use all the detected objects with equal weights.
+ * @param {string} type - Must be `objw`.
+ * @param {Array<{class: string, weight: number}>} class_weights - Array of objects with class names and their weights.
  *
  * *FP gravity*.
  * The gravity focus point.
@@ -164,13 +190,21 @@ interface ObjGravity {
  *
  * @example <caption>Object-oriented gravity</caption>
  * {gravity: {type: "obj", class_names: ["face", "person"]}}
+ * 
+ * @example <caption>Object-weighted gravity</caption>
+ * {gravity: {type: "objw", class_weights: [{class: "face", weight: 1}, {class: "person", weight: 0.5}]}}
  *
  * @example <caption>FP gravity</caption>
  * {gravity: {type: "fp", x: 0.5, y: 0.5}}
  *
  * @see https://docs.imgproxy.net/generating_the_url?id=gravity
  */
-type Gravity = BaseGravity | SmartGravity | ObjGravity | FPGravity;
+type Gravity =
+  | BaseGravity
+  | SmartGravity
+  | ObjGravity
+  | ObjwGravity
+  | FPGravity;
 
 /**
  * *Gravity option*
@@ -184,4 +218,11 @@ interface GravityOptionsPartial {
   g?: Gravity;
 }
 
-export { BaseGravity, FPGravity, ObjGravity, Gravity, GravityOptionsPartial };
+export {
+  BaseGravity,
+  FPGravity,
+  ObjGravity,
+  ObjwGravity,
+  Gravity,
+  GravityOptionsPartial,
+};
