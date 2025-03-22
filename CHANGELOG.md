@@ -1,5 +1,16 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.2.0
+
+### Minor Changes
+
+- df3940d: - Add `ch` (chessboard order) position to `watermark` option.
+  - Add `watermark_rotate` option.
+- d1a2acf: Add support for `onlyPresets` setting to generate [presets-only urls](https://docs.imgproxy.net/usage/presets#only-presets)
+- c11cdad: Add `smart_subsample` to `webp_options`
+- db5b6e8: Add support for [video_thumbnail_animation property](https://docs.imgproxy.net/usage/processing#video-thumbnail-animation)
+- a00418c: Add support for objw mode for [gravity option](https://docs.imgproxy.net/usage/processing#gravity)
+
 ## 1.1.0
 
 ### Minor Changes
