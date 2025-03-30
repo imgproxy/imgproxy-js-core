@@ -1,5 +1,5 @@
 /**
- * *Monochrome options*
+ * *Monochrome option*. **PRO feature**
  *
  * When `intensity` is greater than zero, imgproxy will convert the resulting image to monochrome.
  */

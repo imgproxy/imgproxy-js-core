@@ -1,5 +1,5 @@
 /**
- * *Duotone options*
+ * *Duotone option*. **PRO feature**
  *
  * When intensity is greater than zero, imgproxy will convert the resulting image to duotone.
  */
