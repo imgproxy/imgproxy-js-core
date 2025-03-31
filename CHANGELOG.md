@@ -1,5 +1,11 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.3.0
+
+### Minor Changes
+
+- e16c19e: Add [monochrome](https://docs.imgproxy.net/usage/processing#monochrome) and [duotone](https://docs.imgproxy.net/usage/processing#duotone) options
+
 ## 1.2.0
 
 ### Minor Changes
