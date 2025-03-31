@@ -10,6 +10,7 @@ import type { CacheBusterOptionsPartial } from "../typesShared/cacheBuster";
 import type { ContrastOptionsPartial } from "./contrast";
 import type { CropOptionsPartial } from "../typesShared/crop";
 import type { DisableAnimationOptionsPartial } from "./disableAnimation";
+import type { DuotoneOptionsPartial } from "./duotone";
 import type { DPIOptionsPartial } from "./dpi";
 import type { DPROptionsPartial } from "./dpr";
 import type { DrawDetectionsOptionsPartial } from "./drawDetections";
@@ -34,6 +35,7 @@ import type { MaxSrcFileSizeOptionsPartial } from "../typesShared/maxSrcFileSize
 import type { MaxSrcResolutionOptionsPartial } from "../typesShared/maxSrcResolution";
 import type { MinHeightOptionsPartial } from "./minHeight";
 import type { MinWidthOptionsPartial } from "./minWidth";
+import type { MonochromeOptionsPartial } from "./monochrome";
 import type { ObjectsPositionOptionsPartial } from "./objectsPosition";
 import type { PaddingOptionsPartial } from "./padding";
 import type { PageOptionsPartial } from "../typesShared/page";
@@ -82,6 +84,7 @@ export type Options = AdjustOptionsPartial &
   ContrastOptionsPartial &
   CropOptionsPartial &
   DisableAnimationOptionsPartial &
+  DuotoneOptionsPartial &
   DPIOptionsPartial &
   DPROptionsPartial &
   DrawDetectionsOptionsPartial &
@@ -106,6 +109,7 @@ export type Options = AdjustOptionsPartial &
   MaxSrcResolutionOptionsPartial &
   MinHeightOptionsPartial &
   MinWidthOptionsPartial &
+  MonochromeOptionsPartial &
   ObjectsPositionOptionsPartial &
   PaddingOptionsPartial &
   PageOptionsPartial &
