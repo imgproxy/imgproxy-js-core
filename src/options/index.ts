@@ -7,6 +7,7 @@ export * as blur from "./blur";
 export * as blurDetections from "./blurDetections";
 export * as brightness from "./brightness";
 export * as cacheBuster from "../optionsShared/cacheBuster";
+export * as colorize from "./colorize";
 export * as contrast from "./contrast";
 export * as crop from "../optionsShared/crop";
 export * as disableAnimation from "./disableAnimation";
