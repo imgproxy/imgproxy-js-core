@@ -32,8 +32,12 @@ const build = (options: GradientOptionsPartial): string => {
 
   if (color) guardIsNotStr(color, "gradient.color", true);
   if (direction) {
-    guardIsNotStr(direction, "gradient.direction");
-    guardIsValidVal(currentDirection, direction, "gradient.direction");
+    if (typeof direction === "number") {
+      guardIsNotNum(direction, "gradient.direction");
+    } else {
+      guardIsNotStr(direction, "gradient.direction");
+      guardIsValidVal(currentDirection, direction, "gradient.direction");
+    }
   }
   if (start)
     guardIsNotNum(start, "gradient.start", { addParam: { min: 0, max: 1 } });
