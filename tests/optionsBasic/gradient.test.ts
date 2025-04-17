@@ -68,20 +68,31 @@ describe("gradient", () => {
       );
     });
 
-    it("should throw an error if direction is not a string", () => {
+    it("should throw an error if direction is not a string or number", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
-        build({ gradient: { opacity: 0.5, direction: 250 } })
+        build({ gradient: { opacity: 0.5, direction: true } })
       ).toThrow("gradient.direction is not a string");
     });
 
-    it("should throw an error if direction is not one of: down, up, right, left", () => {
+    it("should throw an error if direction is a string not among: down, up, right, left", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ gradient: { opacity: 0.5, direction: "top" } })
       ).toThrow(
         "gradient.direction is invalid. Valid values are: down, up, right, left"
       );
+    });
+
+    it("should accept numeric angle for direction", () => {
+      expect(
+        build({
+          gradient: {
+            opacity: 0.5,
+            direction: 45,
+          },
+        })
+      ).toEqual("gr:0.5::45");
     });
 
     it("should throw an error if start is not a number", () => {
