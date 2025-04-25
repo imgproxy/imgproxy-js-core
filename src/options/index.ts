@@ -62,6 +62,7 @@ export * as trim from "./trim";
 export * as unsharpMasking from "./unsharpMasking";
 export * as videoThumbnailSecond from "../optionsShared/videoThumbnailSecond";
 export * as videoThumbnailAnimation from "./videoThumbnailAnimation";
+export * as videoThumbnailTile from "./videoThumbnailTile";
 export * as watermark from "./watermark";
 export * as watermarkShadow from "./watermarkShadow";
 export * as watermarkSize from "./watermarkSize";
