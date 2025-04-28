@@ -1,6 +1,7 @@
 export * as average from "./average";
 export * as blurhash from "./blurhash";
 export * as cacheBuster from "../optionsShared/cacheBuster";
+export * as calcHashsums from "./calcHashsums";
 export * as crop from "../optionsShared/crop";
 export * as detectObjects from "./detectObjects";
 export * as dimensions from "./dimensions";

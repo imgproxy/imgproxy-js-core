@@ -1,6 +1,7 @@
 import type { AverageImageInfoOptionsPartial } from "./average";
 import type { BHImageInfoOptionsPartial } from "./blurhash";
 import type { CacheBusterOptionsPartial } from "../typesShared/cacheBuster";
+import type { CalcHashsumsImageInfoOptionsPartial } from "./calcHashsums";
 import type { CropOptionsPartial } from "../typesShared/crop";
 import type { DCImageInfoOptionsPartial } from "./dominantColors";
 import type { DetectObjectsImageInfoOptionsPartial } from "./detectObjects";
@@ -23,6 +24,7 @@ import type { WildOptionsPartial } from "../typesShared/wildOptions";
 export type OptionsImageInfo = AverageImageInfoOptionsPartial &
   BHImageInfoOptionsPartial &
   CacheBusterOptionsPartial &
+  CalcHashsumsImageInfoOptionsPartial &
   CropOptionsPartial &
   DCImageInfoOptionsPartial &
   DetectObjectsImageInfoOptionsPartial &
