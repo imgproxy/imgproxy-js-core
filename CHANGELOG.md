@@ -1,5 +1,15 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.3.0
+
+### Minor Changes
+
+- 1cc5d45: Add [Calc hashsums](https://docs.imgproxy.net/usage/getting_info#calc-hashsums) info option
+- 3f7b58e: Add support for [colorize](https://docs.imgproxy.net/usage/processing#colorize) option
+- e16c19e: Add [monochrome](https://docs.imgproxy.net/usage/processing#monochrome) and [duotone](https://docs.imgproxy.net/usage/processing#duotone) options
+- 3179557: Add support for numeric direction value in [gradient](https://docs.imgproxy.net/usage/processing#gradient) option
+- 1beb7e1: Add [Video thumbnail tile](https://docs.imgproxy.net/usage/processing#video-thumbnail-tile) option
+
 ## 1.2.0
 
 ### Minor Changes
