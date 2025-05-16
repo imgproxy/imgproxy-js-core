@@ -1,6 +1,6 @@
 ---
 title: Usage docs of imgproxy have been updated
-assignees: Alqanar
+assignees: 11bit
 labels: enhancement
 ---
 
