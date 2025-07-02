@@ -15,6 +15,23 @@
 type WebPCompressionOptions = "lossy" | "near_lossless" | "lossless";
 
 /**
+ * Available WebP preset values:
+ * - `"default"` - A general-purpose preset (default setting)
+ * - `"photo"` - A digital picture, like a portrait or indoor shot
+ * - `"picture"` - An outdoor photograph with natural lighting
+ * - `"drawing"` - A hand or line drawing with high-contrast details
+ * - `"icon"` - A small-sized colorful image
+ * - `"text"` - A text image with large areas of uniform color
+ */
+type WebPPresetOptions =
+  | "default"
+  | "photo"
+  | "picture"
+  | "drawing"
+  | "icon"
+  | "text";
+
+/**
  * *WEBP options*. **PRO feature**
  *
  * Allows redefining WebP saving options.
@@ -31,6 +48,10 @@ type WebpOptions =
        * when `true`, enables smart subsampling. Smart subsampling increases the resulting file size and compression time but improves quality. Default: `false`
        */
       smart_subsample?: boolean;
+      /**
+       * A hint to the encoder about the type of image being compressed. This helps optimize WebP compression based on the specific type of image being processed.
+       */
+      preset?: WebPPresetOptions;
     };
 
 /**
