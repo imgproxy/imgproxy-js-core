@@ -1,4 +1,4 @@
-export const normalizeBoolean = (value: 1 | string | boolean): string => {
+export const normalizeBoolean = (value: 1 | 0 | string | boolean): string => {
   if (value === true || value === "t" || value === 1) {
     return "t";
   }
