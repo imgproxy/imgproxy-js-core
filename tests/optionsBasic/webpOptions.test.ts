@@ -58,5 +58,40 @@ describe("webpOptions", () => {
         })
       ).toEqual("webpo:lossy:false");
     });
+
+    it("should support `preset` option", () => {
+      expect(
+        build({ webp_options: { compression: "lossy", preset: "photo" } })
+      ).toEqual("webpo:lossy::photo");
+
+      expect(
+        build({
+          webp_options: {
+            compression: "lossy",
+            smart_subsample: true,
+            preset: "picture",
+          },
+        })
+      ).toEqual("webpo:lossy:true:picture");
+
+      expect(
+        build({
+          webp_options: {
+            compression: "lossless",
+            smart_subsample: false,
+            preset: "drawing",
+          },
+        })
+      ).toEqual("webpo:lossless:false:drawing");
+    });
+
+    it("should throw an error if preset is invalid", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ webp_options: { compression: "lossy", preset: "invalid" } })
+      ).toThrow(
+        "webp_options.preset is invalid. Valid values are: default, photo, picture, drawing, icon, text"
+      );
+    });
   });
 });
