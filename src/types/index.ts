@@ -10,6 +10,7 @@ import type { CacheBusterOptionsPartial } from "../typesShared/cacheBuster";
 import type { ColorizeOptionsPartial } from "./colorize";
 import type { ContrastOptionsPartial } from "./contrast";
 import type { CropOptionsPartial } from "../typesShared/crop";
+import type { CropAspectRatioOptionsPartial } from "./cropAspectRatio";
 import type { DisableAnimationOptionsPartial } from "./disableAnimation";
 import type { DuotoneOptionsPartial } from "./duotone";
 import type { DPIOptionsPartial } from "./dpi";
@@ -86,6 +87,7 @@ export type Options = AdjustOptionsPartial &
   ColorizeOptionsPartial &
   ContrastOptionsPartial &
   CropOptionsPartial &
+  CropAspectRatioOptionsPartial &
   DisableAnimationOptionsPartial &
   DuotoneOptionsPartial &
   DPIOptionsPartial &

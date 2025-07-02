@@ -10,6 +10,7 @@ export * as cacheBuster from "../optionsShared/cacheBuster";
 export * as colorize from "./colorize";
 export * as contrast from "./contrast";
 export * as crop from "../optionsShared/crop";
+export * as cropAspectRatio from "./cropAspectRatio";
 export * as disableAnimation from "./disableAnimation";
 export * as duotone from "./duotone";
 export * as dpi from "./dpi";
