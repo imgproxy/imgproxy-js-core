@@ -6,6 +6,7 @@ import { guardIsUndef, guardIsNotArray } from "../utils";
 
 const extNames = [
   "jpg",
+  "jxl",
   "png",
   "webp",
   "avif",
