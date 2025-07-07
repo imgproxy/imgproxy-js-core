@@ -28,7 +28,7 @@ describe("format", () => {
     it("should throw an error if format is invalid", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(() => build({ format: "invalid" })).toThrow(
-        "format option is invalid. Valid values are: png, jpg, webp, avif, gif, ico, svg, bmp, tiff, mp4, best"
+        "format option is invalid. Valid values are: png, jpg, jxl, webp, avif, gif, ico, svg, bmp, tiff, mp4, pdf, best"
       );
     });
 
