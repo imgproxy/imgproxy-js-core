@@ -23,6 +23,7 @@
  */
 type SkipProcessing = Array<
   | "jpg"
+  | "jxl"
   | "png"
   | "webp"
   | "avif"

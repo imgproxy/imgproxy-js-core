@@ -5,6 +5,7 @@
  * At the moment, imgproxy supports only the most popular image formats.
  * - `png` — Portable Network Graphics
  * - `jpg` — Joint Photographic Experts Group
+ * - `jxl` — JPEG XL
  * - `webp` — WebP
  * - `avif` — AV1 Image File Format
  * - `gif` — Graphics Interchange Format
@@ -13,6 +14,7 @@
  * - `bmp` — Bitmap
  * - `tiff` — Tagged Image File Format
  * - `mp4` — **PRO feature** MPEG-4
+ * - `pdf` — **PRO feature** PDF document
  * - `best` — **PRO feature** to make imgproxy pick the best format for the
  * resultant image. Check out the {@link https://docs.imgproxy.net/best_format | Best format guide}
  * to learn more.
@@ -25,6 +27,7 @@
 type Format =
   | "png"
   | "jpg"
+  | "jxl"
   | "webp"
   | "avif"
   | "gif"
@@ -33,6 +36,7 @@ type Format =
   | "bmp"
   | "tiff"
   | "mp4"
+  | "pdf"
   | "best";
 
 /**
