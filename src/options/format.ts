@@ -4,6 +4,7 @@ import { guardIsUndef, guardIsValidVal } from "../utils";
 const formatValues = {
   png: true,
   jpg: true,
+  jxl: true,
   webp: true,
   avif: true,
   gif: true,
@@ -12,6 +13,7 @@ const formatValues = {
   bmp: true,
   tiff: true,
   mp4: true,
+  pdf: true,
   best: true,
 };
 
