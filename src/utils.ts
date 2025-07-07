@@ -41,7 +41,7 @@ function getMinNumText(
 ): string {
   return `${getParamName(paramName)} value can't be less${
     isEqual ? " or equal" : ""
-  } then ${value}${addInfo ? `. ${addInfo}` : ""}`;
+  } than ${value}${addInfo ? `. ${addInfo}` : ""}`;
 }
 
 export function guardIsNotNum(

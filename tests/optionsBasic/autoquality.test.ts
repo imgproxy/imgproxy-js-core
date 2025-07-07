@@ -37,7 +37,7 @@ describe("autoquality", () => {
 
     it("should throw an error if autoquality.target is less than 0", () => {
       expect(() => build({ autoquality: { target: -1 } })).toThrow(
-        "autoquality.target value can't be less then 0"
+        "autoquality.target value can't be less than 0"
       );
     });
 
@@ -50,7 +50,7 @@ describe("autoquality", () => {
 
     it("should throw an error if autoquality.min_quality is less than 0", () => {
       expect(() => build({ autoquality: { min_quality: -1 } })).toThrow(
-        "autoquality.min_quality value can't be less then 0"
+        "autoquality.min_quality value can't be less than 0"
       );
     });
 
@@ -69,7 +69,7 @@ describe("autoquality", () => {
 
     it("should throw an error if autoquality.max_quality is less than 0", () => {
       expect(() => build({ autoquality: { max_quality: -1 } })).toThrow(
-        "autoquality.max_quality value can't be less then 0"
+        "autoquality.max_quality value can't be less than 0"
       );
     });
 
@@ -89,7 +89,7 @@ describe("autoquality", () => {
     it("should throw an error if autoquality.allowed_error is less than 0", () => {
       expect(() =>
         build({ autoquality: { method: "ml", allowed_error: -1 } })
-      ).toThrow("autoquality.allowed_error value can't be less then 0");
+      ).toThrow("autoquality.allowed_error value can't be less than 0");
     });
 
     it("should throw an error if autoquality.allowed_error is more than 1", () => {

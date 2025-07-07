@@ -30,13 +30,13 @@ describe("maxSrcResolution", () => {
 
     it("should throw an error if max_src_resolution option is less than 0", () => {
       expect(() => build({ max_src_resolution: -1 })).toThrow(
-        "max_src_resolution option value can't be less or equal then 0"
+        "max_src_resolution option value can't be less or equal than 0"
       );
     });
 
     it("should throw an error if max_src_resolution option is 0", () => {
       expect(() => build({ max_src_resolution: 0 })).toThrow(
-        "max_src_resolution option value can't be less or equal then 0"
+        "max_src_resolution option value can't be less or equal than 0"
       );
     });
 

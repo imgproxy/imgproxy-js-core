@@ -75,7 +75,7 @@ describe("jpegOptions", () => {
       expect(() =>
         // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
         build({ jpeg_options: { quant_table: -1 } })
-      ).toThrow("jpeg_options.quant_table value can't be less then 0");
+      ).toThrow("jpeg_options.quant_table value can't be less than 0");
     });
 
     it("should throw an error if quant_table is more than 8", () => {

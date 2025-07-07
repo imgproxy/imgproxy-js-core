@@ -47,7 +47,7 @@ describe("blurhash", () => {
     it("should throw an error if blurhash.x_components is less than 0", () => {
       expect(() =>
         build({ blurhash: { x_components: -1, y_components: 3 } })
-      ).toThrow("blurhash.x_components value can't be less then 0");
+      ).toThrow("blurhash.x_components value can't be less than 0");
     });
 
     it("should throw an error if blurhash.x_components is more than 9", () => {
@@ -59,7 +59,7 @@ describe("blurhash", () => {
     it("should throw an error if blurhash.y_components is less than 0", () => {
       expect(() =>
         build({ blurhash: { x_components: 8, y_components: -4 } })
-      ).toThrow("blurhash.y_components value can't be less then 0");
+      ).toThrow("blurhash.y_components value can't be less than 0");
     });
 
     it("should throw an error if blurhash.y_components is more than 9", () => {

@@ -30,7 +30,7 @@ describe("contrast", () => {
 
     it("should throw an error if contrast is less than 0", () => {
       expect(() => build({ contrast: -1 })).toThrow(
-        "contrast option value can't be less then 0"
+        "contrast option value can't be less than 0"
       );
     });
 

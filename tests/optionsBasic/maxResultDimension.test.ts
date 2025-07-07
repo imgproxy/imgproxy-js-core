@@ -32,7 +32,7 @@ describe("maxResultDimension", () => {
 
     it("should throw an error if max_result_dimension is less than 0", () => {
       expect(() => build({ max_result_dimension: -1 })).toThrow(
-        "max_result_dimension option value can't be less then 0"
+        "max_result_dimension option value can't be less than 0"
       );
     });
 

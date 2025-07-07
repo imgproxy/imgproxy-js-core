@@ -44,7 +44,7 @@ describe("pngOptions", () => {
 
     it("should throw an error if png_options.quantization_colors is less than 2", () => {
       expect(() => build({ png_options: { quantization_colors: 1 } })).toThrow(
-        "png_options.quantization_colors value can't be less then 2"
+        "png_options.quantization_colors value can't be less than 2"
       );
     });
 

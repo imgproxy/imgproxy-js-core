@@ -30,7 +30,7 @@ describe("page", () => {
 
     it("should throw an error if page is less than 0", () => {
       expect(() => build({ page: -1 })).toThrow(
-        "page option value can't be less then 0"
+        "page option value can't be less than 0"
       );
     });
 

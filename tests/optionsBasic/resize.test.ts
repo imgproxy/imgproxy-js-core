@@ -44,13 +44,13 @@ describe("resize", () => {
 
     it("should return an error if width is less than 0", () => {
       expect(() => build({ resize: { width: -15 } })).toThrow(
-        "resize.width value can't be less then 0"
+        "resize.width value can't be less than 0"
       );
     });
 
     it("should return an error if height is less than 0", () => {
       expect(() => build({ resize: { height: -25 } })).toThrow(
-        "resize.height value can't be less then 0"
+        "resize.height value can't be less than 0"
       );
     });
 

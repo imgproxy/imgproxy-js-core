@@ -51,13 +51,13 @@ describe("crop", () => {
 
     it("should throw an error if width is less than 0", () => {
       expect(() => build({ crop: { width: -1, height: 150 } })).toThrowError(
-        "crop.width value can't be less then 0"
+        "crop.width value can't be less than 0"
       );
     });
 
     it("should throw an error if height is less than 0", () => {
       expect(() => build({ c: { width: 150, height: -1 } })).toThrowError(
-        "crop.height value can't be less then 0"
+        "crop.height value can't be less than 0"
       );
     });
 

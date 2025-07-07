@@ -30,7 +30,7 @@ describe("pixelate", () => {
 
     it("should throw an error if pixelate is less than 0", () => {
       expect(() => build({ pixelate: -1 })).toThrow(
-        "pixelate option value can't be less then 0"
+        "pixelate option value can't be less than 0"
       );
     });
 

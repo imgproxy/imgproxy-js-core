@@ -30,7 +30,7 @@ describe("saturation", () => {
 
     it("should throw an error if saturation is less than 0", () => {
       expect(() => build({ saturation: -1 })).toThrow(
-        "saturation option value can't be less then 0"
+        "saturation option value can't be less than 0"
       );
     });
 

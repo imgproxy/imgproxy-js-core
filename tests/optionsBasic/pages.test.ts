@@ -30,7 +30,7 @@ describe("pages", () => {
 
     it("should throw an error if pages is less than 1", () => {
       expect(() => build({ pages: 0 })).toThrow(
-        "pages option value can't be less then 1"
+        "pages option value can't be less than 1"
       );
     });
 

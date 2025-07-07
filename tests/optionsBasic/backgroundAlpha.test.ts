@@ -28,7 +28,7 @@ describe("backgroundAlpha", () => {
 
     it("should throw an error if background alpha less than 0", () => {
       expect(() => build({ background_alpha: -0.5 })).toThrow(
-        "background_alpha option value can't be less then 0"
+        "background_alpha option value can't be less than 0"
       );
     });
 

@@ -33,7 +33,7 @@ describe("palette", () => {
 
     it("should throw an error if palette option is -2", () => {
       expect(() => build({ palette: -2 })).toThrow(
-        "palette option value can't be less then 0"
+        "palette option value can't be less than 0"
       );
     });
 

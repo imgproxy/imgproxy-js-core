@@ -37,7 +37,7 @@ describe("gradient", () => {
 
     it("should throw an error if opacity is less than 0", () => {
       expect(() => build({ gradient: { opacity: -0.5 } })).toThrow(
-        "gradient.opacity value can't be less then 0"
+        "gradient.opacity value can't be less than 0"
       );
     });
 
@@ -104,7 +104,7 @@ describe("gradient", () => {
 
     it("should throw an error if start is less than 0", () => {
       expect(() => build({ gradient: { opacity: 0.5, start: -0.5 } })).toThrow(
-        "gradient.start value can't be less then 0"
+        "gradient.start value can't be less than 0"
       );
     });
 
@@ -123,7 +123,7 @@ describe("gradient", () => {
 
     it("should throw an error if stop is less than 0", () => {
       expect(() => build({ gradient: { opacity: 0.5, stop: -0.5 } })).toThrow(
-        "gradient.stop value can't be less then 0"
+        "gradient.stop value can't be less than 0"
       );
     });
 
