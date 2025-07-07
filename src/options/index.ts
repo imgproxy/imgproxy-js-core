@@ -33,6 +33,7 @@ export * as keepCopyright from "./keepCopyright";
 export * as maxAnimationFrames from "./maxAnimationFrames";
 export * as maxAnimationFrameResolution from "./maxAnimationFrameResolution";
 export * as maxBytes from "./maxBytes";
+export * as maxResultDimension from "./maxResultDimension";
 export * as objectPosition from "./objectsPosition";
 export * as maxSrcFileSize from "../optionsShared/maxSrcFileSize";
 export * as maxSrcResolution from "../optionsShared/maxSrcResolution";

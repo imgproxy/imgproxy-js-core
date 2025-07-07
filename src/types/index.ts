@@ -33,6 +33,7 @@ import type { KeepCopyrightOptionsPartial } from "./keepCopyright";
 import type { MAFROptionsPartial } from "./maxAnimationFrameResolution";
 import type { MaxAnimationFramesOptionsPartial } from "./maxAnimationFrames";
 import type { MaxBytesOptionsPartial } from "./maxBytes";
+import type { MaxResultDimensionOptionsPartial } from "./maxResultDimension";
 import type { MaxSrcFileSizeOptionsPartial } from "../typesShared/maxSrcFileSize";
 import type { MaxSrcResolutionOptionsPartial } from "../typesShared/maxSrcResolution";
 import type { MinHeightOptionsPartial } from "./minHeight";
@@ -110,6 +111,7 @@ export type Options = AdjustOptionsPartial &
   MAFROptionsPartial &
   MaxAnimationFramesOptionsPartial &
   MaxBytesOptionsPartial &
+  MaxResultDimensionOptionsPartial &
   MaxSrcFileSizeOptionsPartial &
   MaxSrcResolutionOptionsPartial &
   MinHeightOptionsPartial &
