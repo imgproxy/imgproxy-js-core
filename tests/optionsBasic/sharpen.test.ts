@@ -30,7 +30,7 @@ describe("sharpen", () => {
 
     it("should throw an error if sharpen is less than 0", () => {
       expect(() => build({ sharpen: -1 })).toThrow(
-        "sharpen option value can't be less then 0"
+        "sharpen option value can't be less than 0"
       );
     });
 

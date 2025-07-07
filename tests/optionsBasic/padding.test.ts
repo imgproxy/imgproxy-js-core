@@ -30,7 +30,7 @@ describe("padding", () => {
 
     it("should throw an error if pd is less than 0", () => {
       expect(() => build({ pd: -1 })).toThrow(
-        "padding option value can't be less then 0"
+        "padding option value can't be less than 0"
       );
     });
 

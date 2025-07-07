@@ -32,7 +32,7 @@ describe("videoThumbnailSecond", () => {
 
     it("should throw an error if video_thumbnail_second is less than 1", () => {
       expect(() => build({ video_thumbnail_second: 0 })).toThrow(
-        "video_thumbnail_second option value can't be less then 1"
+        "video_thumbnail_second option value can't be less than 1"
       );
     });
 

@@ -30,7 +30,7 @@ describe("maxBytes", () => {
 
     it("should throw an error if max_bytes is less than 0", () => {
       expect(() => build({ max_bytes: -1 })).toThrow(
-        "max_bytes option value can't be less then 0"
+        "max_bytes option value can't be less than 0"
       );
     });
 

@@ -24,7 +24,7 @@ describe("dpr", () => {
 
     it("should throw an error if dpr is less than 0", () => {
       expect(() => build({ dpr: -1 })).toThrow(
-        "dpr option value can't be less then 0"
+        "dpr option value can't be less than 0"
       );
     });
 

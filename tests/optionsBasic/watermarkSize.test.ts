@@ -30,7 +30,7 @@ describe("watermarkSize", () => {
 
     it("should throw an error if watermark_size.width is less than 0", () => {
       expect(() => build({ watermark_size: { width: -1 } })).toThrow(
-        "watermark_size.width value can't be less then 0"
+        "watermark_size.width value can't be less than 0"
       );
     });
 
@@ -43,7 +43,7 @@ describe("watermarkSize", () => {
 
     it("should throw an error if wms.height is less than 0", () => {
       expect(() => build({ wms: { height: -1 } })).toThrow(
-        "watermark_size.height value can't be less then 0"
+        "watermark_size.height value can't be less than 0"
       );
     });
 

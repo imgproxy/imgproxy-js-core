@@ -30,7 +30,7 @@ describe("unsharpMasking", () => {
 
     it("should throw an error if unsharp_masking.weight is not correct", () => {
       expect(() => build({ unsharp_masking: { weight: -1 } })).toThrow(
-        "unsharp_masking.weight value can't be less or equal then 0"
+        "unsharp_masking.weight value can't be less or equal than 0"
       );
     });
 
@@ -43,10 +43,10 @@ describe("unsharpMasking", () => {
 
     it("should throw an error if unsharp_masking.divider is not correct", () => {
       expect(() => build({ unsharp_masking: { divider: -1 } })).toThrow(
-        "unsharp_masking.divider value can't be less or equal then 0"
+        "unsharp_masking.divider value can't be less or equal than 0"
       );
       expect(() => build({ unsharp_masking: { divider: 0 } })).toThrow(
-        "unsharp_masking.divider value can't be less or equal then 0"
+        "unsharp_masking.divider value can't be less or equal than 0"
       );
     });
 
@@ -59,7 +59,7 @@ describe("unsharpMasking", () => {
 
     it("should throw an error if unsharp_masking.weight is not greater than zero", () => {
       expect(() => build({ unsharp_masking: { weight: 0 } })).toThrow(
-        "unsharp_masking.weight value can't be less or equal then 0"
+        "unsharp_masking.weight value can't be less or equal than 0"
       );
     });
 

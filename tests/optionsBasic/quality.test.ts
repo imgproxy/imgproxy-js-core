@@ -30,7 +30,7 @@ describe("quality", () => {
 
     it("should throw an error if quality is less than 0", () => {
       expect(() => build({ quality: -1 })).toThrow(
-        "quality option value can't be less then 0"
+        "quality option value can't be less than 0"
       );
     });
 

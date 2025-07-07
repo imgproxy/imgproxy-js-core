@@ -28,7 +28,7 @@ describe("adjust", () => {
 
     it("should throw an error if brightness less than -255", () => {
       expect(() => build({ adjust: { brightness: -300 } })).toThrow(
-        "adjust.brightness value can't be less then -255"
+        "adjust.brightness value can't be less than -255"
       );
     });
 

@@ -43,7 +43,7 @@ describe("cropAspectRatio", () => {
       expect(() =>
         build({ crop_aspect_ratio: { aspect_ratio: -1 } })
       ).toThrowError(
-        "crop_aspect_ratio.aspect_ratio value can't be less then 0"
+        "crop_aspect_ratio.aspect_ratio value can't be less than 0"
       );
     });
 

@@ -177,7 +177,7 @@ describe("gravity", () => {
               y: 0.5,
             },
           })
-        ).toThrow(`gravity.x value can't be less then 0`);
+        ).toThrow(`gravity.x value can't be less than 0`);
       });
 
       it("should throw an error if x is greater than 1", () => {
@@ -201,7 +201,7 @@ describe("gravity", () => {
               y: -0.5,
             },
           })
-        ).toThrow(`gravity.y value can't be less then 0`);
+        ).toThrow(`gravity.y value can't be less than 0`);
       });
 
       it("should throw an error if y is greater than 1", () => {

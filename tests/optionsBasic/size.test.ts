@@ -37,13 +37,13 @@ describe("size", () => {
 
     it("should return an error if width is less than 0", () => {
       expect(() => build({ size: { width: -15 } })).toThrow(
-        "size.width value can't be less then 0"
+        "size.width value can't be less than 0"
       );
     });
 
     it("should return an error if height is less than 0", () => {
       expect(() => build({ size: { height: -25 } })).toThrow(
-        "size.height value can't be less then 0"
+        "size.height value can't be less than 0"
       );
     });
 

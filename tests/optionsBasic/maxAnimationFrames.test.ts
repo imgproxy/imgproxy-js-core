@@ -32,13 +32,13 @@ describe("maxAnimationFrames", () => {
 
     it("should throw an error if max_animation_frames is less than 0", () => {
       expect(() => build({ max_animation_frames: -1 })).toThrow(
-        "max_animation_frames option value can't be less or equal then 0"
+        "max_animation_frames option value can't be less or equal than 0"
       );
     });
 
     it("should throw an error if max_animation_frames is 0", () => {
       expect(() => build({ max_animation_frames: 0 })).toThrow(
-        "max_animation_frames option value can't be less or equal then 0"
+        "max_animation_frames option value can't be less or equal than 0"
       );
     });
 
