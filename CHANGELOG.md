@@ -1,5 +1,18 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.4.0
+
+### Minor Changes
+
+- 6fc690b: Add support for [max_result_dimension](https://docs.imgproxy.net/latest/usage/processing#max-result-dimension) option
+- 803368a: Add support for `preset` param to [webp option](https://docs.imgproxy.net/latest/usage/processing#webp-options)
+- f706da3: Add [crop_aspect_ratio](https://docs.imgproxy.net/latest/usage/processing#crop-aspect-ratio) option
+
+### Patch Changes
+
+- 0ab711a: Fix typo in error messages: "then" -> "than"
+- 6bc44e8: Add pdf and jxl to [format](https://docs.imgproxy.net/usage/processing#format) option
+
 ## 1.3.0
 
 ### Minor Changes
