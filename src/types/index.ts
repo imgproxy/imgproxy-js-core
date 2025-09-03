@@ -7,6 +7,7 @@ import type { BlurDetectionsOptionsPartial } from "./blurDetections";
 import type { BlurOptionsPartial } from "./blur";
 import type { BrightnessOptionsPartial } from "./brightness";
 import type { CacheBusterOptionsPartial } from "../typesShared/cacheBuster";
+import type { ColorProfileOptionsPartial } from "./colorProfile";
 import type { ColorizeOptionsPartial } from "./colorize";
 import type { ContrastOptionsPartial } from "./contrast";
 import type { CropOptionsPartial } from "../typesShared/crop";
@@ -85,6 +86,7 @@ export type Options = AdjustOptionsPartial &
   BlurOptionsPartial &
   BrightnessOptionsPartial &
   CacheBusterOptionsPartial &
+  ColorProfileOptionsPartial &
   ColorizeOptionsPartial &
   ContrastOptionsPartial &
   CropOptionsPartial &
