@@ -1,5 +1,11 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.5.0
+
+### Minor Changes
+
+- 6f9bcd0: Add `color_profile` option support
+
 ## 1.4.0
 
 ### Minor Changes
