@@ -1,16 +1,16 @@
 /**
  * *Pages number option*
  *
- * When set to `1`, `"t"` or `true`, imgproxy will return the number of pages the image contains. 
+ * When set to `1`, `"t"` or `true`, imgproxy will return the number of pages the image contains.
  * For animated images, it'll return the number of animation frames.
- * 
- * 
+ *
+ *
  * @note If any value other than `1`, `"t"`, or `true` is passed, it will be recognized as `false`.
  *
  * Response example:
  * {
  * "pages_number": 10
- * 
+ *
  *
  * @default false
  *

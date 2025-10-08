@@ -19,7 +19,6 @@ const getOpt = (
 const test = (options: PagesNumberInfoOptionsPartial): boolean =>
   getOpt(options) !== undefined;
 
-
 const build = (options: PagesNumberInfoOptionsPartial): string => {
   const pagesNumberOpts = getOpt(options);
   guardIsUndef(pagesNumberOpts, "pages_number");
