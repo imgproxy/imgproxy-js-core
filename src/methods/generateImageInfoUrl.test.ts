@@ -76,6 +76,7 @@ describe("generateImageInfoUrl", () => {
           detect_objects: true,
           dominant_colors: { dominant_colors: 1, build_missed: 1 },
           iptc: "t",
+          pages_number: "t",
           palette: 6,
           expires: 1729409825,
           size: 1,
@@ -83,7 +84,7 @@ describe("generateImageInfoUrl", () => {
         }
       )
     ).toEqual(
-      "/avg:t:f/do:t/dc:t:t/exp:1729409825/iptc:t/p:6/pr:test:test2/s:t/plain/https://example.com/host/pic.png"
+      "/avg:t:f/do:t/dc:t:t/exp:1729409825/iptc:t/pn:t/p:6/pr:test:test2/s:t/plain/https://example.com/host/pic.png"
     );
   });
 

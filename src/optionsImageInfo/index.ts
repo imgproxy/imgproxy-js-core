@@ -13,6 +13,7 @@ export * as iptc from "./iptc";
 export * as maxSrcFileSize from "../optionsShared/maxSrcFileSize";
 export * as maxSrcResolution from "../optionsShared/maxSrcResolution";
 export * as page from "../optionsShared/page";
+export * as pagesNumber from "../optionsImageInfo/pagesNumber";
 export * as palette from "./palette";
 export * as preset from "../optionsShared/preset";
 export * as size from "./size";
