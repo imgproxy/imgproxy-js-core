@@ -1,5 +1,11 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.6.0
+
+### Minor Changes
+
+- 0cdb756: Add `page_number` option to generateImageInfoUrl(). Thanks @Elio-Swello
+
 ## 1.5.0
 
 ### Minor Changes
