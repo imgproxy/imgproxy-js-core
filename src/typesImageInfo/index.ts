@@ -13,6 +13,7 @@ import type { IptcImageInfoOptionsPartial } from "./iptc";
 import type { MaxSrcFileSizeOptionsPartial } from "../typesShared/maxSrcFileSize";
 import type { MaxSrcResolutionOptionsPartial } from "../typesShared/maxSrcResolution";
 import type { PageOptionsPartial } from "../typesShared/page";
+import type { PagesNumberInfoOptionsPartial } from "./pagesNumber";
 import type { PaletteImageInfoOptionsPartial } from "./palette";
 import type { PresetOptionsPartial } from "../typesShared/preset";
 import type { SizeImageInfoOptionsPartial } from "./size";
@@ -36,6 +37,7 @@ export type OptionsImageInfo = AverageImageInfoOptionsPartial &
   MaxSrcFileSizeOptionsPartial &
   MaxSrcResolutionOptionsPartial &
   PageOptionsPartial &
+  PagesNumberInfoOptionsPartial &
   PaletteImageInfoOptionsPartial &
   PresetOptionsPartial &
   SizeImageInfoOptionsPartial &
