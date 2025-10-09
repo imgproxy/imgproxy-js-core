@@ -9,8 +9,8 @@
  *
  * Response example:
  * {
- * "pages_number": 10
- *
+ *   "pages_number": 10
+ * }
  *
  * @default false
  *
