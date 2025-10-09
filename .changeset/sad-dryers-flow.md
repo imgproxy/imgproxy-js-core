@@ -2,4 +2,4 @@
 "@imgproxy/imgproxy-js-core": minor
 ---
 
-Add page_number option to generateImageInfoUrl()
+Add `page_number` option to generateImageInfoUrl(). Thanks @Elio-Swello 
