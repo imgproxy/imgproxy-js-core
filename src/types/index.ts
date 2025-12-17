@@ -1,6 +1,7 @@
 import type { AdjustOptionsPartial } from "./adjust";
 import type { AutoqualityOptionsPartial } from "./autoquality";
 import type { AutoRotateOptionsPartial } from "./autoRotate";
+import type { AvifOptionsPartial } from "./avifOptions";
 import type { BackgroundOptionsPartial } from "./background";
 import type { BackgroundAlphaOptionsPartial } from "./backgroundAlpha";
 import type { BlurDetectionsOptionsPartial } from "./blurDetections";
@@ -80,6 +81,7 @@ import type { WildOptionsPartial } from "../typesShared/wildOptions";
 export type Options = AdjustOptionsPartial &
   AutoqualityOptionsPartial &
   AutoRotateOptionsPartial &
+  AvifOptionsPartial &
   BackgroundOptionsPartial &
   BackgroundAlphaOptionsPartial &
   BlurDetectionsOptionsPartial &
