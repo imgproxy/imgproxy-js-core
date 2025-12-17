@@ -1,5 +1,12 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.7.0
+
+### Minor Changes
+
+- ee3bf50: Add [flip](https://docs.imgproxy.net/latest/usage/processing#flip) option support
+- a8fed05: Add [avifo](https://docs.imgproxy.net/latest/usage/processing#avif-options) option support
+
 ## 1.6.0
 
 ### Minor Changes
