@@ -13,7 +13,7 @@ type FlipBooleanValue = boolean | 1 | 0 | "t" | "f";
  *
  * @default false:false
  *
- * @see {@link https://docs.imgproxy.net/generating_the_url?id=flip | Flip imgproxy docs}
+ * @see {@link https://docs.imgproxy.net/latest/usage/processing#flip | Flip imgproxy docs}
  */
 type FlipOptions = {
   /**
@@ -33,7 +33,7 @@ type FlipOptions = {
  *
  * To describe the flip option, you can use the keyword `flip` or `fl`.
  *
- * @see https://docs.imgproxy.net/generating_the_url?id=flip
+ * @see https://docs.imgproxy.net/latest/usage/processing#flip
  */
 interface FlipOptionsPartial {
   flip?: FlipOptions;
