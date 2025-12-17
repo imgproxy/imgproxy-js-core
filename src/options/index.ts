@@ -25,6 +25,7 @@ export * as extend from "./extend";
 export * as extendAspectRatio from "./extendAspectRatio";
 export * as fallbackImageUrl from "./fallbackImageUrl";
 export * as filename from "./filename";
+export * as flip from "./flip";
 export * as format from "./format";
 export * as formatQuality from "./formatQuality";
 export * as gradient from "./gradient";

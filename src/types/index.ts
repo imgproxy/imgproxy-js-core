@@ -25,6 +25,7 @@ import type { ExtendAspectRatioOptionsPartial } from "./extendAspectRatio";
 import type { ExtendOptionsPartial } from "./extend";
 import type { FallbackImageUrlOptionsPartial } from "./fallbackImageUrl";
 import type { FilenameOptionsPartial } from "./filename";
+import type { FlipOptionsPartial } from "./flip";
 import type { FormatOptionsPartial } from "./format";
 import type { FormatQualityOptionsPartial } from "./formatQuality";
 import type { GradientOptionsPartial } from "./gradient";
@@ -105,6 +106,7 @@ export type Options = AdjustOptionsPartial &
   ExtendOptionsPartial &
   FallbackImageUrlOptionsPartial &
   FilenameOptionsPartial &
+  FlipOptionsPartial &
   FormatOptionsPartial &
   FormatQualityOptionsPartial &
   GradientOptionsPartial &
