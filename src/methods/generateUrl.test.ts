@@ -93,4 +93,37 @@ describe("generateUrl", () => {
       )
     ).toEqual("/preset1:preset2/plain/https://example.com/host/pic.png");
   });
+
+  it("should return base64 url with SEO friendly filename", () => {
+    expect(
+      generateUrl({
+        value: "aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS9waWMucG5n",
+        filename: "pic.png",
+        type: "base64",
+      })
+    ).toEqual("/aHR0cHM6Ly9leGFtcGxlLmNvbS9pbWFnZS9waWMucG5n/pic.png");
+  });
+
+  it("should return encrypted url with SEO friendly filename", () => {
+    expect(
+      generateUrl({
+        value:
+          "hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz",
+        filename: "pic.png",
+        type: "encrypted",
+      })
+    ).toEqual(
+      "/enc/hLhDnxN9acjq3LDooARQ3t6OU1UwAG1IeXsM2b7qxOyMP4DF+GsbBdnG1K9B0+bz/pic.png"
+    );
+  });
+
+  it("should throw an error if url.filename is set on a plain url", () => {
+    expect(() =>
+      generateUrl({
+        value: "https://example.com/host/pic.png",
+        type: "plain",
+        filename: "pic.png",
+      })
+    ).toThrow("url.filename is only valid for base64 or encrypted url");
+  });
 });

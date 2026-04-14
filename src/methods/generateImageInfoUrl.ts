@@ -12,6 +12,7 @@ const correctUrlTypes = {
 export type URLImageInfo = {
   value: string;
   type: "plain" | "base64" | "encrypted";
+  filename?: string;
 };
 
 const allModules = Object.values(optionModules);
@@ -29,6 +30,10 @@ const generateImageInfoUrl = (
     `Valid values are: ${Object.keys(correctUrlTypes).join(", ")}`
   );
   guardIsValidVal(correctUrlTypes, url.type, "url.type");
+
+  if (url.filename && url.type === "plain") {
+    throw new Error("url.filename is only valid for base64 or encrypted url");
+  }
 
   let optsPart = "";
   if (options) {
@@ -50,6 +55,10 @@ const generateImageInfoUrl = (
     urlPart = `/${url.value}`;
   } else if (url.type === "encrypted") {
     urlPart = `/enc/${url.value}`;
+  }
+
+  if (url.filename) {
+    urlPart += `/${url.filename}`;
   }
 
   return `${optsPart}${urlPart}`;
