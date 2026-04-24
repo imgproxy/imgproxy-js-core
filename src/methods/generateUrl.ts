@@ -26,6 +26,10 @@ const generateUrl = (
   );
   guardIsValidVal(correctUrlTypes, url.type, "url.type");
 
+  if (url.filename && url.type === "plain") {
+    throw new Error("url.filename is only valid for base64 or encrypted url");
+  }
+
   let optsPart = "";
   if (options) {
     const modules = settings?.onlyPresets ? presetOnlyModule : allModules;
@@ -46,6 +50,10 @@ const generateUrl = (
     urlPart = `/${url.value}`;
   } else if (url.type === "encrypted") {
     urlPart = `/enc/${url.value}`;
+  }
+
+  if (url.filename) {
+    urlPart += `/${url.filename}`;
   }
 
   return `${optsPart}${urlPart}`;
