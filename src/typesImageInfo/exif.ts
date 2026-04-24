@@ -1,7 +1,36 @@
 /**
+ * Boolean-like values for EXIF option fields.
+ *
+ * @note Only `1`, `"t"`, or `true` are recognized as truthy values.
+ * Any other value (including `"true"` or `"1"` as strings) will be treated as false.
+ */
+type ExifBooleanValue = 1 | 0 | "t" | "f" | boolean | string;
+
+/**
+ * *EXIF option (object form)*
+ *
+ * @param {ExifBooleanValue} enabled - When set to `1`, `"t"` or `true`,
+ * imgproxy will return the image’s EXIF metadata. Default: `true`.
+ * @param {ExifBooleanValue} canonical_names - When set to `1`, `"t"` or `true`,
+ * imgproxy will return the EXIF metadata field names in a canonical form
+ * (e.g. `DateTimeOriginal`) instead of a human-readable form
+ * (e.g. `Date and Time (Original)`). Default: `false`.
+ */
+interface ExifObject {
+  enabled?: ExifBooleanValue;
+  canonical_names?: ExifBooleanValue;
+}
+
+/**
  * *EXIF option*
  *
- * When set to `1`, `"t"` or `true`, imgproxy will return the image’s EXIF metadata.
+ * When `enabled` is set to `1`, `"t"` or `true`, imgproxy will return the image’s EXIF metadata.
+ * When `canonical_names` is set to `1`, `"t"` or `true`, imgproxy will return the EXIF
+ * metadata field names in a canonical form (e.g. `DateTimeOriginal`) instead of a
+ * human-readable form (e.g. `Date and Time (Original)`).
+ *
+ * Accepts a plain boolean-like value (controls `enabled` only) or an object
+ * `{ enabled, canonical_names }`.
  *
  * @note If any value other than `1`, `"t"`, or `true` is passed, it will be recognized as `false`.
  *
@@ -16,22 +45,22 @@
  *  }
  * }
  *
- * @default true
+ * @default true:false
  *
  *
- * @see {@link https://docs.imgproxy.net/getting_the_image_info?id=exif | EXIF imgproxy docs}
+ * @see {@link https://docs.imgproxy.net/usage/getting_info#exif | EXIF imgproxy docs}
  */
-type Exif = 1 | "t" | true | false | string;
+type Exif = ExifBooleanValue | ExifObject;
 
 /**
  * *EXIF option*
  *
  * To describe the EXIF option, you can use the keyword `exif`.
  *
- * @see https://docs.imgproxy.net/getting_the_image_info?id=exif
+ * @see https://docs.imgproxy.net/usage/getting_info#exif
  */
 interface ExifImageInfoOptionsPartial {
   exif?: Exif;
 }
 
-export { Exif, ExifImageInfoOptionsPartial };
+export { Exif, ExifObject, ExifBooleanValue, ExifImageInfoOptionsPartial };

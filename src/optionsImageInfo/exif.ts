@@ -12,10 +12,27 @@ const getOpt = (options: ExifImageInfoOptionsPartial): Exif | undefined => {
 const test = (options: ExifImageInfoOptionsPartial): boolean =>
   getOpt(options) !== undefined;
 
+const isExifObject = (
+  value: Exclude<Exif, undefined>
+): value is Exclude<Exif, 1 | 0 | "t" | "f" | boolean | string> =>
+  typeof value === "object" && value !== null;
+
 const build = (options: ExifImageInfoOptionsPartial): string => {
   const exifOpts = getOpt(options);
   guardIsUndef(exifOpts, "EXIF");
-  return `exif:${normalizeBoolean(exifOpts)}`;
+
+  if (!isExifObject(exifOpts)) {
+    return `exif:${normalizeBoolean(exifOpts)}`;
+  }
+
+  const { enabled, canonical_names } = exifOpts;
+  const enabledPart = enabled !== undefined ? normalizeBoolean(enabled) : "t";
+
+  if (canonical_names === undefined) {
+    return `exif:${enabledPart}`;
+  }
+
+  return `exif:${enabledPart}:${normalizeBoolean(canonical_names)}`;
 };
 
 export { test, build };
