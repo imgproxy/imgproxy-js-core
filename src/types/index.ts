@@ -4,6 +4,7 @@ import type { AutoRotateOptionsPartial } from "./autoRotate";
 import type { AvifOptionsPartial } from "./avifOptions";
 import type { BackgroundOptionsPartial } from "./background";
 import type { BackgroundAlphaOptionsPartial } from "./backgroundAlpha";
+import type { BlurAreasOptionsPartial } from "./blurAreas";
 import type { BlurDetectionsOptionsPartial } from "./blurDetections";
 import type { BlurOptionsPartial } from "./blur";
 import type { BrightnessOptionsPartial } from "./brightness";
@@ -85,6 +86,7 @@ export type Options = AdjustOptionsPartial &
   AvifOptionsPartial &
   BackgroundOptionsPartial &
   BackgroundAlphaOptionsPartial &
+  BlurAreasOptionsPartial &
   BlurDetectionsOptionsPartial &
   BlurOptionsPartial &
   BrightnessOptionsPartial &

@@ -5,6 +5,7 @@ export * as avifOptions from "./avifOptions";
 export * as background from "./background";
 export * as backgroundAlpha from "./backgroundAlpha";
 export * as blur from "./blur";
+export * as blurAreas from "./blurAreas";
 export * as blurDetections from "./blurDetections";
 export * as brightness from "./brightness";
 export * as cacheBuster from "../optionsShared/cacheBuster";
