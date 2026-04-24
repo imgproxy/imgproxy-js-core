@@ -1,0 +1,46 @@
+.changeset/blur-areas.md
+  6e22c305bb1bb93f 1-5
+src/types/index.ts
+  6e22c305bb1bb93f 7,89
+src/options/blurAreas.ts
+  6e22c305bb1bb93f 1-40
+src/types/blurAreas.ts
+  6e22c305bb1bb93f 1-51
+src/options/index.ts
+  6e22c305bb1bb93f 8
+tests/optionsBasic/blurAreas.test.ts
+  6e22c305bb1bb93f 1-121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "73f1679674e5bf7cf89cadcfc1a6ae02384edaef",
+  "prompts": {
+    "6e22c305bb1bb93f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8711dbba-ecf2-47d7-893e-f091302dec95",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ivan Buryak",
+      "messages": [],
+      "total_additions": 220,
+      "total_deletions": 0,
+      "accepted_lines": 220,
+      "overriden_lines": 0
+    },
+    "98141925d5d8221a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b69eb191-4485-43f5-937c-edf7997d1bca",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Ivan Buryak",
+      "messages": [],
+      "total_additions": 9,
+      "total_deletions": 13,
+      "accepted_lines": 0,
+      "overriden_lines": 10
+    }
+  }
+}
