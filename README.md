@@ -86,6 +86,7 @@ The `imgproxy-js-core` library exposes a method called `generateUrl`, which take
     - `plain`: A plain URL.
     - `base64`: A base64 encoded URL.
     - `encoded`: An AES-CBC encrypted URL.
+  - `filename` (optional): A SEO-friendly filename that will be appended to `base64` or `encrypted` URLs (requires [`IMGPROXY_BASE64_URL_INCLUDES_FILENAME`](https://docs.imgproxy.net/configuration/options#source-image-urls) to be enabled on the imgproxy server). Not allowed for `plain` URLs.
 - `options` (optional): An object that contains [imgproxy options](https://docs.imgproxy.net/generating_the_url?id=processing-options).
 
 For a detailed description of the available options, please refer to the [imgproxy documentation](https://docs.imgproxy.net/generating_the_url?id=processing-options), as well as the option types files in the `imgproxy-js-core` library.
@@ -106,6 +107,7 @@ The `imgproxy-js-core` library exposes a method called `generateImageInfoUrl`, w
     - `plain`: A plain URL.
     - `base64`: A base64 encoded URL.
     - `encoded`: An AES-CBC encrypted URL.
+  - `filename` (optional): A SEO-friendly filename that will be appended to `base64` or `encrypted` URLs (requires [`IMGPROXY_BASE64_URL_INCLUDES_FILENAME`](https://docs.imgproxy.net/configuration/options#source-image-urls) to be enabled on the imgproxy server). Not allowed for `plain` URLs.
 - `options` (optional): An object that contains [imgproxy options](https://docs.imgproxy.net/getting_the_image_info?id=info-options).
 
 For a detailed description of the available options, please refer to the [imgproxy documentation](https://docs.imgproxy.net/getting_the_image_info?id=info-options), as well as the option types files in the `imgproxy-js-core` library.
