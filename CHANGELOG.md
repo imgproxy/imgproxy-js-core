@@ -1,5 +1,13 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.8.0
+
+### Minor Changes
+
+- f547c4b: Add support for [blur_areas](https://docs.imgproxy.net/usage/processing#blur-areas) option (imgproxy Pro). When `sigma` is greater than `0`, imgproxy applies a Gaussian blur filter to the provided areas of the resulting image. The option accepts a `sigma` value and a list of `areas` with `left`, `top`, `width`, and `height` floats between `0` and `1`. The short form `ba` is also supported.
+- f416250: Add support for the `canonical_names` parameter of the `exif` image-info option. The `exif` option now also accepts an object `{ enabled, canonical_names }`; when `canonical_names` is `1`, `"t"`, or `true`, imgproxy returns EXIF field names in a canonical form (e.g. `DateTimeOriginal`) instead of the human-readable form. The existing boolean-style input is still supported.
+- 887dd39: Add support for SEO-friendly filenames in generated URLs. The `URL` object passed to `generateUrl()` and `generateImageInfoUrl()` now accepts an optional `filename` field, which is appended to `base64` and `encrypted` URLs (see [`IMGPROXY_BASE64_URL_INCLUDES_FILENAME`](https://docs.imgproxy.net/configuration/options#source-image-urls)). Thanks @YoannMa!
+
 ## 1.7.0
 
 ### Minor Changes
