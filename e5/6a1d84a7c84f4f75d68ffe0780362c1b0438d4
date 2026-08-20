@@ -1,0 +1,21 @@
+src/typesShared/bypassCache.ts
+  s_aa20edb24ae8c5::t_2548148789c7d5 2,19
+src/typesShared/cacheTags.ts
+  s_aa20edb24ae8c5::t_2548148789c7d5 2,15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "e56a1d84a7c84f4f75d68ffe0780362c1b0438d4",
+  "prompts": {},
+  "sessions": {
+    "s_aa20edb24ae8c5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "573ca944-9949-4b4d-a855-d153298dba56",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Buryak <ivan.buryak@gmail.com>"
+    }
+  }
+}
