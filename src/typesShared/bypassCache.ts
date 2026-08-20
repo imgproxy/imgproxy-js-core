@@ -1,5 +1,5 @@
 /**
- * *Bypass cache option*
+ * *Bypass cache option*. **PRO feature**
  *
  * When set to `1`, `"t"` or `true`, imgproxy will bypass the internal cache
  * and do all the processing and fetching from the source image.
@@ -16,7 +16,7 @@
 type BypassCache = 1 | "t" | true | false | string;
 
 /**
- * *Bypass cache option*
+ * *Bypass cache option*. **PRO feature**
  *
  * To describe the Bypass Cache option, you can use the keyword `bypass_cache` or `bc`.
  *

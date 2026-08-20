@@ -1,5 +1,5 @@
 /**
- * *Cache tags option*
+ * *Cache tags option*. **PRO feature**
  *
  * Defines a list of tags that imgproxy will add to the cache entry and the response headers.
  * Use the `IMGPROXY_CACHE_TAGS_FORMAT` config to change the format of the cache tags
@@ -12,7 +12,7 @@
 type CacheTags = string[];
 
 /**
- * *Cache tags option*
+ * *Cache tags option*. **PRO feature**
  *
  * To describe the Cache Tags option, you can use the keyword `cache_tags` or `ct`.
  *
