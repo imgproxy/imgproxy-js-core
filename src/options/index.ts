@@ -66,6 +66,7 @@ export * as stripMetadata from "./stripMetadata";
 export * as style from "./style";
 export * as trim from "./trim";
 export * as unsharpMasking from "./unsharpMasking";
+export * as videoThumbnailKeyframes from "../optionsShared/videoThumbnailKeyframes";
 export * as videoThumbnailSecond from "../optionsShared/videoThumbnailSecond";
 export * as videoThumbnailAnimation from "./videoThumbnailAnimation";
 export * as videoThumbnailTile from "./videoThumbnailTile";

@@ -18,6 +18,7 @@ import type { PaletteImageInfoOptionsPartial } from "./palette";
 import type { PresetOptionsPartial } from "../typesShared/preset";
 import type { SizeImageInfoOptionsPartial } from "./size";
 import type { VideoMetaImageInfoOptionsPartial } from "./videoMeta";
+import type { VideoThumbnailKeyframesOptionsPartial } from "../typesShared/videoThumbnailKeyframes";
 import type { VideoThumbnailSecondOptionsPartial } from "../typesShared/videoThumbnailSecond";
 import type { XmpImageInfoOptionsPartial } from "./xmp";
 import type { WildOptionsPartial } from "../typesShared/wildOptions";
@@ -42,6 +43,7 @@ export type OptionsImageInfo = AverageImageInfoOptionsPartial &
   PresetOptionsPartial &
   SizeImageInfoOptionsPartial &
   VideoMetaImageInfoOptionsPartial &
+  VideoThumbnailKeyframesOptionsPartial &
   VideoThumbnailSecondOptionsPartial &
   XmpImageInfoOptionsPartial &
   WildOptionsPartial;

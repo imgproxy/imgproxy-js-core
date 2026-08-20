@@ -18,6 +18,7 @@ export * as palette from "./palette";
 export * as preset from "../optionsShared/preset";
 export * as size from "./size";
 export * as videoMeta from "./videoMeta";
+export * as videoThumbnailKeyframes from "../optionsShared/videoThumbnailKeyframes";
 export * as videoThumbnailSecond from "../optionsShared/videoThumbnailSecond";
 export * as xmp from "./xmp";
 export * as wildOptions from "../optionsShared/wildOptions";
