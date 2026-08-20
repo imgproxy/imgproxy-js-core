@@ -50,6 +50,7 @@ import type { PagesOptionsPartial } from "./pages";
 import type { PixelateOptionsPartial } from "./pixelate";
 import type { PNGOptionsPartial } from "./pngOptions";
 import type { PresetOptionsPartial } from "../typesShared/preset";
+import type { ProgressiveBlurOptionsPartial } from "./progressiveBlur";
 import type { QualityOptionsPartial } from "./quality";
 import type { RawOptionsPartial } from "./raw";
 import type { ResizeOptionsPartial } from "./resize";
@@ -132,6 +133,7 @@ export type Options = AdjustOptionsPartial &
   PixelateOptionsPartial &
   PNGOptionsPartial &
   PresetOptionsPartial &
+  ProgressiveBlurOptionsPartial &
   RawOptionsPartial &
   QualityOptionsPartial &
   ResizeOptionsPartial &

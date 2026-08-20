@@ -50,6 +50,7 @@ export * as pages from "./pages";
 export * as pixelate from "./pixelate";
 export * as pngOptions from "./pngOptions";
 export * as preset from "../optionsShared/preset";
+export * as progressiveBlur from "./progressiveBlur";
 export * as quality from "./quality";
 export * as raw from "./raw";
 export * as resize from "./resize";
