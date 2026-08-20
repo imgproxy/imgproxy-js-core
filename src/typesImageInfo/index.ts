@@ -1,6 +1,8 @@
 import type { AverageImageInfoOptionsPartial } from "./average";
 import type { BHImageInfoOptionsPartial } from "./blurhash";
+import type { BypassCacheOptionsPartial } from "../typesShared/bypassCache";
 import type { CacheBusterOptionsPartial } from "../typesShared/cacheBuster";
+import type { CacheTagsOptionsPartial } from "../typesShared/cacheTags";
 import type { CalcHashsumsImageInfoOptionsPartial } from "./calcHashsums";
 import type { CropOptionsPartial } from "../typesShared/crop";
 import type { DCImageInfoOptionsPartial } from "./dominantColors";
@@ -24,7 +26,9 @@ import type { WildOptionsPartial } from "../typesShared/wildOptions";
 
 export type OptionsImageInfo = AverageImageInfoOptionsPartial &
   BHImageInfoOptionsPartial &
+  BypassCacheOptionsPartial &
   CacheBusterOptionsPartial &
+  CacheTagsOptionsPartial &
   CalcHashsumsImageInfoOptionsPartial &
   CropOptionsPartial &
   DCImageInfoOptionsPartial &
