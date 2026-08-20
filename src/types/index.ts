@@ -8,7 +8,9 @@ import type { BlurAreasOptionsPartial } from "./blurAreas";
 import type { BlurDetectionsOptionsPartial } from "./blurDetections";
 import type { BlurOptionsPartial } from "./blur";
 import type { BrightnessOptionsPartial } from "./brightness";
+import type { BypassCacheOptionsPartial } from "../typesShared/bypassCache";
 import type { CacheBusterOptionsPartial } from "../typesShared/cacheBuster";
+import type { CacheTagsOptionsPartial } from "../typesShared/cacheTags";
 import type { ColorProfileOptionsPartial } from "./colorProfile";
 import type { ColorizeOptionsPartial } from "./colorize";
 import type { ContrastOptionsPartial } from "./contrast";
@@ -90,7 +92,9 @@ export type Options = AdjustOptionsPartial &
   BlurDetectionsOptionsPartial &
   BlurOptionsPartial &
   BrightnessOptionsPartial &
+  BypassCacheOptionsPartial &
   CacheBusterOptionsPartial &
+  CacheTagsOptionsPartial &
   ColorProfileOptionsPartial &
   ColorizeOptionsPartial &
   ContrastOptionsPartial &
