@@ -190,5 +190,51 @@ describe("gradient", () => {
         })
       ).toEqual("gr:0::::0.85");
     });
+
+    it("should correctly handle 0 stop", () => {
+      expect(
+        build({
+          gradient: {
+            opacity: 0.5,
+            stop: 0,
+          },
+        })
+      ).toEqual("gr:0.5::::0");
+    });
+
+    it("should correctly handle 0 start", () => {
+      expect(
+        build({
+          gradient: {
+            opacity: 0.5,
+            start: 0,
+          },
+        })
+      ).toEqual("gr:0.5:::0");
+    });
+
+    it("should correctly handle 0 direction angle", () => {
+      expect(
+        build({
+          gradient: {
+            opacity: 0.5,
+            direction: 0,
+          },
+        })
+      ).toEqual("gr:0.5::0");
+    });
+
+    it("should throw an error if start is null", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ gradient: { opacity: 0.5, start: null } })
+      ).toThrow("gradient.start is not a number");
+    });
+
+    it("should throw an error if color is an empty string", () => {
+      expect(() => build({ gradient: { opacity: 0.5, color: "" } })).toThrow(
+        "gradient.color must be 3, 6 or 8 characters long (with alpha)"
+      );
+    });
   });
 });
