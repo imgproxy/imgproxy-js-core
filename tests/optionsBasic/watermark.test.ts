@@ -137,4 +137,26 @@ describe("watermark", () => {
       ).toEqual("wm:0.8:soea");
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if x_offset is null", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ wm: { opacity: 1, position: "ce", x_offset: null } })
+      ).toThrow("watermark.x_offset is not a number");
+    });
+
+    it("should throw an error if position is an empty string", () => {
+      // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+      expect(() => build({ wm: { opacity: 1, position: "" } })).toThrow(
+        "watermark.position is invalid"
+      );
+    });
+
+    it("should keep an explicit 0 offset", () => {
+      expect(
+        build({ wm: { opacity: 1, position: "ce", x_offset: 0, y_offset: 5 } })
+      ).toEqual("wm:1:ce:0:5");
+    });
+  });
 });

@@ -98,4 +98,26 @@ describe("resize", () => {
       ).toEqual("rs:auto::150:f");
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if width is null", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ rs: { resizing_type: "fit", width: null, height: 100 } })
+      ).toThrow("resize.width is not a number");
+    });
+
+    it("should throw an error if resizing_type is an empty string", () => {
+      // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+      expect(() => build({ rs: { resizing_type: "", height: 100 } })).toThrow(
+        "resize.resizing_type is invalid"
+      );
+    });
+
+    it("should keep an explicit 0 width", () => {
+      expect(
+        build({ rs: { resizing_type: "fit", width: 0, height: 100 } })
+      ).toEqual("rs:fit:0:100");
+    });
+  });
 });

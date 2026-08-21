@@ -37,19 +37,19 @@ const build = (options: WatermarkOptionsPartial): string => {
   guardIsNotNum(opacity, "watermark.opacity", { addParam: { min: 0, max: 1 } });
 
   // watermarkOpts.position
-  if (position) {
+  if (position !== undefined) {
     guardIsNotStr(position, "watermark.position");
     guardIsValidVal(currentPositions, position, "watermark.position");
   }
 
-  if (x_offset) guardIsNotNum(x_offset, "watermark.x_offset");
-  if (y_offset) guardIsNotNum(y_offset, "watermark.y_offset");
-  if (scale) guardIsNotNum(scale, "watermark.scale");
+  if (x_offset !== undefined) guardIsNotNum(x_offset, "watermark.x_offset");
+  if (y_offset !== undefined) guardIsNotNum(y_offset, "watermark.y_offset");
+  if (scale !== undefined) guardIsNotNum(scale, "watermark.scale");
 
-  const pos = position || "";
-  const xOffset = x_offset || "";
-  const yOffset = y_offset || "";
-  const sc = scale || "";
+  const pos = position ?? "";
+  const xOffset = x_offset ?? "";
+  const yOffset = y_offset ?? "";
+  const sc = scale ?? "";
 
   return `wm:${opacity}:${pos}:${xOffset}:${yOffset}:${sc}`.replace(/:+$/, "");
 };

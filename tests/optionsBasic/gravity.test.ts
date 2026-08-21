@@ -306,4 +306,13 @@ describe("gravity", () => {
       });
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if x_offset is 0 and type is not a base type", () => {
+      // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+      expect(() => build({ g: { type: "sm", x_offset: 0 } })).toThrow(
+        "gravity.type is invalid"
+      );
+    });
+  });
 });

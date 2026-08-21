@@ -145,4 +145,19 @@ describe("jpegOptions", () => {
       ).toEqual("jpgo::::::7");
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if quant_table is null", () => {
+      // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+      expect(() => build({ jpgo: { quant_table: null } })).toThrow(
+        "jpeg_options.quant_table is not a number"
+      );
+    });
+
+    it("should not require progressive when optimize_scans is false", () => {
+      expect(
+        build({ jpgo: { progressive: false, optimize_scans: false } })
+      ).toEqual("jpgo:false::::false");
+    });
+  });
 });

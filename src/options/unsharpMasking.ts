@@ -22,7 +22,8 @@ const build = (options: UnsharpMaskingOptionsPartial): string => {
 
   guardIsUndef(unsharpMaskingOpts, "unsharp_masking");
   const { mode, weight, divider } = unsharpMaskingOpts;
-  if (mode) guardIsValidVal(correctMode, mode, "unsharp_masking.mode");
+  if (mode !== undefined)
+    guardIsValidVal(correctMode, mode, "unsharp_masking.mode");
   if (weight !== undefined)
     guardIsNotNum(weight, "unsharp_masking.weight", {
       addParam: { min: 0, minEqual: true },
@@ -32,9 +33,9 @@ const build = (options: UnsharpMaskingOptionsPartial): string => {
       addParam: { min: 0, minEqual: true },
     });
 
-  const modeStr = mode || "";
-  const weightStr = weight || "";
-  const dividerStr = divider || "";
+  const modeStr = mode ?? "";
+  const weightStr = weight ?? "";
+  const dividerStr = divider ?? "";
 
   return `ush:${modeStr}:${weightStr}:${dividerStr}`.replace(/:+$/, "");
 };
