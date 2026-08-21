@@ -7,6 +7,10 @@ describe("zoom", () => {
       expect(test({ zoom: 1 })).toEqual(true);
     });
 
+    it("should return true if zoom option is 0", () => {
+      expect(test({ zoom: 0 })).toEqual(true);
+    });
+
     it("should return false if zoom option is undefined", () => {
       expect(test({})).toEqual(false);
     });
@@ -30,9 +34,21 @@ describe("zoom", () => {
       expect(() => build({ zoom: "1" })).toThrow("zoom option is not a number");
     });
 
+    it("should throw an error if zoom is 0", () => {
+      expect(() => build({ zoom: 0 })).toThrow(
+        "zoom option value can't be less or equal than 0"
+      );
+    });
+
+    it("should throw an error if zoom_x is 0", () => {
+      expect(() => build({ zoom: { zoom_x: 0, zoom_y: 0.5 } })).toThrow(
+        "zoom.zoom_x value can't be less or equal than 0"
+      );
+    });
+
     it("should throw an error if zoom is less than 0", () => {
       expect(() => build({ z: -1 })).toThrow(
-        "zoom option value can't be less than 0"
+        "zoom option value can't be less or equal than 0"
       );
     });
 
@@ -45,7 +61,7 @@ describe("zoom", () => {
 
     it("should throw an error if zoom_x is less than 0", () => {
       expect(() => build({ zoom: { zoom_x: -1, zoom_y: 0.5 } })).toThrow(
-        "zoom.zoom_x value can't be less than 0"
+        "zoom.zoom_x value can't be less or equal than 0"
       );
     });
 

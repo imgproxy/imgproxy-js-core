@@ -181,4 +181,20 @@ describe("Check `video_thumbnail_animation` type declarations", () => {
       },
     });
   });
+
+  describe("build (required frame size)", () => {
+    it("should throw an error if frame_width is undefined", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ vta: { step: 10, delay: 100, frames: 5, frame_height: 240 } })
+      ).toThrow("video_thumbnail_animation.frame_width is not a number");
+    });
+
+    it("should throw an error if frame_height is undefined", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ vta: { step: 10, delay: 100, frames: 5, frame_width: 320 } })
+      ).toThrow("video_thumbnail_animation.frame_height is not a number");
+    });
+  });
 });
