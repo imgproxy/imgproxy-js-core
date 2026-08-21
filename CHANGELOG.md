@@ -1,5 +1,21 @@
 # @imgproxy/imgproxy-js-core
 
+## 1.9.0
+
+### Minor Changes
+
+- 020080d: Add support for [bypass_cache](https://docs.imgproxy.net/usage/processing#bypass-cache) and [cache_tags](https://docs.imgproxy.net/usage/processing#cache-tags) options (imgproxy Pro). When `bypass_cache` is set to `1`, `t` or `true`, imgproxy bypasses the internal cache and does all the processing and fetching from the source image. `cache_tags` accepts a list of strings that imgproxy adds to the cache entry and the response headers. Both options are supported in processing and image info URLs. The short forms `bc` and `ct` are also supported.
+- 183d037: Add support for [progressive_blur](https://docs.imgproxy.net/usage/processing#progressive-blur) option (imgproxy Pro). When `sigma` is greater than `0`, imgproxy applies a progressive Gaussian blur filter that transitions from no blur at the `start` position to the specified `sigma` at the `stop` position. The option accepts `sigma`, an optional `direction` (`down`, `up`, `right`, `left`, or an angle in degrees), and optional `start` and `stop` floats between `0` and `1`. The short form `pbl` is also supported.
+- 043d0b3: Add support for [video_thumbnail_keyframes](https://docs.imgproxy.net/usage/processing#video-thumbnail-keyframes) option (imgproxy Pro). When set to `1`, `t` or `true`, imgproxy uses the latest keyframe before the requested second for video thumbnail generation, redefining the `IMGPROXY_VIDEO_THUMBNAIL_KEYFRAMES` config. The option is supported in processing and image info URLs. The short form `vtk` is also supported.
+
+### Patch Changes
+
+- c124469: Fix `video_thumbnail_animation` generating URLs containing the literal string `undefined` when `frame_width` or `frame_height` was omitted. Both arguments are required by imgproxy and by the option's type, so they are now validated like `step`, `delay` and `frames`, and a missing value raises an error instead of producing a broken URL.
+
+  Fix `zoom` silently ignoring a `zoom` value of `0`. The option was dropped before validation, so no error was raised. imgproxy requires zoom factors to be greater than `0`, so `0` is now rejected for `zoom`, `zoom_x` and `zoom_y`. Note that this changes the error message for non-positive values from "can't be less than 0" to "can't be less or equal than 0".
+
+- a97d0ef: Fix the `gradient` option dropping optional arguments explicitly set to `0`. `color`, `direction`, `start` and `stop` were checked for truthiness, so `{ gradient: { opacity: 0.5, stop: 0 } }` produced `gr:0.5` and imgproxy fell back to the default `stop` of `1.0` instead of the requested `0`. The same applied to `start: 0` and to a `direction` angle of `0`. These values are now rendered explicitly, and invalid falsy values (such as `null` or an empty `color`) are reported instead of being silently ignored.
+
 ## 1.8.0
 
 ### Minor Changes
