@@ -3,13 +3,14 @@ import { guardIsUndef, guardIsNotNum } from "../utils";
 
 const validateValue = (value: number, optName: string): void => {
   guardIsUndef(value, optName);
-  guardIsNotNum(value, optName, { addParam: { min: 0 } });
+  guardIsNotNum(value, optName, { addParam: { min: 0, minEqual: true } });
 };
 
 const getOpt = (options: ZoomOptionsPartial): Zoom | undefined =>
-  options.zoom || options.z;
+  options.zoom ?? options.z;
 
-const test = (options: ZoomOptionsPartial): boolean => Boolean(getOpt(options));
+const test = (options: ZoomOptionsPartial): boolean =>
+  getOpt(options) !== undefined;
 
 const build = (options: ZoomOptionsPartial): string => {
   const zoomOpts = getOpt(options);

@@ -17,13 +17,8 @@ function build(options: VideoThumbnailAnimationOptionsPartial) {
   guardIsNotNum(vta.delay, "video_thumbnail_animation.delay");
   guardIsNotNum(vta.frames, "video_thumbnail_animation.frames");
 
-  if (vta.frame_width !== undefined) {
-    guardIsNotNum(vta.frame_width, "video_thumbnail_animation.frame_width");
-  }
-
-  if (vta.frame_height !== undefined) {
-    guardIsNotNum(vta.frame_height, "video_thumbnail_animation.frame_height");
-  }
+  guardIsNotNum(vta.frame_width, "video_thumbnail_animation.frame_width");
+  guardIsNotNum(vta.frame_height, "video_thumbnail_animation.frame_height");
 
   const parts = [];
 
