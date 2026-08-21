@@ -19,11 +19,11 @@ const build = (options: TrimOptionsPartial): string => {
 
   guardIsUndef(threshold, "trim.threshold");
   guardIsNotNum(threshold, "trim.threshold");
-  if (color) guardIsNotStr(color, "trim.color", true);
+  if (color !== undefined) guardIsNotStr(color, "trim.color", true);
 
   const eh = equal_hor === undefined ? "" : normalizeBoolean(equal_hor);
   const ev = equal_ver === undefined ? "" : normalizeBoolean(equal_ver);
-  const cl = color || "";
+  const cl = color ?? "";
 
   return `t:${threshold}:${cl}:${eh}:${ev}`.replace(/:+$/, "");
 };

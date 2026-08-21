@@ -27,14 +27,16 @@ const build = (options: ResizeOptionsPartial): string => {
   guardIsUndef(resizeOpts, "resize");
   const { resizing_type, width, height, enlarge } = resizeOpts;
 
-  if (resizing_type)
+  if (resizing_type !== undefined)
     guardIsValidVal(correctTypes, resizing_type, "resize.resizing_type");
-  if (width) guardIsNotNum(width, "resize.width", { addParam: { min: 0 } });
-  if (height) guardIsNotNum(height, "resize.height", { addParam: { min: 0 } });
+  if (width !== undefined)
+    guardIsNotNum(width, "resize.width", { addParam: { min: 0 } });
+  if (height !== undefined)
+    guardIsNotNum(height, "resize.height", { addParam: { min: 0 } });
 
-  const rt = resizing_type || "";
-  const w = width || "";
-  const h = height || "";
+  const rt = resizing_type ?? "";
+  const w = width ?? "";
+  const h = height ?? "";
   const el = enlarge === undefined ? "" : normalizeBoolean(enlarge);
   const ex = extendOpt.test(resizeOpts)
     ? extendOpt.build(resizeOpts, { headless: true })

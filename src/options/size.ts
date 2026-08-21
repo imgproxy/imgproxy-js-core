@@ -13,11 +13,13 @@ const build = (options: SizeOptionsPartial): string => {
   guardIsUndef(sizeOpts, "size");
   const { width, height, enlarge } = sizeOpts;
 
-  if (width) guardIsNotNum(width, "size.width", { addParam: { min: 0 } });
-  if (height) guardIsNotNum(height, "size.height", { addParam: { min: 0 } });
+  if (width !== undefined)
+    guardIsNotNum(width, "size.width", { addParam: { min: 0 } });
+  if (height !== undefined)
+    guardIsNotNum(height, "size.height", { addParam: { min: 0 } });
 
-  const w = width || "";
-  const h = height || "";
+  const w = width ?? "";
+  const h = height ?? "";
   const el = enlarge === undefined ? "" : normalizeBoolean(enlarge);
   const ex = extendOpt.test(sizeOpts)
     ? extendOpt.build(sizeOpts, { headless: true })

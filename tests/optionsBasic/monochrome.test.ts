@@ -47,4 +47,12 @@ describe("monochrome", () => {
       });
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if color is not hexadecimal", () => {
+      expect(() => build({ mc: { intensity: 0.5, color: "zzz" } })).toThrow(
+        "monochrome.color must be hexadecimal"
+      );
+    });
+  });
 });

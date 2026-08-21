@@ -12,16 +12,17 @@ const build = (options: PNGOptionsPartial): string => {
   guardIsUndef(pngOptions, "png_options");
   const { interlaced, quantize, quantization_colors } = pngOptions;
 
-  if (interlaced) guardIsNotBool(interlaced, "png_options.interlaced");
-  if (quantize) guardIsNotBool(quantize, "png_options.quantize");
-  if (quantization_colors)
+  if (interlaced !== undefined)
+    guardIsNotBool(interlaced, "png_options.interlaced");
+  if (quantize !== undefined) guardIsNotBool(quantize, "png_options.quantize");
+  if (quantization_colors !== undefined)
     guardIsNotNum(quantization_colors, "png_options.quantization_colors", {
       addParam: { min: 2, max: 256 },
     });
 
   const inter = interlaced === undefined ? "" : interlaced;
   const quant = quantize === undefined ? "" : quantize;
-  const qc = quantization_colors || "";
+  const qc = quantization_colors ?? "";
 
   return `pngo:${inter}:${quant}:${qc}`.replace(/:+$/, "");
 };

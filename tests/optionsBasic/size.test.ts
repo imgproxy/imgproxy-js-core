@@ -85,4 +85,17 @@ describe("size", () => {
       expect(build({ s: { enlarge: false, height: 150 } })).toEqual("s::150:f");
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if width is null", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ s: { width: null, height: 100 } })
+      ).toThrow("size.width is not a number");
+    });
+
+    it("should keep an explicit 0 width", () => {
+      expect(build({ s: { width: 0, height: 100 } })).toEqual("s:0:100");
+    });
+  });
 });

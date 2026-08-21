@@ -82,4 +82,12 @@ describe("trim", () => {
       ).toEqual("t:66::f:f");
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if color is an empty string", () => {
+      expect(() => build({ t: { threshold: 10, color: "" } })).toThrow(
+        "trim.color must be 3, 6 or 8 characters long (with alpha)"
+      );
+    });
+  });
 });

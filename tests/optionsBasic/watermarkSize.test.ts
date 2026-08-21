@@ -61,4 +61,17 @@ describe("watermarkSize", () => {
       );
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if width is null", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ wms: { width: null, height: 100 } })
+      ).toThrow("watermark_size.width is not a number");
+    });
+
+    it("should keep an explicit 0 width", () => {
+      expect(build({ wms: { width: 0, height: 100 } })).toEqual("wms:0:100");
+    });
+  });
 });

@@ -93,4 +93,13 @@ describe("unsharpMasking", () => {
       );
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if mode is an empty string", () => {
+      // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+      expect(() => build({ ush: { mode: "" } })).toThrow(
+        "unsharp_masking.mode is invalid"
+      );
+    });
+  });
 });

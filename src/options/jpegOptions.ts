@@ -19,21 +19,23 @@ const build = (options: JPEGOptionsPartial): string => {
     quant_table,
   } = jpegOptions;
 
-  if (progressive) guardIsNotBool(progressive, "jpeg_options.progressive");
-  if (no_subsample) guardIsNotBool(no_subsample, "jpeg_options.no_subsample");
-  if (trellis_quant)
+  if (progressive !== undefined)
+    guardIsNotBool(progressive, "jpeg_options.progressive");
+  if (no_subsample !== undefined)
+    guardIsNotBool(no_subsample, "jpeg_options.no_subsample");
+  if (trellis_quant !== undefined)
     guardIsNotBool(trellis_quant, "jpeg_options.trellis_quant");
-  if (overshoot_deringing)
+  if (overshoot_deringing !== undefined)
     guardIsNotBool(overshoot_deringing, "jpeg_options.overshoot_deringing");
 
-  if (optimize_scans) {
+  if (optimize_scans !== undefined) {
     guardIsNotBool(optimize_scans, "jpeg_options.optimize_scans");
-    if (progressive === false)
+    if (optimize_scans && progressive === false)
       throw new Error(
         "jpeg_options.progressive must be true if jpeg_options.optimize_scans is true"
       );
   }
-  if (quant_table)
+  if (quant_table !== undefined)
     guardIsNotNum(quant_table, "jpeg_options.quant_table", {
       addParam: { min: 0, max: 8 },
     });
