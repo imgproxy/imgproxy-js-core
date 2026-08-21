@@ -30,8 +30,8 @@ const build = (options: GradientOptionsPartial): string => {
     addParam: { min: 0, max: 1 },
   });
 
-  if (color) guardIsNotStr(color, "gradient.color", true);
-  if (direction) {
+  if (color !== undefined) guardIsNotStr(color, "gradient.color", true);
+  if (direction !== undefined) {
     if (typeof direction === "number") {
       guardIsNotNum(direction, "gradient.direction");
     } else {
@@ -39,16 +39,16 @@ const build = (options: GradientOptionsPartial): string => {
       guardIsValidVal(currentDirection, direction, "gradient.direction");
     }
   }
-  if (start)
+  if (start !== undefined)
     guardIsNotNum(start, "gradient.start", { addParam: { min: 0, max: 1 } });
-  if (stop)
+  if (stop !== undefined)
     guardIsNotNum(stop, "gradient.stop", { addParam: { min: 0, max: 1 } });
 
   const op = opacity;
-  const c = color || "";
-  const dir = direction || "";
-  const or = start || "";
-  const end = stop || "";
+  const c = color ?? "";
+  const dir = direction ?? "";
+  const or = start ?? "";
+  const end = stop ?? "";
 
   return `gr:${op}:${c}:${dir}:${or}:${end}`.replace(/:+$/, "");
 };
