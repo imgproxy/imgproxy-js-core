@@ -1,0 +1,21 @@
+README.md
+  s_501c8f84310fb6::t_7e68789cb6dc89 153,155,157-164,166-168,170-172,174-215,217-219
+  s_501c8f84310fb6::t_d0b8ba5263fb2c 42-43,134-152,154,156,165,169,173,216,220-227
+  s_501c8f84310fb6::t_100c6c3c5294ee 228
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "3d611a47c0e05fd533c29b91b7a327ae9a970a1c",
+  "prompts": {},
+  "sessions": {
+    "s_501c8f84310fb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dceb4a82-e7df-40f8-8bf4-47466afe2299",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Buryak <ivan.buryak@gmail.com>"
+    }
+  }
+}
