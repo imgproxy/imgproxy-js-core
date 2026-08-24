@@ -138,6 +138,7 @@ describe("gravity", () => {
               type: "no",
               // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
               x: 0.5,
+              // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
               y: 0.5,
             },
           })
