@@ -1,0 +1,63 @@
+src/typesImageInfo/thumbHash.ts
+  s_fe7d4def29b592::t_a083c4b8033b74 1-39
+.changeset/classification-hashes-crop-objects-preserve-hdr.md
+  s_fe7d4def29b592::t_d0752f7d3605e8 15,19-20
+  s_fe7d4def29b592::t_fb7674825bfe3a 1-14,16-18
+src/optionsImageInfo/classify.ts
+  s_fe7d4def29b592::t_f4f0e88c5ebcec 1-38
+src/types/cropObjects.ts
+  s_fe7d4def29b592::t_e28fe29174897c 39,41-44
+  s_fe7d4def29b592::t_d0aaf334e04b40 1-38,40,45-51
+src/options/cropObjects.ts
+  s_fe7d4def29b592::t_d0752f7d3605e8 7-8
+  s_fe7d4def29b592::t_d0aaf334e04b40 1-6,9-29
+src/typesImageInfo/classify.ts
+  s_fe7d4def29b592::t_a083c4b8033b74 1-60
+src/optionsImageInfo/perceptualHash.ts
+  s_fe7d4def29b592::t_f4f0e88c5ebcec 1-30
+src/typesImageInfo/index.ts
+  s_fe7d4def29b592::t_90a138596d9b27 7,21,24,37,51,54
+src/options/preserveHdr.ts
+  s_fe7d4def29b592::t_d0aaf334e04b40 1-28
+src/types/preserveHdr.ts
+  s_fe7d4def29b592::t_d0aaf334e04b40 1-37
+src/optionsImageInfo/thumbHash.ts
+  s_fe7d4def29b592::t_f4f0e88c5ebcec 1-28
+tests/optionsImageInfo/classify.test.ts
+  s_fe7d4def29b592::t_1e68b32aa2a092 1-64,68-70
+  s_fe7d4def29b592::t_fb7674825bfe3a 65-67
+src/options/index.ts
+  s_fe7d4def29b592::t_90a138596d9b27 19,55
+tests/optionsImageInfo/perceptualHash.test.ts
+  s_fe7d4def29b592::t_1e68b32aa2a092 1-57
+tests/optionsBasic/preserveHdr.test.ts
+  s_fe7d4def29b592::t_1e68b32aa2a092 1-53
+src/typesImageInfo/perceptualHash.ts
+  s_fe7d4def29b592::t_a083c4b8033b74 1-47
+tests/optionsImageInfo/thumbHash.test.ts
+  s_fe7d4def29b592::t_1e68b32aa2a092 1-53
+src/optionsImageInfo/index.ts
+  s_fe7d4def29b592::t_90a138596d9b27 7,21,24
+src/types/index.ts
+  s_fe7d4def29b592::t_90a138596d9b27 19,55,107,143
+tests/optionsBasic/cropObjects.test.ts
+  s_fe7d4def29b592::t_fb7674825bfe3a 61-63,68-70
+  s_fe7d4def29b592::t_1e68b32aa2a092 1-9,13-53,57-60,64-67,71-73
+  s_fe7d4def29b592::t_d0752f7d3605e8 10-12,54-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "9f77c76b07b6d27c72be8641d95d06111cfd1a11",
+  "prompts": {},
+  "sessions": {
+    "s_fe7d4def29b592": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a0323fc-8f22-44d2-8381-eca81e7893c2",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Buryak <ivan.buryak@gmail.com>"
+    }
+  }
+}
