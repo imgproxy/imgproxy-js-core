@@ -138,6 +138,7 @@ describe("gravity", () => {
               type: "no",
               // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
               x: 0.5,
+              // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
               y: 0.5,
             },
           })
@@ -304,6 +305,15 @@ describe("gravity", () => {
           })
         ).toEqual("g:objw:face:1:person:0.5");
       });
+    });
+  });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if x_offset is 0 and type is not a base type", () => {
+      // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+      expect(() => build({ g: { type: "sm", x_offset: 0 } })).toThrow(
+        "gravity.type is invalid"
+      );
     });
   });
 });

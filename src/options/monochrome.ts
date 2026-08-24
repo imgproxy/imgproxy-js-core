@@ -1,5 +1,5 @@
 import type { Monochrome, MonochromeOptionsPartial } from "../types/monochrome";
-import { guardIsNotNum, guardIsUndef } from "../utils";
+import { guardIsNotNum, guardIsNotStr, guardIsUndef } from "../utils";
 
 const getOpt = (options: MonochromeOptionsPartial): Monochrome | undefined =>
   options.monochrome ?? options.mc;
@@ -22,7 +22,8 @@ const build = (options: MonochromeOptionsPartial): string => {
     },
   });
 
-  if (color) {
+  if (color !== undefined) {
+    guardIsNotStr(color, "monochrome.color", true);
     return `mc:${intensity}:${color}`;
   }
 

@@ -16,13 +16,13 @@ const build = (options: WatermarkSizeOptionsPartial): string => {
 
   guardIsUndef(watermarkSizeOpts, "watermark_size");
   const { width, height } = watermarkSizeOpts;
-  if (width)
+  if (width !== undefined)
     guardIsNotNum(width, "watermark_size.width", { addParam: { min: 0 } });
-  if (height)
+  if (height !== undefined)
     guardIsNotNum(height, "watermark_size.height", { addParam: { min: 0 } });
 
-  const w = width || "";
-  const h = height || "";
+  const w = width ?? "";
+  const h = height ?? "";
 
   return `wms:${w}:${h}`.replace(/:+$/, "");
 };

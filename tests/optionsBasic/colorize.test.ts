@@ -70,4 +70,12 @@ describe("colorize", () => {
       });
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if color is an empty string", () => {
+      expect(() => build({ col: { opacity: 0.5, color: "" } })).toThrow(
+        "colorize.color must be 3, 6 or 8 characters long (with alpha)"
+      );
+    });
+  });
 });

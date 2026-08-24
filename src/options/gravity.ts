@@ -59,17 +59,16 @@ const build = (
   const type = gravityOpts.type;
 
   guardIsValidVal(currentAllTypes, type, "gravity.type");
-  // @ts-expect-error: Let's ignore an error.
-  if (gravityOpts.x_offset || gravityOpts.y_offset)
+  if (gravityOpts.x_offset !== undefined || gravityOpts.y_offset !== undefined)
     guardIsValidVal(currentBaseTypes, type, "gravity.type");
-  // @ts-expect-error: Let's ignore an error.
   if (gravityOpts.class_names && type !== "obj")
     throw new Error("gravity.class_names can be used only with type obj");
-  // @ts-expect-error: Let's ignore an error.
   if (gravityOpts.class_weights && type !== "objw")
     throw new Error("gravity.class_weights can be used only with type objw");
-  // @ts-expect-error: Let's ignore an error.
-  if ((gravityOpts.x || gravityOpts.y) && type !== "fp")
+  if (
+    (gravityOpts.x !== undefined || gravityOpts.y !== undefined) &&
+    type !== "fp"
+  )
     throw new Error("gravity.x and gravity.y can be used only with type fp");
 
   if (type === "sm") {

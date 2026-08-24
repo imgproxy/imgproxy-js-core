@@ -199,12 +199,28 @@ interface ObjwGravity {
  *
  * @see https://docs.imgproxy.net/generating_the_url?id=gravity
  */
+type GravityFieldKeys =
+  | keyof BaseGravity
+  | keyof SmartGravity
+  | keyof ObjGravity
+  | keyof ObjwGravity
+  | keyof FPGravity;
+
+/**
+ * Marks every gravity field that doesn't belong to the variant as
+ * forbidden (`?: never`), so mixing fields from different variants
+ * (e.g. `{type: "sm", x_offset: 0}`) is a compile-time error.
+ */
+type OnlyGravity<T> = T & {
+  [K in Exclude<GravityFieldKeys, keyof T>]?: never;
+};
+
 type Gravity =
-  | BaseGravity
-  | SmartGravity
-  | ObjGravity
-  | ObjwGravity
-  | FPGravity;
+  | OnlyGravity<BaseGravity>
+  | OnlyGravity<SmartGravity>
+  | OnlyGravity<ObjGravity>
+  | OnlyGravity<ObjwGravity>
+  | OnlyGravity<FPGravity>;
 
 /**
  * *Gravity option*

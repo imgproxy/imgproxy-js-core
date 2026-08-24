@@ -86,4 +86,19 @@ describe("pngOptions", () => {
       ).toEqual("pngo:true");
     });
   });
+
+  describe("build (falsy values)", () => {
+    it("should throw an error if quantization_colors is 0", () => {
+      expect(() =>
+        build({ pngo: { quantize: true, quantization_colors: 0 } })
+      ).toThrow("png_options.quantization_colors value can't be less than 2");
+    });
+
+    it("should throw an error if interlaced is null", () => {
+      // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+      expect(() => build({ pngo: { interlaced: null } })).toThrow(
+        "png_options.interlaced is not a boolean"
+      );
+    });
+  });
 });

@@ -1,5 +1,5 @@
 import type { Colorize, ColorizeOptionsPartial } from "../types/colorize";
-import { guardIsNotNum, guardIsUndef } from "../utils";
+import { guardIsNotNum, guardIsNotStr, guardIsUndef } from "../utils";
 
 const getOpt = (options: ColorizeOptionsPartial): Colorize | undefined =>
   options.colorize ?? options.col;
@@ -21,6 +21,8 @@ const build = (options: ColorizeOptionsPartial): string => {
       max: 1,
     },
   });
+
+  if (color !== undefined) guardIsNotStr(color, "colorize.color", true);
 
   let result = `col:${opacity}`;
 
