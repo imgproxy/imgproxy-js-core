@@ -39,6 +39,8 @@ imgproxy can be used to provide a fast and secure way to _get rid of all the ima
 - [Usage](#usage)
 - [Methods](#methods)
 - [Development](#development)
+- [Syncing with imgproxy docs](#syncing-with-imgproxy-docs)
+- [Publication Workflow](#publication-workflow)
 
 ## Install
 
@@ -128,6 +130,101 @@ npm install
 ```bash
 npm run dev
 ```
+
+## Syncing with imgproxy docs
+
+This package mirrors the [Usage](https://docs.imgproxy.net/category/usage) part of the imgproxy
+documentation, and the mirroring is semi-automated.
+
+### How an update arrives
+
+1. The [`imgproxy-docs`](https://github.com/imgproxy/imgproxy-docs) repository sends a
+   `repository_dispatch` event of type `imgproxy-usage-updated` whenever its Usage docs change.
+2. [`.github/workflows/imgproxy-usage-updated.yml`](./.github/workflows/imgproxy-usage-updated.yml)
+   picks it up and opens an issue from [`.github/templates/ISSUE.md`](./.github/templates/ISSUE.md),
+   always titled **"Usage docs of imgproxy have been updated"** and containing a link to a
+   `imgproxy-docs/compare/<base>...<head>` range.
+3. Someone turns that diff into code here.
+
+### Doing step 3 with the bundled skill
+
+The repo ships a [Claude Code](https://claude.com/claude-code) skill,
+[`.claude/skills/imgproxy-docs-sync`](./.claude/skills/imgproxy-docs-sync), that walks the whole of
+step 3 for you. It is committed to the repo, so cloning is the installation.
+
+#### One-time setup
+
+```bash
+npm install -g @anthropic-ai/claude-code   # if you don't have Claude Code yet
+gh auth login                              # the skill reads issues and diffs through the GitHub CLI
+```
+
+Check the second one with `gh auth status` — without it, the skill can't read the issue.
+
+#### Running it
+
+```bash
+cd imgproxy-js-core
+claude                     # starts Claude Code in the project
+```
+
+Then type this at the prompt (the leading slash is part of it):
+
+```
+/imgproxy-docs-sync 82
+```
+
+`82` is the number of the auto-generated issue you want to work on. You can also paste the issue URL,
+or type `/imgproxy-docs-sync` with nothing after it — then it lists the open
+_"Usage docs of imgproxy have been updated"_ issues and asks which one you mean.
+
+#### What happens next
+
+1. It reads issue #82, pulls the `imgproxy-docs` compare range out of the issue body, and fetches
+   that diff — keeping only `docs/usage/**`, because server-side docs (`docs/configuration/**`,
+   `docs/image_sources/**`, …) don't affect a URL-building package. Anything skipped is listed with a
+   reason rather than dropped in silence.
+2. It sorts each change into new option / changed option / removed or deprecated / prose only / out
+   of scope, checking `src/` first — an old issue may already be covered by a merged PR.
+3. **It stops and shows you a plan.** That report is the part to actually read: what changed
+   upstream, a file-by-file table of what it wants to write, and the literal URL strings the new code
+   would produce, e.g.
+
+   ```
+   { progressive_blur: { sigma: 5 } }  ->  pbl:5
+   ```
+
+   Comparing those strings against the imgproxy docs is the quickest way to catch a misreading.
+
+4. **You answer the approval prompt.** Four choices: _Proceed as planned_, _Proceed with changes_
+   (say what to do differently — e.g. "`start` is optional, don't require it"), _Report only_ (stop
+   here, nothing is written, working tree stays clean), or _Cancel_. **Nothing is written to disk
+   before you pick.**
+5. On approval it branches off `main`, writes the option module, its types, the wiring and the tests
+   following
+   [`references/repo-conventions.md`](./.claude/skills/imgproxy-docs-sync/references/repo-conventions.md),
+   then runs the same four commands CI runs: `npm run lint`, `npm run check-types`,
+   `npm run test -- --run`, `npm run build`. All four must pass.
+6. It adds a changeset (`minor` for a new option or argument, `patch` for a fix), commits, pushes,
+   and opens a PR whose body starts with `Closes #82` so the issue closes on merge. **It does not
+   merge** — you review the PR as usual.
+
+If you'd rather see the analysis without any code being written, run it and pick _Report only_ at
+step 4.
+
+#### Several issues open at once
+
+Sequential issues share shas — issue N's `base` is usually issue N-1's `head` — so the skill offers
+either to take the oldest first, or to collapse the whole backlog into one compare range and one PR
+that closes all of them. It asks; it doesn't decide for you.
+
+### Doing step 3 by hand
+
+The same skill files are a plain checklist — read
+[`SKILL.md`](./.claude/skills/imgproxy-docs-sync/SKILL.md) for the process and
+[`references/repo-conventions.md`](./.claude/skills/imgproxy-docs-sync/references/repo-conventions.md)
+for the conventions a new option module must follow. Keep both up to date when those conventions
+change; they are the source of truth for the next sync, automated or not.
 
 ## Publication Workflow
 
