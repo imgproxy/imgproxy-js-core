@@ -4,6 +4,7 @@ import type { BypassCacheOptionsPartial } from "../typesShared/bypassCache";
 import type { CacheBusterOptionsPartial } from "../typesShared/cacheBuster";
 import type { CacheTagsOptionsPartial } from "../typesShared/cacheTags";
 import type { CalcHashsumsImageInfoOptionsPartial } from "./calcHashsums";
+import type { ClassifyImageInfoOptionsPartial } from "./classify";
 import type { CropOptionsPartial } from "../typesShared/crop";
 import type { DCImageInfoOptionsPartial } from "./dominantColors";
 import type { DetectObjectsImageInfoOptionsPartial } from "./detectObjects";
@@ -17,8 +18,10 @@ import type { MaxSrcResolutionOptionsPartial } from "../typesShared/maxSrcResolu
 import type { PageOptionsPartial } from "../typesShared/page";
 import type { PagesNumberInfoOptionsPartial } from "./pagesNumber";
 import type { PaletteImageInfoOptionsPartial } from "./palette";
+import type { PerceptualHashImageInfoOptionsPartial } from "./perceptualHash";
 import type { PresetOptionsPartial } from "../typesShared/preset";
 import type { SizeImageInfoOptionsPartial } from "./size";
+import type { ThumbHashImageInfoOptionsPartial } from "./thumbHash";
 import type { VideoMetaImageInfoOptionsPartial } from "./videoMeta";
 import type { VideoThumbnailKeyframesOptionsPartial } from "../typesShared/videoThumbnailKeyframes";
 import type { VideoThumbnailSecondOptionsPartial } from "../typesShared/videoThumbnailSecond";
@@ -31,6 +34,7 @@ export type OptionsImageInfo = AverageImageInfoOptionsPartial &
   CacheBusterOptionsPartial &
   CacheTagsOptionsPartial &
   CalcHashsumsImageInfoOptionsPartial &
+  ClassifyImageInfoOptionsPartial &
   CropOptionsPartial &
   DCImageInfoOptionsPartial &
   DetectObjectsImageInfoOptionsPartial &
@@ -44,8 +48,10 @@ export type OptionsImageInfo = AverageImageInfoOptionsPartial &
   PageOptionsPartial &
   PagesNumberInfoOptionsPartial &
   PaletteImageInfoOptionsPartial &
+  PerceptualHashImageInfoOptionsPartial &
   PresetOptionsPartial &
   SizeImageInfoOptionsPartial &
+  ThumbHashImageInfoOptionsPartial &
   VideoMetaImageInfoOptionsPartial &
   VideoThumbnailKeyframesOptionsPartial &
   VideoThumbnailSecondOptionsPartial &

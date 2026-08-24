@@ -16,6 +16,7 @@ import type { ColorizeOptionsPartial } from "./colorize";
 import type { ContrastOptionsPartial } from "./contrast";
 import type { CropOptionsPartial } from "../typesShared/crop";
 import type { CropAspectRatioOptionsPartial } from "./cropAspectRatio";
+import type { CropObjectsOptionsPartial } from "./cropObjects";
 import type { DisableAnimationOptionsPartial } from "./disableAnimation";
 import type { DuotoneOptionsPartial } from "./duotone";
 import type { DPIOptionsPartial } from "./dpi";
@@ -51,6 +52,7 @@ import type { PageOptionsPartial } from "../typesShared/page";
 import type { PagesOptionsPartial } from "./pages";
 import type { PixelateOptionsPartial } from "./pixelate";
 import type { PNGOptionsPartial } from "./pngOptions";
+import type { PreserveHDROptionsPartial } from "./preserveHdr";
 import type { PresetOptionsPartial } from "../typesShared/preset";
 import type { ProgressiveBlurOptionsPartial } from "./progressiveBlur";
 import type { QualityOptionsPartial } from "./quality";
@@ -102,6 +104,7 @@ export type Options = AdjustOptionsPartial &
   ContrastOptionsPartial &
   CropOptionsPartial &
   CropAspectRatioOptionsPartial &
+  CropObjectsOptionsPartial &
   DisableAnimationOptionsPartial &
   DuotoneOptionsPartial &
   DPIOptionsPartial &
@@ -137,6 +140,7 @@ export type Options = AdjustOptionsPartial &
   PagesOptionsPartial &
   PixelateOptionsPartial &
   PNGOptionsPartial &
+  PreserveHDROptionsPartial &
   PresetOptionsPartial &
   ProgressiveBlurOptionsPartial &
   RawOptionsPartial &
