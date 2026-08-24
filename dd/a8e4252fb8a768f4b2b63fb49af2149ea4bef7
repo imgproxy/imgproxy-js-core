@@ -1,0 +1,25 @@
+tests/optionsBasic/gravity.test.ts
+  s_daa574067f2a37::t_07acf37a5e2225 141
+src/options/gravity.ts
+  s_daa574067f2a37::t_e00b37aaabaacf 62
+.changeset/exclusive-gravity-union.md
+  s_daa574067f2a37::t_c5c89713b6d62b 1-5
+src/types/gravity.ts
+  s_daa574067f2a37::t_c90e816650df19 202-217,219-223
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "dda8e4252fb8a768f4b2b63fb49af2149ea4bef7",
+  "prompts": {},
+  "sessions": {
+    "s_daa574067f2a37": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a79f2de-d478-4f0b-ab1b-c3f64e036d1f",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Ivan Buryak <ivan.buryak@gmail.com>"
+    }
+  }
+}
