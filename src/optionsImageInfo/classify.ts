@@ -2,7 +2,7 @@ import type {
   Classify,
   ClassifyImageInfoOptionsPartial,
 } from "../typesImageInfo/classify";
-import { guardIsUndef, guardIsNotNum } from "../utils";
+import { guardIsUndef, guardIsNotNum, guardIsNotArray } from "../utils";
 
 const getOpt = (
   options: ClassifyImageInfoOptionsPartial
@@ -30,8 +30,8 @@ const build = (options: ClassifyImageInfoOptionsPartial): string => {
     addParam: { min: 0, isInt: true },
   });
 
-  if (class_names !== undefined && !Array.isArray(class_names)) {
-    throw new Error("classify.class_names is not an array");
+  if (class_names !== undefined) {
+    guardIsNotArray(class_names, "classify.class_names", true);
   }
 
   const classNamesStr = class_names ? class_names.join(":") : "";

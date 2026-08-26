@@ -2,7 +2,7 @@ import type {
   CropObjects,
   CropObjectsOptionsPartial,
 } from "../types/cropObjects";
-import { guardIsUndef, guardIsNotNum } from "../utils";
+import { guardIsUndef, guardIsNotNum, guardIsNotArray } from "../utils";
 
 const getOpt = (
   options: CropObjectsOptionsPartial
@@ -30,8 +30,8 @@ const build = (options: CropObjectsOptionsPartial): string => {
     addParam: { min: 0 },
   });
 
-  if (class_names !== undefined && !Array.isArray(class_names)) {
-    throw new Error("crop_objects.class_names is not an array");
+  if (class_names !== undefined) {
+    guardIsNotArray(class_names, "crop_objects.class_names", true);
   }
 
   const classNamesStr = class_names ? class_names.join(":") : "";
