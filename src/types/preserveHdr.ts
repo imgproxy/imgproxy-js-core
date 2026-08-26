@@ -24,9 +24,6 @@ type PreserveHDR = 1 | "t" | true | false | string;
  *
  * To describe the Preserve HDR option, you can use the keyword `preserve_hdr` or `ph`.
  *
- * @note In processing URLs, `ph` means `preserve_hdr`. Don't confuse it with the
- * `ph` keyword of the `perceptual_hash` image info option.
- *
  * @see https://docs.imgproxy.net/usage/processing#preserve-hdr
  */
 interface PreserveHDROptionsPartial {

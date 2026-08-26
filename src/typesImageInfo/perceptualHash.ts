@@ -33,9 +33,6 @@ type PerceptualHash = 1 | "t" | true | false | string;
  * To describe the Perceptual hash option, you can use the keyword `perceptual_hash`,
  * `phash` or `ph`.
  *
- * @note In image info URLs, `ph` means `perceptual_hash`. Don't confuse it with the
- * `ph` keyword of the `preserve_hdr` processing option.
- *
  * @see https://docs.imgproxy.net/usage/getting_info#perceptual-hash
  */
 interface PerceptualHashImageInfoOptionsPartial {
