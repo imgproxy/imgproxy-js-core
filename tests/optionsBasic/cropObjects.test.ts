@@ -7,6 +7,10 @@ describe("crop_objects", () => {
       expect(test({ crop_objects: { scale_factor: 1.2 } })).toEqual(true);
     });
 
+    it("should return true if c_obj option is defined", () => {
+      expect(test({ c_obj: { scale_factor: 1 } })).toEqual(true);
+    });
+
     it("should return false if the co option is used (co is the contrast keyword)", () => {
       // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
       expect(test({ co: { scale_factor: 1 } })).toEqual(false);
@@ -42,32 +46,38 @@ describe("crop_objects", () => {
       );
     });
 
-    it("should return co:1.2 if crop_objects is {scale_factor: 1.2}", () => {
-      expect(build({ crop_objects: { scale_factor: 1.2 } })).toEqual("co:1.2");
+    it("should return c_obj:1.2 if crop_objects is {scale_factor: 1.2}", () => {
+      expect(build({ crop_objects: { scale_factor: 1.2 } })).toEqual(
+        "c_obj:1.2"
+      );
     });
 
-    it("should return co:0 if crop_objects is {scale_factor: 0}", () => {
-      expect(build({ crop_objects: { scale_factor: 0 } })).toEqual("co:0");
+    it("should return c_obj:1.2 if c_obj is {scale_factor: 1.2}", () => {
+      expect(build({ c_obj: { scale_factor: 1.2 } })).toEqual("c_obj:1.2");
     });
 
-    it("should return co:1:face if class names are passed", () => {
+    it("should return c_obj:0 if crop_objects is {scale_factor: 0}", () => {
+      expect(build({ crop_objects: { scale_factor: 0 } })).toEqual("c_obj:0");
+    });
+
+    it("should return c_obj:1:face if class names are passed", () => {
       expect(
-        build({ crop_objects: { scale_factor: 1, class_names: ["face"] } })
-      ).toEqual("co:1:face");
+        build({ c_obj: { scale_factor: 1, class_names: ["face"] } })
+      ).toEqual("c_obj:1:face");
     });
 
-    it("should return co:1.5:cat:dog if several class names are passed", () => {
+    it("should return c_obj:1.5:cat:dog if several class names are passed", () => {
       expect(
         build({
           crop_objects: { scale_factor: 1.5, class_names: ["cat", "dog"] },
         })
-      ).toEqual("co:1.5:cat:dog");
+      ).toEqual("c_obj:1.5:cat:dog");
     });
 
-    it("should return co:1 if class names are empty", () => {
+    it("should return c_obj:1 if class names are empty", () => {
       expect(
         build({ crop_objects: { scale_factor: 1, class_names: [] } })
-      ).toEqual("co:1");
+      ).toEqual("c_obj:1");
     });
   });
 });

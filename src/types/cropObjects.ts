@@ -36,16 +36,13 @@ interface CropObjects {
 /**
  * *Crop objects option*. **PRO feature**
  *
- * To describe the Crop objects option, use the keyword `crop_objects`.
- *
- * @note The imgproxy docs list `co` as the short keyword of this option, but `co` is
- * already the short keyword of the `contrast` option. Until that conflict is resolved
- * upstream, only the full `crop_objects` keyword is supported here.
+ * To describe the Crop objects option, you can use the keyword `crop_objects` or `c_obj`.
  *
  * @see https://docs.imgproxy.net/usage/processing#crop-objects
  */
 interface CropObjectsOptionsPartial {
   crop_objects?: CropObjects;
+  c_obj?: CropObjects;
 }
 
 export { CropObjects, CropObjectsOptionsPartial };

@@ -4,8 +4,17 @@ import type {
 } from "../types/cropObjects";
 import { guardIsUndef, guardIsNotNum } from "../utils";
 
-const getOpt = (options: CropObjectsOptionsPartial): CropObjects | undefined =>
-  options.crop_objects;
+const getOpt = (
+  options: CropObjectsOptionsPartial
+): CropObjects | undefined => {
+  if ("crop_objects" in options) {
+    return options.crop_objects;
+  } else if ("c_obj" in options) {
+    return options.c_obj;
+  }
+
+  return undefined;
+};
 
 const test = (options: CropObjectsOptionsPartial): boolean =>
   getOpt(options) !== undefined;
@@ -23,7 +32,7 @@ const build = (options: CropObjectsOptionsPartial): string => {
 
   const classNamesStr = class_names ? class_names.join(":") : "";
 
-  return `co:${scale_factor}:${classNamesStr}`.replace(/:+$/, "");
+  return `c_obj:${scale_factor}:${classNamesStr}`.replace(/:+$/, "");
 };
 
 export { test, build };
