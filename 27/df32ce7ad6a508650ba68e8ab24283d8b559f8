@@ -1,0 +1,25 @@
+src/optionsImageInfo/classify.ts
+  s_fe7d4def29b592::t_2924cecd944ca2 33-36
+tests/optionsBasic/cropObjects.test.ts
+  s_fe7d4def29b592::t_d9f8c36fc2db9b 49-55
+tests/optionsImageInfo/classify.test.ts
+  s_fe7d4def29b592::t_d9f8c36fc2db9b 50-56
+src/options/cropObjects.ts
+  s_fe7d4def29b592::t_2924cecd944ca2 33-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "27df32ce7ad6a508650ba68e8ab24283d8b559f8",
+  "prompts": {},
+  "sessions": {
+    "s_fe7d4def29b592": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a0323fc-8f22-44d2-8381-eca81e7893c2",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Buryak <ivan.buryak@gmail.com>"
+    }
+  }
+}
