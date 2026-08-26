@@ -46,6 +46,13 @@ describe("crop_objects", () => {
       );
     });
 
+    it("should throw an error if crop_objects.class_names is not an array", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ crop_objects: { scale_factor: 1, class_names: "face" } })
+      ).toThrow("crop_objects.class_names is not an array");
+    });
+
     it("should return c_obj:1.2 if crop_objects is {scale_factor: 1.2}", () => {
       expect(build({ crop_objects: { scale_factor: 1.2 } })).toEqual(
         "c_obj:1.2"

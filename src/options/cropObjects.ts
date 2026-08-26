@@ -30,6 +30,10 @@ const build = (options: CropObjectsOptionsPartial): string => {
     addParam: { min: 0 },
   });
 
+  if (class_names !== undefined && !Array.isArray(class_names)) {
+    throw new Error("crop_objects.class_names is not an array");
+  }
+
   const classNamesStr = class_names ? class_names.join(":") : "";
 
   return `c_obj:${scale_factor}:${classNamesStr}`.replace(/:+$/, "");

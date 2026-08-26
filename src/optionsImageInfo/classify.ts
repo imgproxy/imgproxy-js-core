@@ -30,6 +30,10 @@ const build = (options: ClassifyImageInfoOptionsPartial): string => {
     addParam: { min: 0, isInt: true },
   });
 
+  if (class_names !== undefined && !Array.isArray(class_names)) {
+    throw new Error("classify.class_names is not an array");
+  }
+
   const classNamesStr = class_names ? class_names.join(":") : "";
 
   return `cl:${top_k}:${classNamesStr}`.replace(/:+$/, "");

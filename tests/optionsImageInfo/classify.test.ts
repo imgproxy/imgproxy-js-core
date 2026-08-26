@@ -47,6 +47,13 @@ describe("classify", () => {
       );
     });
 
+    it("should throw an error if classify.class_names is not an array", () => {
+      expect(() =>
+        // @ts-expect-error: Let's ignore an error (check for users with vanilla js).
+        build({ classify: { top_k: 1, class_names: "Bus" } })
+      ).toThrow("classify.class_names is not an array");
+    });
+
     it("should return cl:3 if classify is {top_k: 3}", () => {
       expect(build({ classify: { top_k: 3 } })).toEqual("cl:3");
     });
