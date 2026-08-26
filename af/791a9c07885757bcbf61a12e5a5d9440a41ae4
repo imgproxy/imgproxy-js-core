@@ -1,0 +1,25 @@
+src/types/cropObjects.ts
+  s_fe7d4def29b592::t_1852b498acf45f 39,45
+.changeset/classification-hashes-crop-objects-preserve-hdr.md
+  s_fe7d4def29b592::t_4801bc58d3dc38 15
+src/options/cropObjects.ts
+  s_fe7d4def29b592::t_1852b498acf45f 7-17,35
+tests/optionsBasic/cropObjects.test.ts
+  s_fe7d4def29b592::t_3ba4415d126e5b 10-13,49-56,59-60,63,65-66,69,74,77,80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "af791a9c07885757bcbf61a12e5a5d9440a41ae4",
+  "prompts": {},
+  "sessions": {
+    "s_fe7d4def29b592": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a0323fc-8f22-44d2-8381-eca81e7893c2",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Buryak <ivan.buryak@gmail.com>"
+    }
+  }
+}
