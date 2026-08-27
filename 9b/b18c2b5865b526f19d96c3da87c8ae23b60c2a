@@ -1,0 +1,19 @@
+.github/workflows/publish.yml
+  s_a15c43e87a1acb::t_4f3f135b76819a 16,21,25-27,29,38-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "9bb18c2b5865b526f19d96c3da87c8ae23b60c2a",
+  "prompts": {},
+  "sessions": {
+    "s_a15c43e87a1acb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c254739c-d38e-4392-921c-ae16bfa8d897",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Ivan Buryak <ivan.buryak@gmail.com>"
+    }
+  }
+}
