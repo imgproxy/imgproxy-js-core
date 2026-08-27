@@ -13,18 +13,20 @@ jobs:
     permissions:
       contents: write # to create release (changesets/action)
       pull-requests: write # to create pull request (changesets/action)
-      id-token: write #  OpenID Connect token needed for provenance
+      id-token: write # OIDC token for npm trusted publishing & provenance
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
+      # Node 24 is required for npm >= 11.5.1, which is the minimum version
+      # that supports npm trusted publishing (OIDC). Node 22 still ships npm 10.
+      - uses: actions/setup-node@v7
         with:
-          node-version: 18
+          node-version: 24
           cache: "npm"
 
       - name: "Npm install"
@@ -33,6 +35,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      # No NPM_TOKEN: the package is published via npm trusted publishing.
+      # npm exchanges the GitHub OIDC token for a short-lived publish
+      # credential, which also enables provenance attestations automatically.
+      # See https://docs.npmjs.com/trusted-publishers
       - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@v1
         with:
@@ -41,6 +47,3 @@ jobs:
           commit: "Changesets versioning & publication"
           title: "Changesets: Versioning & Publication"
           createGithubReleases: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
