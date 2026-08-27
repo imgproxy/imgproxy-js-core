@@ -126,12 +126,13 @@ export function guardIsNotStr(
 
 export function guardIsNotArray(
   param: Array<unknown> | undefined,
-  pn: string
+  pn: string,
+  allowEmpty?: boolean
 ): asserts param is Array<unknown> {
   if (!Array.isArray(param)) {
     throw new Error(`${getParamName(pn)} is not an array`);
   }
-  if (param.length === 0) {
+  if (!allowEmpty && param.length === 0) {
     throw new Error(`${getParamName(pn)} is empty`);
   }
 }
